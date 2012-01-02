@@ -1,0 +1,4 @@
+run the game in you terminal with the command :
+"LD_LIBRARY_PATH="path/that/contains/the/liblwjg.so/file" jruby ponggame.rb"
+
+#this works if you are on the ubuntu os
