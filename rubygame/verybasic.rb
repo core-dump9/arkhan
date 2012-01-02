@@ -1,4 +1,4 @@
-$:.push File.expand_path('../lib', __FILE__)
+$: << File.expand_path('../lib', __FILE__)
 
 require 'java'
 require 'lwjgl.jar'
@@ -27,6 +27,6 @@ container.exit if input.is_key_down(Input::KEY_ESCAPE)
 end
 end
 
-app = AppGameContainer.new(RubGame.new('SlickDemo'))
+app = AppGameContainer.new(RubGame.new('H66 DEMO'))
 app.set_display_mode(640, 480, false)
 app.start
