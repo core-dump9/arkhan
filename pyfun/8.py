@@ -64,4 +64,4 @@ def begin():
 	gname = str(raw_input());
 	chanceornot(mname, gname, 30);
 
-begin();
+begin()
