@@ -10,4 +10,3 @@ if t == 4:
 	print "correct";
 else:
 	print "wrong";
-

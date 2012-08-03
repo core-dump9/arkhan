@@ -4,5 +4,9 @@ main () {
 	int senther;
 	scanf("%d", &senther);
 	char zet = senther;
-	printf("%c\n", zet);
+	printf("character %c has the ascii value %d\n", zet, senther);
+
+	char timi = 'Z';
+
+	printf("%d\n", timi);
 }
