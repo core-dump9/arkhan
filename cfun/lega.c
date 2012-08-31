@@ -1,13 +1,9 @@
 #include <stdio.h>
-
-void get (int a, int b) {
-	int sum;
-	sum = (a+b);
-	printf("%d\n", sum);
-}
+#include <stdlib.h>
 
 int main(int argc, char const *argv[])
 {
-	get(4, 4);
-	return 0;
+	int c2 = getchar();
+
+	printf("%c\n", c2);	
 }
