@@ -1,0 +1,621 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/random.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:47 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="random numbers, random numbers c++,c++ random numbers, random numbers in c, c random numbers, generate random numbers c, generate random numbers c++, generate random numbers in c, generate random numbers in c++, rand, srand, c++ random number generator">
+<META NAME="Description" CONTENT="Learn how to generate random numbers in C and C++ using rand and srand.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Generating Random Numbers in C and C++ - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Getting Random Values in C and C++ with Rand</h1>
+
+
+
+Written by RoD
+<p>At some point in any programmer's life, he or she must learn how to get a
+random value, or values, in their program. To some this seems involved,
+difficult, or even beyond their personal ability. This, however, is simply not
+the case.  </p>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<p>Randomizing of values is, at its most basic form, one of the easier things a programmer can do with the C++ language. I have created this short tutorial for <a href="../index.html">Cprogramming.com</a> to aid you in learning, constructing, and using the functions available to you to randomize values.
+</p>
+<p>I will first start with an introduction to the idea of randomizing values, followed by a simple example program that will output three random values. Once a secure understanding of these concepts is in place (hopefully it will be), I will include a short program that uses a range of values from which the random values can be taken.
+</p>
+<p>Ok, now that you know why this tutorial was written, and what it includes,
+    you are ready to learn how to randomize values! So without further ado,
+    let's get started, shall we?
+</p>
+<p>Many programs that you will write require the use of random numbers. For example, a game such as backgammon requires a roll of two dice on each move. Since there are 6 numbers on each die, you could calculate each roll by finding a random number from 1 to 6 for each die.
+</p>
+<p>To make this task a little easier, C++ provides us with a library function,
+    called rand that returns an integer between 0 and RAND_MAX. Let's take a break to explain what RAND_MAX is. RAND_MAX is a compiler-dependent constant, and it is inclusive. Inclusive means that the value of RAND_MAX is included in the range of values. The function, rand, and the constant, RAND_MAX, are included in the library header file stdlib.h.</p>
+<p>The number returned by function rand is dependent on the initial value, called a seed that remains the same for each run of a program. This means that the sequence of random numbers that is generated by the program will be exactly the same on each run of the program.</p>
+<p>How do you solve this problem you ask? Well I'll tell you! To help us combat this problem we will use another function, srand(seed), which is also declared in the stdlib.h header file. This function allows an application to specify the initial value used by rand at program startup.</p>
+<p>Using this method of randomization, the program will use a different seed value on every run, causing a different set of random values every run, which is what we want in this case. The problem posed to us now, of course, is how to get an arbitrary seed value. Forcing the user or programmer to enter this value every time the program was run wouldn't be very efficient at all, so we need another way to do it.</p>
+<p>So we turn to the perfect source for our always-changing value, the system clock. The C++ data type time_t and the function time, both declared in time.h, can be used to easily retrieve the time on the computers clock.</p>
+<p>When converted to an unsigned integer, a positive whole number, the program time (at execution of program) can make a very nice seed value. This works nicely because no two program executions will occur at the same instant of the computers clock.</p>
+<p>As promised, here is a very basic example program. The following code was written in Visual C++ 6.0, but should compile fine on most computers (given u have a compiler, which if your reading this I assume you do). The program outputs three random values.</p>
+<pre class="example">
+/*Steven Billington
+January 17, 2003
+Ranexample.cpp
+Program displays three random integers.
+*/
+/*
+Header: iostream
+Reason: Input/Output stream
+Header: cstdlib
+Reason: For functions rand and srand
+Header: time.h
+Reason: For function time, and for data type time_t
+*/
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;time.h&gt;
+
+using namespace std;
+
+int main()
+{
+/*
+Declare variable to hold seconds on clock.
+*/
+time_t seconds;
+/*
+Get value from system clock and
+place in seconds variable.
+*/
+time(&amp;seconds);
+/*
+Convert seconds to a unsigned
+integer.
+*/
+srand((unsigned int) seconds);
+/*
+Output random values.
+*/
+cout&lt;&lt; rand() &lt;&lt; endl;
+cout&lt;&lt; rand() &lt;&lt; endl;
+cout&lt;&lt; rand() &lt;&lt; endl;
+return 0;
+}
+</pre>
+<p>Users of a random number generator might wish to have a narrower or a wider
+range of numbers than provided by the rand function. Ideally, to solve this
+problem a user would specify the range with integer values representing the
+lower and the upper bounds. To understand how we might accomplish this with
+the rand function, consider how to generate a number between 0 and an
+arbitrary upper bound, referred to as high, inclusive.</p>
+<p>For any two integers, say a and b, a % b is between 0 and b - 1, inclusive.
+With this in mind, the expression rand() % high + 1 would generate a number
+between 1 and high, inclusive, where high is less than or equal to
+RAND_MAX, a constant defined by the compiler.  To place a lower bound in
+replacement of 1 on that result, we can have the program generate a random
+number between 0 and (high - low + 1) + low.</p>
+<p>I realize how confused you might be right now, so take a look at the next sample program I promised, run it, toy with it, and alternate it to give you different values. It has been a pleasure to teach you another chapter in the world of C++, and you may feel free to email me at <a href="mailto:Silent_Death17@hotmail.com">Silent_Death17@hotmail.com</a> or to contact me on the message boards of this fine website, where I use the name RoD.</p>
+Enjoy, and happy programming!
+<pre class="example">
+/*
+Steven Billington
+January 17, 2003
+exDice.cpp
+Program rolls two dice with random
+results.
+*/
+/*
+Header: iostream
+Reason: Input/Output stream
+Header: stdlib
+Reason: For functions rand and srand
+Header: time.h
+Reason: For function time, and for data type time_t
+*/
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+#include &lt;time.h&gt;
+/*
+These constants define our upper
+and our lower bounds. The random numbers
+will always be between 1 and 6, inclusive.
+*/
+const int LOW = 1;
+const int HIGH = 6;
+
+using namespace std;
+
+int main()
+{
+/*
+Variables to hold random values
+for the first and the second die on
+each roll.
+*/
+int first_die, sec_die;
+/*
+Declare variable to hold seconds on clock.
+*/
+time_t seconds;
+/*
+Get value from system clock and
+place in seconds variable.
+*/
+time(&amp;seconds);
+/*
+Convert seconds to a unsigned
+integer.
+*/
+srand((unsigned int) seconds);
+/*
+Get first and second random numbers.
+*/
+first_die = rand() % (HIGH - LOW + 1) + LOW;
+sec_die = rand() % (HIGH - LOW + 1) + LOW;
+/*
+Output first roll results.
+*/
+cout&lt;&lt; "Your roll is (" &lt;&lt; first_die &lt;&lt; ", "
+&lt;&lt; sec_die &lt;&lt; "}" &lt;&lt; endl &lt;&lt; endl;
+/*
+Get two new random values.
+*/
+first_die = rand() % (HIGH - LOW + 1) + LOW;
+sec_die = rand() % (HIGH - LOW + 1) + LOW;
+/*
+Output second roll results.
+*/
+cout&lt;&lt; "My roll is (" &lt;&lt; first_die &lt;&lt; ", "
+&lt;&lt; sec_die &lt;&lt; "}" &lt;&lt; endl &lt;&lt; endl;
+return 0;
+}
+</pre>
+<!-- #EndEditable --> 
+          <!-- removed chitika -->
+ 
+
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/random.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:47 GMT -->
+</html>
+
+
+

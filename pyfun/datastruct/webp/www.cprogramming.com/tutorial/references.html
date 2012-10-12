@@ -1,0 +1,628 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/references.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, tutorials, basic C++ tutorials,Programming, C++, tutorial, C/C++, basic C++ tutorials,Programming, C++, tutorial, tutorail, programing basic C++ tutorials, programmer, learn programming, C++ made easy, xor, exclusive-or, encryption, xor encryption, OpenGL">
+<META NAME="Description" CONTENT="Understandable C++ tutorials (covers most of basic C, except i/o).  Includes basics, pointers, arrays, classes and structs, recursion, linked lists, encryption, OpenGL graphics, and more.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>C++ Reference Variables - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>C++ References</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+C++ references allow you to create a second name for the a variable that you
+can use to read or modify the original data stored in that variable.  While
+this may not sound appealing at first, what this means is that when you declare
+a reference and assign it a variable, it will allow you to treat the reference
+exactly as though it were the original variable for the purpose of accessing
+and modifying the value of the original variable--even if the second name (the
+reference) is located within a different scope.  This means, for instance, that
+if you make your function arguments references, and you will effectively have a
+way to change the original data passed into the function.  This is quite
+different from how C++ normally works, where you have arguments to a function
+copied into new variables.  It also allows you to dramatically reduce the
+amount of copying that takes place behind the scenes, both with functions and
+in other areas of C++, like <a href="exceptions.html">catch
+clauses</a>.
+
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<br><br><h2>Basic Syntax</h2>
+Declaring a variable as a reference rather than a normal variable simply
+entails appending an ampersand to the type name, such as this "reference to an
+int"
+
+<pre class="example">
+int&amp; foo = ....;
+</pre>
+
+Did you notice the "...."?  (Probably, right?  After all, it's 25% of the
+example.) When a reference is created, you must tell it which variable it will
+become an alias for.  After you create the reference, whenever you use the
+variable, you can just treat it as though it were a regular integer variable.
+But when you create it, you must initialize it with another variable, whose
+address it will keep around behind the scenes to allow you to use it to modify
+that variable.  
+
+<br><br>
+In a way, this is similar to having a pointer that always points to the same
+thing.  One key difference is that references do not require dereferencing in
+the same way that pointers do; you just treat them as normal variables.  A
+second difference is that when you create a reference to a variable, you need
+not do anything special to get the memory address.  The compiler figures this
+out for you:
+
+<pre class="example">
+int x;
+int&amp; foo = x;
+
+// foo is now a reference to x so this sets x to 56
+foo = 56;
+std::cout &lt;&lt; x &lt;&lt;std::endl;
+</pre>
+
+
+<h2>Functions taking References Parameters</h2>
+Here's a simple example of setting up a function to take an argument "by
+reference", implementing the swap function:
+
+<pre class="example">
+void swap (int&amp; first, int&amp; second)
+{
+        int temp = first;
+        first = second;
+        second = temp;
+}
+</pre>
+
+Both arguments are passed "by reference"--the caller of the function need not even be aware of it:
+
+<pre class="example">
+int a = 2;
+int b = 3;
+swap( a, b );
+</pre>
+
+After the swap, a will be 3 and b will be 2.  The fact that references require
+no extra work can lead to confusion at times when variables magically change
+after being passed into a function.  Bjarne Stroustrup suggests that for
+arguments that the function is expected to change, using a pointer instead
+of a reference helps make this clear--pointers require that the caller
+explicitly pass in the memory address. 
+
+<h2>Efficiency Gains</h2>
+
+You might wonder why you would ever want to use references other than to
+change the value--well, the answer is that passing by reference means that the
+variable need not be copied, yet it can still be passed into a function without
+doing anything special.  This gives you the most  bang for your buck when
+working with classes.  If you want to pass a class into a function, it almost
+always makes sense for the function to take the class "by reference"--but
+generally, you want to use a <a href="const_correctness.html">const
+reference</a>.
+
+<br><br>
+This might look something like this:
+
+<pre class="example">
+int workWithClass( const MyClass&amp; a_class_object )
+{
+}
+</pre>
+
+The great thing about using const references is that you can be sure that the
+variable isn't modified, so you can immediately change all of your functions
+that take large objects--no need to make a copy anymore.  And even you were
+conscientious and used pointers to pass around large objects, using references
+in the future can still make your code that much cleaner.
+
+<h2>References and Safety</h2>
+
+You're probably noticing a similarity to pointers here--and that's true,
+references are often implemented by the compiler writers as pointers.  A major
+difference is that references are "safer".  In general, references should
+always be valid because you must always initialize a reference.  This means
+that barring some bizarre circumstances (see below), you can be certain that
+using a reference is just like using a plain old non-reference variable.  You
+don't need to check to make sure that a reference isn't pointing to NULL, and
+you won't get bitten by an uninitialized reference that you forgot to allocate
+memory for.
+
+<h3>References and Safety: the Exceptions</h3>
+
+For the sake of full disclosure, it is possible to have an invalid references
+in one minor and one major case.
+<br><br>
+First, if you explicitly assign a reference to a dereferenced NULL pointer, your reference will be invalid:
+
+<pre class="example">
+int *x = 0;
+int&amp; y = *x;
+</pre>
+
+Now when you try to use the reference, you'll get a segmentation fault since
+you're trying to access invalid memory (well, on most systems anyhow).
+
+<br><br>
+By the way, this actually does work: since you're not actually accessing the
+value stored in *x when you make the reference to it, this will compile just
+fine.
+<br><br>
+A more pressing issue is that it is possible to "invalidate" a reference in the
+sense that it is possible that a reference to a block of memory can live on
+past the time when the memory is valid.  The most immediate example is that you shouldn't return a reference to local memory:
+
+<pre class="example">
+int&amp; getLocalVariable()
+{
+        int x;
+        return x;
+}
+</pre>
+
+Once the stack frame containing the memory for getLocalVariable is taken off
+the stack, then the reference returned by this function will no longer be
+valid.  Oops.
+
+<h2>References and Dynamically Allocated Memory</h2>
+
+Finally, beware of references to dynamically allocated memory.  One problem is
+that when you use references, it's not clear that the memory backing the
+reference needs to be deallocated--it usually doesn't, after all.  This can be
+fine when you're passing data into a function since the function would
+generally not be responsible for deallocating the memory anyway.  
+
+<br><br>
+On the other hand, if you return a reference to dynamically allocated memory,
+then you're asking for trouble since it won't be clear that there is something
+that needs to be cleaned up by the function caller.
+<!-- removed chitika -->
+ 
+            
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/references.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+</html>
+
+
+

@@ -1,0 +1,689 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/functors-function-objects-in-c++.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+<META NAME="keywords" CONTENT="Functors, Function objects, function objects in C++, C++ functors, declaring functor">
+<META NAME="Description" CONTENT="Learn how to use functors (aka function objects) in C++.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Functors - Function Objects in C++ - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Functors: Function Objects in C++</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+Both C and C++ support <a href="function-pointers.html">function
+pointers</a>, which provide a way to pass around instructions on how to
+perform an operation.  But function pointers are limited because
+functions must be fully specified at compile time.  What do I mean?  Let's say
+that you're writing a mail program to view an inbox, and you'd like to give
+the user the ability to sort the inbox on different fields--to, from, date,
+etc.  You might try using a sort routine that takes a function pointer capable
+of comparing the messages, but there's one problem--there are a lot of
+different ways you might want to compare messages.  You could create different
+functions that differ only by the field of the message on which the comparison
+occurs, but that limits you to sorting on the fields that have been hard-coded
+into the program.  It's also going to lead to a lot of if-then-else blocks
+that differ only by the function passed into the sort routine.  
+
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<br><br>
+
+What you'd really like is the ability to pass in a third argument to your
+comparison function, telling it which field to look at.  But to make this
+work, you'd have to write your own sort routine that knows about the third
+argument; you can't use a generic routine like the STL's sort function because
+you can't tell it to pass in a third argument to the comparator.  Instead, you
+somehow need the ability to "embed" what field to sort on inside the function.
+
+<br><br>
+
+It turns out that you can get this behavior in C++ (but not in C) through the
+use of function objects (aka "functors").  Functors are objects that can be
+treated as though they are a function or function pointer--you could write
+code that looks like this:
+
+<pre class="brush: cpp; toolbar: false">
+myFunctorClass functor;
+functor( 1, 2, 3 );
+</pre>
+
+This code works because C++ allows you to <a href="operator_overloading.html">overload</a> operator(), the "function
+call" operator.  The function call operator can take <i>any</i> number of
+arguments of <i>any</i> types and return anything it wishes to.  (It's
+probably the most flexible operator that can be overloaded; all the other
+operators have a fixed number of arguments.)  For ease of discussion, when an
+object's operator() is invoked, I'll refer to it as "calling" the object as
+though it were a function being called.
+
+<br><br>
+
+While overloading operator() is nice, the really cool thing about functors is
+that their lifecycle is more flexible than that of a function--you can use a a
+functor's constructor to embed information that is later used inside the
+implementation of operator(). 
+
+<br><br>
+
+Let's look at an example.   This example creates a functor class with a
+constructor that takes an integer argument and saves it.   When objects of the
+class are "called", it will return the result of adding the saved value and
+the argument to the functor:
+
+<pre class="brush: cpp; toolbar: false">
+#include &lt;iostream&gt;
+
+class myFunctorClass
+{
+    public:
+        myFunctorClass (int x) : _x( x ) {}
+        int operator() (int y) { return _x + y; }
+    private:
+        int _x;
+};
+
+int main()
+{
+    myFunctorClass addFive( 5 );
+    std::cout &lt;&lt; addFive( 6 );
+
+    return 0;
+}
+</pre>
+
+In short, the act of constructing an object lets you give the functor
+information that it can use inside the implementation of its function-like
+behavior (when the functor is called through operator()).
+
+<h2>Sorting Mail</h2>
+
+Now we can think about how we'd want to write a mail sorting functor.
+We'd need operator() to take two messages, and we can have its constructor
+store the field we wish to sort by.
+
+<pre class="brush: cpp; toolbar: false">
+class Message
+{
+    public:
+        std::string getHeader (const std::string&amp; header_name) const;
+        // other methods...
+};
+
+class MessageSorter
+{
+    public:
+        // take the field to sort by in the constructor
+        MessageSorter (const std::string&amp; field) : _field( field ) {}
+        bool operator (const Message&amp; lhs, const Message&amp; rhs)
+        {
+            // get the field to sort by and make the comparison
+            return lhs.getHeader( _field ) &lt; rhs.getHeader( _field );
+        }
+    private:
+        std::string _field;
+};
+</pre>
+
+Now if we had a vector of Messages, we could use the STL sort function to sort
+them:
+
+<pre class="brush: cpp; toolbar: false">
+std::vector&lt;Messages&gt; messages;
+// read in messages
+MessageSorter comparator;
+sort( messages.begin(), messages.end(), comparator );
+</pre>
+
+<h2>Functors Compared with Function Pointers</h2>
+
+If you have a function that takes a function pointer, you cannot 
+pass in a functor as though it were a function pointer, even if the functor
+has the same arguments and return value as the function pointer.
+
+<br><br>
+Likewise, if you have a function that expects a functor, you cannot pass in a
+function pointer.
+
+<h2>Functors, Function Pointers, and Templates</h2>
+
+If you wish to allow either a function pointer or a functor to be passed into
+the same function, you need to use templates.  The templated function will
+deduce the proper type for the functor or function pointer, and both functors
+and function pointers are used in the exact same way--they both look like
+function calls--so the code in the function will compile fine.  
+
+<br><br>
+
+For instance, let's say you had this simple little find_matching_numbers
+function that takes a vector and returns a vector of all numbers for which a
+given function returns true.
+
+<pre class="brush: cpp; toolbar: false">
+std::vector&lt;int&gt; find_matching_numbers (std::vector&lt;int&gt; vec, bool (*pred)(int))
+{
+    std::vector&lt;int&gt; ret_vec;
+    std::vector&lt;int&gt;::iterator itr = vec.begin(), end = vec.end();
+    while ( itr != end )
+    {
+        if ( pred( *itr ) ) 
+        { 
+            ret_vec.push_back( *itr );
+        }
+        ++itr;
+    }
+}
+</pre>
+
+We could quickly convert this function to allow either functors or function
+pointers by templating on the type of the second argument:
+
+<pre class="brush: cpp; toolbar: false">
+template &lt;typename FuncType&gt;
+std::vector&lt;int&gt; find_matching_numbers( std::vector&lt;int&gt; vec, FuncType pred )
+{
+    std::vector&lt;int&gt; ret_vec;
+    std::vector&lt;int&gt;::iterator itr = vec.begin(), end = vec.end();
+    while ( itr != end )
+    {
+        if ( pred( *itr ) ) 
+        { 
+            ret_vec.push_back( *itr );
+        }
+        ++itr;
+    }
+}
+</pre>
+
+Notice that this also lets you avoid having to use the rather convoluted function pointer syntax. Sweet!
+
+<h3>Functors vs. Virtual Functions</h3>
+
+Functors and virtual functions are, believe it or not, closely related. They both solve the same problem: how do we let some code choose the algorith that is applied. Imagine that you have a function called doMath, and it takes 3 arguments: two integers, and a "kind of math to do". You could write it with functors like this:
+
+<pre class="brush: cpp; toolbar: false">
+template &lt;FuncType&gt;
+int doMath (int x, int y, FuncType func)
+{
+    return func( x, y );
+}
+</pre>
+
+Another way that you could write this is by creating an <a href="class_design.html">interface class</a> that has a computeResult method:
+
+<pre class="brush: cpp; toolbar: false">
+class MathComputer
+{
+    virtual int computeResult (int x, int y) = 0;
+};
+
+doMath (int x, int y, MathComputer* p_computer)
+{
+    return p_computer-&gt;computeResult( x, y );
+}
+</pre>
+
+Admittedly, this is kind of a boring example! All it shows you is that both virtual functions and functors allow you to dynamically choose the exact algorithm that is executed.
+<br><br>
+
+The major difference is that using virtual functions does not give the ability
+to write a templated function that can also accept function pointers.
+Depending on your application, this may be important: if you're writing a
+library, it's probably very important; if you're writing a small program for
+yourself, it's likely less important.  A virtual function, on the other hand, has somewhat simpler syntax (no complex templates!) and tends to fit the normal object-oriented programming mindset.
+
+<br><br><b>Related Articles</b><br><br><a href="../c%2b%2b11/c%2b%2b11-lambda-closures.html">Lambda functions in C++11</a>
+<br><br><a href="function-pointers.html">Function Pointers in C and C++</a>
+<br><br><a href="operator_overloading.html">C++ Operator Overloading</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/functors-function-objects-in-c++.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+</html>
+
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shBrushCpp.js"></script>
+<script type="text/javascript">
+         SyntaxHighlighter.all();
+</script>
+
+
+

@@ -1,0 +1,521 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/comments.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="commenting code, commenting c code, c programming comment, programming c comment, comments in c and c++">
+<META NAME="Description" CONTENT="Learn why to comment your C and C++ code--and how you should do it.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>How and Why to Comment C and C++ Code - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>The Hows and Whys of Commenting C and C++ Code</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+Programs are meant to be beautiful.  If someone tells you otherwise, you'd
+probably do best not to listen to the rest of his advice.  A good program is
+beautiful in both its concept -- the algorithm used, the design, the flow of
+control -- but also in its readability.  Good code is not replete with
+question mark colon operators and pointer arithmetic, or at least not when the
+code doesn't need to be optimized to save a few seconds every few months of
+operation.  But readable code, while a nice ideal, often requires some help
+from the English (or from some other) language.  Sometimes the algorithm is
+too complex to be understood rapidly or completely without some explanation,
+or the code requires some esoteric function call from the C library that has
+both a cryptic and a misleading name.  And if you ever plan to code for a
+living, you will almost certainly have to go back several years later to
+modify the one section of code that you didn't feel like commenting -- or
+someone else will, and will curse your name.  Finally, commenting code can
+also lead to a better understanding of the program and may help uncover bugs
+before testing.  For both aesthetic and practical reasons, good commenting is
+an essential and often overlooked programming skill.  <br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <br><br>
+Before discussing how to comment, a few words of warning: it is possible to comment too much.  Just as good writing is spare, so too is good coding.  You do not want to include a comment telling the reader something obvious, or something that can be discerned from a single line of code.  (You are probably not writing your code to teach someone how to program!)  For instance, "int callCount = 0;  //declares an integer variable," conveys no meaningful information.  Comments should reveal the underlying structure of the code, not the surface details.  A more meaningful comment would be "int callCount = 0; //holds number of calls to [function]."
+<br><br>
+Comments should not be overly long.  Comments should not give details for the sake of details; only when a fact is necessary or interesting should it be brought to the attention of the program's reader.  If you were reading someone else's program, you would not want to be forced to pick through paragraphs of text describing the intricacies of a for loop's operation only to realize that you could have discovered the same information simply by having read the for loop.
+<br><br>
+For the sake of future readers, you should generally include some header information at the top of your program.  This information may include your name and contact information, the date the code was last modified, the purpose of the program, and if necessary, a brief exposition of the algorithm used or the design decisions made.  You may also want to include a list of known bugs, inefficiencies, or suggestions for improvement.  It is convenient to demarcate this section of the program file in a large comment block of the form<pre class="example">
+/********
+*       *
+*       *
+********/</pre>
+This form of comment is best done at the end of the program, except perhaps
+for an overview of the algorithm, which you may find helps to crystallize your thoughts when you are dealing with new, confusing, or complex concepts.
+<br><br>
+Second, whenever you create a new class or a new function definition, you should add a comment explaining what the class or function does.  For a class, you should explain the purpose of the class, what publicly accessible functions and variables are available, any limitations of the class, and information that the programmer may need if he or she wanted to inherit from the class.  When defining a function, you should describe what the function does and whether or not it has side effects such as changing global variables, interacting with the user, or so forth.  It is also convenient to describe what sort of arguments the function takes and what, if any, value it returns: e.g., if you have a function findTime(int distance, int speed), you would want to tell the user that the distance is in rods, and the speed is in furlongs per fortnight, and that the function returns the time taken by the travel in epochs.  
+<br><br>
+You could make the variable names more descriptive, but the increased descriptiveness is unnecessary inside the function because the relationship between distance and speed is the significant feature, not the relationship between distanceinrods and speedinfurlongsperfortnight.  As you can see, long names are unnecessarily complex and can lead to hard-to-find typos.  In general, variable names should be only descriptive enough to express the relationship between variables.  Any implementation details should be handled by comments at points where the details may matter.  For instance, in the above function, the function's caller must know the units, but those units do not matter inside the function (except when conversions are being made, but the programmer should make a note of this at the time of the conversion).  In order to avoid confusion, you should eschew abbreviations; a word can be abbreviated many ways, and a single abbreviation can describe more than one word.  Avoiding abbreviations avoids this problem.
+<br><br>
+Third, when adding comments directly to your code, be spare.  The less you say, the better; if you force yourself to be precise, you will make the comments more helpful, and you will force yourself to synthesize the flow of your program rather than allow yourself to repeat what the code already tells the user.  The code should fit seamlessly into the algorithm rather than wrap entirely around it and smother the logic embedded in the C++.
+<br><br>
+Fourth, good commenting can improve your programming.  You can use them as an organizational device by including comments prior to filling in code -- for instance, when you have a long block of conditional statements, you may wish to comment what should happen when each conditional is executed before you flesh out the code.  In doing so, you save yourself the burden of remembering the details of the entire program, allowing you to concentrate on the implementation of one aspect at a time.  Additionally, when you force yourself to comment during the programming process, you cannot get away with writing code that "you hope will work" if you make yourself explain why it works.  (Keep in mind that if the code is so complex that you don't know how it works, then you probably should be commenting it for the sake of both yourself and others.)
+<br><br>
+Finally, keep in mind that what seems obvious now may not seem obvious later.  While you shouldn't excessively comment, do make sure to comment things that are nonstandard algorithms.  You do not need to comment a programming idiom, but you do want to comment an algorithm you designed for the program, no matter how simple it may seem to you.  No doubt it will seem foreign three weeks after you write the code, and if you plan (and even if you do not plan) to come back to the code, it will be immeasurably helpful.
+<br><br>
+Comments are for yourself and others.  You may be forced to work with
+uncommented code, and it helps to comment the code as you work through what it
+does.  This can be as simple as renaming the variable names from, say, r, x,
+and y to currentNumber, largestPrime, and currentDivisor.  With any luck,
+after one or two of these experiences you will recognize the wisdom of
+commenting your code.  Moreover, you will see the greater elegance of a
+well-commented, carefully written piece of code in comparison to a hack thrown
+together only to "work."
+
+<!-- removed chitika -->
+ 
+<!-- #EndEditable --> 
+<b>Related Articles</b>
+<br><br><a href="style.html">Programming
+Style: Why Whitespace Matters, and how to use (and avoid misusing) it</a>
+<br><br><a href="programming-style-readability.html">How
+you can write readable code, and why you should</a><br><br><a href="style_naming_conventions.html">
+Naming Conventions, and Names you Should Avoid</a>
+
+         
+
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/comments.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:05 GMT -->
+</html>
+
+
+

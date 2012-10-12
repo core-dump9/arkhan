@@ -1,0 +1,825 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part5.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:58 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, game programming, MFC game programming, MFC programming, C++ MFC">
+<META NAME="Description" CONTENT="A step-by-step guide for creating a game from scratch.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Same Game - Adding Undo/Redo Functionality and Keyboard Accelerators - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1> <img src="same_game_small.png" width="42" height="42">"The Same Game", Part 5 of 5: Adding an Undo/Redo Stack and Keyboard Accelerators</h1>
+
+
+
+<h2>Introduction</h2>
+
+<p>This is it.  We are almost done with our version of the SameGame.  We've discussed quite a few topics ranging from event driven programming to GDI graphics programming.  A lot of the topics we've discussed transcend the gap between game programming and application programming in general.  Building MFC applications is one of such topics, not many games are written in MFC but tons of applications are (the list is very long).  The topic of this final article is one of these topics.  We'll discuss how to put together an undo/redo stack for our game.  Undo/redo is an essential feature for most applications.  If you've played our game for any period of time I'm sure you've said to yourself, "Oops!  Where's the undo?!"  Well here it is.</p>
+
+          <center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<h2>Undo/Redo Stack</h2>
+
+<p>We call this feature the "undo/redo stack" because of the abstract data type (ADT) stack.  A stack is a very well known data type in Computer Science theory.  We'll give it a quick explanation here but for further information concerning stacks see <a href="../computersciencetheory/stack.html">this article</a>.  The stack is a collection of objects that is similar to a stack of plates in your kitchen; the only way you can get to the bottom plates is to first move the top ones.  To add plates you just put them on top of the stack.  In other words it is a "Last In, First Out" (LIFO) type of collection.  This is a handy way to store your last moves.  When you make a move in the game the previous state is put on the top of the undo stack so that it can be restored in the reverse order that it was made.  The way we are going to do this is to keep a copy of the old game board object on the undo stack before we delete pieces from the new one.  When we undo a move, the current board is put onto the redo stack and the top board from the undo stack is now the current board.  The redo operation is just the opposite, put the current board on the undo stack and take the top board off of the redo stack and make that the current board.</p>
+
+<p>We are going to need to make a few changes to our game board in order to make this work.  We need to create a copy constructor to do a deep copy.  Just add the copy constructor function prototype right between the default constructor and the destructor in SameGameBoard.h (changes <b>bolded</b>).</p>
+
+<pre class="example">
+/*  Default Constructor */
+CSameGameBoard(void);
+<b>/*  Copy Constructor */
+CSameGameBoard(const CSameGameBoard&amp; board);</b>
+/*  Destructor */
+~CSameGameBoard(void);
+</pre>
+
+<p>We use a deep copy constructor because we have a pointer to some dynamically allocated memory.  This means we can't just copy the pointer but dynamically allocate more memory and then copy the contents into that memory space (if we did just copy the pointer, then the first time a game board was freed, all of the pointers would be freed too—right out from under other instances of the class).  We add a copy constructor in the source file for the game board (SameGameBoard.cpp) by adding the function implementation.</p>
+
+<pre class="example">
+CSameGameBoard::CSameGameBoard(const CSameGameBoard&amp; board)
+{
+  //  Copy all of the regular data members
+  m_nColumns = board.m_nColumns;
+  m_nRows = board.m_nRows;
+  m_nHeight = board.m_nHeight;
+  m_nWidth = board.m_nWidth;
+  m_nRemaining = board.m_nRemaining;
+  m_nColors = board.m_nColors;
+  // Copy ove the colors for the board
+  for ( int i = 0; i &lt; 8; i++ )
+    m_arrColors[i] = board.m_arrColors[i];
+  m_arrBoard = NULL;
+  
+  //  Create a new game board of the same size
+  CreateBoard();
+  //  Copy the contents of the game board
+  for(int row = 0; row &lt; m_nRows; row++)
+    for(int col = 0; col &lt; m_nColumns; col++)
+      m_arrBoard[row][col] = board.m_arrBoard[row][col];
+}
+</pre>
+
+<p>The content of the copy constructor is very simple.  First we copy all of
+the integral type data members, i.e. all of the integers, and the colors, and
+then set the board pointer to NULL.  This is followed by a call to the
+CreateBoard function.  This function creates a new game board 2-D array of the
+same size as the original because we set up the rows and columns before the
+function call.  Then we finish up with a couple of for loops that iterate all
+of the board spaces and then copy the color value into the new board.  That is all that is required by the game board.</p>
+
+<p>Most of the work for this feature is going to be up to the document to handle.  The document is going to contain both of the stacks and create the undo/redo trail.  The Standard Template Library contains a stack class that is very easy to use, you just give it a type (we'll use a pointer to a SameGameBoard) and it provides you with a few simple functions.  The Push function adds a new item onto the stack while the Pop function removes the most recently pushed item.  The Top function returns the item on the top of the stack and the Empty function tells whether or not the stack is empty.  Here is the full source code for the document (SameGameDoc.h) with all of the changes (changes <b>bolded</b>).</p>
+
+<pre class="example">
+#pragma once
+
+#include "SameGameBoard.h"
+<b>#include &lt;stack&gt;</b>
+
+class CSameGameDoc : public CDocument
+{
+protected: // create from serialization only
+  CSameGameDoc();
+  virtual ~CSameGameDoc();
+  DECLARE_DYNCREATE(CSameGameDoc)
+
+  // Operations
+public:
+  /*  Functions for accessing the game board */
+  COLORREF GetBoardSpace(int row, int col)
+  { return m_board-&gt;GetBoardSpace(row, col); }
+  void SetupBoard(void)         { m_board-&gt;SetupBoard(); }
+  int GetWidth(void)            { return m_board-&gt;GetWidth(); }
+  void SetWidth(int nWidth)     { m_board-&gt;SetWidth(nWidth); }
+  int GetHeight(void)           { return m_board-&gt;GetHeight(); }
+  void SetHeight(int nHeight)   { m_board-&gt;SetHeight(nHeight); }
+  int GetColumns(void)          { return m_board-&gt;GetColumns(); }
+  void SetColumns(int nColumns) { m_board-&gt;SetColumns(nColumns); }
+  int GetRows(void)             { return m_board-&gt;GetRows(); }
+  void SetRows(int nRows)       { m_board-&gt;SetRows(nRows); }
+  void DeleteBoard(void)        { m_board-&gt;DeleteBoard(); }
+  bool IsGameOver()             { return m_board-&gt;IsGameOver(); }
+  /*  Notice we removed the implementation of this function */
+  <b>int DeleteBlocks(int row, int col);</b>
+  int GetRemainingCount()
+  { return m_board-&gt;GetRemainingCount(); }
+  int GetNumColors()            { return m_board-&gt;GetNumColors(); }
+  void SetNumColors(int nColors);
+  /*  Undo/redo functions */
+  void UndoLast();
+  bool CanUndo();
+  void RedoLast();
+  bool CanRedo();
+  // Overrides
+public:
+  virtual BOOL OnNewDocument();
+
+protected:
+<b>  /*  Functions to clear undo/redo stacks */
+  void ClearUndo();
+  void ClearRedo();</b>
+  /*  Instance of the game board--notice that we made it a pointer */
+  CSameGameBoard* m_board; 
+<b> /*  Undo stack */
+  std::stack&lt;CSameGameBoard*&gt; m_undo;
+  /*  Redo stack */
+  std::stack&lt;CSameGameBoard*&gt; m_redo;
+</b>
+
+  // Generated message map functions
+protected:
+  DECLARE_MESSAGE_MAP()
+};
+</pre>
+
+<p>First of all we need to include the stack header so that we can use the stack class.  Since we are going to change the m_board variable to a pointer we'll have to change from using the dot operator to the arrow or pointer operator through every function in the document.  Next on the list of changes is the fact that we are moving the implementation of the DeleteBlocks function to the source file.  This function has become more involved than just a single line so we are going to move it.</p>
+
+<p>We then add six new functions, four are public functions and two are protected.  The public functions are divided into two groups, one set of functions, UndoLast and RedoLast, actually do the undo and redo, while the second set, CanUndo and CanRedo, are simple tests we'll use for enabling and disabling the menu options when they are not available.  The protected functions are simple helper functions to clear out and deallocate the associated memory from both of the stacks.  Finally we add the two declarations of the undo/redo stacks.</p>
+
+<p>With the change to a pointer to the game board, there are a few things that need to be added to existing functions before we add the new functions.  Below is the source code for the new document in SameGameDoc.cpp (changes <b>bolded</b>).</p>
+
+<pre class="example">
+
+#include "stdafx.h"
+#include "SameGame.h"
+
+#include "SameGameDoc.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+
+// CSameGameDoc
+IMPLEMENT_DYNCREATE(CSameGameDoc, CDocument)
+BEGIN_MESSAGE_MAP(CSameGameDoc, CDocument)
+END_MESSAGE_MAP()
+
+// CSameGameDoc construction/destruction
+CSameGameDoc::CSameGameDoc()
+{
+<b>
+  //  There should always be a game board
+  m_board = new CSameGameBoard();
+</b>
+}
+
+CSameGameDoc::~CSameGameDoc()
+{
+<b>
+  //  Delete the current game board
+  delete m_board;
+  //  Delete everything from the undo stack
+  ClearUndo();
+  //  Delete everything from the redo stack
+  ClearRedo();
+</b>
+}
+
+BOOL CSameGameDoc::OnNewDocument()
+{
+  if (!CDocument::OnNewDocument())
+    return FALSE;
+<b>
+  //  Set (or reset) the game board
+  m_board-&gt;SetupBoard();
+  //  Clear the undo/redo stacks
+  ClearUndo();
+  ClearRedo();
+</b>
+
+  return TRUE;
+}
+
+void CSameGameDoc::SetNumColors(int nColors)
+{
+  //  Set the number of colors first
+  m_board-&gt;SetNumColors(nColors);
+  //  Then reset the game board
+  m_board-&gt;SetupBoard();
+}
+
+<b>
+int CSameGameDoc::DeleteBlocks(int row, int col)
+{
+  //  Save the current board in the undo stack
+  m_undo.push(new CSameGameBoard(*m_board));
+  //  Empty out the redo stack
+  ClearRedo();
+  //  Then delete the blocks
+  int blocks = m_board-&gt;DeleteBlocks(row, col);
+  //  Clear the undo stack at the end of a game
+  if(m_board-&gt;IsGameOver())
+    ClearUndo();
+  //  Return the number of blocks
+  return blocks;
+}
+
+void CSameGameDoc::UndoLast()
+{
+  //  First make sure that there is a move to undo
+  if(m_undo.empty())
+    return;
+  //  Take the current board and put it on the redo
+  m_redo.push(m_board);
+  //  Take the top undo and make it the current
+  m_board = m_undo.top();
+  m_undo.pop();
+}
+
+bool CSameGameDoc::CanUndo()
+{
+  //  Can undo if the undo stack isn't empty
+  return !m_undo.empty();
+}
+
+void CSameGameDoc::RedoLast()
+{
+  //  First make sure that there is a move to redo
+  if(m_redo.empty())
+    return;
+  //  Take the current board and put it on the undo
+  m_undo.push(m_board);
+  //  Take the top redo and make it the current
+  m_board = m_redo.top();
+  m_redo.pop();
+}
+
+bool CSameGameDoc::CanRedo()
+{
+  //  Can redo if the redo stack isn't empty
+  return !m_redo.empty();
+}
+
+void CSameGameDoc::ClearUndo()
+{
+  //  Delete everything from the undo stack
+  while(!m_undo.empty())
+  {
+    delete m_undo.top();
+    m_undo.pop();
+  }
+}
+
+void CSameGameDoc::ClearRedo()
+{
+  //  Delete everything from the redo stack
+  while(!m_redo.empty())
+  {
+    delete m_redo.top();
+    m_redo.pop();
+  }
+}
+</b>
+</pre>
+
+<p>In the constructor we need to create a new game board.  We make the
+assumption that there will always be a valid game board pointed to by the
+m_board pointer so this must be created in the constructor and then deleted in
+the destructor.  Once it is deleted in the destructor we also have to delete
+all of the other game boards that have been kept around by calling the Clear functions to clear the undo and redo stacks.</p>
+
+<p>Next we update the OnNewDocument function to clear the undo and redo stacks
+so that a new game starts out with a fresh set of stacks.  The last update to
+this file before we get to new functions is the movement of the DeleteBlocks
+function from the header to the source file.  The function used to be very
+simple, just a call to the DeleteBlocks function on the game board, but now it needs to do more.  Before we delete any blocks and change the layout of the game board we need to save a copy of the current game board on the undo stack.  The way we do this is by using the copy constructor that we just recently implemented.  Once we make a move we need to clear the redo stack because anything that was on it is no longer valid.  Once these two stacks have been updated we are then ready to proceed with the actual deleting of the blocks.  Once the game is over we want to clear the undo stack because the game is over and the state is final.  Clearing the stack gives the game a true finality and doesn't allow the player to go back and play the board differently once the game is over.  Finally we return the number of blocks that were deleted.</p>
+
+<p>The UndoLast and RedoLast are very similar to each other, they just reverse the process.  First we have to make sure that there is a move to undo or redo, we could just use CanUndo or CanRedo here but I prefer to just access the empty() function on the private stack, mostly out of preference but it is a little bit more efficient also.  So if there is a move to undo/redo then we take the current game board and push it onto the opposite stack, the redo stack if we are undoing and the undo stack if we are redoing.  Then we set the current pointer to the top game board on the undo or redo stack and pop it off.  That process accomplishes an undo or redo.  The CanUndo and CanRedo functions are simple functions that give us the answer to the question, "can I undo/redo something?  Or is there something on the stack?"  We check this by checking if the stack is not empty.</p>
+
+<p>The last two functions that we've added to the document class are used to clear and recover the memory used by the different stacks.  We just loop through all of the pointers in the stack, deleting the object and then popping the pointer off of the stack.  This ensures that all of the memory is deallocated for us.</p>
+
+<p>At this point we are ready to make the final changes to the view.  These changes are just event handlers for the menu options of undo and redo.  We first create the event handlers through the events (lightning bolt) button on the Properties View from the CSameGameView.h file.  We want to add both ON_COMMAND and ON_UPDATE_COMMAND_UI handlers.  The ON_UPDATE_COMMAND_UI handlers will allow us to disable the menu options when there aren't moves to undo/redo.  Once you add all four of the event handlers the following code will be added to the header file, I added the comments.</p>
+
+<pre class="example">
+/*  Functions for undo/redo */
+afx_msg void OnEditUndo();
+afx_msg void OnEditRedo();
+/*  Functions to update the undo/redo menu options */
+afx_msg void OnUpdateEditUndo(CCmdUI *pCmdUI);
+afx_msg void OnUpdateEditRedo(CCmdUI *pCmdUI);
+</pre>
+
+<p>These function prototypes are just like the menu event handlers we've seen for the past two articles so I won't go into further detail.  Now let's take a look at the source file.  In the message map you'll find four new lines that set up the event handlers, associating events, IDs and functions.  Again we've seen this before.</p>
+
+<pre class="example">
+ON_COMMAND(ID_EDIT_UNDO, &amp;CSameGameView::OnEditUndo)
+ON_COMMAND(ID_EDIT_REDO, &amp;CSameGameView::OnEditRedo)
+ON_UPDATE_COMMAND_UI(ID_EDIT_UNDO, &amp;CSameGameView::OnUpdateEditUndo)
+ON_UPDATE_COMMAND_UI(ID_EDIT_REDO, &amp;CSameGameView::OnUpdateEditRedo)
+</pre>
+
+<p>The implementation of the two ON_COMMAND event handlers are fairly simple and follow a pattern that we've seen before, get a pointer to the document, call the function on the document and finally cause the view to redraw.  Do this for both undo and redo.</p>
+
+<pre class="example">
+void CSameGameView::OnEditUndo()
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Call undo on the document
+  pDoc-&gt;UndoLast();
+  //  Force the view to redraw
+  Invalidate();
+  UpdateWindow();
+}
+
+void CSameGameView::OnEditRedo()
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Call redo on the document
+  pDoc-&gt;RedoLast();
+  //  Force the view to redraw
+  Invalidate();
+  UpdateWindow();
+}
+</pre>
+
+<p>The event handlers for the ON_UPDATE_COMMAND_UI events, again, first get a pointer to the document for access to the game board.  The new thing (<b>bolded</b>) about these functions is the use of the Enable function.  This function indicates whether to enable or disable the menu option based on the result of the CanUndo or CanRedo functions.</p>
+
+<pre class="example">
+void CSameGameView::OnUpdateEditUndo(CCmdUI *pCmdUI)
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Enable option if it is available
+  pCmdUI-&gt;<b>Enable</b>(pDoc-&gt;CanUndo());
+}
+
+void CSameGameView::OnUpdateEditRedo(CCmdUI *pCmdUI)
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Enable option if it is available
+  pCmdUI-&gt;<b>Enable</b>(pDoc-&gt;CanRedo());
+}
+</pre>
+
+<p>That is it, our undo/redo stacks are now completely functioning.  Go ahead and try it out.  Make a valid move and check the undo menu option.  It should now be enabled.  Click on it and you'll see the original game board.  Check the redo menu option and it will be enabled now.  Click that and you'll be back to where you were before the undo.  Here is what your game should look like now.</p>
+
+<img src="redo_menu.png"><h2>Accelerators</h2>
+
+<p>Try pressing Ctrl+Z after you've made a few moves and you'll see that undo works with the keyboard.  Now try to press Ctrl+Y for redo.  Did it work?  No?  Well we can fix that.  Remember that on the menu option for redo we indicated to the user that Ctrl+Y would send the ON_COMMAND to ID_EDIT_REDO.  I mentioned that is was called an accelerator.</p>
+<img src="resource_accelerators.png"><p>To access the accelerators, open up the Resource View from the View menu (under Other Windows) or press the accelerator Ctrl+Shift+E in Visual Studio.  Then open up the Accelerator option under SameGame.rc and double click on IDR_MAINFRAME to bring up the Accelerator Editor.  In the image below I've added an accelerator for the redo command.</p>
+
+<img src="accelerators.png"><p>To add your own, click on the blank line following the last accelerator, in
+the ID column; this will bring up a drop-down menu that lets you select ID_EDIT_REDO, the ID of the menu option for the redo command; give it a key of Y and a modifier of Ctrl (Ctrl+Y).  Now compile your game and run it.  Just like that we've added a keystroke combination that now sends the ON_COMMAND to ID_EDIT_REDO.  Pretty simple to do, isn't it?</p>
+
+<h2>Final Thoughts</h2>
+
+<p>That was quite the journey!  We went from nothing to a fully functioning, interesting, challenging game.  We've covered lots of topics that pertain to both game development and Windows application development in general.  Making games is a ton of fun and I hope that you've had fun making this one.  I hope that you've seen how easy it is to make a game and will be inspired to begin working on your own.  There are many more options that we could have added to this game including keeping score and keeping track of the high scores, or saving the options to the registry so that next time you play it will remember that you are playing level 7 with 10x10 blocks on a 40x40 game board, or providing a "hint" feature that suggests a possible next move.  Try adding some of those options.  I've given you a great place to start now it is up to you to continue.  I hope you've enjoyed learning from these articles as much as I've enjoyed writing them.</p>
+
+<a href="samegame-part5.zip">Source Code from Part 5</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=same_game_part1.html>
+                    <img src=same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part5.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:01 GMT -->
+</html>
+
+
+

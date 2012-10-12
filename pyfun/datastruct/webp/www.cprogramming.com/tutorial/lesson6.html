@@ -1,0 +1,711 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/lesson6.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:46 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="pointers in c programming, c programming pointers, c++ pointers, pointers in c++ programming, c++ programming pointers, pointers in c++, c pointers">
+<META NAME="Description" CONTENT="Learn what pointers are and how to use pointers in C++ to work with memory, with beginner-friendly examples.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Pointers in C and C++ - Tutorial - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+<div style="border-radius:25px;border-style:dashed;border-width:1px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<b>Tutorial Map</b>
+<br><br>
+
+Introduction
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson1.html>Intro</a></li>
+<li> <a href=lesson2.html>If Statements</a></li>
+<li> <a href=lesson3.html>Loops</a></li>
+<li> <a href=lesson4.html>Functions</a></li>
+<li> <a href=lesson5.html>Switch case</a></li>
+</ul>
+Pointers, arrays, strings
+<ul style="list-style-type:none;padding-left:15px;">
+<li>Pointers<span style="font-size:10px"> &larr; you are here</span></li>
+<li> <a href=lesson7.html>Structures</a></li>
+<li> <a href=lesson8.html>Arrays</a></li>
+<li> <a href=lesson9.html>Strings</a></li>
+</ul>
+File IO and Classes
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson10.html>File I/O</a></li>
+<li> <a href=lesson11.html>Typecasting</a></li>
+<li> <a href=lesson12.html>Classes</a></li>
+<li> <a href=lesson13.html>Inline Functions</a></li>
+<li> <a href=lesson14.html>Command Line Arguments</a></li>
+</ul>
+Linked lists, trees, recursion
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson15.html>Linked Lists</a></li>
+<li> <a href=lesson16.html>Recursion</a></li>
+<li> <a href=lesson17.html>Variable Arg Lists</a></li>
+<li> <a href=lesson18.html>Binary Trees</a></li>
+</ul>
+Inheritance and class design
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson19.html>Inheritance I</a></li>
+<li> <a href=lesson20.html>Inheritance II</a></li>
+<li> <a href=class_design.html>Class Design</a></li>
+<li> <a href=initialization-lists-c%2b%2b.html>Initialization Lists</a></li>
+</ul>
+
+
+</div>
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Lesson 6: Pointers in C++</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+Pointers are an extremely powerful programming tool. They can make some things
+much easier, help improve your program's efficiency, and even allow you to
+handle unlimited amounts of data. For example, using pointers is one way to
+have a function modify a variable passed to it. It is also possible to use
+pointers to <a href="dynamic_memory_allocation.html">dynamically
+allocate memory</a>, which means that you can write
+programs that can handle nearly unlimited amounts of data on the fly--you
+don't need to know, when you write the program, how much memory you need.
+Wow, that's kind of cool.  Actually, it's very cool, as we'll see in some of
+the next tutorials.  For now, let's just get a basic handle on what pointers
+are and how you use them.
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+
+<h2>What are pointers?  Why should you care?</h2>
+
+Pointers are aptly named: they "point" to locations in memory.  Think of a row
+of safety deposit boxes of various sizes at a local bank.  Each safety
+deposit box will have a number associated with it so that the teller can quickly
+look it up.  These numbers are like the memory addresses of variables.  A
+pointer in the world of safety deposit boxes would simply be anything that
+stored the number of another safety deposit box.  Perhaps you have a rich
+uncle who stored valuables in his safety deposit box, but decided to put the
+real location in another, smaller, safety deposit box that only stored a card
+with the number of the large box with the real jewelry.  The safety deposit
+box with the card would be storing the location of another box; it would be
+equivalent to a pointer.  In the computer, pointers are just variables that
+store memory addresses, usually the addresses of other variables.
+
+<br><br> 
+The cool thing is that once you can talk about the address of a variable, you'll
+then be able to go to that address and retrieve the data stored in it.  If you
+happen to have a huge piece of data that you want to pass into a function,
+it's a lot easier to pass its location to the function than to copy every
+element of the data!  Moreover, if you need more memory for your program, you
+can request more memory from the system--how do you get "back" that memory?
+The system tells you where it is located in memory; that is to say, you get a
+memory address back.  And you need pointers to store the memory address.
+
+<br><br> 
+A note about terms: the word pointer can refer either to a memory
+address itself, or to a variable that stores a memory address.  Usually,
+the distinction isn't really that important: if you pass a pointer variable
+into a function, you're passing the value stored in the pointer--the memory
+address.  When I want to talk about a memory address, I'll refer to it as a
+memory address; when I want a variable that stores a memory address, I'll call
+it a pointer.  When a variable stores the address of another variable, I'll
+say that it is "pointing to" that variable.   
+
+<h2>C++ Pointer Syntax</h2>
+
+Pointers require a bit of new syntax because when you have a pointer, you need
+the ability to request both the memory location it stores and the value stored
+at that memory location.  Moreover, since pointers are somewhat special, you
+need to tell the compiler when you declare your pointer variable that the
+variable is a pointer, and tell the compiler what type of memory it points to.
+<br><br>
+The pointer declaration looks like this:
+<pre class="example">
+&lt;variable_type&gt; *&lt;name&gt;; 
+</pre>
+
+For example, you could declare a pointer that stores the address of an integer
+with the following syntax:
+
+<pre class="example">
+int *points_to_integer;
+</pre>
+
+Notice the use of the *.  This is the key to declaring a pointer; if you add
+it directly before the variable name, it will declare the variable to be a
+pointer.  Minor gotcha: if you declare multiple pointers on the same line,
+you must precede each of them with an asterisk:
+
+<pre class="example">
+// one pointer, one regular int
+int *pointer1, nonpointer1;
+
+// two pointers
+int *pointer1, *pointer2;
+</pre>
+
+As I mentioned, there are two ways to use the pointer to access information:
+it is possible to have it give the actual address to another variable. To do
+so, simply use the name of the pointer without the *.   However, to access the
+actual memory location, use the *. The technical name for this doing this is
+dereferencing the pointer; in essence, you're taking the reference to some
+memory address and following it, to retrieve the actual value.  It can be
+tricky to keep track of when you should add the asterisk.  Remember that the
+pointer's natural use is to store a memory address; so when you use the
+pointer:
+
+<pre class="example">
+call_to_function_expecting_memory_address(pointer);
+</pre>
+
+then it evaluates to the address.  You have to add something extra, the
+asterisk, in order to retrieve the value stored at the address.  You'll
+probably do that an awful lot.  Nevertheless, the pointer itself is supposed
+to store an address, so when you use the bare pointer, you get that address
+back.
+
+<h2>Pointing to Something: Retrieving an Address</h2>
+In order to have a pointer actually point to another variable it is necessary
+to have the memory address of that variable also. To get the memory address of
+a variable (its location in memory), put the &amp; sign in front of the
+variable name. This makes it give its address. This is called the address-of
+operator, because it returns the memory address.  Conveniently, both ampersand
+and address-of start with a; that's a useful way to remember that you use
+&amp; to get the address of a variable.
+<br><br> 
+For example:
+<pre class="example">
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{ 
+  int x;            // A normal integer
+  int *p;           // A pointer to an integer
+
+  p = &amp;x;           // Read it, "assign the address of x to p"
+  cin&gt;&gt; x;          // Put a value in x, we could also use *p here
+  cin.ignore();
+  cout&lt;&lt; *p &lt;&lt;"\n"; // Note the use of the * to get the value
+  cin.get();
+}
+</pre> 
+The cout outputs the value stored in x. Why is that? Well, let's look at the
+code. The integer is called x. A pointer to an integer is then defined as p.
+Then it stores the memory location of x in pointer by using the address-of
+operator (&amp;) to get the address of the variable.  Using the ampersand is a
+bit like looking at the label on the safety deposit box to see its number
+rather than looking inside the box, to get what it stores.  The user then
+inputs a number that is stored in the variable x; remember, this is the same
+location that is pointed to by p.  
+<br><br> 
+The next line then passes *p into cout.  *p performs the "dereferencing"
+operation on p; it looks at the address stored in p, and goes to that address
+and returns the value.  This is akin to looking inside a safety deposit box
+only to find the number of (and, presumably, the key to ) another box, which
+you then open.
+<br><br> 
+Notice that in the above example, pointer is initialized to point to a
+specific memory address before it is used. If this was not the case, it could
+be pointing to anything. This can lead to extremely unpleasant consequences to
+the program.  For instance, the operating system will probably prevent you
+from accessing memory that it knows your program doesn't own: this will cause
+your program to crash.  To avoid crashing your program, you should always
+initialize pointers before you use them.
+<br><br> 
+It is also possible to initialize pointers using free memory. This allows
+dynamic allocation of array memory. It is most useful for setting up
+structures called linked lists. This difficult topic is too complex for this
+text. An understanding of the keywords new and delete will, however, be
+tremendously helpful in the future.
+<br><br> 
+The keyword new is used to initialize pointers with memory from free store (a
+section of memory available to all programs). The syntax looks like the
+example:
+<pre class="example">
+int *ptr = new int;
+</pre> 
+It initializes ptr to point to a memory address of size int (because variables
+have different sizes, number of bytes, this is necessary). The memory that is
+pointed to becomes unavailable to other programs. This means that the careful
+coder should free this memory at the end of its usage.
+<br><br> 
+The delete operator frees up the memory allocated through new. To do so, the syntax is as in the example.
+<pre class="example">
+delete ptr;
+</pre> 
+After deleting a pointer, it is a good idea to reset it to point to 0. When 0
+is assigned to a pointer, the pointer becomes a null pointer, in other words,
+it points to nothing. By doing this, when you do something foolish with the
+pointer (it happens a lot, even with experienced programmers), you find out
+immediately instead of later, when you have done considerable damage.
+<br><br> 
+In fact, the concept of the null pointer is frequently used as a way of
+indicating a problem--for instance, some functions left over from C return 0
+if they cannot correctly allocate memory (notably, the <a href="c/lesson6.html">malloc function</a>).  You want to be sure to handle
+this correctly if you ever use malloc or other C functions that return a "NULL
+pointer" on failure.  
+<br><br> 
+In C++, if a call to new fails because the system is out of memory, then it
+will "throw an exception".  For the time being, you need not worry too much
+about this case, but you can <a href="../tips/tip/cincrement-new-does-not-return-0-on-failure.html?tip=64&amp;count=30&amp;page=0">read more about what happens when new fails</a>. 
+
+<h2>Taking Stock of Pointers</h2>
+
+Pointers may feel like a very confusing topic at first but I think anyone can
+come to appreciate and understand them.  If you didn't feel like you absorbed
+everything about them, just take a few deep breaths and re-read the lesson.
+You shouldn't feel like you've fully grasped every nuance of when and why you
+need to use pointers, though you should have some idea of some of their basic
+uses.  
+<br><br><a href="http://www.liveperson.com/lp/cprogramming/?kbid=7744&amp;sub=tg-replacement">Still not getting it? Ask an expert!</a>
+ 
+<br><a href="quiz/quiz6.html">Quiz yourself</a>
+<br><a href="lesson5.html">Previous: Switch/case</a>
+<br><a href="lesson7.html">Next: Structures</a>
+<br><a href="c%2b%2b-tutorial.html">Back to C++ Tutorial Index</a>
+
+
+          <hr>
+<b>Related resources</b><br>
+Still having trouble?  Try this <a href="http://cslibrary.stanford.edu/104/">video</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/lesson6.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:46 GMT -->
+</html>
+
+
+

@@ -1,0 +1,562 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/AI/perceptron.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:51 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, beginnings guide to C++, C++ beginners guide, C++ programming tutorials, getting started with C++, learning C++, how to learn C++, history of C++, C++ history, programming languages, C++ programming language">
+<META NAME="Description" CONTENT="A beginner's guide to learning C++ - answers questions about C++, basic programming, and how to think about programming.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Understanding and Using Perceptrons - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Perceptrons and basic neural networks</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"> By Eric Suh</div>
+
+<b>Perceptrons</b> are the easiest data structures to learn for 
+              the study of <b>Neural Networking</b>. Think of a perceptron as 
+              a node of a vast, interconnected network, sort of like a <a href="../lesson18.html">binary tree</a>, although the network does not necessarily have to have 
+              a top and bottom. The links between the nodes not only show the 
+              relationship between the nodes but also transmit data and information, 
+              called a <b>signal</b> or <b>impulse</b>. The perceptron is a simple 
+              model of a neuron (nerve cell).</p>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+
+            <p><img src="perceptron.gif" width="54" height="119" align="RIGHT">Since 
+              linking perceptrons into a network is a bit complicated, let's take 
+              a perceptron by itself. A perceptron has a number of external input 
+              links, one internal input (called a <b>bias</b>), a <b>threshold</b>, 
+              and one output link. To the right, you can see a picture of a simple 
+              perceptron. It resembles a neuron.</p>
+            <p>Usually, the input values are <b>boolean</b> (that is, they can 
+              only have two possible values: on and off, 1 or 0, true or false), 
+              but they can be any real number. The output of the perceptron, however, 
+              is <i>always</i> boolean. When the output is on (has the value 1), 
+              the perceptron is said to be <b>firing</b> (the name comes from 
+              biology: when neurons send a signal in the brain, they are said 
+              to be firing).</p>
+            <p>All of the inputs (including the bias) have <b>weights</b> attached 
+              to the input line that modify the input value. The weight is just 
+              multiplied with the input, so if the input value was 4 and the weight 
+              was -2, the <b>weighted input value</b> would be -8.</p>
+            <p>The threshold is one of the key components of the perceptron. It 
+              determines, based on the inputs, whether the perceptron fires or 
+              not. Basically, the perceptron takes all of the weighted input values 
+              and adds them together. If the sum is above or equal to some value 
+              (called the <b>threshold</b>) then the perceptron fires. Otherwise, 
+              the perceptron does not. So, it fires whenever the following equation 
+              is true (where <i>w</i> represents the weight, and there are <i>n</i> 
+              inputs):</p>
+            <div align="CENTER"><img src="perceptron-fireequ.gif" width="247" height="28" alt="The Perceptron Fires when this Equation is True"></div>
+            <p>The threshold is like a wall: if the "signal" has enough 
+              "energy" to jump over the wall, then it can keep going, 
+              but otherwise, it has to stop. Traditionally, the threshold value 
+              is represented either as the Greek letter <i>theta</i> (the symbol 
+              inside the circle in the picture above) or by a graphical symbol 
+              that looks like a square S:</p>
+            <p align="CENTER"><img src="perceptron-th.gif" width="35" height="35"></p>
+            <p>The main feature of perceptrons is that they can <b>be trained</b> 
+              (or <b>learn</b>) to behave a certain way. One popular beginner's 
+              assignment is to have a perceptron model (that is, learn to be) 
+              a basic boolean function such as AND or OR. Perceptron learning 
+              is <b>guided</b>, that is, you have to have something that the perceptron 
+              can imitate. So, the perceptron learns like this: it produces an 
+              output, compares the output to what the output <i>should</i> be, 
+              and then adjusts itself a little bit. After repeating this cycle 
+              enough times, the perceptron will have <b>converged</b> (a technical 
+              name for learned) to the correct behavior.</p>
+            <p>This learning method is called the <b>delta rule</b>, because of 
+              the way the perceptron checks its accuracy. The difference between 
+              the perceptron's output and the correct output is assigned the Greek 
+              letter <i>delta</i>, and the <i>Weight i</i> for <i>Input i</i> 
+              is altered like this (the <i>i</i> shows that the change is separate 
+              for each Weight, and each weight has its corresponding input):</p>
+            <p align="CENTER"><font size="2">Change in <i>Weight</i> <i>i</i> 
+              = Current Value of <i>Input</i> <i>i</i> × (Desired Output 
+              - Current Output)</font></p>
+            <p>This can be elegantly summed up to:</p>
+            <div align="CENTER"><img src="perceptron-deltarule.gif" width="65" height="30"></div>
+            <p>The delta rule works both if the perceptron's output is too large 
+              and if it is too small. The new <i>Weight i</i> is found simply 
+              by adding the change for <i>Weight i</i> to the current value of 
+              <i>Weight i</i>.</p>
+            <p>Interestingly, if you graph the possible inputs on different axes 
+              of a mathematical graph, with pluses for where the perceptron fires 
+              and minuses where the perceptron doesn't, the weights for the perceptron 
+              make up the <b>equation of a line that separates the pluses and 
+              the minuses</b>.</p>
+            <p align="CENTER"><img src="perceptron-line.gif" width="180" height="183"></p>
+            <p>For instance, in the picture above, the pluses and minuses represent 
+              the OR binary function. With a little bit of simple algebra, you 
+              can transform that equation in the diagram to the standard line 
+              form in which the weights can be seen clearly. (You get the following 
+              equation of the line if you take the firing equation and replace 
+              the "greater than or equal to" symbol with the equal sign).</p>
+            <p align="CENTER"><img src="perceptron-equ.gif" width="273" height="21"></p>
+            <p>This equation is significant, because <i><b>single perceptron can 
+              only model functions whose graphical models are linearly separable</b></i>. 
+              So, if there is no line (or plane, or hyperplane, etc. depending 
+              on the number of dimensions) that divides the fires and the non-fires 
+              (the pluses and minuses), then it isn't possible for the perceptron 
+              to learn to behave with that pattern of firing. For instance, the 
+              boolean function XOR is not linearly separable, so you can't model 
+              this boolean function with only one perceptron. The weight values 
+              just keep on shifting, and the perceptron never actually converges 
+              to one value.</p>
+            <p>So, by themselves, perceptrons are a bit limited, but that is their 
+              appeal. <i>Perceptrons enable a pattern to be broken up into simpler 
+              parts that can each be modeled by a separate perceptron in a network</i>. 
+              So, even though perceptrons are limited, they can be combined into 
+              one powerful network that can model a wide variety of patterns, 
+              such as XOR and many complex boolean expressions of more than one 
+              variable. These algorithms, however, are more complex in arrangement, 
+              and thus the learning function is slightly more complicated. For 
+              many problems (specifically, the linearly separable ones), a single 
+              perceptron will do, and the learning function for it is quite simple 
+              and easy to implement. <b>The perceptron is an elegantly simple 
+              way to model a human neuron's behavior. All you need is the first 
+              two equations shown above.</b></p>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../game_programming/same_game_part1.html>
+                    <img src=../game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/AI/perceptron.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:52 GMT -->
+</html>
+
+
+

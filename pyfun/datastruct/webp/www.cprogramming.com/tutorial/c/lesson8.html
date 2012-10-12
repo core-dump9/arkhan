@@ -1,0 +1,677 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/c/lesson8.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:44 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="c programming array, c array, arrays in c, arrays">
+<META NAME="Description" CONTENT="Learn how to use arrays in C  to store collections of data.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Arrays in C - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+<div style="border-radius:25px;border-style:dashed;border-width:1px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<b>Tutorial Map</b>
+<br><br>
+
+Introduction
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson1.html>Intro</a></li>
+<li> <a href=lesson2.html>If Statements</a></li>
+<li> <a href=lesson3.html>Loops</a></li>
+<li> <a href=lesson4.html>Functions</a></li>
+<li> <a href=lesson5.html>Switch case</a></li>
+</ul>
+Pointers, arrays, strings
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson6.html>Pointers</a></li>
+<li> <a href=lesson7.html>Structures</a></li>
+<li>Arrays<span style="font-size:10px"> &larr; you are here</span></li>
+<li> <a href=lesson9.html>Strings</a></li>
+</ul>
+File IO
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=../cfileio.html>File I/O</a></li>
+<li> <a href=lesson11.html>Typecasting</a></li>
+<li> <a href=lesson14.html>Command Line Arguments</a></li>
+</ul>
+Linked lists, trees, recursion
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson15.html>Linked Lists</a></li>
+<li> <a href=lesson16.html>Recursion</a></li>
+<li> <a href=lesson17.html>Variable Arg Lists</a></li>
+<li> <a href=lesson18.html>Binary Trees</a></li>
+</ul>
+
+
+</div>
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Lesson 8: Arrays in C</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+Arrays are useful critters that often show up when it would be convenient to
+have one name for a group of variables of the same type that can be accessed
+by a numerical index.  For example, a tic-tac-toe board can be held in an
+array and each element of the tic-tac-toe board can easily be accessed by its
+position (the upper left might be position 0 and the lower right position 8).
+At heart, arrays are essentially a way to store many values under the same
+name.  You can make an array out of any data-type including structures and
+classes. 
+<br><br> 
+One way to visualize an array is like this:
+<pre class="example">
+[][][][][][] 
+</pre> 
+Each of the bracket pairs is a slot in the array, and you can store
+information in slot--the information stored in the array is called an element
+of the array.  It is very much as though you have a group of variables
+lined up side by side.  
+
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<br><br>
+Let's look at the syntax for declaring an array.
+<pre class="example">
+int examplearray[100]; /* This declares an array */
+</pre> 
+This would make an integer array with 100 slots (the places in which values of
+an array are stored).  To access a specific part element of the array,
+you merely put the array name and, in brackets, an index number. This
+corresponds to a specific element of the array. The one trick is that the
+first index number, and thus the first element, is zero, and the last is the
+number of elements minus one. The indices for a 100 element array range from 0
+to 99.  Be careful not to "walk off the end" of the array by trying to access
+element 100!
+<br><br> 
+What can you do with this simple knowledge? Let's say you want to store a
+string, because C has no built-in datatype for strings, you can make an
+array of characters.
+<br><br> 
+For example:
+<pre class="example">
+char astring[100]; 
+</pre> 
+will allow you to declare a char array of 100 elements, or slots. Then you can
+receive input into it from the user, and when the user types in a 
+string, it will go in the array, the first character of the string will be at
+position 0, the second character at position 1, and so forth. 
+It is relatively easy to work with strings in this way because it allows
+support for any size string you can imagine all stored in a single
+variable with each element in the string stored in an adjacent location--think
+about how hard it would be to store nearly arbitrary sized strings using
+simple variables that only store one value.  Since we can write loops that
+increment integers, it's very easy to scan through a string:
+
+<pre class="example">
+char astring[10];
+int i = 0;
+/* Using scanf isn't really the best way to do this; we'll talk about that 
+   in the next tutorial, on strings */
+scanf( "%s", astring );
+for ( i = 0; i &lt; 10; ++i )
+{
+    if ( astring[i] == 'a' )
+    {
+        printf( "You entered an a!\n" );
+    }
+}
+</pre>
+
+Let's look at something new here: the scanf function call is a tad different
+from what we've seen before.  First of all, the format string is '%s' instead
+of '%d'; this just tells scanf to read in a string instead of an integer.
+Second, we don't use the ampersand!  It turns out that when we pass arrays
+into functions, the compiler automatically converts the array into a pointer
+to the first element of the array.  In short, the array without any brackets
+will act like a pointer.  So we just pass the array directly into scanf
+without using the ampersand and it works perfectly.
+<br><br> 
+Also, notice that to access the element of the array, we just use the brackets
+and put in the index whose value interests us; in this case, we go from 0 to
+9, checking each element to see if it's equal to the character a.  Note that
+some of these values may actually be uninitialized since the user might not
+input a string that fills the whole array--we'll look into how strings are
+handled in more detail in the next tutorial; for now, the key is simply to
+understand the power of accessing the array using a numerical index.  Imagine
+how you would write that if you didn't have access to arrays!  Oh boy.
+
+<br><br> 
+Multidimensional arrays are arrays that have more than one index: instead of
+being just a single line of slots, multidimensional arrays can be thought of
+as having values that spread across two or more dimensions.  Here's an easy
+way to visualize a two-dimensional array:
+<pre class="example">
+[][][][][]
+[][][][][]
+[][][][][]
+[][][][][]
+[][][][][]
+</pre> 
+
+The syntax used to actually declare a two dimensional array is almost the same as that used for declaring a
+one-dimensional array, except that you include a set of brackets for each
+dimension, and include the size of the dimension.  For example, here is an
+array that is large enough to hold a standard checkers board, with 8 rows and
+8 columns:
+<pre class="example">
+int two_dimensional_array[8][8];
+</pre> 
+You can easily use this to store information about some kind of game or to
+write something like tic-tac-toe. To access it, all you need are two
+variables, one that goes in the first slot and one that goes in the second
+slot. You can make three dimensional, four dimensional, or even higher
+dimensional arrays, though past three dimensions, it becomes quite hard to
+visualize.  
+<br><br> 
+Setting the value of an array element is as easy as accessing the element and
+performing an assignment.  For instance,
+<pre class="example">
+&lt;arrayname&gt;[&lt;arrayindexnumber&gt;] = &lt;value&gt; 
+</pre> 
+for instance,
+<pre class="example">
+/* set the first element of my_first to be the letter c */
+my_string[0] = 'c';
+</pre>
+or, for two dimensional arrays
+<pre class="example">
+&lt;arrayname&gt;[&lt;arrayindexnumber1&gt;][&lt;arrayindexnumber2&gt;] = &lt;whatever&gt;;
+</pre> 
+Let me note again that you should never attempt to write data past the last
+element of the array, such as when you have a 10 element array, and you try to
+write to the [10] element. The memory for the array that was allocated for it
+will only be ten locations in memory, (the elements 0 through 9) but the next location could be anything.  Writing to random memory could cause unpredictable effects--for example you might end up writing to the video buffer and change the video display, or you might write to memory being used by an open document and altering its contents.  Usually, the operating system will not allow this kind of reckless behavior and will crash the program if it tries to write to unallocated memory.
+<br><br> 
+You will find lots of useful things to do with arrays, from storing
+information about certain things under one name, to making games like
+tic-tac-toe.  We've already seen one example of using loops to access arrays;
+here is another, more interesting, example!
+<pre class="example">
+#include &lt;stdio.h&gt;
+
+int main()
+{
+  int x;
+  int y;
+  int array[8][8]; /* Declares an array like a chessboard */
+  
+  for ( x = 0; x &lt; 8; x++ ) {
+    for ( y = 0; y &lt; 8; y++ )
+      array[x][y] = x * y; /* Set each element to a value */
+  }
+  printf( "Array Indices:\n" );
+  for ( x = 0; x &lt; 8;x++ ) {
+    for ( y = 0; y &lt; 8; y++ )
+    {
+        printf( "[%d][%d]=%d", x, y, array[x][y] );
+    }
+    printf( "\n" );
+  }
+  getchar();
+}
+</pre> 
+
+<br><br>
+Just to touch upon a final point made briefly above: arrays don't require a
+reference operator (the ampersand) when you want to have a pointer to them. For
+example:
+<pre class="example">
+char *ptr;
+char str[40];
+ptr = str;  /* Gives the memory address without a reference operator(&amp;) */
+</pre> 
+As opposed to 
+<pre class="example">
+int *ptr;
+int num;
+ptr = &amp;num; /* Requires &amp; to give the memory address to the ptr */
+</pre> 
+The fact that arrays can act just like pointers can cause a great deal of confusion.  For more information please see our <a href="http://faq.cprogramming.com/">Frequently Asked Questions</a>.
+<br><br><a href="http://www.liveperson.com/lp/cprogramming/?kbid=7744&amp;sub=tg-replacement">Still not getting it? Ask an expert!</a>
+<br><a href="quiz/quiz8.html">Quiz yourself</a>
+<br><a href="lesson7.html">Previous: Structures</a>
+<br><a href="lesson9.html">Next: Strings</a>
+<br><a href="../c-tutorial.html">Back to C Tutorial Index</a>
+
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../game_programming/same_game_part1.html>
+                    <img src=../game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/c/lesson8.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:44 GMT -->
+</html>
+
+
+

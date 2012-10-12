@@ -1,0 +1,660 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/stl/stlmap.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:04 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, programmers, C++ tutorial, C, source code, tutorials, C++ compiler, C++ stl, STL, standard template library, templates in C++, templates">
+<META NAME="Description" CONTENT="Learn to use the Standard Template Library map class as an associative array and access data stored in a map with iterators">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>STL Tutorial - Map Class - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>STL Maps -- Associative Arrays</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+Suppose that you're working with some data that has values associated with
+strings -- for instance, you might have student usernames and you want to
+assign them grades.  How would you go about storing this in C++?  One option
+would be to write your own <a href="../../codej/issue1.html#article2">hash table</a>.
+This will require writing a hash function and handling collisions, and lots of
+testing to make sure you got it right.  On the other hand, the standard
+template library (STL) includes a templated class to handle just this sort of
+situation: the STL map class, which conceptually you can think of as an
+"associative array" -- key names are associated with particular values (e.g.,
+you might use a student name as a key, and the student's grade as the data).
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+<br><br>
+In fact, the STL's map class allows you to store data by any type of key
+instead of simply by a numerical key, the way you must access an array or
+vector.  So instead of having to compute a hash function and then access an
+array, you can just let the map class do it for you.
+
+<br><br>
+To use the map class, you will need to include &lt;map&gt; and maps are part of
+the std <a href="../namespaces.html">namespace</a>.  Maps
+require two, and possibly three, types for the template:
+<pre class="example">
+std::map &lt;<i>key_type</i>, <i>data_type</i>, [<i>comparison_function</i>]&gt;
+</pre>
+Notice that the comparison function is in brackets, indicating that it is
+optional so long as your <i>key_type</i> has the less-than operator, &lt;,
+defined -- so you don't need to specify a comparison function for so-called
+primitive types such as int, char, or even for the string class.  Moreover, if
+you overloaded the &lt; operator for your own class, this won't be necessary.
+
+<br><br>
+The reason that the key type needs the less-than operator is that the keys
+will be stored in sorted order -- this means that if you want to retrieve
+every key, value pair stored in the map, you can retrieve them in the order of
+the keys.
+
+<br><br>
+Let's go back to the example of storing student grades.  Here's how you could
+declare a variable called grade_list that associates strings (student names)
+with characters (grades -- no + or - allowed!).
+<pre class="example">
+std::map &lt;string, char&gt; grade_list;
+</pre>
+
+Now, to actually store or access data in the map, all you need to do is treat
+it like a normal array and use brackets.  The only difference is that you no
+longer use integers for the index -- you use whatever data type was used for
+the key.
+
+<br><br>
+For instance, following the previous example, if we wanted to assign a grade
+of 'B' to a student named "John", we could do the following:
+
+<pre class="example">
+grade_list["John"] = 'B';
+</pre>
+
+If we later decided that John's grades had improved, we could change his grade
+in the same fashion: 
+<pre class="example">
+grade_list["John"] = 'B';
+// John's grade improves
+grade_list["John"] = 'A';
+</pre>
+
+So adding keys to a map can be done without doing anything special -- we just
+need to use the key and it will be added automatically along with the
+corresponding data item.  On the other hand, getting rid of an element
+requires calling the function erase, which is a member of the map class:
+
+<pre class="example">
+erase(key_type key_value);
+</pre>
+
+For instance, to erase "John" from our map, we could do the following:
+
+<pre class="example">
+grade_list.erase("John");
+</pre>
+
+If we're curious, we could also check to see how many values the map contains
+by using the size function, which is also a member of the map class and other
+containers:
+
+<pre class="example">
+int size();
+</pre>
+
+For instance, to find the size of our hypothetical class, we could call the
+size function on the grade list:
+
+<pre class="example">
+std::cout&lt;&lt;"The class is size "&lt;&lt;grade_list.size()&lt;&lt;std::endl;
+</pre>
+
+If we're only interested in whether the map is empty, we can just use the
+map member function empty:
+
+<pre class="example">
+bool empty();
+</pre>
+
+empty returns true if the map is empty; it returns false otherwise.
+<br><br>
+
+If you want guarantee that the map is empty, you can use the clear function.
+For instance:
+
+<pre class="example">
+grade_list.clear();
+</pre>
+
+would remove all students from the grade_list.
+<br><br>
+What if you just wanted to check to see whether a particular key was in the map to
+begin with (e.g., if you wanted to know whether a student was in the class).  You
+might think you could do something like this using the bracket notation, but
+then what will that return if the specified key has no associated value?
+
+<br><br>
+Instead, you need to use the find function, which will return an <a href="iterators.html">iterator</a>
+pointing to the value of the element of the map associated with the particular
+key, or if the key isn't found, a pointer to the iterator
+<i>map_name</i>.end()!  The following code demonstrates the general method for
+checking whether a key has an associated value in a map.
+
+<pre class="example">
+std::map &lt;string, char&gt; grade_list;
+grade_list["John"] = 'A';
+if(grade_list.find("Tim") == grade_list.end())
+{
+    std::cout&lt;&lt;"Tim is not in the map!"&lt;&lt;endl;
+}
+</pre>
+
+<a href="iterators.html">Iterators</a>
+can also be used as a general means for accessing the data stored in a map;
+you can use the basic technique from before of getting an iterator:
+<pre class="example">
+std::map&lt;<i>parameters</i>&gt;::iterator <i>iterator_name</i>;
+</pre>
+where <i>parameters</i> are the parameters used for the container class this
+iterator will be used for.  This iterator can be used to iterate in sequence
+over the keys in the container.  Ah, you ask, but how do I know the key stored
+in the container?  Or, even better, what exactly does it mean to dereference
+an iterator over the map container?  The answer is that when you dereference
+an iterator over the map class, you get a "pair", which essentially has two
+members, first and second.  First corresponds to the key, second to the value.
+Note that because an iterator is treated like a pointer, to access the member
+variables, you need to use the arrow operator, -&gt;, to "dereference" the
+iterator.
+<br><br>
+For instance, the following sample shows the use of an iterator (pointing to
+the beginning of a map) to access the key and value.
+<pre class="example">
+std::map &lt;string, char&gt; grade_list;
+grade_list["John"] = 'A';
+// Should be John
+std::cout&lt;&lt;grade_list.begin()-&gt;first&lt;&lt;endl;
+// Should be A
+std::cout&lt;&lt;grade_list.begin()-&gt;second&lt;&lt;endl;
+</pre>
+
+
+Finally, you might wonder what the cost of using a map is.  One issue to keep
+in mind is that insertion of a new key (and associated value) in a map, or
+lookup of the data associated with a key in a map, can take up to O(log(n))
+time, where n is the size of the current map.  This is potentially a bit
+slower than some hash tables with a good hashing function, and is due to the
+fact that the map keys are stored in sorted order for use by iterators.
+<br><br><b>Summary</b>
+<br><br><b>The Good</b>
+<ul>
+<li>Maps provide a way of using "associative arrays" that allow you to store
+data indexed by keys of any type you desire, instead of just integers as with
+arrays.
+</li>
+<li>Maps can be accessed using iterators that are essentially pointers to
+templated objects of base type pair, which has two members, first and second.
+First corresponds to the key, second to the value associated with the key.
+</li>
+<li>Maps are fast, guaranteeing O(log(n)) insertion and lookup time.
+</li>
+</ul>
+<b>The Gotchas</b>
+<ul>
+<li>Checking for whether an element is in a map requires using the find
+function and comparing the returned iterator with the iterator associated with
+the end of the map.
+</li>
+<li>Since maps associate a key with only one value, you need to use a multimap
+(or make the type of the data a container) if you must associate multiple pieces of data with one key.
+</li>
+</ul>
+<!-- removed chitika --><a href="iterators.html">Previous:
+Iterators in the STL</a>
+<br><a href="stllist.html">Next:
+Learn about STL Linked Lists</a>
+<br><br><hr>
+Related articles<br><br><a href="vector.html">Read about the
+vector container class</a><br><br><!-- #EndEditable -->
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../game_programming/same_game_part1.html>
+                    <img src=../game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/stl/stlmap.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:04 GMT -->
+</html>
+
+
+

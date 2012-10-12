@@ -1,0 +1,682 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part3_p2.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:40:12 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, game programming, MFC game programming, MFC programming, C++ MFC">
+<META NAME="Description" CONTENT="A step-by-step guide for creating a game from scratch.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Same Game - Implementing Support for Menus in MFC - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1><img src="same_game_small.png" width="42" height="42">"The Same Game" - A Simple Game from Start to Finish</h1>
+
+
+
+By: Ben Marchant
+
+<h2>Levels of Difficulty</h2>
+
+<p>Now we'll focus on the Level menu and the options that we added.  Once
+we've added the menu options we can compile and run the game and see that the
+menus have been added but they still don't do anything.</p>
+
+          <center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+<p>When you click on a menu option the program fires an event indicating which menu option was selected.  We just need to catch that event with an event handler.  It is very similar to the event handlers that we discussed and used in the previous article.  Really the only difference is where we find the events for the menu options.  We start from the properties window of the CSameGameView and click on the "Events" button (lightning bolt).   Once you click on that you'll see the following.</p>
+<img src="properties_menu_commands.png"><p>You can see in the Menu Commands section a list of all of the menu items that we entered.  The entries are in the format ID_&lt;MENU&gt;_&lt;OPTION&gt; where &lt;MENU&gt; is the menu name and &lt;OPTION&gt; is the text from the menu option.  Expand the plus next to the ID_LEVEL_3COLORS option and you'll see two options under it, COMMAND and UPDATE_COMMAND_UI.  The COMMAND option is the event handler for the actual event of selecting the menu option.  The UPDATE_COMMAND_UI is a handy little event that allows us to change the state of the menu option.  By state I mean enable/disable or check/uncheck the menu option.  In our menu, we are going to put a check by the level that we've selected.</p>
+
+<img src="properties_menu_commands_zoom.png"><p>Click the down arrow in the dropdown for COMMAND and select "Add" (to get the down arrow in the first place, click anywhere on the row).  We want to do this for UPDATE_COMMAND_UI also.  Go ahead and do it for all of the color options (you may have to go back to the properties dialog after adding each one).  Once you've done this we are ready to start adding code.</p>
+
+<p>We'll start with the game board, go to the document and finish with the view.  In the header file SameGameBoard.h add a new data member to keep track of the number of colors below the m_nRemaining variable.</p>
+
+<pre class="example">
+/*  Number of colors */
+int m_nColors;
+</pre>
+
+<p>We also need to add two functions to get and set the number of colors.  Add them to the public section right below the DeleteBlocks function.</p>
+
+<pre class="example">
+
+/*  Functions to get and set the number of colors */
+int GetNumColors(void) { return m_nColors; }
+void SetNumColors(int nColors)
+{ m_nColors = (nColors %gt;= 3 &amp;&amp; nColors &lt;= 7) ? nColors : m_nColors; }
+</pre>
+
+<p>The SetNumColors function restricts the value set to a number between three and seven, just like our menu options.  Since we are adding more colors we need to update the m_arrColors array to make it larger (changes <b>bolded</b>).</p>
+
+<pre class="example">
+/*  List of colors, 0 is background and 1-7 are piece colors */
+static COLORREF m_arrColors[<b>8</b>];
+</pre>
+
+<p>Now in the source file for the game board we need to update a few of the functions and the color array.  Of course we need to update the constructor to initialize the number of colors to three (changes <b>bolded</b>).</p>
+
+<pre class="example">
+COLORREF CSameGameBoard::m_arrColors[8];
+
+CSameGameBoard::CSameGameBoard(void)
+: m_arrBoard(NULL),
+  m_nColumns(15), m_nRows(15),
+  m_nHeight(35),  m_nWidth(35),
+  m_nRemaining(0), m_nColors(3)
+{
+  m_arrColors[0] = RGB(  0,  0,  0);
+  m_arrColors[1] = RGB(255,  0,  0);
+  m_arrColors[2] = RGB(255,255, 64);
+  m_arrColors[3] = RGB(  0,  0,255);
+<b>
+  m_arrColors[4] = RGB(  0,255,  0);
+  m_arrColors[5] = RGB(  0,255,255);
+  m_arrColors[6] = RGB(255,  0,128);
+  m_arrColors[7] = RGB(  0, 64,  0);
+</b>
+  //  Create and setup the board
+  SetupBoard();
+}
+</pre>
+
+<p>The only other change we need to make is in the SetupBoard.  Previously, we hard-coded the number of colors to 3 in the setup. Now, we need to change the number three to m_nColors where we mod the random number like below (changes <b>bolded</b>).</p>
+
+<pre class="example">
+void CSameGameBoard::SetupBoard(void)
+{
+  //  Create the board if needed
+  if(m_arrBoard == NULL)
+    CreateBoard();
+  //  Randomly set each square to a color
+  for(int row = 0; row &lt; m_nRows; row++)
+    for(int col = 0; col &lt; m_nColumns; col++)
+      m_arrBoard[row][col] = (rand() % <b>m_nColors</b>) + 1;
+  //  Set the number of spaces remaining
+  m_nRemaining = m_nRows * m_nColumns;
+}
+</pre>
+
+<p>Now we will move on to the document.  We need to add functions so that the view can change the number of colors.  The GetNumColors function is a simple function that we can complete in the header file.  Add the following lines of code in the public section of the document in SameGameDoc.h.</p>
+
+<pre class="example">
+int GetNumColors()      { return m_board.GetNumColors(); }
+void SetNumColors(int nColors);
+</pre>
+
+<p>In the source file we'll add the implementation of the SetNumColors function.  Here we can't just call the SetNumColors function on the game board by itself.  We need to then reset the game board to add in the new colors.</p>
+
+<pre class="example">
+void CSameGameDoc::SetNumColors(int nColors)
+{
+  //  Set the number of colors first
+  m_board.SetNumColors(nColors);
+  //  Then reset the game board
+  m_board.SetupBoard();
+}
+</pre>
+
+<p>That is all that we need in the document.  Of course, since we haven't changed the view, we can't yet use these functions. The view is the last thing that needs to be updated, though.  By adding the event handlers you'll get the following functions inserted into the header file.</p>
+
+<pre class="example">
+/*  Functions to change the difficulty level */
+afx_msg void OnLevel3colors();
+afx_msg void OnLevel4colors();
+afx_msg void OnLevel5colors();
+afx_msg void OnLevel6colors();
+afx_msg void OnLevel7colors();
+/*  Functions to update the menu options */
+afx_msg void OnUpdateLevel3colors(CCmdUI *pCmdUI);
+afx_msg void OnUpdateLevel4colors(CCmdUI *pCmdUI);
+afx_msg void OnUpdateLevel5colors(CCmdUI *pCmdUI);
+afx_msg void OnUpdateLevel6colors(CCmdUI *pCmdUI);
+afx_msg void OnUpdateLevel7colors(CCmdUI *pCmdUI);
+</pre>
+
+<p>You'll notice a couple of things in these prototypes that you've never seen before.  The afx_msg designation specifies that the function is an event handler.  The OnUpdate functions use a pointer to a CCmdUI object.  We'll talk about this but it is the way that we enable/disable, check/uncheck a menu option.  In the source file you'll see some other code that has been added (changes <b>bolded</b>).</p>
+
+<pre class="example">
+BEGIN_MESSAGE_MAP(CSameGameView, CView)
+  ON_WM_LBUTTONDOWN()
+  ON_WM_ERASEBKGND()
+<b>
+  ON_COMMAND(ID_LEVEL_3COLORS, &amp;CSameGameView::OnLevel3colors)
+  ON_COMMAND(ID_LEVEL_4COLORS, &amp;CSameGameView::OnLevel4colors)
+  ON_COMMAND(ID_LEVEL_5COLORS, &amp;CSameGameView::OnLevel5colors)
+  ON_COMMAND(ID_LEVEL_6COLORS, &amp;CSameGameView::OnLevel6colors)
+  ON_COMMAND(ID_LEVEL_7COLORS, &amp;CSameGameView::OnLevel7colors)
+  ON_UPDATE_COMMAND_UI(ID_LEVEL_3COLORS,
+    &amp;CSameGameView::OnUpdateLevel3colors)
+  ON_UPDATE_COMMAND_UI(ID_LEVEL_4COLORS,
+    &amp;CSameGameView::OnUpdateLevel4colors)
+  ON_UPDATE_COMMAND_UI(ID_LEVEL_5COLORS,
+    &amp;CSameGameView::OnUpdateLevel5colors)
+  ON_UPDATE_COMMAND_UI(ID_LEVEL_6COLORS,
+    &amp;CSameGameView::OnUpdateLevel6colors)
+  ON_UPDATE_COMMAND_UI(ID_LEVEL_7COLORS,
+    &amp;CSameGameView::OnUpdateLevel7colors)
+</b>
+END_MESSAGE_MAP()
+</pre>
+
+<p>The message map is a list of C++ macros that associate an event with an event handler.  Take some time to look it over but since it is automatically generated you won't need to edit it.  All of the OnLevel*colors functions are going to be all very similar to the following function.</p>
+
+<pre class="example">
+void CSameGameView::OnLevel3colors()
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Set the number of colors
+  pDoc-%gt;SetNumColors(3);
+  //  Force the view to redraw
+  Invalidate();
+  UpdateWindow();
+}
+</pre>
+
+<p>In all of the view functions we need to get a pointer to the document.
+Then we set the number of colors to the number in the name of the function,
+     i.e. OnLevel3colors calls SetNumColors(3) and so on.  Finally we need to
+     force the view to redraw.  Repeat this for all of the event handlers for
+     the menu options.  With all of these functions done, compile it and test
+     it out.  You'll see the number of colors change from three to four and so
+     on. (You might also consider creating a helper function that does all of
+             the work and takes the number of colors as an argument.) Then you can make code like this:</p>
+
+<p>In the header SameGameView.h, you'd add this helper:</p>
+
+<pre class="example">
+void setColorCount(int numColors);
+</pre>
+
+<p>In SameGameView.cpp, you'd add this code:</p>
+
+<pre class="example">
+void CSameGameView::setColorCount(int numColors)
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Set the number of colors
+  pDoc-%gt;SetNumColors(numColors);
+  //  Force the view to redraw
+  Invalidate();
+  UpdateWindow();
+}
+
+void CSameGameView::OnLevel3colors()
+{
+  setColorCount(3);
+}
+</pre>
+
+<p>Now back to the final set of event handlers.  The ON_UPDATE_COMMAND_UI event handlers are called when the menu is pulled down by the user, one for each menu option.  We'll use the SetCheck function from the CCmdUI object to set and unset the check box next to the level.  We start with our boiler-plate code to get a pointer to the document and then set the check based on the number of colors in the board.</p>
+
+<pre class="example">
+void CSameGameView::OnUpdateLevel3colors(CCmdUI *pCmdUI)
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Set the check if this is the right level
+  pCmdUI-%gt;SetCheck(pDoc-%gt;GetNumColors() == 3);
+}
+</pre>
+
+<p>Again, these functions are all the same except for the number that we are comparing the result of GetNumColors against (you can implement this by writing a helper function here as well, if you like).  All five of these functions are called when the Level menu is displayed to set or unset the check mark.  Now your game should look something like this.</p>
+
+<img src="levels_example.png"><h2>Conclusion</h2>
+
+<p>In this article we've made our game a little more interesting by adding four new levels of difficulty.  We learned about the menu editor and how to setup menus.  We also setup the event handlers for both ON_COMMAND and ON_COMMAND_UPDATE_UI types of events for menus.  In our next article we'll add new options to set the number and size of the blocks in the game board.</p>
+
+<a href="samegame-part3.zip">Source Code from Part 3</a>
+
+<br><br><b><a href="same_game_part4.html">Continue to Part 4: Adjusting the Board Size and Block Count</a></b>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=same_game_part1.html>
+                    <img src=same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part3_p2.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:40:13 GMT -->
+</html>
+
+
+

@@ -1,0 +1,672 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/ado_c++_manager_class.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++, ADO, Microsoft ActiveX Data Objects, database programming, databases in C++, ADO with C++">
+<META NAME="Description" CONTENT="A guide (tutorial) to managing database operations using ADO with C++">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Managing Database Operations Using ADO and C++ Part 4: Creating the ADO Manager Class - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Managing database operations using ADO and C++ Part 4: Creating the ADO manager class</h1>
+
+
+
+By Patrick Mancier
+<br><br>
+Now that we have gone over the basics, described a way to design and create ADO wrapper classes, it is now time for the final phase of creating an ADO manager class that will work on all the concepts we have discussed.  Our final goal with this design is to use as little code as possible in running any of the desired SQL operations against the database.  Without this ADO manager class, every time we needed to perform some kind of operation we would have to set up the correct ADO wrapper classes, initialize them, set up our list of desired parameters, queries, etc and then execute the SQL command, check its status and perform error handling if something went wrong.  We would then have to look at the returned recordset and get the data from it.  This would have to be done repeatedly for every time we wanted to access any part of the database.  It would result in an enormous amount of repetitious code throughout our application.   If we can design this ADO manager class correctly it will be much easier to do ADO database operations and will make any code changes for future database changes much easier.  Things like adding or deleting columns and tables or any time a procedure changes in our database schema will require fewer code changes. 
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <br><br>
+
+In designing the ADO manager class, we need to enumerate what the ADO manager class should do.  Here is a list of some of the things we need: <br><ul>
+<li> Seamlessly use the ADO wrapper classes to perform ADO operations.
+</li>
+<li>Execute the basic SQL operations of DELETE, INSERT, SELECT and UPDATE on a given table in the database.
+</li>
+<li>Handle the various differences of the parameter signatures that exist from procedure to procedure.
+</li>
+<li>Execute 'user defined' SQL queries and stored procedures.  
+</li>
+<li>Iterate through a returned set of records.</li>
+</ul>
+<br><br>
+To address the seamless use of the ADO wrapper classes is fairly easy.  We will declare a set of pointers that point to each one of the ADO wrapper classes that we need.  During normal operation of calls to the ADO manager class, the use of any one of these classes will be hidden from the caller.  If these classes need to be persistent, they will either be assigned at instantiation or will be dynamically allocated at the ADO manager class instantiation.  In other cases, the class will simply be initialized and deleted as needed.  For example, the CADOConnection class will have been previously initialized.  The pointer to this initialized class will be passed into the initialization of the ADO manager class.  As another example, the CADOParameter class will need a new allocation that needs to be passed into ADO for each parameter that is needed for the procedure, so this will be a class member that will be allocated and deleted dynamically as needed.
+<br><br>
+To execute the basic DELETE, INSERT, SELECT and UPDATE procedures this will simply be a set of public functions that the caller will call named after the operation that is needed.  These functions will operate only on tables in the database; USERQUERY will operate only on user defined queries or stored procedures.  Calling any of these functions will automatically configure our ADO manager class to operate in the manner that is necessary to accomplish the database operation.  
+<pre class="example">
+void ADO_USERQUERY();
+</pre>
+<pre class="example">
+void ADO_DELETE();
+</pre>
+<pre class="example">
+void ADO_INSERT();
+</pre>
+<pre class="example">
+void ADO_SELECT();
+</pre>
+<pre class="example">
+void ADO_UPDATE();
+</pre>
+
+The following is a short list of available 'name mangled' parameter and value functions.  This list does not cover every available column type that exists in a database table.  These are the functions that are used in our inherited class that publicly inherits CADOManager.  These are helper functions that make it easier to manage our ability to perform the database operations on the various queries and stored procedures we need to call.<br><br>
+
+The following functions are used to set up the parameters to our calls to each of our procedures.  
+<pre class="example">
+void AddInputParameter(CString szParameterName, int iType, int iSize, int iValue);
+</pre>
+<pre class="example">
+void AddInputParameter(CString szParameterName, int iType, int iSize, CString szValue);
+</pre>
+<pre class="example">
+void AddInputParameter(CString szParameterName, int iType, int iSize, FILETIME ftValue);
+</pre>
+<pre class="example">
+void AddOutputParameter(CString szParameterName, int iType, int iSize);
+</pre>
+The following functions are using to retrieve the column values from the ADO recordset object and populate the class member variables in our inherited class.
+<pre class="example">
+void GetValue(CString szColumnName,int&amp; iValue);
+</pre>
+<pre class="example">
+void GetValue(CString szColumnName,CString&amp; szValue);
+</pre>
+<pre class="example">
+void GetValue(CString szColumnName,FILETIME&amp; ftValue);
+</pre>
+In order to handle the variance in the number of parameters and parameter types for the table or user defined queries or procedures that the ADO manager class will call, we need to use some type of mechanism that can be called from the base ADO manager class but operates from the inherited class.  We need a way to set up the input and output parameters for a given procedure execute the procedure and check its return status.  We cannot just set up all the parameters needed in the base ADO manager class; this would be very unwieldy to continue adding functions to do this for every new procedure.  We need to somehow separate this functionality from the base ADO manager class but still be able to actually call a function that does this from the base ADO manager class.  This sounds like a chicken and egg problem unless you consider the idea of a virtual function.  Virtual functions are functions that by design are overridden by a class that inherits the base class.  This overridden function can be called from the base class but its implementation exists in the inherited class. So what will happen when a query is run, depending on the type of operation that takes place a virtual function will be called that will set up the parameters for that particular operation.  The inherited class will have the implementation needed to set up the parameters for the operation.
+<br><br>
+These virtual functions set up the parameters BEFORE an SQL procedure is called.  In this case, the caller must set the class members values and then run the operation.
+<pre class="example">
+virtual void SetUserParameters();
+</pre>
+<pre class="example">
+virtual void SetDELETEParameters();
+</pre>
+<pre class="example">
+virtual void SetINSERTParameters();
+</pre>
+<pre class="example">
+virtual void SetSELECTParameters();
+</pre>
+<pre class="example">
+virtual void SetUPDATEParameters();
+</pre>
+These virtual functions will populate the member variables AFTER an SQL procedure is called.  These functions will be called during recordset operations.
+<pre class="example">
+virtual void GetUserValues();
+</pre>
+<pre class="example">
+virtual void GetSELECTValues();
+</pre>
+For this example, we create a class called CTblPeople that publicly inherits CADOManager in order to implement our database operations we want to perform on the table 'People' in our database schema.<br><br>
+This is not the actual code in our ADO manager class but serves as an example
+of how the basic operation of the class will work.  This is written in pseudo-code form for simplicity.  The actual call will vary depending on the table operation to perform.
+<pre class="example">
+BOOL ADO_&lt;Table Operation, DELETE,INSERT,SELECT,UPDATE&gt;()
+{
+    Set&lt;Table Operation&gt;Parameters();     //  Overridden function in inherited class CTblPeople
+    return PerformTableOperation(SQLOperation); //  SQLOperation = DELETE, INSERT, SELECT or UPDATE
+}
+
+BOOL PerformTableOperation(ADOOperation)
+{
+    Set&lt;Table Operation&gt;Parameters();     //  Overridden function in inherited class CTblPeople
+    SetUpCommandObject();                       //  Series of call that properly set up CADOCommand object 
+    SetQueryType(QueryType_Table);              //  Tell CADOManager what query type we are running, this is a table operation
+    SetOperation(ADOOperation);         //  Set the operation we are running, DELETE, INSERT, SELECT or UPDATE
+    szProcName = GetProcedureName();    //  Based on the fact we are running table operation and which operation is being run, derive the procedure name        
+    ExecuteSQLOperation();                      //  Run the table operation we need by calling the procedure &lt;TableName&gt;_&lt;Table Operation&gt;
+    if(Operation == SELECT)
+    {
+        //      Create a new CADORecordset object and attach the recordset that was generated from the ExecuteSQLOperation call
+       CreateCADORecordSetObject(GetRecordsetPtrFromCommandObject());
+    }
+
+    return TRUE on success;
+    return FALSE on error;              
+}
+</pre>
+CTblPeople code: (publicly inherits CADOManager class)
+<pre class="example">
+class CTblPeople : public CADOManager
+{
+private:
+        void Initialize();
+
+public:
+        int mp_iRecordID;                       //      Parameter: RecordID to operate on
+        CString m_szPersonName;         //      Persons full name
+        int m_iPersonAge;                       //      Persons age
+
+        void OnSetDELETEParameters();
+        void OnSetINSERTParameters();
+        void OnSetSELECTParameters();
+        void OnSetUPDATEParameters();
+
+        void OnGetSELECTValues();
+
+        CTblPeople(CADOConnection&amp; dbc);
+        CTblPeople(CADOConnection *pdbc);
+        CTblPeople(void);
+        ~CTblPeople(void);
+};
+
+void CTblPeople::Initialize()
+{
+        mp_iidRecord = 0;
+        m_szPersonName = _T("");
+        m_iPersonAge = 0;
+
+        SetTableName("People");
+}
+
+void CTblPeople::SetSELECTParameters()
+{
+        if(mp_iRecordID)
+        {
+                AddInputParameter("idRecord",Parameter_int,PARAMETER_INT_SIZE,mp_iidRecordID);
+        }
+}
+
+void CTblPeople::SetINSERTParameters()
+{
+        AddInputParemater("PersonName",Parameter_int,m_szPersonAge.GetLength(),m_szPersonAge);
+        AddInputParemater("PersonAge",Parameter_string,PARAMETER_INT_SIZE,m_iPersonAge);
+}
+
+void CTblPeople::GetSELECTValues()
+{
+        GetValue("idRecord",mp_iidRecord);
+        GetValue("PersonName",szPersonName);
+        GetValue("PersonAge",m_iPersonAge);
+}
+</pre>
+Notice in CTblPeople that the public member variables mp_iidRecord, m_szPersonName and m_iPersonAge map directly to the columns in our 'People' table in the database schema.   This will be useful in our final design when we need to scroll through the recordset or set up the parameters to one of the database operations.  In viewing the code above one can see that even though the virtual functions are being called from CADOManager the overridden function is implemented on the inherited class CTblPeople.  We see that the Set&lt;database operation&gt;Parameters() function is used to initialize the parameters we need for the SQL procedure/query that is being called and that afterwards, depending on if it is a SELECT or a user query we populate the inherited class member variables that represent columns in the table by calling the GetSELECTValues() or GetUserValues() function.  These two functions will also be used when scrolling through the returned recordset.  
+<br><br>
+A function in the base ADO manager class called SetTable() is used to inform the ADO manager class that it should operate on a database table.  Remember when we came up with a naming convention for the procedures in our database?  Now we see this was a wise thing to do, because the ADO manager class can now derive the procedure name it needs based on the rules of our design.  Recall that the general pattern we used for procedure names was &lt;Table Name&gt;_&lt;Database operation&gt;.  
+<br><br>
+As an example, let's say we would like to insert a new record into that table. We start by having the inherited class call SetTable("People") in its initialization function.  Since the name of our table is 'People' and we are calling CADOManager::INSERT() the name of the procedure that our ADO manager class will derive from these two pieces of information will be People_Insert.  Since this function may have different numbers and types of parameters than the other table functions, we will call the virtual function SetINSERTParameters() inside of CADOManager but the function CTblPeople::SetINSERTParameters() is the one that will be called.  This allows the programmer to modify CTblPeople class in order to set up the parameters that are necessary to perform the INSERT() operation on this database table.  In the case of INSERT we set up the PersonName and PersonAge columns to pass to the People_Insert procedure.
+<br><br>
+A user-defined procedure will be handled differently by calling another function that will run user defined queries or procedures.  In this case, a 'user defined' query or procedure is one that falls outside of the table model we have set up.  As a rule of thumb, if our database operation does not involve one of the four directly defined operations we want the ADO manager class to operate with on a database table, it will then be either be a user defined query or procedure.  These type of operations will operate in a very similar way as the process above expect that instead of calling one of the standard function operators, the user must define the query string and call USERQUERY instead.  The CADOManager will call SetUserParameters() and GetUserValues() in place of the other four standard operations.
+<br><br>
+Now that we have discussed the idea of virtual functions in our ADO manager class and we have detailed what those functions are and what they do, we can now discuss how we will handle recordset operations.  Select type queries that are performed whether they are direct SQL statements or stored procedures will result in a returned recordset.  We have a class wrapper called CADORecordset that will contain this returned recordset if needed.  However, we want an easy way to scroll through this record set and pick up the values from it.  There will be two ways to obtain a recordset.  One way is to operate on a database table and call the SELECT() operation.  The other way is to have a user-defined query or stored procedure return a recordset through some type of select operation.  
+<br><br>
+When this select type query is finished, if there were records to be returned, i.e. a SELECT operation, a CADORecordset will be created in the CADOManager object.  We can scroll through the recordset using various navigational recordset type functions.  These should be self-explanatory.
+<pre class="example">
+BOOL MoveFirst();
+</pre>
+<pre class="example">
+BOOL MoveLast();
+</pre>
+<pre class="example">
+BOOL MoveNext();
+</pre>
+<pre class="example">
+BOOL MovePrev();
+</pre>
+<pre class="example">
+BOOL MoveTo(int iRecordsToMove);
+</pre>
+To obtain the recordset values, it will involve a combination of calling a and CADOManager::GetValue() function and CADOManager::GetNextRecord().  CADOManager::GetNextRecord() does something more than just increment the recordset pointer.  It calls GetUserValues() if the operation is a user define query or stored procedure and GetSELECTValues() if the operation is a table based SELECT() operation.  Calling these functions allows the inherited ADO manager class to populate the class members that represent each column in the returned recordset.  CADOManager::GetNextRecord() will continue to return TRUE until reaching the end of the recordset.
+<br><br>
+Below is an example of how we can scroll through a recordset:
+<pre class="example">
+// Select all the records in the table
+// Loop through the returned recordset
+ptblPeople-&gt; ADO_SELECT();
+while(ptblPeople-&gt;GetNextRecord())
+{
+        szName = ptblPeople-&gt;m_szPersonName;
+        iAge   = ptblPeople-&gt;m_szPersonAge;
+        // TODO: Write szName and iAge to a flat file
+}
+</pre>
+In looking at the above code some of you might be thinking wait! When calling SELECT(), the class members are populated with the first record values and then calling GetNextRecord() will go to the next record in the recordset and we will miss writing the first record values into our flat file!  Don't worry, the design of our ADO manager class takes this into account.  The very first call to GetNextRecord() does not actually increment past the first record in the recordset it will start at the first record.  Only on a subsequent call to GetNextRecord() will the recordset pointer increment. In other words, after a SELECT operation think of the recordset pointing to the 0th record in the record set instead of the 1st and calling GetNextRecord() causes the recordset pointer to point to the first record in the recordset.
+<br><br>
+In the next part of this article we will conclude with some explanation on how to code an inherited class to use the ADO manager class and show some examples of how to actually use the ADO manager class in practice.<br><br><a href="ado_c%2b%2b_using_cadomanager.html">Continue
+to part 5 of the tutorial</a><br><a href="ado_c%2b%2b_wrapper_classes.html">Back to part 3 of the tutorial</a><br><a href="c%2b%2b_database_access_using_ado.html">Back to the ADO tutorial index page</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/ado_c++_manager_class.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:05 GMT -->
+</html>
+
+
+

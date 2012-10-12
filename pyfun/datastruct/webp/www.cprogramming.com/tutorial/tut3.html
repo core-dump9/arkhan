@@ -1,0 +1,898 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut3.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, beginnings guide to C++, C++ beginners guide, C++ programming tutorials, getting started with C++, learning C++, how to learn C++, history of C++, C++ history, programming languages, C++ programming language">
+<META NAME="Description" CONTENT="A beginner's guide to learning C++ - answers questions about C++, basic programming, and how to think about programming.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tutorials: C++ Made Easy - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Tutorials: C++ Made Easy</h1>
+
+
+
+          <p> <!-- #BeginEditable "content" --></p>
+<pre>
+                   ’ÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕ∏
+                   ≥         W E L C O M E         ≥
+                   ≥  To the VGA Trainer Program   ≥ ≥
+                   ≥              By               ≥ ≥
+                   ≥      DENTHOR of ASPHYXIA      ≥ ≥ ≥
+                   ≥      (updated by Snowman)     ≥ ≥ ≥
+                   ‘ÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕÕæ ≥ ≥
+                     ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒŸ ≥
+                       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒŸ
+                           --==[ PART 3 ]==--
+[Note: things in brackets have been added by Snowman.  The original text
+has remained mostly unaltered except for the inclusion of C++ material]
+˛ Introduction
+Greetings! This is the third part of the VGA Trainer series! Sorry it 
+took so long to get out, but I had a running battle with the traffic
+department for three days to get my car registered, and then the MailBox
+went down. Ahh, well, life stinks. Anyway, today will do some things
+vital to most programs : Lines and circles.
+Watch out for next week's part : Virtual screens. The easy way to
+eliminate flicker, "doubled sprites", and subjecting the user to watch
+you building your screen. Almost every ASPHYXIA demo has used a virtual
+screen (with the exception of the SilkyDemo), so this is one to watch out
+for. I will also show you how to put all of these loose procedures into
+units.
+</pre>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+  <pre>
+If you would like to contact me, or the team, there are many ways you 
+can do it : 1) Write a message to Grant Smith in private mail here on
+                  the Mailbox BBS.
+            2) Write a message here in the Programming conference here
+                  on the Mailbox (Preferred if you have a general
+                  programming query or problem others would benefit from)
+            3) Write to ASPHYXIA on the ASPHYXIA BBS.
+            4) Write to Denthor, Eze or Livewire on Connectix.
+            5) Write to :  Grant Smith
+                           P.O.Box 270 Kloof
+                           3640
+            6) Call me (Grant Smith) at 73 2129 (leave a message if you 
+                  call during varsity)
+                  
+NB : If you are a representative of a company or BBS, and want ASPHYXIA 
+       to do you a demo, leave mail to me; we can discuss it.
+NNB : If you have done/attempted a demo, SEND IT TO ME! We are feeling
+        quite lonely and want to meet/help out/exchange code with other demo
+        groups. What do you have to lose? Leave a message here and we can work
+        out how to transfer it. We really want to hear from you!
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+˛  Circle Algorithim
+You all know what a circle looks like. But how do you draw one on the
+computer?
+You probably know circles drawn with the degrees at these points :
+                                0
+                              ‹€|€‹
+                             €€€|€€€
+                        270 ----+---- 90
+                             €€€|€€€
+                              ﬂ€|€ﬂ
+                               180
+Sorry about my ASCII ;-) ... anyway, Pascal and C++ don't work that way ...
+they work with radians instead of degrees. (You can convert radians to
+degrees, but I'm not going to go into that now. Note though that in Pascal
+and C++, the circle goes like this :
+                               270
+                              ‹€|€‹
+                             €€€|€€€
+                        180 ----+---- 0
+                             €€€|€€€
+                              ﬂ€|€ﬂ
+                                90
+Even so, we can still use the famous equations to draw our circle ...
+(You derive the following by using the theorem of our good friend
+Pythagoras)
+                     Sin (deg) = Y/R
+                     Cos (deg) = X/R
+(This is standard 8(?) maths ... if you haven't reached that level yet,
+take this to your dad, or if you get stuck leave me a message and I'll
+do a bit of basic Trig with you. I aim to please ;-))
+Where Y = your Y-coord
+      X = your X-coord
+      R = your radius (the size of your circle)
+      deg = the degree
+To simplify matters, we rewrite the equation to get our X and Y values :
+                     Y = R*Sin(deg)
+                     X = R*Cos(deg)
+This obviousy is perfect for us, because it gives us our X and Y co-ords to
+put into our Putpixel routine (see Part 1). Because the Sin and Cos
+functions return a Real [long] value, we use a round function to transform
+it into an Integer.
+[Pascal]
+     Procedure Circle (oX,oY,rad:integer;Col:Byte);
+     VAR deg:real;
+         X,Y:integer;
+     BEGIN
+       deg:=0;
+       repeat
+         X:=round(rad*COS (deg));
+         Y:=round(rad*sin (deg));
+         putpixel (x+ox,y+oy,Col);
+         deg:=deg+0.005;
+       until (deg&gt;6.4);
+     END;
+[C++]
+     void Circle(int X, int Y, int rad, int col) {
+       float deg = 0;
+       do {
+         X = round(rad * cos(deg));
+         Y = round(rad * sin(deg));
+         Putpixel (X+120, Y+100, col);
+         deg += 0.005;
+       }
+       while (deg &lt;= 6.4);
+     }
+In the above example, the smaller the amount that deg is increased by,
+the closer the pixels in the circle will be, but the slower the procedure.
+0.005 seem to be best for the 320x200 screen. NOTE : ASPHYXIA does not use
+this particular circle algorithm, ours is in assembly language, but this
+one should be fast enough for most. If it isn't, give us the stuff you are
+using it for and we'll give you ours.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+˛  Line algorithms
+There are many ways to draw a line on the computer. I will describe one
+and give you two. (The second one you can figure out for yourselves; it
+is based on the first one but is faster)
+The first thing you need to do is pass what you want the line to look
+like to your line procedure. What I have done is said that x1,y1 is the
+first point on the screen, and x2,y2 is the second point. We also pass the
+color to the procedure. (Remember the screens top left hand corner is (0,0);
+see Part 1)
+Ie.            o  (X1,Y1)
+                ooooooooo
+                         ooooooooo
+                                  oooooooo  (X2,Y2)
+Again, sorry about my drawings ;-)
+To find the length of the line, we say the following :
+[Pascal]
+           XLength = ABS (x1-x2)
+           YLength = ABS (y1-y2)
+[C++]
+           xlength = abs(x1-x2);
+           ylength = abs(y1-y2);
+The ABS function means that whatever the result, it will give you an
+absolute, or posotive, answer. At this stage I set a variable stating
+wheter the difference between the two x's are negative, zero or posotive.
+(I do the same for the y's) If the difference is zero, I just use a loop
+keeping the two with the zero difference posotive, then exit.
+If neither the x's or y's have a zero difference, I calculate the X and Y
+slopes, using the following two equations :
+[Pascal]
+           Xslope = Xlength / Ylength
+           Yslope = Ylength / Xlength
+[C++]
+[Note: C++ is significantly different here.  I had to add special divide
+by zero checking.  C++ doesn't like x/0.  I also added in type-casting
+which might not have been necessary.  :)]
+           if ((xlength != 0) &amp;&amp; (ylength != 0)) {
+             xslope = (float)xlength/(float)ylength;
+             yslope = (float)ylength/(float)xlength;
+           }
+           else {
+             xslope = 0.0;
+             yslope = 0.0;
+           }
+As you can see, the slopes are real numbers.
+NOTE : XSlope = 1 / YSlope
+Now, there are two ways of drawing the lines :
+           X = XSlope * Y
+           Y = YSlope * X
+The question is, which one to use? if you use the wrong one, your line
+will look like this :
+        o
+           o
+              o
+Instead of this :
+        ooo
+           ooo
+              ooo
+Well, the solution is as follows :
+                           *\``|``/*
+                           ***\|/***
+                           ----+----
+                           ***/|\***
+                           */``|``\*
+If the slope angle is in the area of the stars (*) then use the first
+equation, if it is in the other section (`) then use the second one.
+What you do is you calculate the variable on the left hand side by
+putting the variable on the right hand side in a loop and solving. Below
+is our finished line routine :
+[Pascal]
+Procedure Line (x1,y1,x2,y2:integer;col:byte);
+VAR x,y,xlength,ylength,dx,dy:integer;
+    xslope,yslope:real;
+BEGIN
+  xlength:=abs (x1-x2);
+  if (x1-x2)&lt;0 then dx:=-1;
+  if (x1-x2)=0 then dx:=0;
+  if (x1-x2)&gt;0 then dx:=+1;
+  ylength:=abs (y1-y2);
+  if (y1-y2)&lt;0 then dy:=-1;
+  if (y1-y2)=0 then dy:=0;
+  if (y1-y2)&gt;0 then dy:=+1;
+  if (dy=0) then BEGIN
+    if dx&lt;0 then for x:=x1 to x2 do
+      putpixel (x,y1,col);
+    if dx&gt;0 then for x:=x2 to x1 do
+      putpixel (x,y1,col);
+    exit;
+  END;
+  if (dx=0) then BEGIN
+    if dy&lt;0 then for y:=y1 to y2 do
+      putpixel (x1,y,col);
+    if dy&gt;0 then for y:=y2 to y1 do
+      putpixel (x1,y,col);
+    exit;
+  END;
+  xslope:=xlength/ylength;
+  yslope:=ylength/xlength;
+  if (yslope/xslope&lt;1) and (yslope/xslope&gt;-1) then BEGIN
+    if dx&lt;0 then for x:=x1 to x2 do BEGIN
+                   y:= round (yslope*x);
+                   putpixel (x,y,col);
+                 END;
+    if dx&gt;0 then for x:=x2 to x1 do BEGIN
+                   y:= round (yslope*x);
+                   putpixel (x,y,col);
+                 END;
+  END
+  ELSE
+  BEGIN
+    if dy&lt;0 then for y:=y1 to y2 do BEGIN
+                   x:= round (xslope*y);
+                   putpixel (x,y,col);
+                 END;
+    if dy&gt;0 then for y:=y2 to y1 do BEGIN
+                   x:= round (xslope*y);
+                   putpixel (x,y,col);
+                 END;
+  END;
+END;
+[C++]
+void Line2(int x1, int y1, int x2, int y2, int col) {
+  int   x, y, xlength, ylength, dx, dy;
+  float xslope, yslope;
+  xlength = abs(x1-x2);
+  if ((x1-x2)  &lt; 0) dx = -1;
+  if ((x1-x2) == 0) dx =  0;
+  if ((x1-x2)  &gt; 0) dx = +1;
+  ylength = abs(y1-y2);
+  if ((y1-y2)  &lt; 0) dy = -1;
+  if ((y1-y2) == 0) dy =  0;
+  if ((y1-y2)  &gt; 0) dy = +1;
+  if (dy == 0) {
+    if (dx &lt; 0)
+      for (x=x1; x&lt;x2+1; x++)
+	Putpixel (x,y1,col);
+    if (dx &gt; 0)
+      for (x=x2; x&lt;x1+1; x++)
+	Putpixel (x,y1,col);
+  }
+  if (dx == 0) {
+    if (dy &lt; 0)
+      for (y=y1; y&lt;y2+1; y++)
+	Putpixel (x1,y,col);
+    if (dy &gt; 0)
+      for (y=y2; y&lt;y1+1; y++)
+	Putpixel (x1,y,col);
+  }
+  if ((xlength != 0) &amp;&amp; (ylength != 0)) {
+    xslope = (float)xlength/(float)ylength;
+    yslope = (float)ylength/(float)xlength;
+  }
+  else {
+    xslope = 0.0;
+    yslope = 0.0;
+  }
+  if ((xslope != 0) &amp;&amp; (yslope != 0) &amp;&amp;
+      (yslope/xslope &lt; 1) &amp;&amp; (yslope/xslope &gt; -1)) {
+    if (dx &lt; 0)
+      for (x=x1; x&lt;x2+1; x++) {
+	y = round (yslope*x);
+	Putpixel (x,y,col);
+      }
+    if (dx &gt; 0)
+      for (x=x2; x&lt;x1+1; x++) {
+	y = round (yslope*x);
+	Putpixel (x,y,col);
+      }
+  }
+  else {
+    if (dy &lt; 0)
+      for (y=x1; y&lt;x2+1; y++) {
+	x = round (xslope*y);
+	Putpixel (x,y,col);
+      }
+    if (dy &gt; 0)
+      for (y=x2; y&lt;x1+1; y++) {
+	x = round (xslope*y);
+	Putpixel (x,y,col);
+      }
+  }
+}
+Quite big, isn't it? Here is a much shorter way of doing much the same
+thing :
+[Pascal]
+function sgn(a:real):integer;
+begin
+     if a&gt;0 then sgn:=+1;
+     if a&lt;0 then sgn:=-1;
+     if a=0 then sgn:=0;
+end;
+procedure line(a,b,c,d,col:integer);
+var u,s,v,d1x,d1y,d2x,d2y,m,n:real;
+    i:integer;
+begin
+     u:= c - a;
+     v:= d - b;
+     d1x:= SGN(u);
+     d1y:= SGN(v);
+     d2x:= SGN(u);
+     d2y:= 0;
+     m:= ABS(u);
+     n := ABS(v);
+     IF NOT (M&gt;N) then
+     BEGIN
+          d2x := 0 ;
+          d2y := SGN(v);
+          m := ABS(v);
+          n := ABS(u);
+     END;
+     s := INT(m / 2);
+     FOR i := 0 TO round(m) DO
+     BEGIN
+          putpixel(a,b,col);
+          s := s + n;
+          IF not (s&lt;m) THEN
+          BEGIN
+               s := s - m;
+               a:= a +round(d1x);
+               b := b + round(d1y);
+          END
+          ELSE
+          BEGIN
+               a := a + round(d2x);
+               b := b + round(d2y);
+          END;
+     end;
+END;
+[C++]
+int sgn (long a) {
+  if (a &gt; 0) return +1;
+  else if (a &lt; 0) return -1;
+  else return 0;
+}
+void Line(int a, int b, int c, int d, int col) {
+  long u,s,v,d1x,d1y,d2x,d2y,m,n;
+  int  i;
+  u   = c-a;
+  v   = d-b;
+  d1x = sgn(u);
+  d1y = sgn(v);
+  d2x = sgn(u);
+  d2y = 0;
+  m   = abs(u);
+  n   = abs(v);
+  if (m&lt;=n) {
+    d2x = 0;
+    d2y = sgn(v);
+    m   = abs(v);
+    n   = abs(u);
+  }
+  s = (int)(m / 2);
+  for (i=0;i&lt;round(m);i++) {
+    Putpixel(a,b,col);
+    s += n;
+    if (s &gt;= m) {
+      s -= m;
+      a += d1x;
+      b += d1y;
+    }
+    else {
+      a += d2x;
+      b += d2y;
+    }
+  }
+}
+This routine is very fast, and should meet almost all of your requirements
+(ASPHYXIA used it for quite a while before we made our new one.)
+In the end program, both the new line routine and the circle routine are
+tested. A few of the procedures of the first parts are also used.
+Line and circle routines may seem like fairly trivial things, but they are
+a vital component of many programs, and you may like to look up other
+methods of drawing them in books in the library (I know that here at the
+varsity they have books for doing this kind of stuff all over the place)
+A good line routine to look out for is the Bressenhams line routine ...
+there is a Bressenhams circle routine too ... I have documentaiton for them
+if anybody is interested, they are by far some of the fastest routines
+you will use.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+˛  In closing
+Varsity has started again, so I am (shock) going to bed before three in
+the morning, so my quote this week wasn't written in the same wasted way
+my last weeks one was (For last week's one, I had gotten 8 hours sleep in
+3 days, and thought up and wrote the quote at 2:23 am before I fell asleep.)
+        [  "What does it do?" she asks.
+           "It's a computer," he replies.
+           "Yes, dear, but what does it do?"
+           "It ..er.. computes! It's a computer."
+           "What does it compute?"
+           "What? Er? Um. Numbers! Yes, numbers!" He smiles
+              worriedly.
+           "Why?"
+           "Why? Well ..um.. why?" He starts to sweat.
+           "I mean, is it just something to dust around, or does
+              it actually do something useful?"
+           "Um...you can call other computers with it!" Hope lights
+              up his eyes. "So you can get programs from other computers!"
+           "I see. Tell me, what do these programs do?"
+           "Do? I don't think I fol..."
+           "I see. They compute. Numbers. For no particular reason." He
+              withers under her gaze.
+           "Yes, but..."
+           She smiles, and he trails off, defeated. She takes another look
+               at the thing. "Although," she says, with a strange look in
+               her eyes. He looks up, an insane look of hope on his
+               face. "Does it come in pink?" she asks.
+                                                                           ]
+                                                     - Grant Smith
+                                                        Tue 27 July, 1993
+                                                         9:35 pm.
+See you next time,
+    - Denthor</pre>
+<!-- #EndEditable --> 
+          <!-- removed chitika -->
+ 
+
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut3.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+</html>
+
+
+

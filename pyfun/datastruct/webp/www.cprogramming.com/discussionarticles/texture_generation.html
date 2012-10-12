@@ -1,0 +1,572 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/discussionarticles/texture_generation.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, computer programming, programming computers, how to program computers">
+<META NAME="Description" CONTENT="Aritcle on efficient searching algorithms.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Procedural Texture Generation for Height Mapped Terrain - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../tutorial/c-tutorial.html>C Tutorial</a><br>
+            <a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Procedural Texture Generation for Height Mapped Terrain - By Perspective</h1>
+
+
+
+<h4>Outline:</h4>
+<ul>
+<li>
+<a href="#whatis">What is Procedural Texture Generation?</a>
+   <ul><li>Overview of Procedural Texture Generation.</li></ul>
+</li>
+
+<li>
+<a href="#approaches">Approaches to Procedural Texture Generation for Height Maps.</a>
+    <ul>
+<li>
+<a href="#tc">Texture Combination.</a>
+         <ul>
+<li><a href="#cut">Cutting Textures.</a></li>
+         <li><a href="#blend">Blending Textures.</a></li>
+	 </ul>
+</li>
+    </ul>
+</li>
+
+    <li>Noise functions.
+	<ul><li>[to be mentioned, not explored]</li></ul>
+</li>
+</ul>
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+<h2 id="whatis">What is Procedural Texture Generation?</h2>
+
+	Procedural Texture Generation is the (procedural) process of generating a texture.  Ambiguities aside, it's a process in which one can create a texture by performing calculations using data from various possible sources.  For example, the data can be existing textures which will be combined into a new texture based on a given model, or random data generated by noise functions.  In this article we will explore a few of the possible ways to use Procedural Texture Generation to create custom textures for height maps.
+<br><br><h2 id="approaches">Approaches to Procedural Texture Generation for Height Maps</h2>
+
+<h3 id="tc">Texture Combination:</h3>
+	A popular way of generating a custom texture for a height map is to combine parts of other "source" textures in such a way that the resulting texture maps directly to the features of the height map.  For example, a snow texture could be used for the peaks of mountains, a rock texture for high altitudes not covered in snow, a grass texture for areas below the mountains, a sand texture for lower beach like areas, and a water texture for the lowest points on the map.  This article will consider two possibilities for combining textures, cutting and blending.  Cutting sections pieces of textures off and stitches them together to make a new texture.  Blending, an enhancement of cutting, blends the textures together by weighting the colour values of the sections based on the height map data.
+<br><br>
+
+    Example:
+	Let's assume our height map has values 0 - 255 and we are combining 5 textures as described above.
+	We need to divide the height map's range into 5 equal(ish) regions to represent each of the 5 textures.
+
+<pre>
+	Tex    [min, max]
+	-----------------
+	water: [0, 50]   
+	sand : [51, 101] 
+	grass: [102, 152]
+	rock : [153, 203]
+	snow : [204, 255]
+</pre>
+	<br><img src="images/hmap-and-textures.gif" alt=""><br>
+	A height map and 5 textures to represent each region.
+<br><br><h3 id="cut">Cutting:</h3>
+	To generate the texture using a cutting algorithm, iterate through the height values (pixel values) in the height map and select the corresponding pixel value from the source texture that the height value falls under.  For example, if the height map has a value of 115 at the coordinates (30, 55), then the pixel value of our generated texture at (30, 55) will be taken from the grass texture's pixel value at (30, 55).
+
+    <pre class="example">
+    Procedure generateTextureWithCutting(heightMap, regions, newTexture)
+	for each (i, j) in dimensions of 'heightMap'
+	    h = pixel value of 'heightMap' at (i, j)
+	    t = texture from 'regions' who's range covers 'h'
+	    v = pixel value of 't' at (i, j)
+	    write 'v' to 'newTexture' at position (i, j)
+</pre>
+	    
+
+	<br><img src="images/cutAndStitchTexture.gif" alt=""><br>The generated texture.
+	<br><br><img src="images/cut-tex-scrn.gif" alt=""><br>The terrain with the Cut and Stitch texture.
+
+    <h3 id="blend">Blending:</h3>
+	The cutting algorithm produces noticeable starting and ending points for the regions.  An improvement on this algorithm is to blend the pixel values based on height value.  Any height value that fits into a region +- range will be influenced by that texture.  The closer the height value is to the top (or higher end) of a region, the more it will be influenced by that texture.  To generate the texture using a blending algorithm, iterate through the height values in the height map and calculate a pixel value for the generated texture based on a weighted summation of values found in the source textures.  The weight of each pixel value in the source textures can be calculated as follows:
+<br><ul>
+<li>calculate a weight defined by: 1.0 - ((abs(heightValue - max) / range)<br>
+	   [As a small optimization, we can use a common denominator of 'range' which will exchange a floating point subtraction with an integer one yielding: (range - abs( heightValue - max )) / range]</li>
+	<li>Return 0 if the weight is less than 0</li>
+	<li>Otherwise, return the weight value</li>
+</ul>
+<br>
+	For example: Using the sample values above with a height value of 195 at coordinates (60, 85) would yield the sum of...
+<pre>
+	(51 - abs( 195 - 50))  / 51 = -1.843 = 0
+	(51 - abs( 195 - 101)) / 51 = -0.843 = 0
+	(51 - abs( 195 - 152)) / 51 =  0.157 * Grass texture's value at (60, 85)
+	(51 - abs( 195 - 203)) / 51 =  0.843 * Rock  texture's value at (60, 85)
+	(51 - abs( 195 - 255)) / 51 = -0.176 = 0
+</pre>
+	[*notice that a texture will only apply to a height within upperBound +- range exclusively. This allows an optimization to only check the two textures which will affect the final pixel value.  Ways of applying this optimization are implementation dependent.  The following algorithm does not include any optimizations.]
+  <pre class="example">
+    Procedure generateTextureWithBlending(heightMap, regions, newTexture)
+        for each (i, j) in dimensions of 'heightMap'
+            h = pixel value of 'heightMap' at (i, j)
+            v = 0
+            for each r in regions
+                v += weight(h, r) * pixel value of 'r.texture' at (i, j)
+
+            write 'v' to 'newTexture' at position (i, j)
+
+
+    Procedure weight(height, region) -&gt; weight ([0, 1.0] float)
+        w = (region.range - abs(height - region.max)) / region.range
+        return (w &lt; 0) ? 0 : w
+
+        
+    Structure region
+        texture  # The texture for this region.
+        range    # The range covered by this region.
+        max      # The high end of this region's range.
+</pre>
+	<br><img src="images/blendedTexture.gif" alt=""><br>The generated texture.
+	<br><br><img src="images/blend-tex-scrn.gif" alt=""><br>The terrain with the blended texture.
+
+<br><br>
+
+There are many different approaches to Procedural Texture Generation but I'm tired and if you actually read all of the above you're probably getting bored so I'll limit this article to what has been mentioned above.  One other popular mechanism worth mentioning is noise generation.  See <a href="http://www.opengl.org/resources/code/samples/sig99/advanced99/notes/node91.html">http://www.opengl.org/resources/code/samples/sig99/advanced99/notes/node91.html</a> for more information on noise generation.
+
+<br><br>
+              Now that you've read the article, <a href="http://cboard.cprogramming.com/showthread.php?t=62204">join the discussion</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/game_programming/same_game_part1.html>
+                    <img src=../tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/discussionarticles/texture_generation.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:12 GMT -->
+</html>
+
+
+

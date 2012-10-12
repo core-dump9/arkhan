@@ -1,0 +1,661 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut4.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, beginnings guide to C++, C++ beginners guide, C++ programming tutorials, getting started with C++, learning C++, how to learn C++, history of C++, C++ history, programming languages, C++ programming language">
+<META NAME="Description" CONTENT="A beginner's guide to learning C++ - answers questions about C++, basic programming, and how to think about programming.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tutorials: C++ Made Easy - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Tutorials: C++ Made Easy</h1>
+
+
+
+          <p> <!-- #BeginEditable "content" --></p>
+<pre>
+                   ÕÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¸
+                   ³         W E L C O M E         ³
+                   ³  To the VGA Trainer Program   ³ ³
+                   ³              By               ³ ³
+                   ³      DENTHOR of ASPHYXIA      ³ ³ ³
+                   ³      (updated by Snowman)     ³ ³ ³
+                   ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¾ ³ ³
+                     ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³
+                       ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                           --==[ PART 4 ]==--
+[Note: things in brackets have been added by Snowman.  The original text
+has remained mostly unaltered except for the inclusion of C++ material]
+þ Introduction
+Howdy all! Welcome to the fourth part of this trainer series! It's a little
+late, but I am sure you will find that the wait was worth it, becase today I
+am going to show you how to use a very powerful tool : Virtual Screens.
+If you would like to contact me, or the team, there are many ways you
+can do it : 1) Write a message to Grant Smith in private mail here on
+                  the Mailbox BBS.
+            2) Write a message here in the Programming conference here
+                  on the Mailbox (Preferred if you have a general
+                  programming query or problem others would benefit from)
+            3) Write to ASPHYXIA on the ASPHYXIA BBS.
+            4) Write to Denthor, Eze or Livewire on Connectix.
+            5) Write to :  Grant Smith
+                           P.O.Box 270 Kloof
+                           3640
+            6) Call me (Grant Smith) at 73 2129 (leave a message if you
+                  call during varsity)
+NB : If you are a representative of a company or BBS, and want ASPHYXIA
+       to do you a demo, leave mail to me; we can discuss it.
+NNB : If you have done/attempted a demo, SEND IT TO ME! We are feeling
+        quite lonely and want to meet/help out/exchange code with other demo
+        groups. What do you have to lose? Leave a message here and we can work
+        out how to transfer it. We really want to hear from you!
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  What is a Virtual Screen and why do we need it?
+Let us say you are generating a complex screen numerous times on the fly
+(for example scrolling up the screen then redrawing all the sprites for
+each frame of a game you are writing.) Do you have any idea how awful it
+would look if the user could actually see you erasing and redrawing each
+sprite for each frame? Can you visualise the flicker effect this would
+give off? Do you realise that there would be a "sprite doubling" effect
+(where you see two copies of the same sprite next to each other)? In the
+sample program I have included a part where I do not use virtual screens
+to demonstrate these problems. Virtual screens are not the only way to
+solve these problems, but they are definately the easiest to code in.
+A virtual screen is this : a section of memory set aside that is exactly
+like the VGA screen on which you do all your working, then "flip" it
+on to your true screen. In EGA 640x350x16 you automatically have a
+virtual page, and it is possible to have up to four on the MCGA using a
+particular tweaked mode, but for our puposes we will set one up using base
+memory.
+</pre>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <pre>
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  Setting up a virtual screen
+As you will have seen in the first part of this trainer series, the MCGA
+screen is 64000 bytes big (320x200=64000). You may also have noticed that
+in TP 6.0 [and C++] you arn't allowed too much space for normal variables.
+For example, saying :
+[Pascal]
+  VAR Virtual : Array [1..64000] of byte;
+[C++]
+  unsigned char Virtual[64000];
+would be a no-no, as you wouldn't have any space for your other variables.
+What is the solution? I hear you enquiring minds cry. The answer : pointers!
+Pointers to not use up the base 64k allocated to you by TP 6.0 [and C++], it
+gets space from somewhere else in the base 640k memory of your computer. Here
+is how you set them up :
+[Pascal]
+  Type Virtual = Array [1..64000] of byte;  { The size of our Virtual Screen }
+       VirtPtr = ^Virtual;                  { Pointer to the virtual screen  }
+  VAR Virscr : VirtPtr;                     { Our first Virtual screen       }
+      Vaddr  : word;                        { Segment of our virtual screen  }
+[C++] [Note: For simplicity's sake, I have decided to handle the memory
+      allocation differently in the translation to C++ code]
+  unsigned char *vaddr = NULL;             // Pointer to the virtual screen //
+If you put this in a program as it stands, and try to acess VirScr [or vaddr],
+your machine will probably crash. Why? Because you have to get the memory for
+your pointers before you can acess them! You do that as follows :
+[Pascal]
+  Procedure SetUpVirtual;
+  BEGIN
+    GetMem (VirScr,64000);
+    vaddr := seg (virscr^);
+  END;
+[C++]
+  void SetUpVirtual() {
+    vaddr = (unsigned char *) calloc(64000,1);
+  }
+This procedure has got the memory for the screen, then set vaddr to the
+screens segment. DON'T EVER LEAVE THIS PROCEDURE OUT OF YOUR PROGRAM!
+If you leave it out, when you write to your virtual screen you will probably
+be writing over DOS or some such thing. Not a good plan ;-).
+When you have finished your program, you will want to free the memory
+taken up by the virtual screen by doing the following :
+[Pascal]
+  Procedure ShutDown;
+  BEGIN
+    FreeMem (VirScr,64000);
+  END;
+[C++]
+  void ShutDown() {
+    free(vaddr);
+  }
+If you don't do this your other programs will have less memory to use for
+themselves.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  Putting a pixel to your virtual screen
+This is very similar to putting a pixel to your normal MCGA screen, as
+discussed in part one... here is our origonal putpixel :
+[Pascal]
+  Procedure PutPixel (X,Y : Integer; Col : Byte);
+  BEGIN
+    Mem [VGA:X+(Y*320)]:=col;
+  END;
+[C++]
+  void Putpixel (int x, int y, unsigned char Col) {
+    memset(vga+(x+(y*320)),Col,1);
+  }
+For our virtual screen, we do the following :
+[Pascal]
+  Procedure VirtPutPixel (X,Y : Integer; Col : Byte);
+  BEGIN
+    Mem [Vaddr:X+(Y*320)]:=col;
+  END;
+[C++]
+  void Putpixel (int x, int y, unsigned char Col) {
+    memset(vaddr+(x+(y*320)),Col,1);
+  }
+It seems quite wasteful to have two procedures doing exactly the same thing,
+just to different screens, doesn't it? So why don't we combine the two like
+this :
+[Pascal]
+  Procedure PutPixel (X,Y : Integer; Col : Byte; Where : Word);
+  BEGIN
+    Mem [Where:X+(Y*320)]:=col;
+  END;
+[C++]
+  void Putpixel (int x, int y, unsigned char Col, unsigned char *Where) {
+    memset(Where+(x+(y*320)),Col,1);
+  }
+To use this, you will say something like :
+Putpixel (20,20,32,VGA);
+PutPixel (30,30,64,Vaddr);
+These two statements draw two pixels ... one to the VGA screen and one to
+the virtual screen! Doesn't that make you jump  with joy! ;-) You will
+have noticed that we still can't actually SEE the virtual screen, so on to
+the next part ...
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  How to "Flip" your virtual screen on to the true screen
+You in fact already have to tools to do this yourselves from information
+in the previous parts of this trainer series. We will of course use the
+Move [_fmemcpy] command, like so :
+[Pascal]
+  Move (Virscr^,mem [VGA:0],64000);
+[C++]
+  _fmemcpy(vga,vaddr,64000);
+simple, eh? You may want to wait for a verticle retrace (Part 2) before you
+do that, as it may make the flip much smoother (and, alas, slower).
+Note that most of our other procedures may be altered to support the
+virtual screen, such as Cls etc. (see Part 1 of this series), using the
+methoods described above (I have altered the CLS procedure in the sample
+program given at the end of this Part.)
+We of ASPHYXIA have used virtual screens in almost all of our demos.
+Can you imagine how awful the SoftelDemo would have looked if you had to
+watch us redrawing the moving background, text and vectorballs for EACH
+FRAME? The flicker, doubling effects etc would have made it awful! So
+we used a virtual screen, and are very pleased with the result.
+Note, though, that to get the speed we needed to get the demo fast enough,
+we wrote our sprites routines, flip routines, pallette routines etc. all
+in assembly. The move command is very fast, but not as fast as ASM ;-)
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  In closing
+I am writing this on the varsity computers in between lectures. I prefer
+writing &amp; coding between 6pm and 4am, but it isn't a good plan when
+varsity is on ;-), so this is the first part of the trainer series ever
+written before 9pm.
+I have been asked to do a part on scrolling the screen, so that is
+probably what I will do for next week. Also, ASPHYXIA will soon be putting
+up a small demo with source on the local boards. It will use routines
+that we have discussed in this series, and demonstrate how powerful these
+routines can be if used in the correct manner.
+Some projects for you to do :
+  1) Rewrite the flip statement so that you can say :
+        flip (Vaddr,VGA);
+        flip (VGA,Vaddr);
+      ( This is how ASPHYXIAS one works )
+  2) Put most of the routines (putpixel, cls, pal etc.) into a unit,
+     so that you do not need to duplicate the procedures in each program
+     you write. If you need help, leave me mail.
+See you next week
+   - Denthor</pre>
+<!-- #EndEditable --> 
+          <!-- removed chitika -->
+ 
+
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut4.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+</html>
+
+
+

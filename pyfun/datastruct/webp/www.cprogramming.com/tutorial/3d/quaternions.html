@@ -1,0 +1,886 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/3d/quaternions.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="quaternions, quaternion multiplication, quaternions 3d rotation, c++ quaternions, gimbal lock, avoiding gimbal lock, quaternions gimbal lock">
+<META NAME="Description" CONTENT="Learn what quaternions are, and how to use quaternion multiplication to perform perfect 3 dimensional rotations.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Quaternions and 3D Rotations - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Using Quaternion to Perform 3D rotations</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"> By confuted</div>
+
+<div class="Section1">
+
+<p class="MsoNormal" style="margin-bottom: 12pt;">The title of
+this tutorial is
+short and sweet.  The tutorial itself will not be.  First, an
+introduction.  Quaternions are the things that scare all manner of
+mice
+and men.  They are the things that go bump in the night. 
+They are
+the reason your math teacher gave you an F.  They are all that you
+have
+come to fear, and more.  Quaternions are your worst nightmare.<br><br>
+Okay, not really.  They aren't actually that hard.  I just
+wanted to
+scare you.  Quaternions have become a popular tool in 3d game
+development
+- and for a good reason.  Once you understand them, quaternions
+are really
+pretty amazing.  Also, unlike the other tutorials, I'm going to
+more or
+less be assuming that you <i>know nothing</i> about quaternion math in
+this
+tutorial.  Here are the basics of a quaternion:<br><br></p>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<br><br>
+A quaternion represents two things.  It has an x, y, and z
+component,
+which represents the axis about which a rotation will occur.  It
+also has
+a w component, which represents the amount of rotation which will occur
+about
+this axis.  In short, a vector, and a float.  With these four
+numbers, it is possible to build a matrix which will represent all the
+rotations perfectly, with no chance of gimbal lock.  (I actually
+managed
+to encounter gimbal lock with quaternions when I was first coding them,
+but it
+was because I did something incorrectly.  I'll cover that
+later).  So
+far, quaternions should seem <i>a lot</i> like the axis angle
+representation.  However, there are some large differences, which
+start....now.<br><br>
+A quaternion is <i>technically</i> four numbers, three of which have
+an
+imaginary component.  As many of you probably know from math
+class, <i>i</i>
+is defined as sqrt(-1).  Well, with quaternions, <i>i</i> = <i>j</i>
+=<i>
+k</i> = sqrt(-1).  The quaternion itself is defined as q = w + x<i>i</i>
++
+y<i>j</i> + z<i>k</i>.  w, x, y, and z are all real numbers. 
+The
+imaginary components are important if you ever have a math class with
+quaternions, but they aren't particularly important in the
+programming. 
+Here's why: we'll be storing a quaternion in a class with four member
+variables: float w, x, y, z;.  We'll be ignoring <i>i</i>, <i>j</i>,
+and <i>k</i>,
+because we never liked them anyway.  Okay, so we're actually just
+ignoring
+them because we don't need them.  We'll define our quaternions (w,
+x, y, z).<br><br>
+You may have guessed by now that w is the amount of rotation about the
+axis
+defined by &lt;x, y, z&gt;.  (Warning: the math is going to start
+getting
+pretty heavy.  I'll explain the quaternion specific stuff,
+though). 
+Much like unit vectors are necessary for much of what is done in a 3d
+engine,
+with lighting, back-face culling, and the like, unit quaternions are
+needed to
+perform the operations we'll be doing below.  Luckily, normalizing
+a
+quaternion isn't much harder than normalizing a vector.  The
+magnitude of
+a quaternion is given by the formula magnitude = sqrt(w<sup>2</sup> + x<sup>2</sup>
++ y<sup>2</sup> + z<sup>2</sup>).  For the unit quaternions, the
+magnitude
+is one.  Which means that, already, an optimization is in
+order.  Floating-point
+numbers aren't perfect.  Eventually, you'll lose accuracy with
+them, and
+you may want to check to see if you need to re-normalize your unit
+quaternion,
+to prevent math errors.  This can be done by checking the
+magnitude, which
+will need to be one... but if you're checking to see if it's one, there
+is no
+need for the sqrt() at all (sqrt(1) = 1).  So, if (w<sup>2</sup> +
+x<sup>2</sup>
++ y<sup>2</sup> + z<sup>2</sup>) is more than a certain tolerance away
+from 1,
+you'll know that your quaternion needs to be normalized, and you will
+have
+saved taking a square root in the cases when it is within
+tolerance. 
+Every few clock cycles count.  But if you ever need to actually
+normalize
+a quaternion, here's how it would be done:
+<p class="MsoNormal" style="margin-left: 24pt;">magnitude =
+sqrt(w<sup>2</sup> +
+x<sup>2</sup> + y<sup>2</sup> + z<sup>2</sup>)<br>
+w = w / magnitude<br>
+x = x /  magnitude<br>
+y = y / magnitude<br>
+z = z / magnitude </p>
+<p class="MsoNormal" style="margin-bottom: 12pt;"><br>
+(Yes, I'm familiar with how to do that in C++, including the /=
+operator. 
+I'm trying to keep this easy to read mathematically.)  Performing
+the
+above operations will ensure that the quaternion is a unit
+quaternion. 
+However, they are (somewhat) expensive in CPU time and should not be
+called
+unless needed - which they usually aren't.  There are many
+different
+possible unit quaternions - they actually describe a <i>hyper-sphere</i>,
+a
+four dimensional sphere.  Don't try to visualize it; your head
+will
+explode.  But because the end points for unit quaternions all lay
+on a
+hyper-sphere, multiplying one unit quaternion by another unit
+quaternion will
+result in a third unit quaternion.  I guess now it's time for me
+to
+describe quaternion multiplication.<br><br>
+One of the most important operations with a quaternion is
+multiplication. 
+If you are using C++ and coding your own quaternion class, I would
+highly
+suggest overloading the * operator to perform multiplications between
+quaternions.  Here is how the multiplication itself is performed:
+(sorry
+about the HTML subscripts, I know they suck)</p>
+<p class="MsoNormal" style="margin-left: 24pt;">Let Q<sub>1</sub>
+and Q<sub>2</sub>
+be two quaternions, which are defined, respectively, as (w<sub>1,</sub>
+x<sub>1</sub>,
+y<sub>1,</sub> z<sub>1</sub>) and (w<sub>2</sub>, x<sub>2,</sub> y<sub>2,</sub>
+z<sub>2</sub>).<br>
+(Q<sub>1</sub> * Q<sub>2</sub>).w = (w<sub>1</sub>w<sub>2</sub> - x<sub>1</sub>x<sub>2</sub>
+- y<sub>1</sub>y<sub>2</sub> - z<sub>1</sub>z<sub>2</sub>)<br>
+(Q<sub>1</sub> * Q<sub>2</sub>).x = (w<sub>1</sub>x<sub>2</sub> + x<sub>1</sub>w<sub>2</sub>
++ y<sub>1</sub>z<sub>2</sub> - z<sub>1</sub>y<sub>2</sub>)<br>
+(Q<sub>1</sub> * Q<sub>2</sub>).y = (w<sub>1</sub>y<sub>2</sub> - x<sub>1</sub>z<sub>2</sub>
++ y<sub>1</sub>w<sub>2</sub> + z<sub>1</sub>x<sub>2</sub>)<br>
+(Q<sub>1</sub> * Q<sub>2</sub>).z = (w<sub>1</sub>z<sub>2</sub> + x<sub>1</sub>y<sub>2</sub>
+- y<sub>1</sub>x<sub>2</sub> + z<sub>1</sub>w<sub>2</sub></p>
+<p class="MsoNormal" style="margin-bottom: 12pt;"><br>
+It is very, very, very important for you to note that Q<sub>1</sub> * Q<sub>2</sub>
+is NOT equal to Q<sub>2</sub> * Q<sub>1</sub>.  Quaternion
+multiplication
+is not commutative.  If you don't remember this, it will give you
+trouble
+later, and it won't be easy to spot the cause.  So do yourself a
+favor and
+remember it.  I didn't the first time I read it.  I'm
+speaking from
+experience here.<br><br>
+What does the quaternion multiplication <i>mean</i>?  To tell you
+the
+truth, this is where quaternions start to become beautiful.  Until
+now,
+they've been a bunch of math which wasn't difficult, but might have
+been
+annoying.  Now, quaternions will become <i>useful</i>. 
+Remember that
+a quaternion stores an axis and the amount of rotation about the
+axis. 
+So, with that, after I give you the matrix for rotations with
+quaternions, you
+would be able to rotate an object over some arbitrarily defined axis by
+some arbitrary
+amount, without fear of gimbal lock.  However, changing the
+rotation would
+be a trickier manner.  To change the rotation represented by a
+quaternion,
+a few steps are necessary.  First, you must generate a temporary
+quaternion, which will simply represent how you're changing the
+rotation. 
+If you're changing the current rotation by rotating backwards over the
+X-axis a
+little bit, this temporary quaternion will represent that.  By
+multiplying
+the two quaternions (the temporary and permanent quaternions) together,
+we will
+generate a <i>new</i> permanent quaternion, which <i>has been changed
+by the
+rotation described in the temporary quaternion</i>.  At this
+point, it's
+time for a good healthy dose of pseudo-code, before you get so confused
+we have
+to bring in the EMTs to resuscitate you.</p>
+<p class="MsoNormal" style="margin: 0in 0in 12pt 24pt;">/*to
+keep with the conventions I've followed in some posts
+on cprogramming.com, I<br>
+will call the temporary quaternion described above <i>local_rotation</i>. 
+I'll be calling the<br>
+permanent quaternion described above <i>total</i>.*/<br><br>
+// generate local_rotation (details later)<br>
+total = local_rotation * total  //multiplication order matters on
+this
+line</p>
+
+<p class="MsoNormal" style="margin-bottom: 12pt;">Before I try
+to explain that
+any more, I need to teach you how to generate local_rotation. 
+You'll need
+to have the axis and angle prepared, and this will convert them to a
+quaternion.  Here's the formula for generating the <i>local_rotation</i>
+quaternion.</p>
+
+<p class="MsoNormal" style="margin-left: 24pt;">//axis is a unit
+vector<br>
+local_rotation.w  = cosf( fAngle/2)<br>
+local_rotation.x = axis.x * sinf( fAngle/2 )<br>
+local_rotation.y = axis.y * sinf( fAngle/2 )<br>
+local_rotation.z = axis.z * sinf( fAngle/2 )</p>
+
+<p class="MsoNormal" style="margin-bottom: 12pt;"><br>
+Then, just multiply <i>local_rotation</i> by <i>total</i> as shown
+above. 
+Since you'll be multiplying two unit quaternions together, the result
+will be a
+unit quaternion.  You won't need to normalize it.  At this
+point, I
+feel the need to once again point out that quaternion multiplication is
+not commutative,
+and the order matters.</p>
+
+<p class="MsoNormal">Hang in there; we're almost done.  All
+that is left for
+this tutorial is generating the matrix from the quaternion to rotate
+our
+points.  </p>
+
+<p> <p></p></p>
+
+    
+    
+    
+    
+    
+<table border="0" cellpadding="0" width="50%" style="width: 50%;"><tbody>
+<tr>
+<td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">w<sup>2</sup>+x<sup>2</sup>-y<sup>2</sup>-z<sup>2</sup></p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2xy-2wz</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2xz+2wy</p>
+       </td>
+      <td valign="top" style="padding: 1.2pt;"> 
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+    </tr>
+<tr>
+<td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2xy+2wz</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">w<sup>2</sup>-x<sup>2</sup>+y<sup>2</sup>-z<sup>2</sup></p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2yz+2wx</p>
+       </td>
+      <td valign="top" style="padding: 1.2pt;"> 
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+    </tr>
+<tr>
+<td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2xz-2wy</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2yz-2wx</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">w<sup>2</sup>-x<sup>2</sup>-y<sup>2</sup>+z<sup>2</sup></p>
+       </td>
+      <td valign="top" style="padding: 1.2pt;"> 
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+    </tr>
+<tr>
+<td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+      <td valign="top" style="padding: 1.2pt;"> 
+      <p class="MsoNormal" align="center" style="text-align: center;">1</p>
+       </td>
+    </tr>
+</tbody></table>
+<p class="MsoNormal" style="margin-bottom: 12pt;"><br>
+And, since we're only dealing with unit quaternions, that matrix can be
+optimized a bit down to this:</p>
+
+    
+    
+    
+    
+    
+<table border="0" cellpadding="0" width="50%" style="width: 50%;"><tbody>
+<tr>
+<td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">1-2y<sup>2</sup>-2z<sup>2</sup></p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2xy-2wz</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2xz+2wy</p>
+       </td>
+      <td valign="top" style="padding: 1.2pt;"> 
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+    </tr>
+<tr>
+<td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2xy+2wz</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">1-2x<sup>2</sup>-2z<sup>2</sup></p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2yz+2wx</p>
+       </td>
+      <td valign="top" style="padding: 1.2pt;"> 
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+    </tr>
+<tr>
+<td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2xz-2wy</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">2yz-2wx</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">1-2x<sup>2</sup>-2y<sup>2</sup></p>
+       </td>
+      <td valign="top" style="padding: 1.2pt;"> 
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+    </tr>
+<tr>
+<td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+      <td width="25%" valign="top" style="padding: 1.2pt; width: 25%;">
+      
+      <p class="MsoNormal" align="center" style="text-align: center;">0</p>
+       </td>
+      <td valign="top" style="padding: 1.2pt;"> 
+      <p class="MsoNormal" align="center" style="text-align: center;">1</p>
+       </td>
+    </tr>
+</tbody></table>
+<p> <p></p></p>
+
+<p class="MsoNormal">Amazing.  Well, maybe not amazing, but
+pretty
+cool.  You'll regenerate these matrices each frame.  Most
+importantly, you <i>won't get gimbal lock</i> if you follow my
+directions.  One thing that I forgot to mention earlier - you'll
+need to initialize your <span style="font-style: italic;">total</span>
+quaternion to the value (1,0,0,0).  This represents the "initial"
+state of your object - no rotation.<br></p>
+<p class="MsoNormal"><br>
+Interpolating between two orientations using
+quaternions is
+also the smoothest way to interpolate angles.  It's done via a
+method
+known as SLERP, or Spherical Linear intERPolation.  I haven't
+encountered
+a need for this yet, so I haven't researched it, but perhaps someday
+I'll
+research it and write a tutorial about it to add to this series. 
+If
+anyone needs the information, feel free to contact me, and clue me in
+that
+someone actually read this and wants more.  That's all for now,
+have fun
+coding Quake.  Or Doom.  Make sure to give me a copy of it
+when
+you're done.</p>
+
+<br><a href="uses.html">Previous: Uses for What You've Learned</a>
+
+<br><a href="../../graphics-programming.html">Back to Graphics tutorials index</a>
+
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../game_programming/same_game_part1.html>
+                    <img src=../game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/3d/quaternions.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:05 GMT -->
+</html>
+
+
+

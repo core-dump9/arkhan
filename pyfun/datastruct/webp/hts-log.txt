@@ -1,0 +1,13 @@
+HTTrack3.44-1+libhtsjava.so.2 launched on Tue, 11 Sep 2012 00:27:56 at http://www.cprogramming.com
+(httrack http://www.cprogramming.com )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+00:28:05	Warning: 	File not parsed, looks like binary: www.cprogramming.com/robots.txt
+00:53:53	Error: 	"Not Found" (404) at link www.cprogramming.com/cgi-bin/cdir/C program (from www.cprogramming.com/cgi-bin/cdir/Cdirectory.cgi?action=Category&CID=10&Page=2)
+
+HTTrack Website Copier/3.44-1 mirror complete in 40 minutes 9 seconds : 2983 links scanned, 2980 files written (83754814 bytes overall) [31432272 bytes received at 13047 bytes/sec], 70476853 bytes transfered using HTTP compression in 2675 files, ratio 23%, 15.0 requests per connection
+(1 errors, 1 warnings, 0 messages)

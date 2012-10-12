@@ -1,0 +1,898 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/printf-format-strings.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="printf, printf format string, printf format specifier, printf string, printf precision, printf width, printf length, printf c, c printf, c printf format string">
+<META NAME="Description" CONTENT="Learn all about the C format specifier mini-language and become an expert at producing beautiful output using printf">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Printf format strings - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Printf Format Strings</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+<p>By default, C provides a great deal of power for formatting output. The standard display function, printf, takes a "format string" that allows you to specify lots of information about how a program is formatted.</p>
+
+<p>Note: if you are looking for information on formatting output in C++, take a look at <a href="iomanip.html">formatting C++ output using iomanip</a>.</p>
+
+          <center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<p>Let's look at the anatomy of a format string followed by some short example programs to show the different settings in action. I won't include every single possible option--instead, my goal is to make it easy to understand the mini-language that you can use for creating format strings and teach you how to use the common formatting you're most likely to need.</p>
+
+<h2>Anatomy of a Format String</h2>
+
+<p>When you make a call to printf, the basic idea is that you are going to provide a string of characters that has some literal characters and some elements that are to be replaced. For example, a string like:</p>
+
+<pre class="example">
+"a b c"
+</pre>
+
+<p>Will be printed literally as it appears. While it is sometimes enough to literally write into your code exactly what you want to print, you usually want to do something fancier--either introducing special characters using <b>escape sequences</b> or introducing variable values using <b>format specifiers</b>.</p>
+
+<h2>Escape Sequences</h2>
+
+<p>There are some characters that you cannot directly enter into a string. These are characters like a newline, which must be represented using some special syntax. These are called escape sequences and look like this:</p>
+
+<pre class="example">
+"a\nb\nc"
+</pre>
+
+<p>Here, I've entered the newlines between each letter, a, b and c. Each escape
+sequence starts with a backslash ('\') character. The main escape sequences
+that you'll use are: \n, to put a newline, and \t, to put in a tab. Since a backslash normally indicates the start of an escape sequence, if you want to put in an escape sequence you need to use \\ to display a backslash: </p>
+
+<pre class="example">
+"C:\\Program Files\\World of Warcraft"
+</pre>
+
+<p>is how you'd write a Windows path in C++.</p>
+
+<p>There's one other advanced trick, which is that you can write \&lt;num&gt; to display the ASCII character represented by the value num. This is useful if you want to display a character that you can't easily type on your keyboard, such as accented letters. For example, \130 will print out an é character (in some cases, depending on what your machine is set up to do with <a href="http://en.wikipedia.org/wiki/Extended_ASCII">extended ASCII</a> characters.)</p>
+
+<h2>Format Specifiers</h2>
+
+<p>If you want to introduce some variance into the output, you do so by indicating that external data is needed:</p>
+
+<pre class="example">
+"We have %d cats"
+</pre>
+
+<p>In this string, the %d indicates that the value to be displayed at that point
+in the string needs to be taken from a variable. The % sign indicates that we
+are splicing some data into the string, and the d character indicates that we
+are splicing in a decimal number. The part of the string that begins with % is
+called the format specifier.   In order to actually get that number, we need to
+provide that value to printf:</p>
+
+<pre class="example">
+printf( "We have %d cats", 3 );
+</pre>
+
+<p>which will display:</p>
+
+<pre class="example">
+"We have 3 cats"
+</pre>
+
+<p>All of the interesting formatting that you can do involves changing the values
+you put after the % sign, which is the actual format.</p>
+
+<p>The format for what appears about a % sign is:</p>
+
+<pre class="example">
+%[flag][min width][precision][length modifier][conversion specifier]
+</pre>
+
+<p>Most of these fields are optional, other than providing a conversion specifier, which you've already seen (for example, using %d to print out a decimal number). </p>
+
+<p>Understanding this formatting is best done by working backward, starting with the conversion specifier and working outward. So let's begin at the end!</p>
+
+<h3>Conversion Specifier</h3>
+
+<p>The conversion specifier is the part of the format specifier that determines the basic formatting of the value that is to be printed. </p>
+
+<h4>Conversion specifiers for integers</h4>
+
+<p>If you want to print a decimal integer number in base 0, you'd use either
+<b>d</b> or <b>i</b>: %d or %i. If you want to print an integer in octal or
+hexadecimal you'd use <b>o</b> for octal, or <b>x</b> for hexadecimal. If you
+want capital letters (A instead of a when printing out decimal 10) then you can
+use <b>X</b>.</p>
+
+<h4>Conversion specifiers for floating point numbers</h4>
+
+<p>Displaying floating point numbers has a ton of different options, best shown in a table:</p>
+
+<table>
+<tr>
+<th>Specifier</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+<tr>
+<td>f</td>
+<td>Display the floating point number using decimal representation</td>
+<td>3.1415</td>
+</tr>
+<tr>
+<td>e</td>
+<td>Display the floating point number using scientific notation with e</td>
+<td>1.86e6 (same as 1,860,000)</td>
+</tr>
+<tr>
+<td>E</td>
+<td>Like e, but with a capital E in the output</td>
+<td>1.86E6</td>
+</tr>
+<tr>
+<td>g</td>
+<td>Use shorter of the two representations: f or e</td>
+<td>3.1 or 1.86e6</td>
+</tr>
+<tr>
+<td>G</td>
+<td>Like g, except uses the shorter of f or E</td>
+<td>3.1 or 1.86E6</td>
+</tr>
+</table>
+<p>Okay, that wasn't too bad was it? But that chart is kind of complicated. My recommendation: just use %g, and it will usually do what you want:</p>
+
+<pre class="example">
+printf( "%g", 3.1415926 );
+</pre>
+
+<p>which displays:</p>
+
+<pre class="example">
+3.1515926
+</pre>
+
+<p>or</p>
+<pre class="example">
+printf( "%g", 93000000.0 );
+</pre>
+
+<p>which displays</p>
+
+<pre class="example">
+9.3e+07
+</pre>
+
+<p>Where scientific notation is most appropriate.</p>
+
+<h4>Displaying a Percent Sign</h4>
+<p>Since the percent sign is used to define format specifiers, there's a special format specifier that means "print the percent sign":</p>
+<pre class="example">
+%%
+</pre>
+
+<p>to simply print out a percent sign. <br><br>Now, let's walk through each of the different components of a format specifier.</p>
+
+<h3>Length Modifier</h3>
+
+<p>The length modifier is perhaps oddly-named; it does not modify the length of the output. Instead, it's what you use to specify the length of the input. Huh? Say you have:</p>
+
+<pre class="example">
+long double d = 3.1415926535;
+printf( "%g", d );
+</pre>
+
+<p>Here, d is the input to printf; and what you're saying is that you want to
+print d as an double; but d is not a double, it is a long double. A long double
+is likely to be 16 bytes (compared  to 8 for a double), so the difference
+matters. Try running that small snippet and you'll find that you get garbage
+output that looks something like this:</p>
+
+<pre class="example">
+4.94066e-324
+</pre>
+
+<p>Remember, the bytes that are given to printf are being treated like a
+ double--but they aren't a double, they're a long double. The length is wrong,
+ and the results are ugly!</p>
+ 
+<p>The length modifier is all about helping printf deal with cases where you're using unusually big (or unusually small) variables.</p>
+
+<p>The best way to think about length modifiers is to say: what variable type do I
+ have, and do I need to use a length modifier for it?  Here's a table that
+ should help you out:</p>
+
+<table>
+<tr>
+<th>Variable type</th>
+<th>Length Modifier</th>
+<th>Example</th>
+</tr>
+<tr>
+<td>short int, unsigned short int</td>
+<td>h</td>
+<td>short int i = 3; printf( "%hd", i );</td>
+</tr>
+<tr>
+<td>long int or unsigned long int</td>
+<td>l</td>
+<td>long int i = 3; printf( "%ld", i );</td>
+</tr>
+<tr>
+<td>wide characters or strings</td>
+<td>l</td>
+<td>wchar_t* wide_str = L"Wide String"; printf( "%ls", wide_str );</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>L</td>
+<td>long double d = 3.1415926535; printf( "%Lg", d );</td>
+</tr>
+</table>
+<p>I'd like to make special mention about the wide character handling. If you write</p>
+
+<pre class="example">
+wchar_t* wide_str = L"Wide String";
+printf( "%s", wide_str );
+</pre>
+
+<p>without the l, the result will be to print a single W to the screen. The reason is that wide characters are two bytes, and for simple ASCII characters like W, the second byte is 0. Therefore, printf thinks the string is done! You must tell printf to look for multibyte characters by adding the l: %ls.</p>
+
+<p>(If you happen to be using wprintf, on the other hand, you can simply use %s
+ and it will natively treat all strings as wide character strings.)</p>
+
+<h3>Precision</h3>
+
+<p>The "precision" modifier is written ".number", and has slightly different meanings for the different conversion specifiers (like d or g). </p>
+
+<p>For floating point numbers (e.g. %f), it controls the number of digits printed after the decimal point:</p>
+
+<pre class="example">
+printf( "%.3f", 1.2 );
+</pre>
+
+<p>will print</p>
+
+<pre class="example">
+1.200
+</pre>
+
+<p>If the number provided has more precision than is given, it will round. For example:</p>
+
+<pre class="example">
+printf( "%.3f", 1.2348 );
+</pre>
+
+<p>will display as</p>
+
+<pre class="example">
+1.235
+</pre>
+
+
+<p>Interestingly, for g and G, it will control the number of significant figures displayed. This will impact not just the value after the decimal place but the whole number.</p>
+
+<pre class="example">
+printf( "%.3f\n%.3g\n%.3f\n%.3g\n", 100.2, 100.2, 3.1415926, 3.1415926 );
+</pre>
+
+<pre class="example">
+100.200 // %.3f, putting 3 decimal places always
+100     // %.3g, putting 3 significant figures
+3.142   // %.3f, putting 3 decimal places again
+3.14    // %.3g, putting 3 significant figures
+</pre>
+
+<p>For integers, on the other hand, the precision it controls the minimum number of digits printed:</p>
+
+<pre class="example">
+printf( "%.3d", 10 );
+</pre>
+
+<p>Will print the number 10 with three digits:</p>
+
+<pre class="example">
+010
+</pre>
+
+<p>There's one special case for integers--if you specify '.0', then the number zero will have no output:</p>
+
+<pre class="example">
+printf( "%.0d", 0 );
+</pre>
+
+<p>has no output!</p>
+
+<p>Finally, for strings, the precision controls the maximum length of the string displayed:</p>
+
+<pre class="example">
+printf( "%.5s\n", "abcdefg" );
+</pre>
+
+<p> displays only</p>
+
+<pre class="example">
+"abcde"
+</pre>
+
+<p>This is useful if you need to make sure that your output does not go beyond a fixed number of characters.</p>
+
+<h3>Width</h3>
+
+<p>The width field is almost the opposite of the precision field. Precision controls the max number of characters to print, width controls the minimum number, and has the same format as precision, except without a decimal point:</p>
+
+<pre class="example">
+printf( "%5s\n", "abc" );
+</pre>
+
+<p>prints</p>
+
+<pre class="example">
+  abc
+</pre>
+
+<p>The blank spaces go at the beginning, by default.</p>
+
+<p>You can combine the precision and width, if you like: &lt;width&gt;.&lt;precision&gt;</p>
+
+<pre class="example">
+printf( "%8.5f\n", 1.234 );
+</pre>
+
+<p>prints</p>
+
+
+<pre class="example">
+ 1.23400
+</pre>
+
+<p>(Note the leading space.)</p>
+
+<h3>Flag</h3>
+
+<p>The flag setting controls 'characters' that are added to a string, such whether to append 0x to a hexadecimal number, or whether to pad numbers with 0s.</p>
+
+<p>The specific flag options are</p>
+
+<h4>The Pound Sign: #</h4>
+
+<p>Adding a <b>#</b> will cause a '0' to be prepended to an octal number (when
+using the <b>o</b> conversion specifier), or a <b>0x</b> to be
+prepended to a hexadecimal number (when using a <b>x</b> conversion specifier).
+For most other conversion specifiers, adding a <b>#</b> will simply force the
+inclusion of a decimal point, even if the number has no fractional part.</p>
+
+<pre class="example">
+printf( "%#x", 12 );
+</pre>
+
+<p>results in</p>
+
+<pre class="example">
+0xc
+</pre>
+
+<p>being printed. Whereas </p>
+
+<pre class="example">
+printf( "%x", 12 );
+</pre>
+
+<p>results in simply</p>
+
+<pre class="example">
+c
+</pre>
+
+<p>being printed.</p>
+
+<h4>The Zero Flag: 0</h4>
+
+<p>Using <b>0</b> will force the number to be padded with 0s. This only really matters if you use the width setting to ask for a minimal width for your number. For example, if you write:</p>
+
+<pre class="example">
+printf( "%05d\n", 10 );
+</pre>
+
+<p>You would get:</p>
+
+<pre class="example">
+00010
+</pre>
+
+<h4>The Plus Sign Flag: +</h4>
+
+<p>The plus sign will include the sign specifier for the number:</p>
+
+<pre class="example">
+printf( "%+d\n", 10 );
+</pre>
+
+<p>Will print</p>
+
+<pre class="example">
++10
+</pre>
+
+<h4>The Minus Sign Flag: -</h4>
+
+<p>Finally, the minus sign will cause the output to be left-justified. This is important if you are using the width specifier and you want the padding to appear at the end of the output instead of the beginning:</p>
+
+<pre class="example">
+printf( "|%-5d|%-5d|\n", 1, 2 );
+</pre>
+
+<p>displays:</p>
+
+<pre class="example">
+|1    |2    |
+</pre>
+
+<p>With the padding at the end of the output.</p>
+
+<h3>Combining it all together</h3>
+
+<p>For any given format specifier, you can provide must always provide the percent
+sign and the base specifier. You can then include any, or all, of the flags,
+     width and precision and length that you want. You can even include
+     multiple flags togeher. Here's a particularly complex example
+     demonstrating multiple flags that would be useful for printing memory addresses as hexadecimal values.</p>
+
+<pre class="example">
+printf( "%#010x\n", 12 );
+</pre>
+
+<p>The easiest way to read this is to first notice the % sign and then read
+right-to-left--the x indicates that we are printing a hexadecimal value; the 10
+indicates we want 10 total characters width; the next 0 is a flag indicating we want to pad with 0s intead of spaces, and finally the # sign indicates we want a leading 0x. Since we start with 0x, this means we'll have 8 digits--exactly the right amount for printing out a 32 bit memory address.  </p>
+
+<p>The final result is:</p>
+
+<pre class="example">
+0x0000000c
+</pre>
+
+<p>Pretty sweet!</p>
+
+<b>Read more similar articles</b>
+<br><br><a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1048379655&amp;id=1043284385">More on printf format strings in C</a>
+<br><br><a href="iomanip.html">Produce nice output in C++ using iomanip</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/printf-format-strings.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+</html>
+
+
+

@@ -1,9 +1,8 @@
-num = 400;
+import eul_me
 
-def negar(num) :
-	if (num == 0) :
-		return 1;
-	else :
-		return (num*(negar(num-1)));
+g = []
+for s in range(100000000):
+	if eul_me.isprimefast(s):
+		g.append(s);
 
-print negar(num);
+print sum(g);

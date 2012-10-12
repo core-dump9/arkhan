@@ -1,0 +1,678 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/parallelism.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="clik, cilk++, parallelism, multithread, multithreading, amdahl, amdahl's law">
+<META NAME="Description" CONTENT="Learn what parallel programming is all about.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>What the $#@! is Parallelism, Anyhow? - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="begin.html">Get Started with C or C++</a><br>
+             <a href="compilers.html">Getting a Compiler</a><br>
+             <a href="books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=tutorial/c-tutorial.html>C Tutorial</a><br>
+            <a href=tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=java-programming.html>Java Tutorial</a><br>
+            <a href=game-programming.html>Game Programming</a><br>
+            <a href=graphics-programming.html>Graphics Programming</a><br>
+            <a href=algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=debuggers.html>Debugging</a><br>
+            <a href="tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="challenge.html">Practice Problems</a><br>
+            <a href="quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="cgi-bin/source/source.html">Source Code</a><br>
+            <a href=snippets/index.html>Source Code Snippets</a><br>
+            <a href="tips/index.html">C and C++ Tips</a><br>
+            <a href=jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="function.html">Function Reference</a><br>
+            <a href="reference/index.html">Syntax Reference</a><br>
+            <a href="cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="board.html">Message Board</a><br>
+             <a href="expert.html">Ask an Expert</a><br>
+             <a href="email.html">Email</a><br>
+             <a href="about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>What the $#@! is Parallelism, Anyhow?</h1>
+
+
+
+<div class="Normal" align="left">
+<p class="MsoNormal" style="line-height: normal;"><span style="">
+<h2>by Charles Leiserson</h2>
+I’m constantly amazed how many seemingly
+well-educated computer technologists bandy about the word <b style=""><i style=""><span style="color: rgb(79, 129, 189);">parallelism</span></i></b> without really knowing what
+they’re talking about.<span style="">  </span>I can’t tell you
+how many articles and books I’ve read on parallel computing that use the term
+over and over without ever defining it.<span style=""> 
+
+</span>Many of these “authoritative” sources cite <b style=""><i style=""><span style="color: rgb(79, 129, 189);">Amdahl’s Law</span></i></b> <sdt citation="t" id="423000393"><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+ style='mso-spacerun:yes'> </span>CITATION Amdahl67 \l 1033<span
+ style='mso-spacerun:yes'>  </span><span style='mso-element:field-separator'></span><![endif]--><span style="">(1)</span><!--[if supportFields]><span
+ style='mso-element:field-end'></span><![endif]--></sdt>, originally
+proffered by Gene Amdahl in 1967, but they seem blissfully unaware of the more general
+and precise quantification of parallelism provided by theoretical computer
+science.<span style="">  </span>Since the theory really isn’t all
+that hard, it curious that it isn’t better known.<span style="">  </span>Maybe it needs a better name — “Law” sounds
+so authoritative.<span style="">  </span>In this blog, I’ll
+give a brief introduction to this theory, which incidentally provides a
+foundation for the efficiency of the </span><a href="http://www.cilk.com/multicore-products/cilk-runtime-system" rel=nofollow><span style="">Cilk++
+runtime system</span></a><span style="">.<p></p></span></p>
+
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+<h2>Amdahl’s Law</h2>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">First, let’s look at Amdahl’s Law and
+see what it says and what it doesn’t say.<span style=""> 
+</span>Amdahl made what amounts to the following observation.<span style="">  </span>Suppose that </span><span style="color: rgb(155, 187, 89);">50%
+</span><span style="">of a computation can be parallelized and </span><span style="color: rgb(155, 187, 89);">50%</span><span style=""> can’t.<span style=""> 
+</span>Then, even if the </span><span style="color: rgb(155, 187, 89);">50%</span><span style="">
+that is parallel took no time at all to execute, the total time is cut at most
+in half, leaving a speedup of less than </span><span style="color: rgb(155, 187, 89);">2</span><span style="">.<span style="">  </span>In general, if a fraction</span><span style="color: rgb(155, 187, 89);"> p</span><span style=""> of a computation can be run in
+parallel and the rest must run serially, Amdahl’s Law upper-bounds the speedup by
+
+</span><span style="color: rgb(155, 187, 89);">1/(1–p)</span><span style="">.<span style="">  </span><p></p></span></p>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">This argument was used in the 1970’s
+and 1980’s to argue that parallel computing, which was in its infancy back
+then, was a bad idea — the implication being that most applications have long,
+inherently serial subcomputations that limit speedup.<span style="">  </span>We now know from numerous examples that there
+are plenty of applications that can be effectively sped up by parallel
+computers, but Amdahl’s Law doesn’t really help in understanding how much
+speedup you can expect from <i style="">your</i>
+application.<span style="">  </span>After all, few applications
+can be decomposed so simply into just a serial part and a parallel part.<span style="">  </span>Theory to the rescue!<p></p></span></p>
+
+<h2>A model for multithreaded execution</h2>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">As with much of theoretical computer
+science, we need a model of multithreaded execution in order to give a precise
+definition of parallelism.<span style="">  </span>We can use the
+<b style=""><i style=""><span style="color: rgb(79, 129, 189);">dag model for multithreading</span></i></b>,
+which I talked about in my blog, </span><a href="http://www.cilk.com/multicore-blog/bid/5254/Are-Determinacy-Race-Bugs-Lurking-in-YOUR-Multicore-Application" rel=nofollow><span style="">“Are
+determinacy-race bugs lurking in your multicore application?”</span></a><span style=""><span style="">  </span>(A <b style=""><i style=""><span style="color: rgb(79, 129, 189);">dag</span></i></b> is a directed acyclic graph.)<span style="">  </span>The dag model views the execution of a
+multithreaded program as a set of instructions (the vertices of the dag) with
+graph edges indicating dependences between instructions.<span style="">  </span></span>We say that an instruction <span style="color: rgb(155, 187, 89);">x</span> <b><i><span style="color: rgb(79, 129, 189);">precedes</span></i></b>
+
+an instruction <span style="color: rgb(155, 187, 89);">y</span>, sometimes
+denoted <span style="color: rgb(155, 187, 89);">x &#8826; y</span>, if <span style="color: rgb(155, 187, 89);">x</span>
+must complete before <span style="color: rgb(155, 187, 89);">y</span> can begin.  In a
+diagram for the dag, <span style="color: rgb(155, 187, 89);">x &#8826; y</span> means that there
+is a positive-length path from <span style="color: rgb(155, 187, 89);">x</span> to <span style="color: rgb(155, 187, 89);">y</span>.<span style="">  </span>If
+neither <span style="color: rgb(155, 187, 89);">x &#8826; y</span> nor <span style="color: rgb(155, 187, 89);">y
+&#8826; x</span>, we say the instructions are in <b><i><span style="color: rgb(79, 129, 189);">parallel</span></i></b>,
+denoted <span style="color: rgb(155, 187, 89);">x &#8741; y</span>.<span style="">  </span>The figure below illustrates a multithreaded
+dag:</p>
+
+<p> </p>
+<img src="http://static.cprogramming.com/main_images/dag1.jpg" mce_src="http://www.cilk.com/Portals/1870/images/dag1.jpg" alt="" title="" style="display: block;" border="" hspace="0" vspace="5"><br><p> </p>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">In the
+figure, we have, for example, </span><span style="color: rgb(155, 187, 89);">1
+&#8826; 2</span><span style="">, </span><span style="color: rgb(155, 187, 89);">6
+&#8826; 12</span><span style="">, and </span><span style="color: rgb(155, 187,
+    89);">4 &#8741; 9</span><span style="">.<span style="">  </span><p></p></span></p>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">Just by eyeballing, what would you
+guess is the parallelism of the dag?<span style=""> 
+</span>About </span><span style="color: rgb(155, 187, 89);">3</span><span style="">?<span style="">  </span>About </span><span style="color: rgb(155, 187, 89);">5</span><span style="">?<span style="">  </span>It turns out that two measures of the dag,
+called work and span, allow us to define parallelism precisely, as well as to provide
+some key bounds on performance.<span style="">  </span>I’m
+going to christen these bounds “Laws,” so as to compete with the Amdahl cognoscenti.<span style="">  </span>If I’ve learned anything about business, it’s
+the importance of marketing!<p></p></span></p>
+
+<h2>Work</h2>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">The first important measure is </span><b><i><span style="color: rgb(79, 129, 189);">work</span></i></b><span style="">, which is what you
+get when you add up the total amount of time for all the instructions.<span style="">  </span>Assuming for simplicity that it takes unit
+time to execute an instruction, the work for the example dag is </span><span style="color: rgb(155, 187, 89);">18</span><span style="">, because there are </span><span style="color: rgb(155, 187, 89);">18 </span><span style="">vertices in the dag.<span style="">  </span>The literature contains extensions to this
+theoretical model to handle nonunit instruction times, caching, etc., but for
+now, dealing with these other effects will only complicate matters.<p></p></span></p>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">Let’s adopt a simple notation.<span style="">  </span></span><span style="">Let </span><span style="color: rgb(155, 187, 89);">T<sub>P</sub></span><span style=""> be the fastest possible execution
+time of the application on </span><span style="color: rgb(155, 187, 89);">P</span><span style=""> processors.<span style="">  </span></span><span style="">Since the work
+corresponds to the execution time on </span><span style="color: rgb(155, 187, 89);">1</span><span style="">
+processor, we denote it by </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="">.<span style="">  </span>Among the reasons that work is an important
+measure is because it provides a bound — Oops, I mean Law — on any </span><span style="color: rgb(155, 187, 89);">P</span><span style="">-processor execution time:</span><span style=""><p></p></span></p>
+<p class="MsoNormal" style="line-height: normal;"></p>
+<div style="text-align: center;"><img src="http://static.cprogramming.com/main_images/WorkLaw.jpg" mce_src="http://www.cilk.com/Portals/1870/images/WorkLaw.jpg" alt="" title="" style="display: block;" border="" height="227" hspace="0" vspace="5" width="400"></div> 
+
+
+<p> </p>
+<p class="MsoNormal" style="line-height: normal;"><span style="">The
+Work Law</span><b><i><span style="color: rgb(79, 129, 189);"> </span></i></b><span style="">holds, because in our model,
+each processor executes at most <span style="color: rgb(155, 187, 89);">1</span>
+instruction per unit time, and hence <span style="color: rgb(155, 187, 89);">P</span> processors can execute at most <span style="color: rgb(155, 187, 89);">P </span>instructions per unit time.<span style="">  </span>Thus, to do all the work on <span style="color: rgb(155, 187, 89);">P </span>processors, it must take
+at least </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/P</span><span style=""> time.<p></p></span></p>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">We
+can interpret the Work Law in terms of speedup.<span style=""> 
+</span>Using our notation, the </span><b><i><span style="color: rgb(79, 129, 189);">speedup</span></i></b><span style=""> on </span><span style="color: rgb(155, 187, 89);">P</span><span style="">
+processors is just </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>P</sub></span><span style="">,
+which is how much faster the application runs on </span><span style="color: rgb(155, 187, 89);">P</span><span style="">
+
+processors than on </span><span style="color: rgb(155, 187, 89);">1</span><span style=""> processor.<span style="">  </span>Rewriting the Work Law, we obtain </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>P</sub></span><span style=""> <span style="color: rgb(155, 187, 89);">= P</span>, which is to say that the speedup on <span style="color: rgb(155, 187, 89);">P</span> processors can be at most
+<span style="color: rgb(155, 187, 89);">P</span>.<span style="">  </span>If the application obtains speedup
+proportional to <span style="color: rgb(155, 187, 89);">P</span>, we
+say that the speedup is </span><b><i><span style="color: rgb(79, 129, 189);">linear</span></i></b><span style="">.<span style="">  </span>If it obtains speedup exactly <span style="color: rgb(155, 187, 89);">P</span> (which is the best we can
+do in our model), we say that the application exhibits </span><b><i><span style="color: rgb(79, 129, 189);">perfect linear speedup</span></i></b><span style="">.<span style="">  </span>If the application obtains speedup greater
+than <span style="color: rgb(155, 187, 89);">P</span> (which can’t
+happen in our model due to the work bound, but can happen in models that
+incorporate caching and other processor effects), we say that the application
+exhibits </span><b><i><span style="color: rgb(79, 129, 189);">superlinear speedup</span></i></b><span style="">.<p></p></span></p>
+
+<h2>Span</h2>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">The second important measure is </span><b><i><span style="color: rgb(79, 129, 189);">span</span></i></b><span style="">, which is the
+longest path of dependences in the dag.<span style="">  </span>The
+span of the dag in the figure is </span><span style="color: rgb(155, 187, 89);">9</span><span style="">,
+which corresponds to the path</span><span style="color: rgb(155, 187, 89);">
+1&#8594; 2&#8594; 3&#8594; 6&#8594;
+7&#8594; 8&#8594; 11&#8594; 12&#8594; 18</span><span style="">.<span style="">  </span>This path is sometimes called the </span><b><i><span style="color: rgb(79, 129, 189);">critical path</span></i></b><span style=""> of the dag, and span is sometimes referred to in the
+literature as </span><b><i><span style="color: rgb(79, 129, 189);">critical-path length</span></i></b><span style="">.<span style="">  </span>Since the span is the theoretically fastest
+time the dag could be executed on a computer with an infinite number of
+processors (assuming no overheads for communication, scheduling, etc.), we
+denote it by <span style="color: rgb(155, 187, 89);">T<sub>8</sub></span>.<span style="">  </span><p></p></span></p>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">Like
+work, span also </span><span style="">provides a bou…, uhhh, Law on </span><span style="color: rgb(155, 187, 89);">P</span><span style="">-processor execution time:</span></p>
+<p class="MsoNormal" style="line-height: normal;"></p>
+<div style="text-align: center;"><img src="http://static.cprogramming.com/main_images/SpanLaw.jpg" mce_src="http://www.cilk.com/Portals/1870/images/SpanLaw.jpg" alt="" title="" style="display: block;" border="" hspace="0" vspace="5"></div> <p> </p>
+<p class="MsoNormal" style="line-height: normal;">
+
+</p>
+<p class="MsoNormal" style="line-height: normal;"><span style="">The
+Span Law</span><b><i><span style="color: rgb(79, 129, 189);"> </span></i></b><span style="">holds for the simple reason
+that a finite number of processors cannot outperform an infinite number of
+processors, because the infinite-processor machine could just ignore all but <span style="color: rgb(155, 187, 89);">P</span> of its processors and
+mimic a <span style="color: rgb(155, 187, 89);">P</span>-processor
+machine exactly.<p></p></span></p>
+
+<h2>Parallelism<b><i><span style="color: rgb(79, 129, 189);"></span></i></b><b><i><span style="color: rgb(79, 129, 189);"></span></i></b>
+</h2>
+<p><b><i><span style="color: rgb(79, 129, 189);">Parallelism</span></i></b><span style=""> is defined as the ratio of
+work to span, or </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>8</sub></span>.<span style="">  </span>Why does this definition make sense?<span style="">  </span>There are several ways to understand it:<p></p><br><span style=""><span style=""></span></span></p>
+
+
+
+
+
+
+
+
+<ol>
+<li>
+<span style=""><span style=""><span style="" times="" new="" roman="" font-style:="" font-variant:="" font-weight:="" font-size:="" line-height:="" font-size-adjust:="" none font-stretch:="" normal></span></span></span><span style="">The parallelism </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>8</sub></span><span style=""> is the average amount of
+work along each step of the critical path.</span>
+</li>
+<li>
+<span style=""><p></p></span><span style=""><span style=""><span style="" times="" new="" roman="" font-style:="" font-variant:="" font-weight:="" font-size:="" line-height:="" font-size-adjust:="" none font-stretch:="" normal></span></span></span><span style="">The parallelism </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>8</sub></span> is the maximum possible
+speedup that can be obtained by any number of processors.</li>
+<li>
+<p></p>
+<span style=""><span style=""><span style="" times="" new="" roman="" font-style:="" font-variant:="" font-weight:="" font-size:="" line-height:="" font-size-adjust:="" none font-stretch:="" normal></span></span></span><!--[endif]--><span style="">Perfect linear speedup cannot
+be obtained for any number of processors greater than the parallelism </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>8</sub></span><span style="">.<span style="">  </span>To see this third point, suppose that <span style="color: rgb(155, 187, 89);">P&gt;</span></span><span style="color: rgb(155, 187, 89);"> T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>8</sub></span><span style="">, in which case the Span Law <span style="color: rgb(155, 187, 89);">T<sub>P</sub></span> <span style="color: rgb(155, 187, 89);">= T<sub>8</sub></span> implies
+that the speedup </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>P</sub></span><span style="">satisfies
+
+</span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>P</sub> =</span><span style="color: rgb(155, 187, 89);"> T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>8 </sub>&lt; P</span><span style="">.<span style="">  </span>Since the speedup is strictly less than <span style="color: rgb(155, 187, 89);">P</span>, it cannot be perfect
+linear speedup.<span style="">  </span>Note also that if <span style="color: rgb(155, 187, 89);">P »</span></span><span style="color: rgb(155, 187, 89);"> T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>8</sub></span><span style="">, then </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>P</sub> « P</span><span style=""> — the more processors you
+have beyond the parallelism, the less “perfect” the speedup.<p></p></span>
+</li>
+</ol>
+<p class="MsoNormal" style="line-height: normal;"><span style="">For
+our example, the parallelism is <span style="color: rgb(155, 187, 89);">18/9
+= 2</span>.<span style="">  </span>Thus, no matter how many
+processors execute the program, the greatest speedup that can be attained is
+only <span style="color: rgb(155, 187, 89);">2</span>, which frankly
+isn’t much.<span style="">  </span>Somehow, to my eye, it looks
+like more, but the math doesn’t lie.<p></p></span></p>
+
+<h2>Amdahl’s Law Redux</h2>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">Amdahl’s
+Law for the case where a fraction <span style="color: rgb(155, 187, 89);">p</span> of the application is parallel and a fraction <span style="color: rgb(155, 187, 89);">1–p</span> is serial simply
+amounts to the special case where <span style="color: rgb(155, 187, 89);">T<sub>8 </sub>&gt; (1–p)</span></span><span style="color: rgb(155, 187, 89);"> T<sub>1</sub></span><span style="">.<span style="">  </span><span style=""> </span>In
+this case, the maximum possible speedup is </span><span style="color: rgb(155, 187, 89);">T<sub>1</sub></span><span style="color: rgb(155, 187, 89);">/T<sub>8 </sub>&lt; </span><span style="color: rgb(155, 187, 89);">1/(1–p)</span>.<span style="">  </span>Amdahl’s Law is simple, but the Work and Span
+Laws are far more powerful.<span style=""><span style="">  </span><p></p></span></p>
+
+<p class="MsoNormal" style="line-height: normal;"><span style="">In
+particular, the theory of work and span has led to an excellent understanding
+of multithreaded scheduling, at least for those who know the theory.<span style="">  </span>A</span>s it turns out, scheduling a
+multithreaded computation to achieve optimal performance is NP-complete, which
+in lay terms means that it is computationally intractable.<span style="">  </span>Nevertheless, practical scheduling algorithms
+exist based on work and span that can schedule any multithreaded computation
+near optimally.<span style="">  </span>The <a href="http://www.cilk.com/multicore-products/cilk-runtime-system" rel=nofollow>Cilk++
+runtime system</a> contains such a near-optimal scheduler.<span style="">  </span>I’ll talk about multithreaded scheduling in
+another blog, where I’ll show how the Work and Span Laws really come into play.<span style=""><p></p></span></p>
+
+<p class="MsoNormal" style="line-height: normal;"><span style=""><p></p></span></p>
+
+<p class="MsoBibliography"><!--[if supportFields]><span style='mso-element:field-begin'></span><span
+style='mso-spacerun:yes'> </span>BIBLIOGRAPHY<span style='mso-spacerun:yes'> 
+</span>\l 1033 <span style='mso-element:field-separator'></span><![endif]--><span style="">1. <b>Amdahl, Gene.</b> The validity of the single
+processor approach to achieving large-scale computing capabilities. <i>Proceedings
+of the AFIPS Spring Joint Computer Conference. </i>April 1967, pp. 483-485.<p></p></span></p>
+<i>Charles E. Lieserson is Professor of Computer Science and Engineering at
+MIT.  He is also the CTO and founder of <a href="http://www.cilk.com/" rel=nofollow>Cilk
+Arts</a>, developers of the Cilk++ platform, which enables C++ developers to
+easily exploit multicore processing in their applications.</i> 
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=code_blocks/index.html>How to set up a compiler</a>
+<li><a href=tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="advertising.html">Advertising</a> | <a href="privacy.html">Privacy policy</a> |
+<a href="use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=tutorial/game_programming/same_game_part1.html>
+                    <img src=tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/parallelism.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+</html>
+
+
+

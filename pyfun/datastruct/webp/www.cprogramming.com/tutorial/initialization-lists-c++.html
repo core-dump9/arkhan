@@ -1,0 +1,803 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/initialization-lists-c++.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:47 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, computer programming, programming computers, how to program computers">
+<META NAME="Description" CONTENT="Learn how to take advantage of auto_ptr for managing memory in C++.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Initialization Lists in C++ - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+<div style="border-radius:25px;border-style:dashed;border-width:1px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<b>Tutorial Map</b>
+<br><br>
+
+Introduction
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson1.html>Intro</a></li>
+<li> <a href=lesson2.html>If Statements</a></li>
+<li> <a href=lesson3.html>Loops</a></li>
+<li> <a href=lesson4.html>Functions</a></li>
+<li> <a href=lesson5.html>Switch case</a></li>
+</ul>
+Pointers, arrays, strings
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson6.html>Pointers</a></li>
+<li> <a href=lesson7.html>Structures</a></li>
+<li> <a href=lesson8.html>Arrays</a></li>
+<li> <a href=lesson9.html>Strings</a></li>
+</ul>
+File IO and Classes
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson10.html>File I/O</a></li>
+<li> <a href=lesson11.html>Typecasting</a></li>
+<li> <a href=lesson12.html>Classes</a></li>
+<li> <a href=lesson13.html>Inline Functions</a></li>
+<li> <a href=lesson14.html>Command Line Arguments</a></li>
+</ul>
+Linked lists, trees, recursion
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson15.html>Linked Lists</a></li>
+<li> <a href=lesson16.html>Recursion</a></li>
+<li> <a href=lesson17.html>Variable Arg Lists</a></li>
+<li> <a href=lesson18.html>Binary Trees</a></li>
+</ul>
+Inheritance and class design
+<ul style="list-style-type:none;padding-left:15px;">
+<li> <a href=lesson19.html>Inheritance I</a></li>
+<li> <a href=lesson20.html>Inheritance II</a></li>
+<li> <a href=class_design.html>Class Design</a></li>
+<li>Initialization Lists<span style="font-size:10px"> &larr; you are here</span></li>
+</ul>
+
+
+</div>
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Understanding Initialization Lists in C++</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+<h2>Understanding the Start of an Object's Lifetime</h2>
+
+In C++, whenever an object of a class is created, its constructor is called.
+But that's not all--its parent class constructor is called, as are the
+constructors for all objects that belong to the class.  By default, the
+constructors invoked are the default ("no-argument") constructors.  Moreover,
+all of these constructors are called before the class's own constructor is
+called.
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<br><br>
+For instance, take the following code:
+
+<pre class="example">
+#include &lt;iostream&gt;
+class Foo
+{
+        public:
+        Foo() { std::cout &lt;&lt; "Foo's constructor" &lt;&lt; std::endl; }
+};
+class Bar : public Foo
+{
+        public:
+        Bar() { std::cout &lt;&lt; "Bar's constructor" &lt;&lt; std::endl; }
+};
+
+int main()
+{
+        // a lovely elephant ;)
+        Bar bar;
+}
+</pre>
+
+The object bar is constructed in two stages: first, the Foo constructor is
+invoked and then the Bar constructor is invoked.  The output of the above
+program will be to indicate that Foo's constructor is called first, followed by
+Bar's constructor.
+
+<br><br>
+
+Why do this?  There are a few reasons.  First, each class should need to
+initialize things that belong to it, not things that belong to other classes.
+So a child class should hand off the work of constructing the portion of it
+that belongs to the parent class.  Second, the child class may depend on these
+fields when initializing its own fields; therefore, the constructor needs to be
+called before the child class's constructor runs.  In addition, all of the
+objects that belong to the class should be initialized so that the constructor
+can use <i>them</i> if it needs to.
+
+<br><br>
+
+But what if you have a parent class that needs to take arguments to its
+constructor?  This is where initialization lists come into play.  An
+initialization list immediately follows the constructor's signature, separated
+by a colon:
+
+<pre class="example">
+class Foo : public parent_class
+{
+        Foo() : parent_class( "arg" ) // sample initialization list
+        {
+                // you must include a body, even if it's merely empty
+        }
+};
+</pre>
+
+Note that to call a particular parent class constructor, you just need to use
+the name of the class (it's as though you're making a function call to the
+constructor).
+
+<br><br>
+For instance, in our above example, if Foo's constructor took an integer as an
+argument, we could do this:
+
+<pre class="example">
+#include &lt;iostream&gt;
+class Foo
+{
+        public:
+        Foo( int x ) 
+        {
+                std::cout &lt;&lt; "Foo's constructor " 
+                          &lt;&lt; "called with " 
+                          &lt;&lt; x 
+                          &lt;&lt; std::endl; 
+        }
+};
+
+class Bar : public Foo
+{
+        public:
+        Bar() : Foo( 10 )  // construct the Foo part of Bar
+        { 
+                std::cout &lt;&lt; "Bar's constructor" &lt;&lt; std::endl; 
+        }
+};
+
+int main()
+{
+        Bar stool;
+}
+</pre>
+
+<h2>Using Initialization Lists to Initialize Fields</h2> 
+
+In addition to letting you pick which constructor of the parent class gets
+called, the initialization list also lets you specify which constructor gets
+called for the objects that are fields of the class.  For instance, if you
+have a string inside your class:
+
+<pre class="example">
+class Qux
+{
+        public:
+                Qux() : _foo( "initialize foo to this!" ) { }
+                // This is nearly equivalent to 
+                // Qux() { _foo = "initialize foo to this!"; }
+                // but without the extra call to construct an empty string
+
+        private:
+        std::string _foo;
+};
+</pre>
+
+Here, the constructor is invoked by giving the name of the object to be
+constructed rather than the name of the class (as in the case of using
+initialization lists to call the parent class's constructor).
+
+<br><br>
+If you have multiple fields of a class, then the names of the objects being
+initialized should appear in the order they are declared in the class (and
+after any parent class constructor call):
+
+<pre class="example">
+class Baz
+{
+        public:
+                Baz() : _foo( "initialize foo first" ), _bar( "then bar" ) { }
+
+        private:
+        std::string _foo;
+        std::string _bar;
+};
+</pre>
+
+<h3>Initialization Lists and Scope Issues</h3>
+
+If you have a field of your class that is the same name as the argument to
+your constructor, then the initialization list "does the right thing." For
+instance,
+<pre class="example">
+class Baz
+{
+        public:
+                Baz( std::string foo ) : foo( foo ) { }
+        private:
+            std::string foo;
+};
+</pre>
+
+is roughly equivalent to
+
+<pre class="example">
+class Baz
+{
+        public:
+                Baz( std::string foo )
+                {
+                    this-&gt;foo = foo;
+                }
+        private:
+            std::string foo;
+};
+</pre>
+
+That is, the compiler knows which foo belongs to the object, and which foo
+belongs to the function.
+
+<h3>Initialization Lists and Primitive Types</h3>
+
+It turns out that initialization lists work to initialize both user-defined
+types (objects of classes) and primitive types (e.g., int).  When the field is
+a primitive type, giving it an argument is equivalent to assignment.  For
+instance,
+
+<pre class="example">
+class Quux
+{
+        public:
+                Quux() : _my_int( 5 )  // sets _my_int to 5
+                { }
+
+        private:
+                int _my_int;
+};
+</pre>
+
+This behavior allows you to specify templates where the templated type can be
+either a class or a primitive type (otherwise, you would have to have different
+ways of handling initializing fields of the templated type for the case of
+classes and objects). 
+
+<pre class="example">
+template &lt;class T&gt;
+class my_template
+{
+        public:
+                // works as long as T has a copy constructor
+                my_template( T bar ) : _bar( bar ) { }
+
+        private:
+                T _bar;
+};
+</pre>
+
+<h3>Initialization Lists and Const Fields</h3>
+
+Using initialization lists to initialize fields is not always necessary
+(although it is probably more convenient than other approaches).  But it is
+necessary for <a href="const_correctness.html">const</a>
+fields.  If you have a const field, then it can be initialized only once, so it
+must be initialized in the initialization list.
+
+<pre class="example">
+class const_field
+{
+        public:
+                const_field() : _constant( 1 ) { }
+                // this is an error: const_field() { _constant = 1; } 
+
+        private:
+                const int _constant;
+};
+</pre>
+
+<h3>When Else do you Need Initialization Lists?</h3>
+
+<h4>No Default Constructor</h4>
+
+If you have a field that has no default constructor (or a parent class
+with no default constructor), you must specify which constructor you wish to
+use.
+
+<h4>References</h4>
+
+If you have a field that is a reference, you also must initialize it in the
+initialization list; since references are immutable they can be initialized
+only once.
+ 
+<h2>Initialization Lists and Exceptions</h2>
+
+Since constructors can throw exceptions, it's possible that you might want to
+be able to handle exceptions that are thrown by constructors invoked as part of
+the initialization list.
+
+<br><br>
+First, you should know that even if you catch the exception, it will get
+rethrown because it cannot be guaranteed that your object is in a valid state
+because one of its fields (or parts of its parent class) couldn't be
+initialized.  That said, one reason you'd want to catch an exception here is
+that there's some kind of translation of error messages that needs to be done.
+
+<br><br>
+The syntax for catching an exception in an initialization list is somewhat awkward: the 'try' goes right before the colon, and the catch goes after the body of the function:
+
+<pre class="example">
+class Foo
+{
+        Foo() try : _str( "text of string" ) 
+        { 
+        } 
+        catch ( ... ) 
+        { 
+                std::cerr &lt;&lt; "Couldn't create _str";
+                // now, the exception is rethrown as if we'd written
+                // "throw;" here
+        }
+};
+</pre>
+
+<h2>Initialization Lists: Summary</h2>
+
+Before the body of the constructor is run, all of the constructors for its
+parent class and then for its fields are invoked.  By default, the no-argument
+constructors are invoked.  Initialization lists allow you to choose which constructor is called and what arguments that constructor receives.
+
+<p>If you have a reference or a const field, or if one of the classes used does not
+have a default constructor, you must use an initialization list.</p>
+
+
+<br><a href="class_design.html">Previous: C++ Class Design</a>
+<br><a href="templates.html">Next: Templates in C++</a>
+<br><a href="c%2b%2b-tutorial.html">Back to C++ Tutorial Index</a>
+
+<hr>
+<b>Related articles</b><br><br><a href="lesson20.html">Inheritance in
+C++</a><br><a href="constructor_destructor_ordering.html">Constructors
+and Destructors in C++</a>
+<br><br><a href="class_design.html">C++ Class Design
+Tips</a>
+
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/initialization-lists-c++.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:47 GMT -->
+</html>
+
+
+

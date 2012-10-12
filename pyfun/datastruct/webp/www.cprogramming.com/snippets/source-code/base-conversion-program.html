@@ -1,0 +1,480 @@
+
+<html>
+ 
+<!-- Mirrored from www.cprogramming.com/snippets/source-code/base-conversion-program by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:37:50 GMT -->
+<head>
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+ <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+ <!--[if IE]>
+     <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+ <![endif]-->
+ 
+ <link href="http://static.cprogramming.com/syntax-highlight/styles/shCore.css" rel="stylesheet" type="text/css" />
+ <link href="http://static.cprogramming.com/syntax-highlight/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+ 
+ 
+ 
+ <META NAME="Description" CONTENT="Conversions between number systems source code">
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <title>Conversions between number systems source code - Cprogramming.com</title>
+ 
+ <!-- ADDED DFP -->
+ <script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+ </script>
+ <script type='text/javascript'>
+ GS_googleAddAdSenseService("ca-pub-2560316224908115");
+ GS_googleEnableAllServices();
+ </script>
+ <script type='text/javascript'>
+ GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+ GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+ 
+ </script>
+ <script type='text/javascript'>
+ GA_googleFetchAds();
+ </script>
+ <!-- END ADDED DFP -->
+ 
+ 
+ <script type="text/javascript">
+ 
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-7820175-1']);
+   _gaq.push(['_setDomainName', '.cprogramming.com']);
+   _gaq.push(['_setAllowLinker', true]);
+   _gaq.push(['_trackPageview']);
+ 
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ 
+ </script>
+ 
+ 
+ </head>
+ 
+ <?php flush(); ?>
+ 
+ <body>
+ <div>
+ 
+ <a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+ 
+ <table class="line noprint"><tr><td></td></tr></table>
+ <div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+ <!-- SiteSearch Google -->
+ <form action="http://www.google.com/cse" id="cse-search-box">
+   <div>
+     <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+     <input type="hidden" name="ie" value="ISO-8859-1" />
+     <input type="text" name="q" size="31" />
+     <input type="submit" name="sa" value="Search" />
+   </div>
+ </form>
+ <script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+ <!-- SiteSearch Google -->
+ </div>
+ <div>
+   <table class="main">
+     <tr>
+ 
+   	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+   		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+   	   <center>
+     	<div class="leaderboard">
+ 
+ <!-- ADDED DFP -->
+ <!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+ <script type='text/javascript'>
+ GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+ </script>
+ <!-- END ADDED DFP -->
+ 
+ </div>
+ 		</center>
+ 		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+   	</td>
+         
+   </tr>
+ 
+   <tr>
+ 
+      <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+      <div class="menu" valign="top" style="font-size:14px;width:200px">
+      <p class="navcategory" align="left">
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+              <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+              <a href="../../begin.html">Get Started with C or C++</a><br>
+              <a href="../../compilers.html">Getting a Compiler</a><br>
+              <a href="../../books.html">Book Recommendations</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href=../../tutorial/c-tutorial.html>C Tutorial</a><br>
+             <a href=../../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+             <a href=../../java-programming.html>Java Tutorial</a><br>
+             <a href=../../game-programming.html>Game Programming</a><br>
+             <a href=../../graphics-programming.html>Graphics Programming</a><br>
+             <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+             <a href=../../debuggers.html>Debugging</a><br>
+             <a href="../../tutorial.html">All Tutorials</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../challenge.html">Practice Problems</a><br>
+             <a href="../../quiz/index.html">Quizzes</a><br>
+      </p>
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+             <a href=../index.html>Source Code Snippets</a><br>
+             <a href="../../tips/index.html">C and C++ Tips</a><br>
+             <a href=../../jobs/index.html>Finding a Job</a>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../function.html">Function Reference</a><br>
+             <a href="../../reference/index.html">Syntax Reference</a><br>
+             <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+             <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+              <a href="../../board.html">Message Board</a><br>
+              <a href="../../expert.html">Ask an Expert</a><br>
+              <a href="../../email.html">Email</a><br>
+              <a href="../../about.html">About Us</a>
+      </p>
+      </div>
+ 
+ <center>
+       <br><br>
+      <script type="text/javascript"><!--
+      google_ad_client = "pub-2560316224908115";
+      google_ad_width = 120;
+      google_ad_height = 90;
+      google_ad_format = "120x90_0ads_al";
+      google_ad_channel ="0800879710";
+      google_color_border = "EBEBEB";
+      google_color_bg = "EBEBEB";
+      google_color_link = "C30000";
+      google_color_url = "C30000";
+      google_color_text = "000000";
+      //--></script>
+      <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+ </center>
+ 
+ 
+ 
+     </td>
+ 	<td class="content" valign="top">
+ 
+     			<div class="content2">
+ 
+ <h1>Conversions between number systems source code</h1>
+ 
+ 
+ 
+This snippet submitted by Ali Murad on 2012-05-02.  It has been viewed 1475 times.
+<br>Rating of 9.0 with 4 votes<br><br>
+<pre class="brush: cpp; toolbar: false">//General purpose converter program for conversion between any two number systems.//As long as there is more than one number system in use, conversion of//numbers from one system to another is important.//By this program you can convert number systems with radix more than 16 also.#include &lt;iostream&gt;#include &lt;string.h&gt;using namespace std;char* low_upper(char* in){    for( int i = 0 ; in[i] != '\0' ; i++)         if( in[i] &gt;= 'a' && in[i] &lt;= 'z' )          in[i] = in[i] - 32;             return in;}double convx_d( char* , int );char* convd_x(double , int, char );int main(){    int i_radix,o_radix;    double dx;    char cx;    char in[65] = {"\n"};    char out[65] = {"\n"};    char rad_name[16][14] = {"Unary","Binary","Ternary","Quaternary","Quinary","Senary",                            "Septal","Octal","Nonary","Decimal","Undecimal","Duodecimal",                            "triskadecimal","Tetradecimal","pentadecimal","Hexadecimal"};            in[0] = '\0';            out[0] = '\0';    cout &lt;&lt; "To EXIT press Ctrl+z : " &lt;&lt; endl;    cout &lt;&lt; "Enter Radix for the input number system: ";    while (cin &gt;&gt; i_radix)    {            cout &lt;&lt; "Enter Radix for the output number system: ";            cin &gt;&gt; o_radix;            cout &lt;&lt; "Enter the number: ";            cin &gt;&gt; in;           if( i_radix &gt; 10)              strcpy( in , low_upper(in));          dx = convx_d( in , i_radix);            if( in[0] == '-')               cx = '-';            else               cx = '0';           strcpy(out, convd_x(dx, o_radix, cx));                cout &lt;&lt; "\nThe number (" &lt;&lt; in &lt;&lt; ") in " &lt;&lt; rad_name[i_radix-1] &lt;&lt; " number system";                cout &lt;&lt; "\n = (" &lt;&lt; out &lt;&lt; ") in " &lt;&lt; rad_name[o_radix-1] &lt;&lt; " number system.";                cout &lt;&lt; "\n\nTo EXIT press Ctrl+z : ";                cout &lt;&lt; "\nEnter Radix number for the input number: ";                in[0] = '\0';                out[0] = '\0';     }    return 0;}double convx_d(char* in , int r){    int i = 0 ,j;    long lx = 0;    double dx = 0.0;    if(in[0] == '-')        i++;            while(in[i] != '\0' && in[i] != '.')            {                lx = lx * r + ((in[i] &gt;= '0' && in[i] &lt;= '9')? in[i] - 48 : in[i] - 55);                i++;            }            if( in[i] == '.')            {               j = i;               while( in[i] != '\0')//count number of steps after decimal point                   {                       i++;                   }                    i--;                    double ir = (double) r;                while( i &gt; j)                    {                       dx =  (dx + ((in[i] &gt;= '0' && in[i] &lt;= '9')? in[i] - 48 : in[i] - 55)) * 1.0/ir;                        i--;                    }            }            return dx += lx;}char* convd_x( double dx , int r, char cx){    int i = 0,j ,temp;    double fx;    char ctemp[65] ={"\n"};    char out[65] = {"\n"};    long lx = static_cast&lt;long&gt;(dx);          dx -= lx;//                   calculation of integer part.//***************************************************************          while( lx &gt; 0)            {                temp = lx % r;                ctemp[i] = (temp &gt;= 0 && temp &lt;= 9 )? temp + 48 : temp + 55;                lx /= r;                i++;            }              ctemp[i] = '\0';                i--;                j = 0;             if( cx == '-')                 {                   out[j] = '-';                   j++;                 }              for(  ;  i &gt;=0 ; i--, j++ )                   out[j] = ctemp[i];                   out[j] = '\0';//                   calculation of fraction part.//***************************************************************             if( dx &gt; 0.0)                {                      out[j] = '.';                      j++;                      i = j;                    while( dx &gt; 0.0000001 && j &lt; i+9)                        {                           fx = dx * r;                           temp = static_cast&lt;int&gt;(fx);                           ctemp[j] = ((temp &gt;= 0 && temp &lt;= 9 )? temp + 48 : temp + 55);                            dx = fx - temp;                               j++;                        }                    for(  ;  i &lt;= j ; i++ )                       out[i] = ctemp[i];                        out[i] = '\0';                 }           return out;}/*Program's output*******************************************To EXIT press Ctrl+z :Enter Radix for the input number system: 16Enter Radix for the output number system: 10Enter the number: cd56.8The number (CD56.8) in Hexadecimal number system = (52566.5) in Decimal number system.To EXIT press Ctrl+z :Enter Radix number for the input number: 8Enter Radix for the output number system: 16Enter the number: -723.56The number (-723.56) in Octal number system = (-1D3.B8) in Hexadecimal number system.To EXIT press Ctrl+z :Enter Radix number for the input number: 16Enter Radix for the output number system: 8Enter the number: -1d3.b8The number (-1D3.B8) in Hexadecimal number system = (-723.56) in Octal number system.To EXIT press Ctrl+z :Enter Radix number for the input number: ^ZProcess returned 0 (0x0)   execution time : 92.999 sPress any key to continue.*/</pre>
+<br><br>
+<form method=post name=rate><input type=hidden name=tip value='base-conversion-program'>
+<select name=rating onChange='javascript:rate.submit()'>
+<option value=10>10</option>
+<option value=9>9</option>
+<option value=8>8</option>
+<option value=7>7</option>
+<option value=6>6</option>
+<option value=5>5</option>
+<option value=4>4</option><option value=3>3</option><option value=2>2</option><option
+value=1>1</option></select><input type=submit value='Rate it'>
+</form>
+
+<br><br>
+<b><a href=../index.html>More C and C++ source code snippets</a></b><br>
+<br>
+<a href=../add.html>Add a snippet!</a>
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../../tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=../../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../../tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../../tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../../tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../../tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../../tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../../tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../../tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../tutorial/game_programming/same_game_part1.html>
+                    <img src=../../tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/snippets/source-code/base-conversion-program by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:37:50 GMT -->
+</html>
+
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shBrushCpp.js"></script>
+<script type="text/javascript">
+         SyntaxHighlighter.all();
+</script>
+
+
+

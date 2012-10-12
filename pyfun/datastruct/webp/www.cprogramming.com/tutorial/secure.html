@@ -1,0 +1,659 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/secure.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:02 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, computer programming, programming computers, how to program computers">
+<META NAME="Description" CONTENT="Learn how to write better code and protect against viruses and hackers.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Writing Secure Code in C - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Writing Secure Code</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+Writing secure code is a big deal.  There are a lot of viruses in the world,
+and a lot of them rely on exploits in poorly coded programs.  Sometimes the
+solution is just to use a safer language -- Java, for instance -- that
+typically runs code in a protected environment (for instance, the Java Virtual
+Machine).  But this isn't always the best option -- if you need top performance, for example, 
+or if you're working on legacy code written in C or C++.  And you need to be
+aware of the issues involved in writing unexploitable code.
+<br><br>
+Two common attacks are buffer overflows and the double free attack.  Since I'm
+not out to write a how-to on cracking security, I won't cover the details of exploiting
+these attacks any more than you need to know to avoid them.  Instead, I'll
+talk about practices you can use to prevent them.
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+<h2>Buffer Overflows - Smashing the Stack</h2>
+
+A buffer overflow occurs when you allow the user to enter more data than your
+program was expecting, thereby allowing arbitrary modifications to memory.
+Due to the way the stack is set up, an attacker can write arbitrary code into
+memory.  This is how the Morris Worm worked, and it's how thousands of
+exploits since have worked.
+<br><br>
+When functions are called, both the memory to store the variables declared in the function and the memory to store the arguments to the function are pushed
+onto the stack as part of a "stack frame".
+<br><br>
+Here is a rough picture of what the stack frame would look like for a function
+call: 
+<pre class="example">
+[memory for variables in the function][FP][ret][function arguments]
+</pre>
+
+First, memory is allocated for variables declared in the function.  Then the
+frame pointer, FP, which is used to address variables within the stack frame,
+then the address to return to after the function call, ret, followed by the
+arguments to the function.
+<br><br>
+The gist of this attack is that on the stack, for every function call, the ret
+pointer indicates where in memory to jump once the function has finished
+executing.  In normal execution, this should be back to the calling
+function.  However, in some cases, if the program allows overflowing the
+buffer stored in the memory allocated for the function, it's possible for an
+attacker to set this value to point to an arbitrary region of memory into
+which the attacker has written executable code.  (Often, this will actually be
+the buffer itself.)
+
+<h2>How can a buffer overflow attack happen?</h2>
+
+When you declare arrays in C or C++, you get a specified amount of memory 
+to work with.  This memory, on many systems, is placed before the pointer to the return site (where the function should return to after executing).
+<br><br>
+For instance, you might declare an array of 100 bytes:
+
+<pre class="example">
+char memory[100];
+</pre>
+This is all well and good.  But what if you really wanted to use 200 bytes?
+<br><br>
+C will let you:
+<pre class="example">
+
+memory[150] = 'a';
+</pre>
+There aren't bounds checks on the array, and the code might even
+work.  (At least in some cases, you'll get a segmentation fault, but this will
+depend on whether or not the memory you're accessing belongs to your program
+or not.  You might just overwrite other data in your portion of the stack.)
+<br><br>
+But you know not to just play with memory you haven't asked for, so you
+probably won't do things quite like that.  Generally, what happens is that a
+function you call will overwrite the memory instead.
+<br><br>
+You might use a function such as gets() or strcpy that isn't aware of how
+much memory you asked for, and consequently, how large an array you have space
+for.  This is particularly a problem for standard library functions that work
+on NULL-terminated strings such as strcpy, strcat, etc.  Since they rely on
+finding a terminating character, if the string being worked with is too long,
+they'll happily overwrite the end of the buffer, and if you had declared the
+memory as an array, you might end up overwriting data on the stack.  This is
+what is referred to as "smashing the stack".
+<br><br>
+Other dangerous functions include scanf and sprintf for similar reasons as
+gets.
+<br><br>
+What should you use instead?  In place of gets() or using scanf to read in a
+string, use fgets()
+
+<pre class="example">
+char *fgets(char *buffer, int size, FILE *stream);
+</pre>
+fgets takes a size -- make this the size of your buffer and it will read in up
+to size bytes into buffer from the file pointed to by stream.  So, if you want
+to read from standard input (stdin) in order to replace gets:
+
+<pre class="example">
+char buffer[10];
+fgets(buffer, sizeof(buffer), stdin);
+</pre>
+This will allow the user to input up to 10 bytes for use in buffer.  It will,
+however, add a '\0' terminator to buffer.  Doing so would, of course, write
+off the end of the array.  This means that you have to add the NULL
+terminator manually if you want to use functions such as printf that rely on
+it. 
+<br><br>
+Note that sizeof(buffer) works because buffer is an array; you cannot do the
+same thing using a char* that you dynamically allocate using malloc or new.
+<br><br>
+In place of strcpy or strcat, use the corresponding str<b>n</b>cpy or
+str<b>n</b>cat functions that take the length of data to be copied.
+
+<pre class="example">
+char *strncpy(char *destination, const char *source, size_t n);
+</pre>
+Using strncpy will result in at most n bytes being copied from source to
+destination, and strncpy will return a pointer to destination.  For instance, if you know that destination can hold only 20
+characters:
+
+<pre class="example">
+char destination[20];
+char *source = "This is a particularly long string";
+strncpy(destination, source, sizeof(destination));
+</pre>
+This will copy only as much of source as can fit in destination and return a
+pointer to destination.  You should be aware that strncpy will not
+automatically append a null terminator, which means that you can go from a
+regular, null-terminated string to a non-null-terminated string if you try to
+copy a string that won't fit into the destination.
+
+<pre class="example">
+char *strncat(char *destination, const char *source, size_t n);
+</pre>
+The strncat function copies up to n characters from source onto the end of
+destination, starting from the null-terminator character of destination.
+Again, if you run out of space in destination before reaching the end of
+source, you won't get a null-terminated string back.
+
+And, to replace sprintf, you can use snprintf
+<pre class="example">
+int snprintf(char *destination, size_t n, const char *format, ...);
+</pre>
+which will only write a string of n bytes into the memory pointed to by
+destination, protecting you from an attacker's writing arbitrary data into your
+string when you do something like
+<pre class="example">
+sprintf(dest, "The user entered: %s", user_input_string);
+</pre>
+which allows the result stored in dest to be as long as is necessary to store
+the user_input_string.
+<br><br>
+Although we've only looked at examples where the size of memory was allocated
+at compile time, and consequently ended up on the stack, similar problems
+apply to memory allocated during program execution.  Although I don't know of
+a way an attacker would be able to change the flow of control by modifying
+memory allocated on the heap, simply by changing variables an attacker could
+cause problems (imagine having a username field that your program uses for
+access control, and that an attacker can find a way to change that memory).
+
+<h2>Double Free Attack</h2>
+
+Another, more sophisticated attack, is the double free attack that affects
+some implementations of malloc.  The attack can happen when you call free on a
+pointer that has already been freed before you have re-initialized the pointer
+with a new memory address:
+<pre class="example">
+free(x);
+/* code */
+free(x);
+</pre>
+This shouldn't ever need to happen in your code.  The easiest way to avoid it
+is simply to set your pointer to point to NULL once you've freed it:
+<pre class="example">
+free(x); x = NULL;
+/* code */
+free(x);
+</pre>
+
+Since free(NULL) is a valid operation that doesn't do anything, you're safe.
+Of course, this doesn't protect you from code that frees memory without
+telling you (or without making it obvious that memory is getting freed).  One
+way of detecting these types of problems is to use a memory error detector
+such Valgrind to ensure that you only execute valid operations.  (Valgrind
+will also detect use of initialized memory, use of invalid memory such as is
+the case with buffer overflows, and memory leaks.)  Since the double free
+problem is one that should show up more or less regardless of user input --
+you don't need a malicious attempt to overflow the buffer to test for double
+frees -- <a href="../debugging/valgrind.html">Valgrind</a> is a good tool for finding these bugs.  Of course, this
+isn't always the case.  For instance, a double free vulnerability in the <a href="http://www.cert.org/advisories/CA-2002-07.html">zlib library (CERT
+Advisory)</a> required a certain type of user input to even cause free to be
+called twice on the same memory.
+<br><br>
+This bug is harder to exploit than potential buffer overflows, and it also
+relies on a particular implementation of the memory allocation system.
+Nevertheless, it's important to ensure that your code correctly frees only
+valid blocks of memory.
+<!-- removed chitika -->
+ 
+<hr>
+<b>Related articles<br><br><a href="../debugging/segfaults.html">Learn more about
+pointer errors</a>
+<br><br><a href="../debugging/valgrind.html">Hunting memory
+leaks with Valgrind</a>
+</b>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/secure.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:02 GMT -->
+</html>
+
+
+

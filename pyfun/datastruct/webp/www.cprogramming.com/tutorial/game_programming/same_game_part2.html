@@ -1,0 +1,649 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part2.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:48 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, game programming, MFC game programming, MFC programming, C++ MFC">
+<META NAME="Description" CONTENT="A step-by-step guide for creating a game from scratch.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Same Game - Creating a Playable Game using Event Driven Programming in MFC - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1><img src="same_game_small.png" width="42" height="42">"The Same Game", Part 2 of 5: Creating a Playable Game</h1>
+
+
+
+By: Ben Marchant
+
+<h2>Creating a Playable Game</h2>
+
+<p>By the end of this article we will have a "playable" version of the SameGame.  I have playable in quotes because we will have the game in a state the will allow the player to click to remove blocks and end the game when there are no more valid moves left.  The game won't be very feature-rich but will be playable.  In the remaining articles we'll add more features to increase the difficulty and allow the game to be customized a little.</p>
+
+          <center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<p>As for this article we'll be looking into event driven programming and how to get our game to respond to mouse clicks.  Once we can respond to clicks we'll discuss the algorithm we'll use to remove the blocks and finally, how to tell when the game is over.</p>
+
+<h2>Event Driven Programming</h2>
+
+<p>Event driven programming, if you've never done it before, is a complete paradigm change in programming.  If this isn't your first encounter with event driven programming then go ahead and skip to the next section.</p>
+
+<p>Up till now you've probably only written procedural programs in C++.  The difference between the two types of programming paradigms is that the flow of control in event driven programming is determined by events not a predetermined set of steps.  It is a reactive program.  The user does something like click on a button and the program reacts to that event by executing some code.  The main loop in an event driven program simply waits for an event to happen then calls the appropriate event handler and goes back to wait for another event.  An event handler is a piece of code that is called each time a specific event happens.</p>
+
+<h3>Mouse Clicks</h3>
+
+<p>The MFC library is inherently event driven and therefore makes it pretty easy for us to create event handlers and respond to any event that we want.  To set up event handling in MFC, Visual Studio lists all of the messages that are available to respond to.  In this case messages are synonymous with events.  All of the Windows messages are constants that start with WM_ followed by the message name.  To respond to mouse clicks in the client area of the view there are messages for the left, right and middle mouse buttons.  The event that we will use is the WM_LBUTTONDOWN.  This message is sent by the MFC framework every time the user clicks the left mouse button down.  All we need to do is set up an event handler to listen for this message to be sent and then respond.  To add an event handler open up the Properties Window from the CSameGameView header file.  Do this by pressing Alt+Enter or from the menu View-&gt;Other Windows-&gt;Properties Window.  Below is what you'll see in the properties window. (If it isn't, make sure your cursor is placed within the class declaration inside the SameGameView.h file.)</p>
+
+<img src="properties_mouse.png"><p>In the screenshot my cursor is hovering over the "Messages" section, click on it.  Look for the WM_LBUTTONDOWN option, click on it, click the dropdown as shown in the screenshot below and select "&lt;Add&gt; OnLButtonDown".</p>
+
+<img src="properties_mouse_zoom.png"><p>This will add the OnLButtonDown event handler to your view with some default code in it to call the CView implementation of the function.  Here we'll add the following code to the function body (changes in bold)  Note that this code won't yet compile, but we'll get to that shortly. That's OK to do&#8212;the code won't compile, but it lets us figure out what needs to be done to make this function work, without worrying yet about how to write the other functions we will rely on.</p>
+
+<p>Please do wait to compile the resulting code until you've finished the article, since the changes will cascade; as we go through how to implement each of the functions we need, we'll discover we need more functions. But eventually we'll get through all of them.</p>
+
+<pre class="example">
+void CSameGameView::OnLButtonDown(UINT nFlags, CPoint point)
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Get the row and column of the block that was clicked on
+  int row = point.y / pDoc-&gt;GetHeight();
+  int col = point.x / pDoc-&gt;GetWidth();
+  //  Delete the blocks from the document
+  int count = pDoc-&gt;DeleteBlocks(row, col);
+  //  Check if there were any blocks deleted
+  if(count &gt; 0)
+  {
+    //  Force the view to redraw
+    Invalidate();
+    UpdateWindow();
+    //  Check if the game is over
+    if(pDoc-&gt;IsGameOver())
+    {
+      //  Get the count remaining
+      int remaining = pDoc-&gt;GetRemainingCount();
+      CString message;
+      message.Format(_T("No more moves left\nBlocks remaining: %d"),
+        remaining);
+      //  Display the results to the user
+      MessageBox(message, _T("Game Over"), MB_OK | MB_ICONINFORMATION);
+    }
+  }
+  //  Default OnLButtonDown
+  CView::OnLButtonDown(nFlags, point);
+}
+</pre>
+
+<p>The two arguments to the function are an integer of bit-flags which can be ignored and a CPoint object.  The CPoint object contains the (x, y) coordinate of where the mouse was clicked within your view.  We'll use this to figure out which block they clicked.  The first few lines of code are familiar to us by now; we are just getting a valid pointer to the document.  To find the row and column of the block that was clicked we use some simple integer math and divide the x coordinate by the width of a block and the y by the height. </p>
+
+<pre class="example">
+//  Get the row and column of the block that was clicked on
+  int row = point.y / pDoc-&gt;GetHeight();
+  int col = point.x / pDoc-&gt;GetWidth();
+</pre>
+
+<p>Since we are using integer division the result is the exact row and column the user clicked on.</p>
+
+<p>Once we have the row and column we will call a function, DeleteBlocks (we'll add it next) on the document to delete the adjacent blocks.  This function will return the number of blocks that it deleted.  If none are deleted then the function essentially ends.  If there were blocks deleted then we need to force the view to redraw itself now that we've changed the game board.  The function call Invalidate() signals to the view that the whole client area needs to be redrawn and UpdateWindow() does that redraw.</p>
+
+<pre class="example">
+  int count = pDoc-&gt;DeleteBlocks(row, col);
+  //  Check if there were any blocks deleted
+  if(count &gt; 0)
+  {
+    //  Force the view to redraw
+    Invalidate();
+    UpdateWindow();
+    // ...
+  }
+}
+</pre>
+
+<p>Now that the board has been updated and redrawn we test if the game is over.  In the section entitled "Finishing Condition" we'll go over exactly how we can tell if the game is over.  For now we'll just add a call to it.  </p>
+
+<pre class="example">
+if(pDoc-&gt;IsGameOver())
+{
+  //  Get the count remaining
+  int remaining = pDoc-&gt;GetRemainingCount();
+  CString message;
+  message.Format(_T("No more moves left\nBlocks remaining: %d"),
+    remaining);
+  //  Display the results to the user
+  MessageBox(message, _T("Game Over"), MB_OK | MB_ICONINFORMATION);
+}
+</pre>
+
+<p>If the game is over we get the number of blocks remaining on the board and report that to the user.  We create a CString object which is MFC's string class and call its built-in format method.  The format method behaves just like sprintf().  Here we use the MFC _T() macro to allow for different kinds of strings (i.e. ASCII or wide character formats).  We finally call the MessageBox() function that displays a small dialog with the title "Game Over" and the message that we created using the format method.  The dialog has an OK button (MB_OK) and an information icon (MB_ICONINFORMATION).</p>
+
+<p>Now that this event handler is in place we need to implement the three functions on the document that we called, IsGameOver, DeleteBlocks and GetRemainingCount.  These functions are just simple wrappers for the same functions on the game board.  So they can just be added to the header file for the document just after the DeleteBoard function, like the following.</p>
+
+<pre class="example">
+  bool IsGameOver()       { return m_board.IsGameOver(); }
+  int DeleteBlocks(int row, int col)
+  { return m_board.DeleteBlocks(row, col); }
+  int GetRemainingCount()
+  { return m_board.GetRemainingCount(); }
+</pre>
+
+<p>Once we have added these wrapper functions to the document it is time to modify the game board to take care of these operations.  In the header file for the game board add the following public methods (again put them right below the DeleteBoard function).</p>
+
+<pre class="example">
+  /*  Is the game over? */
+  bool IsGameOver(void) const;
+  /*  Get the number of blocks remaining */
+  int GetRemainingCount(void) const { return m_nRemaining; }
+  /*  Function to delete all adjacent blocks */
+  int DeleteBlocks(int row, int col);
+</pre>
+
+<p>Two of the functions are fairly complex and will require quite a bit of code but the GetRemainingCount function simply returns the count of remaining blocks. We'll store that count a member variable called m_nRemaining.  We need to add this to the game board in the private member section of the class.</p>
+
+<pre class="example">
+  /*  Number of blocks remaining */
+  int m_nRemaining;
+</pre>
+
+<p>Since we are adding another data member to our class we need to initialize it in the constructor like so (changes <b>bolded</b>).</p>
+
+<pre class="example">
+CSameGameBoard::CSameGameBoard(void)
+: m_arrBoard(NULL),
+  m_nColumns(15), m_nRows(15),
+  m_nHeight(35),  m_nWidth(35), // &lt;-- don't forget the comma!
+  <b>m_nRemaining(0)</b>
+{
+  m_arrColors[0] = RGB(  0,  0,  0);
+  m_arrColors[1] = RGB(255,  0,  0);
+  m_arrColors[2] = RGB(255,255, 64);
+  m_arrColors[3] = RGB(  0,  0,255);
+  //  Create and setup the board
+  SetupBoard();
+}
+</pre>
+
+<p>We also need to update the count of remaining blocks in the SetupBoard method (changes <b>bolded</b>):</p>
+
+<pre class="example">
+void CSameGameBoard::SetupBoard(void)
+{
+  //  Create the board if needed
+  if(m_arrBoard == NULL)
+    CreateBoard();
+  //  Randomly set each square to a color
+  for(int row = 0; row &lt; m_nRows; row++)
+    for(int col = 0; col &lt; m_nColumns; col++)
+      m_arrBoard[row][col] = (rand() % 3) + 1;
+  //  Set the number of spaces remaining
+  <b>m_nRemaining = m_nRows * m_nColumns;</b>
+}
+</pre>
+
+<p>Deleting blocks from the board is a two step process.  First we change all of the same colored, adjacent blocks to the background color, in essence deleting them, and then we have to move the above blocks down and the blocks to the right, left.  We call this compacting the board.</p>
+
+<p>Deleting blocks is a prime candidate for the use of recursion.  We'll create a recursive helper function called DeleteNeighborBlocks that is private that will do the bulk of the work of deleting blocks.  In the private section of the class right after the CreateBoard() function add the following.</p>
+
+<pre class="example">
+  /*  Direction enumeration for deleting blocks */
+  enum Direction
+  {
+    DIRECTION_UP,
+    DIRECTION_DOWN,
+    DIRECTION_LEFT,
+    DIRECTION_RIGHT
+  };
+  /*  Recursive helper function for deleting blocks */
+  int DeleteNeighborBlocks(int row, int col, int color,
+                           Direction direction);
+  /*  Function to compact the board after blocks are eliminated */
+  void CompactBoard(void);
+</pre>
+
+<p>We will use the enumeration for direction in the recursive helper function
+that will keep us from trying to recurse back to the block we just came from.
+Next up is actually implementing the DeleteBlocks algorithm!</p>
+
+<b><a href="same_game_part2_p2.html">Continue to page 2: Implementing the Algorithm for Deleting Blocks</a></b>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=same_game_part1.html>
+                    <img src=same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part2.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:48 GMT -->
+</html>
+
+
+

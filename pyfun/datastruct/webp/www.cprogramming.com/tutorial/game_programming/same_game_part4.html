@@ -1,0 +1,751 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part4.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:50 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, game programming, MFC game programming, MFC programming, C++ MFC">
+<META NAME="Description" CONTENT="A step-by-step guide for creating a game from scratch.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Same Game - Adjusting Board Size and Block Count - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1><img src="same_game_small.png" width="42" height="42">"The Same Game", Part 4 of 5: Adjusting Board Size and Block Count</h1>
+
+
+
+By Ben Marchant
+
+<h2>Introduction</h2>
+
+<p>Our version of the SameGame is really taking shape.  We have a game that can be played from start to finish in five different levels of difficulty.  In this article we'll be adding more options to customize the game play.  We'll add the ability for the user to adjust the size of the blocks and the number of blocks on the game board.  In order to get these values from the user we'll create a dialog box to prompt them for input.</p>
+
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+</center>
+<h2>Adjusting the Size and Block Count</h2>
+
+<p>The first step is to update the game board and document classes to be able to adjust these options.  Starting with the game board we'll make some very minor adjustments to the header file only.  We already have "getter" functions in the game board class to get the values of the width and height of the blocks in pixels and the number of rows and columns on the board.  Now we'll add "setter" functions to set these values.  Update the accessor function area in the game board class in SameGameBoard.h to look like the following (changes <b>bolded</b>).</p>
+
+<pre class="example">
+/*  Accessor functions to get/set board size information */
+int GetWidth(void) const { return m_nWidth; }
+<b>void SetWidth(int nWidth)
+{ m_nWidth = (nWidth &gt;= 3) ? nWidth : 3; }</b>
+int GetHeight(void) const { return m_nHeight; }
+<b>void SetHeight(int nHeight)
+{ m_nHeight = (nHeight &gt;= 3) ? nHeight : 3; }</b>
+int GetColumns(void) const { return m_nColumns; }
+<b>void SetColumns(int nColumns)
+{ m_nColumns = (nColumns &gt;= 5) ? nColumns : 5; }</b>
+int GetRows(void) const { return m_nRows; }
+<b>void SetRows(int nRows)
+{ m_nRows = (nRows &gt;= 5) ? nRows : 5; }</b>
+</pre>
+
+<p>I've added the set functions right after the get functions for easier reading and comprehension of the class.  The functions are fairly simple.  We use a simple test on each of the values to make sure that they don't go below a specified value, three for the pixel height/width and five for the row/column values.  Numbers smaller than these will mess up the aesthetics of our game board.</p>
+
+<p>Next we update the document in a similar fashion adding "setter" functions to go along with our "getters".  These functions are added to the SameGameDoc.h header file just like the game board (changes <b>bolded</b>).</p>
+
+<pre class="example">
+int GetWidth(void)            { return m_board.GetWidth(); }
+<b>void SetWidth(int nWidth)     { m_board.SetWidth(nWidth); }</b>
+int GetHeight(void)           { return m_board.GetHeight(); }
+<b>void SetHeight(int nHeight)   { m_board.SetHeight(nHeight); }</b>
+int GetColumns(void)          { return m_board.GetColumns(); }
+<b>void SetColumns(int nColumns) { m_board.SetColumns(nColumns); }</b>
+int GetRows(void)             { return m_board.GetRows(); }
+<b>void SetRows(int nRows)       { m_board.SetRows(nRows); }</b>
+</pre>
+
+<p>Now all we have to do is prompt the user for new sizes, resize the game board, resize the window and repaint...all this will go in the event handlers for the menu options.  All of these things are very trivial except for prompting the user for new sizes.  We'll create a new dialog to do this.  Creating a new dialog begins with displaying the resource editor window in Visual Studio.  Open up the Resource View under the "View" menu "Resource View" or the accelerator key Ctrl+Shift+E.  You'll recognize this view from when we edited the menu system for our game.  This time instead of opening the Menu option, open the Dialog option.  You'll see that there is one dialog already there with the ID of IDD_ABOUTBOX.  If you've noticed under the About menu there is a dialog that comes up with "About" information.  This dialog is automatically generated by the MFC Application Wizard when we first set up our project.  Adding a new dialog is simple, just right-click on the Dialog option in the Resource View and select "Insert Dialog" and a new, mostly blank, dialog will appear with the ID of IDD_DIALOG1 like the image below.</p>
+<img src="resource_dialog.png"><p>Once you double-click on the IDD_DIALOG1 option, the dialog editor will appear in the main window in Visual Studio.  I said earlier that the dialog was a "mostly blank" dialog because MFC generates a dialog with both an Ok button and a Cancel button.  Yours should look something like this when we first begin.</p>
+<img src="add_dialog.png"><p>We'll use this dialog to prompt the user for both board size, rows and columns, and block size, width and height, so we'll have to make it generic.  This dialog won't do much for us until we add some new controls.  We'll add labels, edit boxes, and another button to the dialog to make it functional.  We first need to bring up the dialog editor Toolbox through the View menu then "Toolbox" or Ctrl+Alt+X.  Let's take a look at the Toolbox.</p>
+<img src="common_controls.png"><p>This is a list of what are called Common Controls.  These are Windows controls that are common to most Windows applications.  Most, I'm sure, look very familiar to you.  There is a button, check box, etc.  You can <a href="http://msdn.microsoft.com/en-us/library/bb773173(VS.85).aspx">research these controls</a> if they don't look familiar to you.  We'll be using the "Static Text" control to indicate what input the user is supposed to input to each of the "Edit Controls".  We'll also add a button to allow the user to restore the default values.  To add a control, simply click and drag the desired control from the Toolbox right on to the dialog in the Dialog Editor.  Let's start with the button, click and drag one just below the Ok and Cancel buttons, like so.</p>
+<img src="dialog_with_button.png"><p>To change the text on the button face, just click on the button so it is selected like the image above and start to type "Defaults".  Now we need a couple of "Edit Controls" added.  Click and drag a couple on the dialog.  In order to line them up you can click on the rulers above and to the left in the Dialog Editor to create guides that snap to the controls.  I've added a few to line up my edit controls with the buttons.</p>
+<img src="dialog_with_text_fields.png"><p>Finally let's add a couple of "Static Text" controls to describe to the user what to type into the Edit Controls.  I'm going to add two new guides that will line the static text up with the middle of the edit controls and extend the size of the static text.  These text controls will have their text inserted programmatically so that it can change depending on the type of data we want from the user.</p>
+
+<img src="dialog_with_static_text.png"><p>This is how our dialog will look for both of the menu options that we'll be working with in this article, "Block Size..." and "Block Count..."  All we have to do is change the title of the dialog, the static text and the values in the edit controls based on what we want to prompt the user for.  In order to do this we need to make a few changes to the IDs of the controls that we've added.  As they sit we are unable to interact with the Static Text controls; they need new IDs.  Pull up the properties window by pressing Alt+Enter or from the menu View-&gt;Other Windows-&gt;Properties Window.  When you click on a control, the properties for that control will come up.  I've selected the ID option that needs to be changed.</p>
+
+<img src="properties_static_text.png"><p>The ID IDC_STATIC is a reserved ID that is for all generic static text controls; let's change it to something like IDC_STATIC_TEXT_1.  While we're at it, let's change the IDs for all of the controls and the dialog.  To do this, leave the properties window up and click on a different control.  This will fill in the properties for that particular control.  Then just change the IDs.  We'll need the top static text to be IDC_STATIC_TEXT_1 and the other IDC_STATIC_TEXT_2.  Then rename the edit controls to IDC_EDIT_VALUE_1 for the top edit control and IDC_EDIT_VALUE_2 for the other.  We do this so that we can dynamically change the text depending on the data we want the user to enter.  The button we added for "Defaults" we'll rename to IDC_BUTTON_DEFAULTS.  Finally change the ID of the dialog from IDD_DIALOG1 to IDD_DIALOG_OPTIONS.  These changes will help when creating the dialog and displaying it to the user.</p>
+
+<p>Once the dialog is set up in the dialog editor, we need to produce code for it.  Simple enough, just right-click on the dialog itself, not any of the controls, and select "Add Class..."  You'll be presented with the MFC Class Wizard.  This gives us a class that represents this dialog that we've created that we can use in our code.  Add in the class name COptionsDialog and everything will fill itself out.  Clicking finish will generate the OptionsDialog.h and OptionsDialog.cpp files.</p>
+
+<img src="class_wizard_dialog.png"><p>Before we look at the code that has been created for us let's make some variables in this class that represent the controls that we added.  Go back to the dialog editor and right-click on each of the controls, one by one, and select "Add Variable..." to bring up the Add Member Variable Wizard.  This will add a variable to the class that we just created and associate it with the control that we right-clicked on.  Since I first clicked on the first static text control the wizard will look like the image below.  Fill in the Variable Name with m_ctrlStaticText1 like I did and click Finish.  This will add all of the necessary code to the dialog class.</p>
+
+<img src="class_wizard_static_text.png"><p>For now we can keep the defaults.  We want a control variable of type CStatic so that we can change the text in the static text control whenever we want.  We'll select a different option when we get to the edit controls.  Repeat this with the second static text control giving it the variable name m_ctrlStaticText2.</p>
+
+<p>Now right-click on the first edit control and select "Add Variable..."  This time we want a "Control Variable" but a Value control variable so drop down the "Category" and select value.  This will change the "Variable Type" options from types of MFC controls to types of values; the default is likely to be CString, but select "int".  Type in the name of the variable m_nValue1.  Here we are setting an integer as the storage place for the value in the edit control and when the user clicks Ok, that value will be stored in the variable that we've created without us writing any code to do so.  See the screenshot below to see what I did.</p>
+
+<img src="class_wizard_int.png"><p>Repeat this process with the second edit control and give it the name of m_nValue2.  </p>
+
+<p>Now we need to add an event-handler to the class for the Defaults button.  Just right-click on the button and select "Add Event Handler..."  This will bring up the Event Handler Wizard that will allow you to create all kinds of event handlers for all of your classes.  If you right-clicked on the Defaults button the wizard will default to the BN_CLICKED, which stands for button clicked, event for the defaults button.  Just click "Add and Edit" and you'll be whisked away to the options dialog code where a button event handler will be waiting for you.</p>
+
+<img src="event_handler.png"><p>The last thing that we are going to need is an override for the OnInitDialog function.  In a previous article we talked about overrides so I'm going to skip the explanation.  From the OptionsDialog header open up the properties window and select the Overrides button.  This will bring up a list of overrides, we are looking for the OnInitDialog.  Click the drop-down and Add OnInitDialog.  You'll see something like the image below.</p>
+
+<img src="properties_oninitdialog.png"><p>At this point there will be a lot of MFC generated code for you to look through, most of which is beyond the scope of this article.  We'll cover some of it.  First let's take a look at, and add to, the header file OptionsDialog.h.  Here is the code (changes <b>bolded</b>).</p>
+
+<pre class="example">
+#pragma once
+#include "afxwin.h"
+
+// COptionsDialog dialog
+class COptionsDialog : public CDialog
+{
+  DECLARE_DYNAMIC(COptionsDialog)
+public:
+  //  Standard Constructor
+  COptionsDialog(<b>bool bRowColumn</b>, CWnd* pParent = NULL);
+  virtual ~COptionsDialog();
+  // Dialog Data
+  enum { IDD = IDD_DIALOG_OPTIONS };
+protected:
+  //  DDX/DDV support
+  virtual void DoDataExchange(CDataExchange* pDX);
+  DECLARE_MESSAGE_MAP()
+public:
+  CStatic m_ctrlStaticText1;
+  CStatic m_ctrlStaticText2;
+  int m_nValue1;
+  int m_nValue2;
+  afx_msg void OnBnClickedButtonDefaults();
+  virtual BOOL OnInitDialog();
+private:
+  /*  Is this dialog for row/column (true)
+  or width/height (false)? */
+  <b>bool m_bRowColumnDialog;</b>
+};
+</pre>
+
+<p>We added another variable to the argument list for the constructor so that the dialog can be built for both the row/column and width/height information.  If we pass in "true" then the dialog will prompt the user for number of rows and columns in the game board.  When it is "false" the dialog will ask for width and height of the blocks in the game board.  We implement all of this functionality in the following (changes <b>bolded</b>).</p>
+
+<pre class="example">
+// OptionsDialog.cpp : implementation file
+#include "stdafx.h"
+#include "SameGame.h"
+#include "OptionsDialog.h"
+
+// COptionsDialog dialog
+IMPLEMENT_DYNAMIC(COptionsDialog, CDialog)
+
+COptionsDialog::COptionsDialog(<b>bool bRowColumn</b>, CWnd* pParent)
+: CDialog(COptionsDialog::IDD, pParent)
+  , m_nValue1(0)
+  , m_nValue2(0)
+  <b>, m_bRowColumnDialog(bRowColumn)</b>
+{
+}
+
+COptionsDialog::~COptionsDialog()
+{
+}
+
+void COptionsDialog::DoDataExchange(CDataExchange* pDX)
+{
+  CDialog::DoDataExchange(pDX);
+  DDX_Control(pDX, IDC_STATIC_TEXT_1, m_ctrlStaticText1);
+  DDX_Control(pDX, IDC_STATIC_TEXT_2, m_ctrlStaticText2);
+  DDX_Text(pDX, IDC_EDIT_VALUE_1, m_nValue1);
+  DDX_Text(pDX, IDC_EDIT_VALUE_2, m_nValue2);
+}
+
+BEGIN_MESSAGE_MAP(COptionsDialog, CDialog)
+  ON_BN_CLICKED(IDC_BUTTON_DEFAULTS,
+    &amp;COptionsDialog::OnBnClickedButtonDefaults)
+END_MESSAGE_MAP()
+
+// COptionsDialog message handlers
+void COptionsDialog::OnBnClickedButtonDefaults()
+{
+<b>
+  //  Do things differently for the different dialogs
+  if(m_bRowColumnDialog)
+    m_nValue1 = m_nValue2 = 15; //  15x15 board
+  else
+    m_nValue1 = m_nValue2 = 35; //  35x35 blocks
+  //  Have the controls updated to the new values
+  UpdateData(false);
+</b>
+}
+
+BOOL COptionsDialog::OnInitDialog()
+{
+  CDialog::OnInitDialog();
+  //  Setup the dialog based on the dialog type
+<b>
+  if(m_bRowColumnDialog)
+  {
+    //  First update the title of the dialog
+    SetWindowText(_T("Update Block Count"));
+    //  Next change the static text labels
+    m_ctrlStaticText1.SetWindowText(_T("Rows"));
+    m_ctrlStaticText2.SetWindowText(_T("Columns"));
+  }
+  else
+  {
+    //  First update the title of the dialog
+    SetWindowText(_T("Update Block Size"));
+    //  Next change the static text labels
+    m_ctrlStaticText1.SetWindowText(_T("Block Width"));
+    m_ctrlStaticText2.SetWindowText(_T("Block Height"));
+  }
+</b>
+  return TRUE;
+}
+</pre>
+
+<p>The first thing we do is update the constructor to take the Boolean value that tells us what type of dialog we are creating.  This is simple.  The next change we've made is to reset the values to the defaults, for rows/columns the values are both 15 and for the width/height the values are both 35.  Then to update the controls with the new values we must call the UpdateData function passing in false as the argument.  The argument is a Boolean flag that indicates the direction of update or what is being updated, the control (false) or the variable (true).  Passing in true would reset the changes that you just made by going to the control, reading the contents, and saving it to the variable.  We want to update the control with the new value of the variable so we pass in false.</p>
+
+<p>Lastly we put the code into the OnInitDialog function.  This is a function that is called right before the dialog is first shown to the user.  This is where we can set up the dialog.  So for a row/column dialog we set the title of the dialog to "Update Block Count" with the SetWindowText function and the _T() macro which we talked about in the second article.  Then we update the text in the static text controls by using the function of the same name in that control object.  We set them to "Rows" and "Columns".  If it is a width/height dialog we change the title and labels to reflect that.  That is all that needs to be done in the dialog, it should all function properly now.</p>
+
+<p>Our final step is to set up a couple of event handlers in the view for the two menu options that we are working with.  We do this through the Properties window from the header file for the view (SameGameView.h).  Click on the events button, the one that looks like a lightning bolt, expand the ID_SETUP_BLOCKCOUNT option and add the COMMAND event handler.  Do this with the ID_SETUP_BLOCKSIZE option also.</p>
+
+<p>We won't need to make any changes to the view's header file other than the changes that adding those two handlers did automatically.  Below are the only changes that were made automatically.</p>
+
+<pre class="example">
+afx_msg void OnSetupBlockcount();
+afx_msg void OnSetupBlocksize();
+</pre>
+
+<p>The real changes happen in the implementation or source file of the view, SameGameView.cpp.  In order to use the options dialog that we just created we must include the header file in the view's source file.  Here are the first few lines of that source file (changes <b>bolded</b>).</p>
+
+<pre class="example">
+#include "stdafx.h"
+#include "SameGame.h"
+
+#include "SameGameDoc.h"
+#include "SameGameView.h"
+<b>#include "OptionsDialog.h"</b>
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#endif
+</pre>
+
+<p>Just a simple include of the OptionsDialog.h file.  Next we fill in the two event handlers that we just added.  Both of these functions are essentially the same except for in the <b>five bolded</b> locations in each function that we see below.</p>
+
+<pre class="example">
+void CSameGameView::OnSetupBlockcount()
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Create the options dialog
+  COptionsDialog dlg(true, this);
+  //  Set the row and column values
+  dlg.m_nValue1 = pDoc-<b>&gt;GetRows()</b>;
+  dlg.m_nValue2 = pDoc-<b>&gt;GetColumns()</b>;
+  //  Display the dialog
+  if(dlg.DoModal() == IDOK)
+  {
+    //  First delete the board
+    pDoc-&gt;DeleteBoard();
+    //  Get the user selected values
+    pDoc-&gt;<b>SetRows(dlg.m_nValue1)</b>;
+    pDoc-&gt;<b>SetColumns(dlg.m_nValue2)</b>;
+    //  Update the board
+    pDoc-&gt;SetupBoard();
+    //  Resize the view
+    ResizeWindow();
+  }
+}
+
+void CSameGameView::OnSetupBlocksize()
+{
+  //  First get a pointer to the document
+  CSameGameDoc* pDoc = GetDocument();
+  ASSERT_VALID(pDoc);
+  if(!pDoc)
+    return;
+  //  Create the options dialog
+  COptionsDialog dlg(<b>false</b>, this);
+  //  Set the width and height values
+  dlg.m_nValue1 = pDoc-&gt;<b>GetWidth()</b>;
+  dlg.m_nValue2 = pDoc-&gt;<b>GetHeight()</b>;
+  //  Display the dialog
+  if(dlg.DoModal() == IDOK)
+  {
+    //  First delete the board
+    pDoc-&gt;DeleteBoard();
+    //  Get the user selected values
+    pDoc-&gt;<b>SetWidth(dlg.m_nValue1)</b>;
+    pDoc-&gt;<b>SetHeight(dlg.m_nValue2)</b>;
+    //  Update the board
+    pDoc-&gt;SetupBoard();
+    //  Resize the view
+    ResizeWindow();
+  }
+}
+</pre>
+
+<p>Just like every other event handler that we've created, we first get a pointer
+to the document.  Then we create the dialog by instantiating an instance of
+that class.  Here is the first difference between the two functions.  In the first
+function, OnSetupBlockcount, we pass in the true value, and in the second
+function, we pass in
+false.  We've already discussed what this does but here is where we do
+it.  The next two lines set the public integer values m_nValue1 and m_nValue2
+to be the rows and columns for the first function and the width and height for
+the second.  By setting these values before calling DoModal on the dialog we
+ensure that the values start in their corresponding edit controls.  The next
+line is where we actually pop-up and display the dialog with the DoModal
+function.  This shows the dialog and doesn't return control to the application
+until the user clicks Ok, Cancel or the X button to close.  Then the function
+returns a value based on how the user closed the dialog.  Here we are testing
+for Ok so we compare the return value against IDOK.  If the user clicked Ok
+then we continue making changes.  If not we ignore everything that happened and
+continue on.</p>
+
+<p>If the user clicked Ok we first have to delete the old game board and free the memory.  Once that is done we can use our "setter" functions on the document to store those values that the user selected.  This is the final set of differences; we use different setters depending on the function because we are working with different values in each function.  Once they are set in the document and the game board we need to create a new game board by calling SetupBoard.  This will create a new game board with the new selected options.  Finally we resize the window to match the new number of rows/columns or the new block size.  Your game should now be able to look like these.</p>
+<table><tr>
+<td><img src="resized_tall.png"></td>
+<td><img src="resized_short.png"></td>
+</tr></table>
+<h2>Conclusion</h2>
+
+<p>Our game development is nearing complete.  With only one article left, we've come a very long way.  In this article we created a new options dialog to be able to prompt the user for size information.  We then updated the game board accordingly.  These options allow the user to have many different experiences.  What level can you completely clear at with a game board of five rows by five columns?  There are lots of combinations of options that can change the difficulty of the game and make you change your strategy.  That is what makes a game fun, begin able to replay it with different options in different ways.</p>
+
+
+<a href="samegame-part4.zip">Source Code from Part 4</a>
+<br><br><b><a href="same_game_part5.html">Continue to Part 5: Adding Undo/Redo Functionality and Keyboard Accelerators</a></b>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=same_game_part1.html>
+                    <img src=same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part4.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:58 GMT -->
+</html>
+
+
+

@@ -1,0 +1,715 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/gdbtutorial.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:53 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, debugging, debugging tutorial">
+<META NAME="Description" CONTENT="C++ programming resources, especially for beginners. Understandable C++ tutorials, source code, a 50 question C++ quiz, compiler information, a very active message board, and a free programming newsletter.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tutorials - An Introduction to GDB - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="begin.html">Get Started with C or C++</a><br>
+             <a href="compilers.html">Getting a Compiler</a><br>
+             <a href="books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=tutorial/c-tutorial.html>C Tutorial</a><br>
+            <a href=tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=java-programming.html>Java Tutorial</a><br>
+            <a href=game-programming.html>Game Programming</a><br>
+            <a href=graphics-programming.html>Graphics Programming</a><br>
+            <a href=algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=debuggers.html>Debugging</a><br>
+            <a href="tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="challenge.html">Practice Problems</a><br>
+            <a href="quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="cgi-bin/source/source.html">Source Code</a><br>
+            <a href=snippets/index.html>Source Code Snippets</a><br>
+            <a href="tips/index.html">C and C++ Tips</a><br>
+            <a href=jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="function.html">Function Reference</a><br>
+            <a href="reference/index.html">Syntax Reference</a><br>
+            <a href="cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="board.html">Message Board</a><br>
+             <a href="expert.html">Ask an Expert</a><br>
+             <a href="email.html">Email</a><br>
+             <a href="about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Debugging with GDB</h1>
+
+
+
+  <p>
+  </p>
+
+<p>By Alexandra Hoffer</p>
+<p>GDB (Gnu Debugger) is a powerful debugging tool for both C and C++. A debugger 
+  is a program that helps you find bugs by letting you examine the state of the 
+  program as it's running. You can view the code, see the values of the variables, 
+  follow the control flow, break in the middle of an infinite loop, and more. 
+  This document is a quick introduction to the most common and useful GDB commands 
+  and techniques.</p>
+  <center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<h2>Starting Out</h2>
+<p>To gdb your program, just type <font face="Courier New, Courier, mono">gdb 
+  &lt;program&gt;</font> at the prompt. You can also start up gdb first and then 
+  if you have a core dump you want to examine, you can <font face="Courier New, Courier, mono">load 
+  &lt;program&gt;</font>. Once you've done this, you can start running your program 
+  by typing <font face="Courier New, Courier, mono">run</font>. You will then 
+  interact normally with your program until typing control-C, which will pop you 
+  back to GDB's interface. Type <font face="Courier New, Courier, mono">continue</font> 
+  to move back to your program from GDB. All commands in GDB can be shortened 
+  to their first unique letters, so you can type <font face="Courier New, Courier, mono">c 
+  </font>instead of <font face="Courier New, Courier, mono">continue</font>. If 
+  you ever get confused, GDB has a very good built-in help system that shows you 
+  everything you can do with GDB and how to do it. Type <font face="Courier New, Courier, mono">help</font> 
+  at the GDB prompt to access it. And once you've found your bug, type control-D 
+  to exit gdb. Running more than one instance of GDB at once can confuse it, so 
+  make sure you've only got one copy open at a time.</p>
+<p><b><font face="Georgia, Times New Roman, Times, serif" size="+1">Looking Around</font></b></p>
+<p>There are two main kinds of commands you can use at the GDB prompt. One kind 
+  of command tells GDB how to act; the other kind just tells it to give you information. 
+  In this section we'll discuss the latter kind of command. You can use GDB to 
+  tell you the values of variables by typing <font face="Courier New, Courier, mono">print 
+  &lt;variable&gt;</font>. This kind of command works just as it would within 
+  C or C++; for example, you can look at a particular element in an array with 
+  <font face="Courier New, Courier, mono">print myarray[5]</font> or a field in 
+  a structure with <font face="Courier New, Courier, mono">print struct.label</font>. 
+</p>
+<p><font face="Courier New, Courier, mono">List </font>is another useful command 
+  to let you know where you are; it will show you the surrounding lines of code. The 
+  next time you type <font face="Courier New, Courier, mono">list</font>, you 
+  will be shown the next 10 lines. You can look at a particular area of code by 
+  typing <font face="Courier New, Courier, mono">list &lt;line number&gt;</font>. 
+  For example, if you want to look at the area of line 20, type <font face="Courier New, Courier, mono">list 
+  20</font>. If your program has multiple source files, you can specify which 
+  one you want to look at by typing <font face="Courier New, Courier, mono">list&lt;filename&gt;:&lt;line 
+  number&gt;</font>. You can also choose to examine the beginning of a function 
+  using <font face="Courier New, Courier, mono">list</font><font face="Courier New, Courier, mono">&lt;function&gt;</font>.</p>
+<p>A third command, <font face="Courier New, Courier, mono">backtrace</font>, 
+  is used for looking at the stack of your program. When you type <font face="Courier New, Courier, mono">backtrace</font>, 
+  you will see a listing of all the functions that have not yet returned and where 
+  those functions were called. If you want to look at a frame above or below your 
+  current frame in the stack, use <font face="Courier New, Courier, mono">up </font>and 
+  <font face="Courier New, Courier, mono">down</font> to change your scope, so 
+  that you can see the state of the caller function.</p>
+<p><b><font face="Georgia, Times New Roman, Times, serif" size="+1">Breaking In</font></b></p>
+<p>There are many debugging techniques you can use with GDB, but there are a handful 
+  that are far more common and useful than the rest. One such technique is setting 
+  breakpoints. A breakpoint is a place where your code will automatically stop 
+  running so that you can examine the state of the program. To set a breakpoint, 
+  type <font face="Courier New, Courier, mono">break &lt;line number&gt;</font>. 
+  <font face="Courier New, Courier, mono">Break</font> uses the same syntax as 
+  <font face="Courier New, Courier, mono">list</font>. </p>
+<p>A command very useful in conjunction with <font face="Courier New, Courier, mono">break</font> 
+  is called <font face="Courier New, Courier, mono">next</font>. The <font face="Courier New, Courier, mono">next</font> 
+  command will run the program for one line and then immediately bring you back 
+  to the GDB prompt. You can also give numerical arguments to <font face="Courier New, Courier, mono">next</font>; 
+  <font face="Courier New, Courier, mono">next 100</font>, for example, will make 
+  the program break after the 100th next instruction.</p>
+<p>The command <font face="Courier New, Courier, mono">watch</font> can also be 
+  handy--you tell the program to watch a variable and break whenever its value 
+  changes. However, setting watchpoints slows down the functioning of gdb enormously, 
+  so unless you have your own Unix box, you might want to avoid it.</p>
+<p><b><font face="Georgia, Times New Roman, Times, serif" size="+1">Messing With</font></b></p>
+<p>There is also another set of commands, although they are not very commonly 
+  used; these commands actually modify the program as it is running. The <font face="Courier New, Courier, mono">call 
+  </font>command, for example, will call a particular function; the <font face="Courier New, Courier, mono">set 
+  variable</font> command will set a variable in the program to a particular value, 
+  for example, <font face="Courier New, Courier, mono">set variable i = 0</font>. 
+  <font face="Courier New, Courier, mono">Return</font> will make the current 
+  function return to the caller.</p>
+<p><b><font face="Georgia, Times New Roman, Times, serif" size="+1">Techniques</font></b></p>
+<p>Now that you've learned all these neat commands, how do you use them? Here 
+  are a few common debugging problems and the techniques that go along with them:</p>
+<p><b>Segfaults and Core Dumps</b></p>
+<p>When your program segfaults and dumps its core, what to do? The simplest thing 
+  to do is to run the program in gdb and follow through until it segfaults. When 
+  your program crashes, GDB will step up and tell you what line it crashed on. 
+  Usually it will be a line where the program was trying to manipulate some memory-mangled 
+  variable. You can use <font face="Courier New, Courier, mono">bt</font> (or 
+  <font face="Courier New, Courier, mono">backtrace</font>) to figure out where 
+  you are in the stack, and then <font face="Courier New, Courier, mono">p </font>(or 
+  <font face="Courier New, Courier, mono">print</font>) to look at the variables 
+  and see if any of them have stepped outside their bounds or are full of garbage. 
+  As a shortcut, you can gdb your program and then <font face="Courier New, Courier, mono">load</font> 
+  the corefile to get directly to the crash.</p>
+<p><b>Infinite Loops</b></p>
+<p>Infinite loops are another bug that are hard to hunt down on your own, but 
+  simple to find with GDB. Load up your program in GDB, and run it until you get 
+  to the loop. Then hit control-C to force your way back to the GDB prompt. Type 
+  <font face="Courier New, Courier, mono">bt</font> and you'll be told what line 
+  you're on. Use <font face="Courier New, Courier, mono">list</font> to look at 
+  the code and see if you can figure out what's causing the loop. If you can't, 
+  use <font face="Courier New, Courier, mono">n </font>(or <font face="Courier New, Courier, mono">next</font>) 
+  to progress through the loop one line at a time, all the while using <font face="Courier New, Courier, mono">p 
+  </font>to inspect your counter variable.</p>
+<p><b>Inexplicable Errors</b> </p>
+<p>Most bugs aren't so simply categorized; often your program will provide the 
+  wrong output for no apparent reason. There are a few techniques that can come 
+  in handy when you have this sort of problem. One thing you can do is set a breakpoint 
+  right after your program asks for input, then <font face="Courier New, Courier, mono">next</font> 
+  your way along, looking periodically at the stack and the variables to make 
+  sure that everything is going according to plan. If you think the problem is 
+  due to the value of a particular variable and your code is hard to follow, 
+  you can <font face="Courier New, Courier, mono">watch</font> that variable.</p>
+<p>Here follows a transcript of a GDB session with a program intended to parse 
+  regular expressions (this program was originally called rep.cc, but you shouldn't need the original source code to follow the debugging flow). My comments will be indicated in C++ comment style.</p>
+<p>&gt;gdb rep<br>
+  GNU gdb 4.17<br>
+  Copyright 1998 Free Software Foundation, Inc.<br>
+  GDB is free software, covered by the GNU General Public License, and you are<br>
+  welcome to change it and/or distribute copies of it under certain conditions.<br>
+  Type "show copying" to see the conditions.<br>
+  There is absolutely no warranty for GDB. Type "show warranty" for 
+  details.<br>
+  This GDB was configured as "alphaev56-dec-osf4.0d"...<br>
+  (gdb) run<br>
+  Starting program: /rep<br>
+  Please enter a regular expression:<br>
+  a*<br>
+  The State Table:<br>
+  0 a ---&gt; 1<br>
+  1 # ---&gt; 2<br>
+  2 # ---&gt; 0<br>
+  Please enter a string to test against that RE:</p>
+<p>//Here I typed control-C</p>
+<p>Program received signal SIGINT, Interrupt.<br>
+  0x3ff800d5d68 in read ()</p>
+<p>(gdb) bt</p>
+<p>//The gdb prompt lets us know we're sending commands to GDB and not to the 
+  actual program we're testing.</p>
+<p> <br>
+  #0 0x3ff800d5d68 in read ()<br>
+  #1 0x3ff801362cc in __read_nc ()<br>
+  #2 0x3ff800d9c38 in _filbuf ()<br>
+  #3 0x12002c360 in stdiobuf::sys_read (this=0x0, buf=0x14000a3b3 "\n",<br>
+  size=8192) at ../../../gcc-2.95.1/libio/stdiostream.cc:77</p>
+<p>//The stuff at the top of the stack here is built-in C++ functions for reading 
+  input. Let's skip toward the bottom, where we'll see some of my actual code:</p>
+<p>#12 0x120018eb0 in main (argc=1, argv=0x11ffff868) at rep.cc:43</p>
+<p>//GDB is telling us where the caller function was when it called up the next 
+  stack frame, and what arguments the caller had.</p>
+<p>(gdb) list rep.cc:43</p>
+<p>//GDB now shows us some code from our program</p>
+<p>38 our_parser.check_parenthesis_matching();<br>
+  39 cout &lt;&lt; the_state_table;<br>
+  40 do<br>
+  41 {<br>
+  42 cout &lt;&lt; "Please enter a string to test against that RE:\n";<br>
+  43 getline(cin, tested);<br>
+  44 cout &lt;&lt; "The string '" &lt;&lt; tested &lt;&lt; "' is 
+  ";<br>
+  45 //the actual checking work<br>
+  46 if (!(total_ndfa.run(tested)))<br>
+  47 {</p>
+<p>(gdb) c<br>
+  Continuing.</p>
+<p>//Because we stopped the program when it was asking for input, it will keep 
+  waiting for that input until we enter something.</p>
+<p>a<br>
+  The string 'a' is accepted by the RE "a*"<br>
+  Do you want to test another string? [y/n]</p>
+<p>n<br>
+  Do you want to enter a different regular expression? [y/n]<br>
+  n<br>
+  Thanks for playing!</p>
+<p>//At this point, GDB kicks in because the program has ended.<br>
+  Program exited normally.<br>
+  (gdb)</p>
+<p>//Now let's show off some other features of GDB, like variable inspection and 
+  breakpoints. </p>
+<p>(gdb) run<br>
+  Starting program: /rep<br>
+  Please enter a regular expression:<br>
+  b<br>
+  The State Table:<br>
+  0 b ---&gt; 1<br>
+  1<br>
+  Please enter a string to test against that RE:</p>
+<p>//Here we type control-C to get to the GDB prompt</p>
+<p><br>
+  Program received signal SIGINT, Interrupt.<br>
+  0x3ff800d5d68 in read ()<br>
+  (gdb) break rep::yesno<br>
+  Breakpoint 2 at 0x1200194e8: file rep.cc, line 68.</p>
+<p>//We have just set a breakpoint<br>
+  (gdb) c<br>
+  Continuing.<br>
+  a<br>
+  The string 'a' is not accepted by the RE "b"<br>
+  Do you want to test another string? [y/n]<br>
+  Breakpoint 1, rep::yesno () at rep.cc:67</p>
+<p>//We have reached the breakpoint we set, so the program halts. Note that the 
+  line numbers can vary slightly--we set the break at 68 but are actually breaking 
+  at 67--because of lines that don't contain any actual instructions.<br>
+  67 {</p>
+<p>(gdb) n</p>
+<p>//This n is being read as "next", not as "no", because 
+  we're in gdb and not the program.</p>
+<p><br>
+  rep::yesno () at rep.cc:68<br>
+  68 string answer;</p>
+<p>//We break again because of typing "next"</p>
+<p>(gdb) p answer<br>
+  $1 = {static npos = 18446744073709551615, static nilRep = {len = 0, res = 0,<br>
+  ref = 1, selfish = false}, dat = 0x12001969c ""}</p>
+<p>//answer is full of garbage, because it hasn't been initialized, just declared.</p>
+<p>(gdb) n<br>
+  69 getline(cin, answer);<br>
+  (gdb) n<br>
+  n</p>
+<p>//The first of those two n's was a "next" that lead us to a prompt 
+  where the program asked for input. The second n, however, was a "no"<br>
+  70 if (answer[0] == 'Y' || answer[0] == 'y')</p>
+<p>//The program read in the input and broke on line 70 because we had entered 
+  "next" <br>
+  (gdb) n<br>
+  74 return false;<br>
+  (gdb) p answer<br>
+  $2 = {static npos = 18446744073709551615, static nilRep = {len = 0, res = 0,<br>
+  ref = 1, selfish = false}, dat = 0x1400148b0 "n"}</p>
+<p>//Now answer, as we see, contains the string "n"</p>
+<p>(gdb) bt<br>
+  #0 rep::yesno () at rep.cc:74<br>
+  #1 0x1200196a8 in rep::more_strings () at rep.cc:82<br>
+  #2 0x120018fe4 in main (argc=1, argv=0x11ffff868) at rep.cc:51</p>
+<p>(gdb) up<br>
+  #1 0x1200196a8 in rep::more_strings () at rep.cc:82<br>
+  82 return yesno();</p>
+<p>//Now we are at the caller of yesno() because we moved to a different stack 
+  frame when we went up. </p>
+<p>(gdb) p answer<br>
+  No symbol "answer" in current context.</p>
+<p>//Answer is out of scope now, so we can't examine it.</p>
+<p>As you can see, GDB is a multifaceted tool. You can learn more about it at 
+  the <a href="http://www.gnu.org/software/gdb/gdb.html">GNU GDB site</a>.</p>
+<p> </p>
+<hr>
+<b>Related articles<br><br><a href="gdb.html">GDB by Example</a>
+<br><br><a href="debugging/valgrind.html">Learn about
+Valgrind, a memory leak detector and memory error hunter</a>
+<br><br><a href="debugging/segfaults.html">More information
+about finding and debugging segmentation faults (segfaults)</a><br><br><a href="tutorial/debugging_concepts.html">Debugging
+with Visual Studio</a>
+</b>
+       
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=code_blocks/index.html>How to set up a compiler</a>
+<li><a href=tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="advertising.html">Advertising</a> | <a href="privacy.html">Privacy policy</a> |
+<a href="use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=tutorial/game_programming/same_game_part1.html>
+                    <img src=tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/gdbtutorial.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:53 GMT -->
+</html>
+
+
+

@@ -1,0 +1,783 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut2.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, beginnings guide to C++, C++ beginners guide, C++ programming tutorials, getting started with C++, learning C++, how to learn C++, history of C++, C++ history, programming languages, C++ programming language">
+<META NAME="Description" CONTENT="A beginner's guide to learning C++ - answers questions about C++, basic programming, and how to think about programming.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Setting the Color Palette in Mode 13h - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Setting teh Color Palette</h1>
+
+
+
+          <p> <!-- #BeginEditable "content" --></p>
+<pre>
+                   ÕÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¸
+                   ³         W E L C O M E         ³
+                   ³  To the VGA Trainer Program   ³ ³
+                   ³              By               ³ ³
+                   ³      DENTHOR of ASPHYXIA      ³ ³ ³
+                   ³      (updated by Snowman)     ³ ³ ³
+                   ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¾ ³ ³
+                     ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³
+                       ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                           --==[ PART 2 ]==--
+[Note: things in brackets have been added by Snowman.  The original text
+has remained mostly unaltered except for the inclusion of C++ material]
+þ Introduction
+Hi there again! This is Grant Smith, AKA Denthor of ASPHYXIA. This is the
+second part of my Training Program for new programmers. I have only had a
+lukewarm response to my first part of the trainer series ... remember, if
+I don't hear from you, I will assume that you are all dead and will stop
+writing the series ;-). Also, if you do get in contact with me I will give
+you some of our fast assembly routines which will speed up your demos no
+end. So go on, leave mail to GRANT SMITH in the main section of the
+MailBox BBS, start up a discussion or ask a few questions in this Conference,
+leave mail to ASPHYXIA on the ASPHYXIA BBS, leave mail to Denthor on
+Connectix, or write to Grant Smith,
+                       P.O.Box 270
+                       Kloof
+                       3640
+                       </pre>
+                       <center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+                         <pre>
+See, there are many ways you can get in contact with me! Use one of them!
+In this part, I will put the Pallette through it's paces. What the hell is
+a pallette? How do I find out what it is? How do I set it? How do I stop
+the "fuzz" that appears on the screen when I change the pallette? How do
+I black out the screen using the pallette? How do I fade in a screen?
+How do I fade out a screen? Why are telephone calls so expensive?
+Most of these quesions will be answered in this, the second part of my
+Trainer Series for Pascal.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  What is the Pallette?
+A few weeks ago a friend of mine was playing a computer game. In the game
+there was a machine with stripes of blue running across it. When the
+machine was activated, while half of the the blue stripes stayed the same,
+the other half started to change color and glow. He asked me how two stripes
+of the same color suddenly become different like that. The answer is simple:
+the program was changing the pallette.
+As you know from Part 1, there are 256 colors in MCGA mode, numbered 0 to 255.
+What you don't know is that each if those colors is made up of different
+intensities of Red, Green and Blue, the primary colors (you should have
+learned about the primary colors at school). These intensities are numbers
+between 0 and 63. The color of bright red would for example be obtained by
+setting red intensity to 63, green intensity to 0, and blue intensity to 0.
+This means that two colors can look exactly the same, eg you can set color 10
+to bright red and color 78 to color bright red. If you draw a picture using
+both of those colors, no-one will be able to tell the difference between the
+two.. It is only when you again change the pallette of either of them will
+they be able to tell the difference.
+Also, by changing the whole pallette, you can obtain the "Fade in" and "Fade
+out" effects found in many demos and games. Pallette manipulation can become
+quite confusing to some people, because colors that look the same are in fact
+totally seperate.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  How do I read in the pallette value of a color?
+This is very easy to do. To read in the pallette value, you enter in the
+number of the color you want into port $3c7 [0x03C7], then read in the values
+of red, green and blue respectively from port $3c9 [0x03C9]. Simple, huh? Here
+is a procedure that does it for you :
+[Pascal]
+Procedure GetPal(ColorNo : Byte; Var R,G,B : Byte);
+
+  { This reads the values of the Red, Green and Blue values of a certain
+    color and returns them to you. }
+Begin
+   Port[$3c7] := ColorNo;
+   R := Port[$3c9];
+   G := Port[$3c9];
+   B := Port[$3c9];
+End;
+[C++]
+void GetPal(unsigned char ColorNo, unsigned char &amp;R,
+	    unsigned char &amp;G,      unsigned char &amp;B) {
+  outp (0x03C7,ColorNo); // here is the pallette color I want read
+  R = inp (0x03C9);
+  G = inp (0x03C9);
+  B = inp (0x03C9);
+}
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  How do I set the pallette value of a color?
+This is also as easy as 3.1415926535897932385. What you do is you enter in the
+number of the color you want to change into port $3c8 [0x03C8], then enter the
+values of red, green and blue respectively into port $3c9 [0x03C9]. Because
+you are all so lazy I have written the procedure for you ;-)
+[Pascal]
+Procedure Pal(ColorNo : Byte; R,G,B : Byte);
+  { This sets the Red, Green and Blue values of a certain color }
+Begin
+   Port[$3c8] := ColorNo;
+   Port[$3c9] := R;
+   Port[$3c9] := G;
+   Port[$3c9] := B;
+End;
+[C++]
+void Pal(unsigned char ColorNo, unsigned char R,
+	 unsigned char G,       unsigned char B) {
+  outp (0x03C8,ColorNo); // here is the pallette color I want to set
+  outp (0x03C9,R);
+  outp (0x03C9,G);
+  outp (0x03C9,B);
+}
+Asphyxia doesn't use the above pallete procedures, we use assembler versions,
+which will be given to PEOPLE WHO RESPOND TO THIS TRAINER SERIES (HINT,
+HINT)
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  How do I stop the "fuzz" that appears on my screen when I change the
+        pallette?
+If you have used the pallette before, you will have noticed that there is
+quite a bit of "fuzz" on the screen when you change it. The way we counter
+this is as follows : There is an elctron beam on your monitor that is
+constantly updating your screen from top to bottom. As it gets to the
+bottom of the screen, it takes a while for it to get back up to the top of
+the screen to start updating the screen again.
+The period where it moves from the bottom to the top is called the Verticle
+Retrace. During the verticle retrace you may change the pallette without
+affecting what is on the screen.
+What we do is that we wait until a verticle retrace has started by calling a
+certain procedure; this means that everything we do now will only be shown
+after the verticle retrace, so we can do all sorts of strange and unusual
+things to the screen during this retrace and only the results will be shown
+when the retrace is finished. This is way cool, as it means that when we
+change the pallette, the fuzz doesn't appear on the screen, only the result
+(the changed pallette), is seen after the retrace! Neat, huh? ;-) I have put
+the purely assembler WaitRetrace routine in the sample code that follows this
+message. Use it wisely, my son.
+NOTE : WaitRetrace can be a great help to your coding ... code that fits
+       into one retrace will mean that the demo will run at the same
+       speed no matter what your computer speed (unless you are doing a lot
+       during the WaitRetrace and the computer is slooooow). Note that in
+       the following sample program and in our SilkyDemo, the thing will run
+       at the same speed whether turbo is on or off.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  How do I black out the screen using the pallette?
+This is basic : just set the Red, Green and Blue values of all colors to
+zero intensity, like so :
+[Pascal]
+Procedure Blackout;
+  { This procedure blackens the screen by setting the pallette values of
+    all the colors to zero. }
+VAR loop1:integer;
+BEGIN
+  WaitRetrace;
+  For loop1:=0 to 255 do
+    Pal (loop1,0,0,0);
+END;
+[C++]
+void Blackout() {
+  WaitRetrace();
+  for (int loop1=0;loop1&lt;256;loop1++)
+    Pal (loop1,0,0,0);
+}
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  How do I fade in a screen?
+Okay, this can be VERY effective. What you must first do is grab the
+pallette into a variable, like so :
+   [Pascal]   VAR Pall := Array [0.255,1..3] of BYTE;
+   [C++]      unsigned char Pall[256][3];
+0 to 255 is for the 256 colors in MCGA mode, 1 to 3 is red, green and blue
+intensity values;
+[Pascal]
+Procedure GrabPallette;
+VAR loop1:integer;
+BEGIN
+  For loop1:=0 to 255 do
+    Getpal (loop1,pall[loop1,1],pall[loop1,2],pall[loop1,3]);
+END;
+[C++]
+void GrabPallette() {
+  for(int loop1=0;loop1&lt;256;loop1++)
+    GetPal(loop1,Pall2[loop1][0],Pall2[loop1][1],Pall2[loop1][2]);
+}
+This loads the entire pallette into variable pall. Then you must blackout
+the screen (see above), and draw what you want to screen without the
+construction being shown. Then what you do is go throgh the pallette. For
+each color, you see if the individual intensities are what they should be.
+If not, you increase them by one unit until they are. Beacuse intensites
+are in a range from 0 to 63, you only need do this a maximum of 64 times.
+[Pascal]
+Procedure Fadeup;
+VAR loop1,loop2:integer;
+    Tmp : Array [1..3] of byte;
+      { This is temporary storage for the values of a color }
+BEGIN
+  For loop1:=1 to 64 do BEGIN
+      { A color value for Red, green or blue is 0 to 63, so this loop only
+        need be executed a maximum of 64 times }
+    WaitRetrace;
+    For loop2:=0 to 255 do BEGIN
+      Getpal (loop2,Tmp[1],Tmp[2],Tmp[3]);
+      If Tmp[1]&lt;Pall[loop2,1] then inc (Tmp[1]);
+      If Tmp[2]&lt;Pall[loop2,2] then inc (Tmp[2]);
+      If Tmp[3]&lt;Pall[loop2,3] then inc (Tmp[3]);
+        { If the Red, Green or Blue values of color loop2 are less then they
+          should be, increase them by one. }
+      Pal (loop2,Tmp[1],Tmp[2],Tmp[3]);
+        { Set the new, altered pallette color. }
+    END;
+  END;
+END;
+[C++]
+void Fadeup() {
+//This is temporary storage for the values of a color
+unsigned char Tmp[3];
+  // A color value for Red, green or blue is 0 to 63, so this loop only
+  // need be executed a maximum of 64 times.
+  for(int loop1=0;loop1&lt;64;loop1++) {
+    WaitRetrace();
+    for(int loop2=0; loop2&lt;256; loop2++) {
+      GetPal(loop2,Tmp[0],Tmp[1],Tmp[2]);
+      // If the Red, Green or Blue values of color loop2 are less then they
+      // should be, increase them by one.
+      if ((Tmp[0] &lt; Pall2[loop2][0]) &amp;&amp; (Tmp[0] &lt; 63)) Tmp[0]++;
+      if ((Tmp[1] &lt; Pall2[loop2][1]) &amp;&amp; (Tmp[1] &lt; 63)) Tmp[1]++;
+      if ((Tmp[2] &lt; Pall2[loop2][2]) &amp;&amp; (Tmp[2] &lt; 63)) Tmp[2]++;
+      // Set the new, altered pallette color.
+      Pal (loop2,Tmp[0],Tmp[1],Tmp[2]);
+    }
+  }
+}
+Hey-presto! The screen fades up. You can just add in a delay before the
+waitretrace if you feel it is too fast. Cool, no?
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  How do I fade out a screen?
+This is just like the fade in of a screen, just in the opposite direction.
+What you do is you check each color intensity. If it is not yet zero, you
+decrease it by one until it is. BAAASIIIC!
+[Pascal]
+Procedure FadeDown;
+VAR loop1,loop2:integer;
+    Tmp : Array [1..3] of byte;
+      { This is temporary storage for the values of a color }
+BEGIN
+  For loop1:=1 to 64 do BEGIN
+    WaitRetrace;
+    For loop2:=0 to 255 do BEGIN
+      Getpal (loop2,Tmp[1],Tmp[2],Tmp[3]);
+      If Tmp[1]&gt;0 then dec (Tmp[1]);
+      If Tmp[2]&gt;0 then dec (Tmp[2]);
+      If Tmp[3]&gt;0 then dec (Tmp[3]);
+        { If the Red, Green or Blue values of color loop2 are not yet zero,
+          then, decrease them by one. }
+      Pal (loop2,Tmp[1],Tmp[2],Tmp[3]);
+        { Set the new, altered pallette color. }
+    END;
+  END;
+END;
+[C++]
+void FadeDown() {
+// This is temporary storage for the values of a color
+unsigned char Tmp[3];
+  for(int loop1=0; loop1&lt;64; loop1++) {
+    WaitRetrace();
+    for(int loop2=0; loop2&lt;256; loop2++) {
+      GetPal(loop2,Tmp[0],Tmp[1],Tmp[2]);
+      // If the Red, Green or Blue values of color loop2 are not yet zero,
+      // then, decrease them by one.
+      if (Tmp[0] &gt; 0) Tmp[0]--;
+      if (Tmp[1] &gt; 0) Tmp[1]--;
+      if (Tmp[2] &gt; 0) Tmp[2]--;
+      // Set the new, altered pallette color.
+      Pal(loop2,Tmp[0],Tmp[1],Tmp[2]);
+    }
+  }
+}
+Again, to slow the above down, put in a delay above the WaitRetrace. Fading
+out the screen looks SO much more impressive then just clearing the screen;
+it can make a world of difference in the impression your demo etc will
+leave on the people viewing it. To restore the pallette, just do this :
+[Pascal]
+Procedure RestorePallette;
+VAR loop1:integer;
+BEGIN
+  WaitRetrace;
+  For loop1:=0 to 255 do
+    pal (loop1,Pall[loop1,1],Pall[loop1,2],Pall[loop1,3]);
+END;
+[C++]
+void RestorePallette() {
+  WaitRetrace();
+  for(int loop1=0; loop1&lt;255; loop1++)
+    Pal(loop1,Pall2[loop1][0],Pall2[loop1][1],Pall2[loop1][2]);
+}
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+þ  In closing
+Well, there are most of those origional questions answered ;-) The following
+sample program is quite big, so it might take you a while to get around it.
+Persevere and thou shalt overcome. Pallette manipulation has been a thorn
+in many coders sides for quite some time, yet hopefully I have shown you
+all how amazingly simple it is once you have grasped the basics.
+I need more feedback! In which direction would you like me to head? Is there
+any particular section you would like more info on? Also, upload me your
+demo's, however trivial they might seem. We really want to get in contact
+with/help out new and old coders alike, but you have to leave us that message
+telling us about yourself and what you have done or want to do.
+IS THERE ANYBODY OUT THERE!?!
+P.S. Our new demo should be out soon ... it is going to be GOOOD ... keep
+     an eye out for it.
+          [ And so she came across him, slumped over his keyboard
+            yet again . 'It's three in the morning' she whispered.
+            'Let's get you to bed'. He stirred, his face bathed in
+            the dull light of his monitor. He mutters something.
+            As she leans across him to disconnect the power, she
+            asks him; 'Was it worth it?'. His answer surprises her.
+            'No.' he says. In his caffiene-enduced haze, he smiles.
+            'But it sure is a great way to relax.'                  ]
+                                           - Grant Smith
+                                              Tue 13 July, 1993
+                                               2:23 am.
+See you next week!
+   - Denthor</pre>
+<!-- #EndEditable --> 
+          <!-- removed chitika -->
+ 
+
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut2.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+</html>
+
+
+

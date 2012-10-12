@@ -1,0 +1,672 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/enum.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:47 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, tutorials, basic C++ tutorials,Programming, C++, tutorial, C/C++, basic C++ tutorials,Programming, C++, tutorial, tutorail, programing basic C++ tutorials, programmer, learn programming, C++ made easy, xor, exclusive-or, encryption, xor encryption, OpenGL">
+<META NAME="Description" CONTENT="Understandable C++ tutorials (covers most of basic C, except i/o).  Includes basics, pointers, arrays, classes and structs, recursion, linked lists, encryption, OpenGL graphics, and more.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Enumerated Types - Enums in C++ - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Enumerated Types - enums</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+Sometimes as programmers we want to express the idea that a variable will be
+used for a specific purpose and should only be able to have a small number of
+values--for instance, a variable that stores the current direction of the wind
+might only need to store values corresponding to north, south, east, and west.
+One solution to this problem might be to use an int and some #define'd values:
+
+<pre class="example">
+#define NORTH_WIND        0
+#define SOUTH_WIND        1
+#define EAST_WIND         2
+#define WEST_WIND         3     
+#define NO_WIND           4       
+
+int wind_direction = NO_WIND;
+</pre>
+
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<br><br>
+
+The problem with this approach is that it doesn't really prevent someone from
+assigning a nonsensical value to wind_direction; for instance, I could set
+wind_direction to 453 without any complaints from my compiler.  And if I looked
+at the type of wind_direction, i would see that it's just a plain old integer.
+there's just no way to know that something is wrong.
+
+<br><br>
+The idea behind enumerated types is to create new data types that can take on
+only a restricted range of values.  Moreover, these values are all expressed as
+constants rather than magic numbers--in fact, there should be no need to know
+the underlying values.  The names of the constants should be sufficient for the
+purposes of comparing values.
+
+<br><br> 
+When you declare an enumerated type, you specify the name of the new
+type, and the possible values it can take on:
+
+<pre class="example">
+enum wind_directions_t {NO_WIND, NORTH_WIND, SOUTH_WIND, EAST_WIND, WEST_WIND};
+</pre>
+
+Note the _t at the end of the name of the type: this stands for "type" and is a
+way to visually distinguish the name of the type from the name of variables.
+Your <a href="../texteditors.html">text editor</a> may
+also have the ability to use syntax highlighting to make the new type look like
+other built-in types, such as int, for you.   
+
+<br><br>
+Now we can declare a wind_directions_t variable that can only take on five values:
+
+<pre class="example">
+wind_directions_t wind_direction = NO_WIND;
+
+wind_direction = 453; // doesn't work, we get a compiler error!
+</pre>
+
+<b>Note to C Programmers</b>: If you're planning on using enums in C, however,
+you don't get this type safety.  The above assignment will compile without
+giving you an error.  By the way, if you're using enums in C, you will also need
+to prefix the declaration with the keyword enum: enum wind_directions_t
+wind_direction = NO_WIND;
+
+<br><br>
+
+You might be wondering exactly what values the constants take on--what if you
+wanted to compare then using &lt; or &gt;?  You actually have a choice: if you
+want to set the values yourself, you may, or you can choose to use default
+values, which start at zero for the first constant and increase by one.  In our
+example, NO_WIND has the value 0, and WEST_WIND has the value 4 (just like our
+#define'd constants).
+
+<br><br>
+On the other hand, we could reverse this by giving explicit values:
+
+<pre class="example">
+enum wind_directions_t {NO_WIND = 4, NORTH_WIND = 3, SOUTH_WIND = 2, EAST_WIND = 1, WEST_WIND = 0};
+</pre>
+
+Why would you ever want to give explicit values to elements of an enumerated
+type?  Isn't the whole point of constants so that you don't need to know what
+the values are?  The answer is that if the values of the constant are never used
+outside of comparisons between elements of the enumeration, then there's almost
+no reason to define the values to be anything in particular (one exception is if
+you want one value to have multiple names, you'd have to set at least one value
+explicitly).  But if you need the values for communicating with the outside
+world, you might need to give specific values.  For example, if you decided to
+use an enum to store all of the possible text colors you could pass into a
+function to set the text colors, you'd probably need to make sure that the enum
+names, such a RED or BLUE, matched up to the values corresponding to those
+colors. 
+
+<h2>Printing Enums</h2>
+You might wonder what happens when you print out an enum: by default, you'll get the integer value of the enum.  If you want to do something fancier than that, you'll have to handle it specially.
+
+<h2>Naming Enums</h2>
+
+One issue with enums is that the name of the enumerated type doesn't show up
+along with the enum.  When you use the enum constant, it could really mean
+anything.  The problem is that if you give your enums names that are too
+general, you can run into problems.  First, it becomes hard to tell which
+enumeration a constant belongs to if you have several enumerated lists of
+values.   A related problem is that sometimes you really want to use the same
+name.  For instance, what if you had two color schemes, each of which included
+the color red, but for which the value of the RED constant needed to be
+different?  
+
+<br><br>
+The solution to both of these problems is to include part of the name of the
+enum in the names of the constants.   Notice that in the above example, I
+included "WIND" in the name of each enumerated constant.  (Perhaps this wasn't
+entirely necessary--why not just have an enum for each ordinal direction?  The
+answer is that it depends on whether someone else is already using the name.
+In this case, we avoid the problem by making the names specific enough that
+it's unlikely someone else will have a WEST_WIND constant.
+
+<h2>Type Correctness</h2>
+
+Because enums are "integer-like" types, they can safely be assigned into an
+integer without a cast.  For instance, both of the following assignments are
+totally valid:
+
+<pre class="example">
+int my_wind = EAST_WIND;
+</pre>
+
+or 
+
+<pre class="example">
+wind_directions_t wind_direction = NO_WIND;
+
+int my_wind = wind_direction;
+</pre>
+
+As already mentioned, you can't make the reverse assignment in C++ without
+using a <a href="lesson14.html">typecast</a>.  There might be times when you do need to do this, but you'd
+like to avoid it as best you can.  For instance, if you need to convert a user's input into an enumerated type, it would be a bad idea to just typecast the variable to an int:
+
+<pre class="example">
+wind_directions_t wind_direction = NO_WIND;
+
+std::cin &gt;&gt; static_cast<int>( wind_direction );
+</int></pre>
+
+This would let the user input any value at all and, almost as bad, force the user to know the range of values that the enum could take on.  A much better solution would be to shield the user from the enumeration by asking for a string and then validating the input by comparing it to the possible input strings to choose which constant to assign the enum.  For instance,
+
+<pre class="example">
+std::cout &lt;&lt; "Please enter NORTH, SOUTH, EAST, WEST, or NONE for our wind direction";
+std::cout &lt;&lt; std::endl;
+
+string input_wind_dir;
+cin &gt;&gt;
+
+wind_directions_t wind_dir;
+
+if ( user_wind_dir == "NORTH" )
+{
+        wind_dir = NORTH_WIND;
+}
+else if ( user_wind_dir == "SOUTH" )
+{
+        wind_dir = SOUTH_WIND;
+}
+else if ( user_wind_dir == "EAST" )
+{
+        wind_dir = EAST_WIND;
+}
+else if ( user_wind_dir == "WEST" )
+{
+        wind_dir = WEST_WIND;
+}
+else if ( user_wind_dir == "NONE" )
+{
+        wind_dir = NO_WIND;
+}
+else
+{
+        std::cout &lt;&lt; "That's not a valid direction!" &lt;&lt; std::endl;
+}
+</pre>
+
+<h2>Polymorphic Enums?</h2>
+
+In C++, we often use polymorphism to allow old code to handle new code--for
+instance, as long as we subclass the interface expected by a function, we can
+pass in the new class and expect it to work correctly with the code that was
+written before the new class ever existed.  Unfortunately, with enums, you
+can't really do this, even though there are occasional times you'd like to.
+(For instance, if you were managing the settings for your program and you
+stored all of them as enum values, then it might be nice to have an enum,
+settings_t, from which all of your other enums inherited so that you could
+store every new enum in the settings list.  Note that since the list contains values of different types, you can't use <a href="floating_point/understanding_floating_point.html">templates</a>.)
+
+<br><br>
+If you need this kind of behavior, you're forced to store the enums as integers and then retrieve them using typecasts to assign the particular value to the setting of interest.  And you won't even get the benefit of dynamic_cast to help you ensure that the cast is safe--you'll have to rely on the fact that incorrect values cannot be stored in the list. 
+
+<h2>Summary</h2>
+
+<h3>The Good</h3>
+
+<ul>
+<li>Enums allow you to constrain the values a variable takes on
+</li>
+<li>Enums can be used to make your program more readable by eliminating magic numbers are specifying exact what range of values a variable expects to take on
+</li>
+<li>Enums can be used to quickly declare a range of constant values without using #define
+</li>
+</ul>
+<h3>The Gotchas</h3>
+
+<ul>
+<li>Enum constants must be carefully named to avoid name collisions
+</li>
+<li>Enums don't work "polymorphically" except from the int type, which can be inconvenient
+</li>
+</ul>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/enum.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:47 GMT -->
+</html>
+
+
+

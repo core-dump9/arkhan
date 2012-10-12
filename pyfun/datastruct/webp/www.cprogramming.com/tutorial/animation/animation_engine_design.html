@@ -1,0 +1,871 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/animation/animation_engine_design.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:02 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Animation, C++ animation, animation design, animation engine, animation engine design">
+<META NAME="Description" CONTENT="Learn how to design an object-oriented animation engine.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Animation - Designing An Object Oriented Animation Engine - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Designing An Object Oriented Animation Engine</h1>
+
+
+
+By Yatin S. Shelke
+<h2>Introduction to Animation Engines</h2>
+<p>So far, we've covered many of the core elements of an animation, including the Graphic Object, Animation Object, Camera, Frustum, Layers and Layer Folders. This article (and the next) will bring them all together to design an Object Oriented Animation Engine.</p>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<p>Video games and Flash are examples of animation engines. An animation engine is the code in the animation application that drives the animation. The animation engine has many responsibilities:</p>
+ <ul>
+<li> Taking drawing data (animation objects, layer arrangements) and events as input
+</li>
+<li> Delegating the rendering tasks to animation objects
+</li>
+<li> Making sure that drawing is done in the order specified by layers and layer folders
+</li>
+<li> Scene graph management
+</li>
+<li> Collision detection (in games)
+</li>
+<li> Satisfying real time drawing requirements ( if any)
+</li>
+<li> Managing memory for animation objects, layers and layer folders. 
+</li>
+</ul>
+<p>A good animation engine should be able to handle all kinds of drawing and animation implementations without knowing how they are implemented. A good animation engine will not know whether the rendering is done with OpenGL or Direct3D. It will not know which platform-specific functions are used for keeping time; it shouldn't even know how memory is allocated. It must deal only with abstractions that are not platform or library dependent.  It can then cater to a wide variety of animation applications on a variety of platforms. Animation engine design therefore is one of the ultimate challenges for an Object Oriented designer/programmer.  </p>
+<h2>Animation Object examples</h2>
+<p>Let us build some animation objects based on the discussions thus far. The objects discussed in this article are:</p>
+<ul>
+<li> An animation object that will move the camera (AnimCamera).  
+</li>
+<li> An animation object that will draw a Graphic Object (class AnimFace), built on a simple Graphic Object, namely a rectangular GraphicFace. 
+</li>
+<li> An animation object for moving a Graphic Object (class AnimTranslate). It will cause the Graphic Object in AnimFace to move.
+</li>
+</ul>
+<h2>Camera based on OpenGL API</h2>
+<p>Before discussing the class AnimCamera, let's see how the camera works in a graphics API such as OpenGL (this discussion is based on the C API for OpenGL). Imagine a scene that contains several objects. Each object is drawn at a specific location in the virtual world. Let's call the virtual world coordinates "world coordinates" and use the prefix "world_". These world coordinates are mapped onto the screen to "screen coordinates" using prefix "screen_". When I use a triplet (x,y,z) for coordinates, that means world coordinates (since the real world has 3 dimensions). If the coordinates are described as a pair (x,y), these are screen coordinates, since screens are flat. </p>
+<p>By default, the scene is drawn with the viewer at the origin of the virtual world's 3D Cartesian coordinate system, i.e. at (world_x,world_y,world_z) = (0.0, 0.0, 0.0). The center of the screen will represent the very original of the world, (screen_x,screen_y) = (0.0, 0.0). In this case, the world X-axis increase as we move across the screen to the right, and the world Y-axis increases as we move higher up the screen. The world Z-axis increases "into" the screen, away from the viewer.</p>
+<p>As discussed in Article 1, only objects located inside the clipping planes of the frustum get displayed. For purposes of this discussion, consider the distance between the camera and the near face of the frustum to be equal to 1.0 unit in world coordinates. The center of the near face of the frustum has 3D world coordinates (0.0, 0.0, 1.0). Imagine two points of a Graphic Object, one located at world coordinates (0.0, 0.0, 2.0) and the other at (1.0,1.0, 1.0). (Choosing these particular points allows us to avoid the details of matrix transformations that occur when the camera is displaced or oriented.)</p>
+<p>By choosing the point (0.0, 0.0, 2.0) in world coordinates, we take advantage of the fact that points on the Z-axis all map to the screen coordinates (screen_x,screen_y) = (0.0, 0.0), i.e. the center of the screen. The screen coordinates of the point (0.0, 0.0, 2.0) are therefore (0.0, 0.0).</p>
+<p>By choosing the point (1.0, 1.0, 1.0) we take advantage of the face that the near face of the frustum maps directly onto the screen. Points with a Z-coordinates equal to the distance between the camera and the frustum map to a 2D point whose X and Y coordinates are equal to the X and Y coordinates of the 3D point. Therefore the screen coordinates of the point (1.0, 1.0, 1.0) are (1.0, 1.0). Points whose z coordinate is equal to the distance between the camera and the near face of the frustum map to screen coordinates equal to the x and y world coordinates. Points whose z coordinate is greater than this distance will not retain their x and y coordinates on the screen due to perspective division, which is not discussed here.</p>
+<p>Now suppose the camera moves closer to these points on the screen. For example, what happens if the camera moves to (world_x,world_y,world_z) = (0.0, 0.0, 1.0)? The entire frustum moves with the camera such that the frustum does not change its position, orientation or shape relative to the camera point. When the camera moves from (0.0, 0.0, 0.0) to (0.0, 0.0, 1.0), the center of the frustum moves from (0.0, 0.0, 1.0) to (0.0, 0.0, 2.0). </p>
+<p>Relative to the new camera position, the point (0.0, 0.0, 2.0) now has the position (0.0, 0.0, 1.0). This means the point is now right in the center of the near face of the frustum, so it is still visible on the screen at screen coordinates (0.0, 0.0).</p>
+<p>Relative to the new camera position, the point (1.0,1.0, 1.0) has the position (1.0, 1.0, 0.0). This point is no longer inside the frustum because the relative Z-coordinate of points in the frustum must be greater than the distance between the camera and the near face of the frustum i.e.greater than  1.0 as per our example frustum. Since the new relative x-coordinate of the point is 0.0, the point falls outside the frustum and does not get drawn to the screen.</p>
+
+<div> <img src="virtual_worlds.png"><div>Diagram 1.</div> </div>
+<p>The above camera operations are shown below with actual calls to the OpenGL API.  The code uses the functions gluLookAt() and glTranslatef() to position and displace the camera. The function gluLookAt() could also be used to displace the camera by computing the new position based on the displacement.  The choice is entirely up to the programmer. </p>
+<p>Both gluLookAt() and glTranslatef()place a transformation matrix in the list of matrix multiplications that OpenGL performs to compute the screen coordinates of 3D points of the objects in the virtual world. For the purposes of this discussion,you can think of it as the transformation matrix causing a change to the scene. For example, gluLookAt() places a transformation matrix in the list of matrix transformations so that all 3D points drawn on the screen will undergo the transformation based on the camera coordinates of the position, direction and up vectors passed to gluLookAt(). To really get into the details of the OpenGL API, you should the <a href="http://www.opengl.org/sdk/docs/man4/">OpenGL API</a> and <a href="http://www.opengl.org/wiki/Viewing_and_Transformations">Matrix Transformations</a>. The example points described above undergo transformations such that the world point (0.0, 0.0, 2.0) maps to the screen point (0.0, 0.0) and the world point (2.0, 2.0, 1.0) maps to the screen point (2.0, 2.0).</p>
+<pre class="example">
+// position the camera at (0.0, 0.0, 0.0)
+// by default the camera is positioned at this origin
+// following call explicitly positions camera at origin
+gluLookAt(
+	0.0, 0.0, 0.0, // coordinate of camera position
+	0.0, 0.0, 1.0 // eye direction vector : looking down the Z axis
+	0.0, 1.0, 0.0 // up direction vector : Y-axis is the up direction
+);
+glTranslatef(0.0, 0.0, 1.0); // translate camera by (0.0, 0.0, 1.0)
+</pre>
+<p>In this discussion, the screen coordinates are mapped from the "near" face of the frustum. If the top-left corner of the frustum has coordinates (world_x, world_y, world_z) = (-1.0, 1.0, 1.0), then the screen coordinates of this point are (screen_x, screen_y) = (-1.0, 1.0). Similarly, the top right corner (1.0, 1.0, 1.0) of the frustum maps to (screen_x, screen_y) = (1.0, 1.0). The bottom right corner (1.0, -1.0, 1.0) of the frustum maps to (screen_x, screen_y) = (1.0, -1.0). The bottom left corner (-1.0, -1.0, 1.0) of the frustum maps to (screen_x, screen_y) = (-1.0, 1.0). </p>
+<p>All points that get drawn on the screen first get mapped to screen coordinates that lie within the screen coordinates of the frustum through a transformation called the Perspective transformation. Then they get mapped to actual integral pixel coordinates on the screen through a transformation called the Viewport Transformation. These transformations are explained in books on OpenGL in more detail. Although the OpenGL API is outside the scope of this article, readers are urged to study the<a href="http://www.amazon.com/gp/product/0321481003?ie=UTF8&amp;tag=openglanimation-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321481003">OpenGL Programming Guide</a> and <a href="http://www.opengl.org/sdk/docs/man4/">OpenGL Reference pages</a> found at <a href="http://www.opengl.org/">OpenGL.org</a>.</p>
+<p>For purposes of this article, the above camera positioning and displacement are relevant to understanding what is done by the method Camera::displace() called from AnimCamera::get_next_frame() as described in the next section. The class Camera discussed in <a href="object_oriented_animation_design.html">An Object Oriented Approach to Animation Design</a> is expanded in pseudo-code below. The default constructor sets the default position, direction and up vectors to the origin, Z-axis and Y-axis respectively. It also calls gluLookAt() to initialize the camera. The method Camera::reposition(Vector position) repositions the camera and calls gluLookAt() again. The method Camera::displace(Vector displacement) basically translates to a call to glTranslatef(). Since glTranslatef() also results in a transformation of the scene, there is no need to call gluLookAt() separately after glTranslatef().</p>
+<pre class="example">
+class Camera {
+protected:
+	Vector position;
+	Vector direction;
+	Vector up;
+public:
+	Camera::Camera();
+	void reposition(Vector position);
+	void displace(Vector displacement);
+	. . . other methods inherited from GraphicObject . . .
+};
+Camera::Camera()
+{
+	// Set default POSITION to origin (0.0, 0.0, 0.0)
+	this-&gt;position.x = 0.0;
+	this-&gt;position.y = 0.0;
+	this-&gt;position.z = 0.0;
+	// Set default DIRECTION to Z-axis (0.0, 0.0, 1.0)
+	this-&gt;direction.x = 0.0;
+	this-&gt;direction.y = 0.0;
+	this-&gt;direction.z = 1.0;
+	// Set default UP to Y-axis (0.0, 1.0, 0.0)
+	this-&gt;up.x = 0.0;
+	this-&gt;up.y = 1.0;
+	this-&gt;up.z = 0.0;
+	gluLookAt(
+		this-&gt;position.x, this-&gt;position.y, this-&gt;position.z,
+		this-&gt;direction.x, this-&gt;direction.y, this-&gt;direction.z,
+		this-&gt;up.x, this-&gt;up.y, this-&gt;up.z
+	}
+}
+void Camera::reposition(Vector position)
+{
+	this-&gt;position.x = position.x;
+	this-&gt;position.y = position.y;
+	this-&gt;position.z = position.z;
+	gluLookAt(
+		this-&gt;position.x, this-&gt;position.y, this-&gt;position.z,
+		this-&gt;direction.x, this-&gt;direction.y, this-&gt;direction.z,
+		this-&gt;up.x, this-&gt;up.y, this-&gt;up.z
+	}
+}
+void  Camera::displace(Vector displacement)
+{
+	this-&gt;position.x += displacement.x;
+	this-&gt;position.y += displacement.y;
+	this-&gt;position.z += displacement.z;
+	glTranslatef(displacement.x, displacement.y, displacement.z);
+}
+</pre>
+
+<h2>AnimCamera</h2>
+<p>Consider the problem of creating a simple animation to move the animation camera smoothly in a 3D virtual world. Suppose the camera needs to move forward from its current position by x units over a certain number of frames, in a smooth movement that avoids an abrupt change of position by x units but instead has a uniform motion across all frames. What kind of code must be written to achieve this smooth camera movement?</p>
+<p>From the discussion on the Animation Object abstraction in  <a href="object_oriented_animation_design.html">An Object Oriented Approach to Animation Design</a> we know that the animation of the camera must happen in discrete steps. Because the Animation Object abstraction is an extension of a Graphic Object over a finite set of frames, you can think of the Animation Camera object as an extension of the Camera object over a set of finite frames. In order to animate the camera from its current position to a position that is directly ahead of the current position by x units over N frames, the Animation Camera object must be setup so that successive calls to the method AnimCamera::get_next_frame() move camera position a fraction of the total displacement of x units, such that after N successive calls to this method, the camera is now displaced forward by x units. For simplicity, let each call to AnimCamera::get_next_frame() displace the camera by dx = x/N units. The AnimCamera class is illustrated in pseudo-code below. In the example below, the total number of frames (N) is set through the constructor parameter int n_frames and subsequently stored in the data member int total_frames of the parent class AnimationObject.</p>
+<pre class="example">
+class AnimCamera : public AnimationObject {
+protected:
+	// other data inherited from AnimationObject
+	Vector displacement;
+public:
+	AnimCamera(Camera* camera, Vector displacement, int n_frames);
+	FrameState get_next_frame();
+};
+AnimCamera::AnimCamera(Camera* camera, Vector displacement, int n_frames)
+{
+	this-&gt;graphic_object_list-&gt;add(camera); // add Camera to list of graphic objects
+	this-&gt;start_frame = 0;
+	this-&gt;current_frame = this-&gt;start_frame;
+	this-&gt;total_frames = n_frames;
+}
+FrameState AnimCamera::get_next_frame() {
+	Camera* camera = (Camera*)(get_first_from_list(this-&gt;graphic_object_list));
+	camera-&gt;displace( (1.0/this-&gt;total_frames) * this-&gt;displacement ); 
+	if ( this-&gt;current_frame &lt; this-&gt;total_frames - 1) { // not reached last frame yet
+		return PLAY_NEXT_FRAME;
+	} else { // reached last frame
+		return STOP;
+	}
+}
+</pre>
+<h2>AnimBackground</h2>
+<p>This Animation Object is responsible for drawing the background for each frame. A simple background is one which is a solid color (such as solid blue). The implementation of the method AnimationObject::get_next_frame()  in the class AnimBackground simply clears the screen and fills it with a uniform blue color. Although clearing the screen and filling it with blue is done for each frame, a frame rate of 48 frames per second ensures that the human eye cannot make out individual frame refreshes, and therefore ensures that we perceive a constant non-changing background.</p>
+<p>The AnimBackground animation object is typically placed first in the list of layers that contain contents drawn to the screen each frame.  Other animation objects go in layers after the layer with the AnimBackground object so that their images are drawn after (and therefore on top of) the background. </p>
+<pre class="example">
+class AnimBackground : public virtual AnimationObject {
+	protected:
+		Color color;
+	public:
+		FrameState get_next_frame() { 
+		clear_screen(); // first clear the screen
+		fill_screen_with_color(BLUE); // fill with BLUE
+			return REPEAT; // tell engine to repeat this call
+		}
+};
+</pre>
+<h2>GraphicFace</h2>
+<p>Our GraphicObject is defined by its "up" and "right" vector. The "position" of GraphicFace is inherited from the abstract parent class GraphicObject. Diagram 2 illustrates GraphicFace. It implements the abstract method draw() which will actually call a graphics API such as OpenGL or Direct3D to draw the face.</p>
+<div> <img src="graphicsface.png"><div>Diagram 2 "GraphicFace"</div>
+</div>
+<pre class="example">
+class GraphicFace : public virtual GraphicObject {
+	protected:
+		Vector up;
+		Vector right;
+	public:
+		void draw() { .. draw face .. }
+};
+</pre>
+<h2>AnimFace</h2>
+<p>This class contains a pointer to a GraphicFace object and implements the abstract method get_next_frame(), inherited from class AnimationObject. This method will simply draw the GraphicFace object and return a REPEAT state, so the animation engine will keep calling it repeatedly.</p>
+<pre class="example">
+class AnimFace : public virtual AnimationObject {
+	protected:
+		GraphicFace* face;
+	public:
+		FrameState get_next_frame() { 
+		this-&gt;face-&gt;draw(); // then simply draw the face
+			return REPEAT;
+		}
+};
+</pre>
+<h2>AnimTranslate</h2>
+<p>This class causes a GraphicObject to be translated as instructed. This class contains a pointer to a GraphicObject object. This could point to any object of a class inherited from GraphicObject (for example GraphicFace). It implements the abstract method get_next_frame(), inherited from class AnimationObject. The instance of this object will be initialized with </p>
+<ul>
+<li>The displacement vector
+</li>
+<li>The total number of frames that the translate operation must be completed in
+</li>
+</ul>
+<p>The get_next_frame() implementation will make an incremental displacement of the object. The displacement will be equal to the total displacement divided by the total number of frames. If this displacement was not the last one, this method returns a PLAY_NEXT_FRAME state, so that the engine will call this method again via its Layer's Layer::get_image_content(). After the last displacement in the last frame, this method will return a DONE state, so the engine can remove the layer it is placed in. Thus, starting from the first frame, if this method is called as many times as the total number of frames, the object will be displaced by the total displacement provided at initialization. The get_next_frame() method does not do any actual drawing; it only displaces the GraphicObject that it points to.</p>
+<pre class="example">
+class AnimTranslate : public virtual AnimationObject {
+	protected:
+		GraphicObject* graphic_object;
+		int total_frames;
+		int current_frame;
+		Vector total_displacement;
+	public:
+		AnimateTranslate(Vector displacement, int total_frames);
+		FrameSet get_next_frame();
+};
+AnimTranslate::AnimTranslate(Vector d, int t_f)
+{
+this-&gt;total_frames = t_f;
+this-&gt;total_displacement = d;
+this-&gt;current_frame = 0;
+}
+void AnimTranslate::get_next_frame()
+{
+this-&gt;graphic_object-&gt;displace( total_displacement / total_frames );
+	If ( current_frame  &lt; total_frames - 1) { // if not the last frame
+		return PLAY_NEXT_FRAME;
+	} else { // last frame
+		return DONE;
+}
+}
+</pre>
+<h2>Animation Engine based on alternate Animation Object design</h2>
+<p>A video game or animation application will have many things happening at the same time. For example, the player could be moving in different directions, enemies could be moving in different directions, weapons effects like explosions might be rescaling or reshaped and so on. Based on the discussion of the <a href="object_oriented_animation_design.html">Animation Object abstraction</a>, these animations would be best achieved through a variety of classes derived from and implementing the interface of the abstract class AnimationObject. You've seen how the method AnimationObject::get_next_frame() provides incremental updates to the graphics display and that successive calls to this method result in animation of the Graphic Object.  The Graphic Object abstraction, on the other hand, has methods on it like GraphicObject::displace(), which causes a change in the state of the Graphic Object, so that when AnimationObject::get_next_frame() calls GraphicObject::draw(), the Graphic Object will be drawn in a different location. </p>
+<p>At this stage, it is worth considering an alternative design for the Animation Object interface. Examining and contrasting this alternative with the design described in <a href="object_oriented_animation_design.html"> Article 1 on Animation Object abstraction</a>, will help in understanding why I've chosen the design in Article 1 as well as you give you a deeper appreciate for that design.</p>
+<p>The alternative design is to let the Animation Object have methods like AnimationObject::displace() or AnimationObject::rotate() and let these methods call GraphicObject::displace() and GraphicObject::draw() internally. For a programmer, this would apparently seem to be a more natural design. For example, if the player presses the UP arrow key, the event handling part of the game simply calls the method AnimCamera::displace(),  on the Animation Camera Object. That method in turn will call Camera::displace() in small increments, followed by Camera::draw() and a refresh of the video memory. After all the incremental displacements are done, the method AnimCamera::displace() will return to its caller. This is illustrated in pseudocode below.</p>
+<pre class="example">
+void AnimCamera::displace(Vector displacement, int n_frames) {
+	Camera* camera =(Camera*)(get_first_from_list(this-&gt;graphic_object_list)); 
+	Vector delta_displacement = (1.0/N) * displacement;
+	for (int i = 0; i &lt; n_frames; i++) {
+		camera-&gt;displace(delta_displacement);
+		camera-&gt;draw();
+		refresh_video_memory_of_display_device();
+	}
+	return;
+}
+</pre>
+<p>You can see the problems with the above design by considering what happens
+if another animation happened at the same time as the camera displacement
+animation, such as a cube revolving while the camera is being moved. In this
+alternate design, the animation object for the cube will have a method on it,
+          AnimationCube::rotate(), which would be similar to the
+          AnimCamera::displace(). It would go through a loop that increments
+          the cube's rotational position until the desired rotation is
+          achieved. For each incremental rotation, the video memory of the
+          display device would have to be refreshed. Given that both
+          AnimCamera::displace() and AnimationCube::rotate() do not return
+          until they are done, it would not be possible to run both animations
+          simultaneously. For them to run simultaneously, each method would
+          have to be called in a separate thread, meaning that each animation
+          would have to be assigned its own unique thread to run in. This might
+          sound fine, but this approach has a major issue - the threads would
+          have to coordinate themselves using costly system resources like
+          mutex locks. This situation is illustrated below for synchronous
+          animations of the camera and the revolving cube.</p>
+<pre class="example">
+// called in separate thread
+void AnimCamera::displace(Vector displacement, int n_frames) {
+	Camera* camera =(Camera*)(get_first_from_list(this-&gt;graphic_object_list)); 
+	Vector delta_displacement = (1.0/N) * displacement;
+	for (int i = 0; i &lt; n_frames; i++) {
+		// block video refresh by other threads
+		acquire_refresh_video_lock(); 
+		camera-&gt;displace(delta_displacement);
+		camera-&gt;draw();
+		// unblock video refresh by other threads
+		Release_refresh_video_lock();
+		refresh_video_memory_of_display_device();
+	}
+	return;
+}
+
+// called in separate thread
+void AnimationCube::rotate(double angle, int n_frames) {
+	Cube* cube = (Cube*)(get_first_from_list(this-&gt;graphic_object_list)); 
+	double delta_rotation = (1.0/N) * angle;
+	for (int i = 0; i &lt; n_frames; i++) {
+		// block video refresh by other threads
+		acquire_refresh_video_lock(); 
+		cube-&lt;rotate(delta_rotation);
+		cube-&lt;draw();
+		// unblock video refresh by other threads
+		release_refresh_video_lock();
+		refresh_video_memory_of_display_device();
+	}
+	return;
+}
+</pre>
+
+<p>In addition to the problem of coordinating the threads of different animations, the number of calls to refresh the video memory will multiply rapidly as the number of simultaneously moving objects increases. Further, having multiple threads introduces interactions with thread scheduling that might distort the animations. </p>
+<p>Due to the above issues, this alternate animation engine based on the alternate design of the Animation Object is not a suitable design. Video games or animation applications do not generally use this alternate design. </p>
+<p>The Animation Engine based on the design of Animation Object as described in Article 1 does not face any of the above problems.  The following section will describe a simple animation engine design based on the concepts discussed thus far.</p>
+<h2>Bringing it all together: Animation Engine design based on chosen Animation Object design</h2>
+<p>Now that we have the essential abstractions and example classes, can put put together a very simple animation engine. This engine has a set of very basic and essential components.   It has a camera and a frustum. It also has a <a href="frames_and_layers.html">list of layers</a> that will be displayed containing the animation objects. For now, this list is just a simple list, and not a hierarchical tree structure of layer folders and layers. </p>
+<p>The animation application will create and provide the engine with the Camera, Frustum and list of sequenced Layers containing Animation Objects. The engine will go through each layer in sequence, calling Layer::get_image_content(), which will cause AnimationObject::get_next_frame() to be called for that layer's Animation Object. Once all the Layers are processed this way, the video memory will be refreshed. This loop keeps running until the application stops the animation engine. As a contrast with the alternative multi-threaded design above, this engine:</p>
+<ul>
+<li>Does not run separate animations in separate threads
+</li>
+<li>Calls video memory refresh only once all drawing for the next frame is done
+</li>
+<li>Does not need system resources like mutex locks
+</li>
+<li>Runs the entire engine loop in a single thread while allowing simultaneous animations
+</li>
+</ul>
+<p>The animation application will use this engine to animate the camera forward and animate a GraphicFace object sideways towards the right synchronously. So the user will move towards the face as well as see the face moving right as the animation progresses.</p>
+<p>The engine will be initialized with Camera and Frustum objects. The application will initialize a layer each for the camera animation, graphic face movement animation and the graphic face animation. </p>
+<p>The engine itself is illustrated in pseudo code by a class as follows.</p>
+<pre class="example">
+// pseudocode
+class  AnimationEngine {
+	protected:
+		Camera* camera;
+		Frustum* frustum;
+		List&lt;Layer&gt;* layer_list;
+	public:
+		AnimationEngine(Camera* c, Frustum* f);
+		add_layer_to_end_of_layer_list(Layer* layer);
+		add_layer_to_start_of_layer_list(Layer* layer);
+		delete_layer(Layer* layer);
+		run_loop();
+}
+</pre>
+
+<p>The animation application creates instances of Frustum, Camera, AnimCamera, GraphicFace, AnimFace and AnimTranslate. The AnimCamera instance is initialized with 50 frames and a displacement vector of (x, y, z) = (0, 0, 100), meaning a displacement of 100 units forward. The AnimTranslate instance is initialized with 50 frames and a displacement vector of (x, y, z) == (100, 0, 0), meaning a displacement of 100 units to the right. Note: these units do not have any particular significance and are used just as an example. </p>
+<p>Further, it creates three instances of class Layer, one for containing the instance of AnimCamera, another containing the instance of AnimFace, and another for containing the instance of AnimTranslate. It places the Layer with AnimCamera first in the list, followed by the Layer with AnimTranslate, followed by the Layer with AnimFace. </p>
+<p>The Layer with AnimCamera can go anywhere in the list of layers. By convention, it is generally placed first in this list. The calls to gluLookAt() and glTranslatef() display the scene from the camera's position and orientation. By placing the camera first, each frame first does a "look" through the camera and then "draws" the objects in the scene. If we placed the camera last in the layer's list, then the objects in the scene would have been drawn first, followed by a "look" through the camera. The ordering of the "look" and "draw" operations does not really matter though, but as it is convention to put it in the first player, so will I.</p>
+<p>Diagram 3 below illustrates the engine with two layers - one for moving the graphic object and one for drawing the graphic object. For simplicity and to avoid clutter in the diagram, the layer with the camera movement is left out. The diagram shows the generation of 3 sequential frames . </p>
+<div> <img src="animation_frames.png"><div> Diagram 3: Frames, Layers, Animation Objects and Graphic Objects in an Animation Engine</div>
+</div>
+<p>The application would be something like this in pseudo code.</p>
+<pre class="example">
+int main(int argc, char** argv)
+{
+	Camera camera; // init camera
+	Frustum frustum; // init frustum
+	AnimBackground anim_background;
+	Layer anim_background_layer(&amp;anim_background);
+	AnimCamera anim_camera(50 frames, displacement = (0, 0, 100); // init AnimCamera
+	Layer anim_camera_layer(&amp;anim_camera); // Place AnimCamera in layer
+	GraphicFace face(0, 0, 0);  // init GraphicFace at location {0, 0, 0}
+	AnimFace anim_face; // init AnimFace
+	Layer anim_face_layer(&amp;anim_face); // Place AnimFace in layer
+	AnimTranslate anim_translate(50 frames, displacement = {100, 0, 0}); // init AnimTranslate
+	Layer anim_translate_layer(&amp;anim_translate); // place AnimTranslate in layer
+
+	List&lt;Layer&gt; layer_list; // init layer list
+	// init engine with camera, frustum and layer list 
+AnimationEngine engine(&amp;camera, &amp;frustum, &amp;layer_list); 
+// place AnimCamera first in layer list
+engine. add_layer_to_end_of_layer_list (anim_camera_layer);
+// place AnimBackground second in the layer list
+engine.add_layer_to_end_of_layer_list (anim_background_layer);
+	// place AnimTranslate   third in layer list
+	engine. add_layer_to_end_of_layer_list (anim_translate_layer);
+	// place AnimFace  fourth in layer list
+	engine.add_layer_to_end_of_layer_list(anim_face_layer);
+// run animation engine loop
+engine.run_loop();
+}
+</pre>
+<p>Finally, the loop that runs it all is AnimationEngine::run_loop(). This method has these steps:</p>
+<ul>
+<li>This method asks each layer in the list, in order, to call Layer::get_image_content(), which in turn asks the AnimationObject that it contains to call AnimationObject::get_next_frame(). 
+</li>
+<li>After each of the layers finish the call to Layer::get_image_content(), the method AnimationEngine::run_loop() updates the video buffer. 
+</li>
+</ul>
+<p>The above two steps are then repeated  as long as the engine is running. This plays out as follows:</p>
+<ul>
+<li>First, for the first 50 runs of the above loop, the method Layer::get_image_content() gets called on the layer with the AnimCamera object. Thus AnimCamera::get_next_frame() gets called first. This method displaces the camera by the incremental displacement vector ( 0/50, 0/50, 100/50 ) = ( 0, 0, 2 ). This is because the AnimCamera::get_next_frame divides the total displacement which is (0, 0, 100) by the total number of frames, which is 50. This causes each frame to be viewed from a new position slightly incremented over the previous frame's position, which results in the effect of the animation of the camera. 
+</li>
+<li>Second, for each of the above 50 runs of the loop, the method Layer::get_image_content() gets called on the layer with the AnimBackground object. Thus AnimBackground::get_next_frame() gets called second. This method simply clears the screen and fills it with blue color. When other layers get drawn after this layer, they draw over the background. 
+</li>
+<li>Third, for each of the above 50 runs of the loop, the method Layer::get_image_content() gets called on the layer with the AnimTranslate object. Thus AnimTranslate::get_next_frame() gets called  third. This method changes the coordinates of the GraphicFace object contained in the AnimFace object by the vector {100/50, 0/50, 0/50} = {2, 0, 0}. This is because AnimTranslate::get_next_frame() divides the total displacement which is {100, 0, 0} by the total number of frames, which is 50. This causes the object to be positioned at a new position slightly incremented over the object's position in the previous frame, which results in the effect of the animation of the object.
+</li>
+<li>Fourth, for each of the above 50 runs of the loop, the method Layer::get_image_content() gets called on the layer with the AnimFace object. Thus AnimFace::get_next_frame() gets called fourth. The method AnimFace::get_next_frame() simply draws its GraphicFace object at its location, which means the first time in the AnimationEngine::run_loop(), the face gets drawn at {2, 0, 0}, second time in the loop, it gets drawn at {4, 0, 0} and so on. Finally in the 50th run of the loop, the face gets drawn at {100, 0, 0}.
+</li>
+<li>After each  set of calls (AnimCamera::get_next_frame(), AnimBackground::get_next_frame(), AnimTranslate::get_next_frame() and AnimFace::get_next_frame()), the method AnimationEngine::run_loop() updates the video memory of the display device. 
+</li>
+<li>After the video memory refresh, AnimationEngine::run_loop() goes back to calling Layer::get_image_content() on its layers list.
+</li>
+<li>The 50th call to AnimTranslate::get_next_frame() detects that it is the last frame for that AnimTranslate object. Therefore, it returns the DONE status to Layer::get_image_content() which relays it to AnimationEngine::run_loop(). This tells AnimationEngine::run_loop() that the layer is done and can be removed, which is done by AnimationEngine::run_loop(). Thus on the 51st call to AnimationEngine::run_loop(), the only layer left in the engine is the layer containing AnimFace, resulting in the rest of the calls to AnimationEngine::run_loop() to simply drawing the face at {100, 0, 0}
+</li>
+<li>The first 50 steps resulted in a gradual movement of the face from {0, 0, 0} to {100, 0, 0}, which is the animation effect desired. After this effect is done, the face stays put at the new location.
+</li>
+</ul>
+<pre class="example">
+void AnimationEngine::run_loop()
+{
+	do {
+		for each layer in layers_list {
+			// get image content from next layer
+			// and return status
+			// Layer::get_image_content() will communicate
+			// status from AnimationObject::get_next_frame()
+			// to this engine loop
+			status =  Layer::get_image_content();
+			if (status == DONE) {
+				mark layer for deletion;
+			}
+		}
+		For each layer marked for deletion {
+			Delete that layer;
+		}
+		Refresh video memory
+	} while (true);   // run forever
+}
+</pre>
+
+<p>That's it! We have a design for an extremely simple, but workable animation engine design. The engine does not have event handling, scene graph management, hierarchical animation object tree structure, collision detection and so on. But it is a skeleton design upon which the rest of these features could be built. </p>
+<p>In a real game, the animation objects will be organized not in a flat list of layers, but in a hierarchical tree structure of layers and layer folders. The method AnimationEngine::run_loop() would traverse this tree structure and call Layer::get_image_content() or LayerFolder::get_image_content() on each of the nodes of the tree. The game logic and event handling logic of the game would then be able to manage not just individual animation objects, but composite animation objects as well. More complex game engines may organize the layers into a combined tree-graph structure so that the child nodes of a parent node may be connected by a graph for advantage to scene graph management as discussed in the next article. </p>
+<h2>Summary</h2>
+<p>We discussed example objects for the abstractions of GraphicObject (Camera, GraphicFace) and AnimationObject (AnimCamera, AnimTranslate), as well as an inferior alternative to the <a href="object_oriented_animation_design.html">Animation Object design described in the first article of this series</a>. You saw how a skeletal animation engine design would work with some example objects and Layer objects.  You saw an example of this design in action with a rectangular face moving the right while simultaneously the camera moved towards the rectangular face.</p>
+<p>The next article discusses First Person Shooter (FPS) game design with special consideration for event handling. It will be shown how user generated events like mouse and keyboard events get mapped to animations in the game. </p>
+
+
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../game_programming/same_game_part1.html>
+                    <img src=../game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/animation/animation_engine_design.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:05 GMT -->
+</html>
+
+
+

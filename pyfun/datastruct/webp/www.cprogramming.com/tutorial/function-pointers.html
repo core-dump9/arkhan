@@ -1,0 +1,815 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/function-pointers.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, computer programming, programming computers, how to program computers">
+<META NAME="Description" CONTENT="Learn how to take advantage of auto_ptr for managing memory in C++.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Function Pointers in C and C++ - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Programs as Data: Function Pointers</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+A function pointer is a variable that stores the address of a function that
+can later be called through that function pointer.  This is useful because
+functions encapsulate behavior.   For instance, every time you need a
+particular behavior such as drawing a line, instead of writing out a bunch of
+code, all you need to do is call the function.  But sometimes you would like
+to choose different behaviors at different times in essentially the same piece
+of code.  Read on for concrete examples. 
+
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<h2>Example Uses of Function Pointers</h2>
+
+<h3>Functions as Arguments to Other Functions</h3>
+
+If you were to write a <a href="computersciencetheory/sortcomp.html">sort
+routine</a>, you might want to allow the function's caller to choose the order
+in which the data is sorted; some programmers might need to sort the data in
+ascending order, others might prefer descending order while still others may
+want something similar to but not quite like one of those choices.  One way to
+let your user specify what to do is to provide a flag as an argument to the
+function, but this is inflexible; the sort function allows only a fixed set of
+comparison types (e.g., ascending and descending).
+
+<br><br>
+A much nicer way of allowing the user to choose how to sort the data is simply
+to let the user pass in a function to the sort function.  This function might
+take two pieces of data and perform a comparison on them.  We'll look at the
+syntax for this in a bit.
+
+<h3>Callback Functions</h3>
+
+Another use for function pointers is setting up "listener" or "callback"
+functions that are invoked when a particular event happens.  The function is
+called, and this notifies your code that something of interest has taken
+place.  
+<br><br>
+
+Why would you ever write code with callback functions?  You often see it when
+writing code using someone's library.  One example is when you're writing code
+for a graphical user interface (GUI).  Most of the time, the user will
+interact with a loop that allows the mouse pointer to move and that redraws
+the interface.  Sometimes, however, the user will click on a button or enter
+text into a field.  These operations are "events" that may require a response
+that your program needs to handle.  How can your code know what's happening?
+Using Callback functions!  The user's click should cause the interface to call
+a function that you wrote to handle the event.  
+
+<br><br>
+
+To get a sense for when you might do this, consider what might happen if you
+were using a GUI library that had a "create_button" function.  It might take
+the location where a button should appear on the screen, the text of the
+button, and a function to call when the button is clicked.  Assuming for the
+moment that C (and C++) had a generic "function pointer" type called function,
+this might look like this:
+
+<pre class="example">
+void create_button( int x, int y, const char *text, function callback_func );
+</pre>
+
+Whenever the button is clicked, callback_func will be invoked.  Exactly what
+callback_func does depends on the button; this is why allowing the
+create_button function to take a function pointer is useful.
+
+<h2>Function Pointer Syntax</h2>
+
+The syntax for declaring a function pointer might seem messy at first, but
+in most cases it's really quite straight-forward once you <b>understand</b>
+what's going on.  Let's look at a simple example:
+
+<pre class="example">
+void (*foo)(int);
+</pre>
+
+In this example, foo is a pointer to a function taking one argument, an
+integer, and that returns void.  It's as if you're declaring a function called
+"*foo", which takes an int and returns void; now, if *foo is a function, then
+foo must be a pointer to a function.  (Similarly, a declaration like int *x
+can be read as *x is an int, so x must be a pointer to an int.)
+
+<br><br>
+The key to writing the declaration for a function pointer is that you're just
+writing out the declaration of a function but with (*func_name) where you'd
+normally just put func_name.
+
+<br><br><h3>Reading Function Pointer Declarations</h3>
+
+Sometimes people get confused when more stars are thrown in:
+
+<pre class="example">
+void *(*foo)(int *);
+</pre>
+
+Here, the key is to read inside-out; notice that the innermost element of the
+expression is *foo, and that otherwise it looks like a normal function
+declaration.  *foo should refer to a function that returns a void * and takes
+an int *.  Consequently, foo is a pointer to just such a function.
+
+<h3>Initializing Function Pointers</h3>
+
+To initialize a function pointer, you must give it the address of a function
+in your program.  The syntax is like any other variable:
+
+<pre class="example">
+#include &lt;stdio.h&gt;
+void my_int_func(int x)
+{
+    printf( "%d\n", x );
+}
+
+int main()
+{
+    void (*foo)(int);
+    /* the ampersand is actually optional */
+    foo = &amp;my_int_func;
+
+    return 0;
+}
+</pre>
+
+(Note: all examples are written to be compatible with both C and C++.)
+
+
+<h3>Using a Function Pointer</h3>
+
+To call the function pointed to by a function pointer, you treat the
+function pointer as though it were the name of the function you wish to call.
+The act of calling it performs the dereference; there's no need to do it
+yourself:
+
+<pre class="example">
+#include &lt;stdio.h&gt;
+void my_int_func(int x)
+{
+    printf( "%d\n", x );
+}
+
+
+int main()
+{
+    void (*foo)(int);
+    foo = &amp;my_int_func;
+
+    /* call my_int_func (note that you do not need to write (*foo)(2) ) */
+    foo( 2 );
+    /* but if you want to, you may */
+    (*foo)( 2 );
+
+    return 0;
+}
+</pre>
+
+Note that function pointer syntax is flexible; it can either look like most
+other uses of pointers, with &amp; and *, or you may omit that part of syntax.
+This is similar to how arrays are treated, where a bare array decays to a
+pointer, but you may also prefix the array with &amp; to request its address.
+
+<h2>Function Pointers in the Wild</h2>
+
+Let's go back to the sorting example where I suggested using a function
+pointer to write a generic sorting routine where the exact order could be
+specified by the programmer calling the sorting function.  It turns out that
+the C function qsort does just that.
+
+<br><br>
+From the Linux man pages, we have the following declaration for qsort (from
+stdlib.h):
+
+<pre class="example">
+ void qsort(void *base, size_t nmemb, size_t size,
+            int(*compar)(const void *, const void *));
+</pre>
+
+Note the use of void*s to allow qsort to operate on any kind of data (in C++,
+you'd normally use <a href="templates.html">templates</a> for
+this task, but C++ also allows the use of void* pointers) because void*
+pointers can point to anything.  Because we don't know the size of the
+individual elements in a void* array, we must give qsort the number of
+elements, nmemb, of the array to be sorted, base, in addition to the standard
+requirement of giving the length, size, of the input.
+
+<br><br>
+But what we're really interested in is the compar argument to qsort: it's a
+function pointer that takes two void *s and returns an int.  This allows
+anyone to specify how to sort the elements of the array base without having to
+write a specialized sorting algorithm.  Note, also, that compar returns an
+int; the function pointed to should return -1 if the first argument is less
+than the second, 0 if they are equal, or 1 if the second is less than the
+first.
+
+<br><br>
+For instance, to sort an array of numbers in ascending order, we could write
+code like this:
+ 
+<pre class="example">
+#include &lt;stdlib.h&gt;
+
+int int_sorter( const void *first_arg, const void *second_arg )
+{
+    int first = *(int*)first_arg;
+    int second = *(int*)second_arg;
+    if ( first &lt; second )
+    {
+        return -1;
+    }
+    else if ( first == second )
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+int main()
+{
+    int array[10];
+    int i;
+    /* fill array */
+    for ( i = 0; i &lt; 10; ++i )
+    {
+        array[ i ] = 10 - i;
+    }
+    qsort( array, 10 , sizeof( int ), int_sorter );
+    for ( i = 0; i &lt; 10; ++i )
+    {
+        printf ( "%d\n" ,array[ i ] );
+    }
+
+}
+</pre>
+
+
+<!--
+<br><br>
+Often, <a
+href=http://www.cprogramming.com/tutorial/typedef.html>typedefs</a>
+are used to make code using function pointers somewhat more readable.
+-->
+
+<h2>Using Polymorphism and Virtual Functions Instead of Function Pointers
+(C++)</h2>
+
+You can often avoid the need for explicit function pointers by using virtual
+functions.  For instance, you could write a sorting routine that takes a
+pointer to a class that provides a virtual function called compare:
+
+<pre class="example">
+class Sorter
+{
+    public:
+    virtual int compare (const void *first, const void *second);
+};
+
+// cpp_qsort, a qsort using C++ features like virtual functions
+void cpp_qsort(void *base, size_t nmemb, size_t size, Sorter *compar);
+</pre>
+
+inside cpp_qsort, whenever a comparison is needed, compar-&gt;compare should
+be called.  For classes that override this virtual function, the sort routine
+will get the new behavior of that function.  For instance:
+
+<pre class="example">
+class AscendSorter : public Sorter
+{
+
+    virtual int compare (const void*, const void*)
+    {
+        int first = *(int*)first_arg;
+        int second = *(int*)second_arg;
+        if ( first &lt; second )
+        {
+            return -1;
+        }
+        else if ( first == second )
+        {
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+};
+</pre>
+
+and then you could pass in a pointer to an instance of the AscendSorter to
+cpp_qsort to sort integers in ascending order.
+
+<h3>But Are You Really Not Using Function Pointers?</h3>
+
+Virtual functions are implemented behind the scenes using function pointers,
+so you really are using function pointers--it just happens that the compiler
+makes the work easier for you.  Using polymorphism can be an appropriate
+strategy (for instance, it's used by Java), but it does lead to the overhead
+of having to create an object rather than simply pass in a function pointer.
+
+<h2>Function Pointers Summary</h2>
+
+<h3>Syntax</h3>
+<h4>Declaring</h4>
+Declare a function pointer as though you were declaring a function, except
+with a name like *foo instead of just foo:
+
+<pre class="example">
+void (*foo)(int);
+</pre>
+<h4>Initializing</h4>
+
+You can get the address of a function simply by naming it:
+
+<pre class="example">
+void foo();
+func_pointer = foo;
+</pre>
+
+or by prefixing the name of the function with an ampersand:
+
+<pre class="example">
+void foo();
+func_pointer = &amp;foo;
+</pre>
+
+<h4>Invoking</h4>
+
+Invoke the function pointed to just as if you were calling a function.
+<pre class="example">
+func_pointer( arg1, arg2 );
+</pre>
+
+or you may optionally dereference the function pointer before calling the
+function it points to:
+
+<pre class="example">
+(*func_pointer)( arg1, arg2 );
+</pre>
+
+<h3>Benefits of Function Pointers</h3>
+
+<ul>
+<li>Function pointers provide a way of passing around instructions for how
+    to do something
+    </li>
+<li>You can write flexible functions and libraries that allow the
+    programmer to choose behavior by passing function pointers as arguments
+    </li>
+<li>This flexibility can also be achieved by using classes with virtual
+    functions
+</li>
+</ul>
+<i>I am grateful to Alex Hoffer and Thomas Carriero for their comments on a
+draft of this article.</i>
+<br><br><b>Related articles</b>
+<br><br><a href="../c%2b%2b11/c%2b%2b11-lambda-closures.html">Lambda functions in C++11, a replacement for function pointers</a>
+<br><br><a href="lesson6.html">What are
+Pointers?</a>
+<br><br><a href="functors-function-objects-in-c%2b%2b.html">Functors in C++, a better function pointer</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/function-pointers.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+</html>
+
+
+

@@ -1,0 +1,1032 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:32:57 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+<META NAME="keywords" CONTENT="c++11 rvalue references, move semantics, rvalue references and move semantics, move semantics with rvalue references">
+<META NAME="Description" CONTENT="Learn how to use rvalue references to create move constructors and move assignment operators to take advantage of move semantics in C++11.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Rvalue References and Move Semantics in C++11 - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../tutorial/c-tutorial.html>C Tutorial</a><br>
+            <a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Move semantics and rvalue references in C++11</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+<p>C++ has always produced fast programs. Unfortunately, until <a href="what-is-c%2b%2b0x.html">C++11</a>, there has
+been an obstinate wart that slows down many C++ programs: the creation of
+temporary objects. Sometimes these temporary objects can be optimized away by
+the compiler (the return value optimization, for example).  But this is not
+always the case, and it can result in expensive object copies.  What do I mean?</p>
+
+<p>Let's say that you have the following code:</p>
+
+<pre class="brush: cpp; toolbar: false">
+#include &lt;iostream&gt;
+
+using namespace std;
+
+vector&lt;int&gt; doubleValues (const vector&lt;int&gt;&amp; v)
+{
+    vector&lt;int&gt; new_values( v.size() );
+    for (auto itr = new_values.begin(), end_itr = new_values.end(); itr != end_itr; ++itr )
+    {
+        new_values.push_back( 2 * *itr );
+    }
+    return new_values;
+}
+
+int main()
+{
+    vector&lt;int&gt; v;
+    for ( int i = 0; i &lt; 100; i++ )
+    {
+        v.push_back( i );
+    }
+    v = doubleValues( v );
+}
+</pre>
+
+<p>If you've done a lot of high performance work in C++, sorry about the pain
+that brought on. If you haven't--well, let's walk through why this code is
+terrible C++03 code. (The rest of this tutorial will be about why it's fine
+C++11 code.) The problem is with the copies. When doubleValues is called, it
+constructs a <a href="../tutorial/stl/vector.html">vector</a>,
+new_values, and fills it up. This alone might not be ideal performance, but if
+we want to keep our original vector unsullied, we need a second copy. But what
+happens when we hit the return statement?</p>
+
+<p>The entire contents of new_values must be copied! In principle, there could
+be up to two copies here: one into a temporary object to be returned, and a
+second when the vector assignment operator runs on the line v = doubleValues( v );.  
+The first copy may be optimized away by the compiler automatically, but there
+is no avoiding that the assignment to v will have to copy all the values again,
+which requires a new memory allocation and another iteration over the entire
+vector.</p>
+
+<p>This example might be a little bit contrived--and of course you can find
+ways to avoid this kind of problem--for example, by storing and returning the
+vector by pointer, or by passing in a vector to be filled up. The thing is,
+neither of these programming styles is particularly natural. Moreover, an
+approach that requires returning a pointer has introduced at least one more
+memory allocation, and one of the design goals of C++ is to avoid memory
+allocations.</p>
+
+<p>The worst part of this whole story is that the object returned from
+doubleValues is a temporary value that's no longer needed. When you have the
+line v = doubleValues( v ), the result of doubleValues( v ) is just going to
+get thrown away once it is copied! In theory, it should be possible to skip the
+whole copy and just pilfer the pointer inside the temporary vector and keep it
+in v. In effect, why can't we <b>move</b> the object? In C++03, the answer is
+that there was no way to tell if an object was a temporary or not, you had to
+run the same code in the assignment operator or copy constructor, no matter
+where the value came from, so no pilfering was possible. In C++11, the answer
+is--you can!</p>
+
+<p>That's what rvalue references and move semantics are for! Move semantics allows you to 
+avoid unnecessary copies when working with temporary objects that are about to
+evaporate, and whose resources can safely be taken from that temporary object
+and used by another.</p>
+
+<p>Move semantics relies on a new feature of C++11, called rvalue references,
+which you'll want to understand to really appreciate what's going on. So first
+let's talk about what an rvalue is, and then what an rvalue reference then.
+Finally, we'll come back to move semantics and how it can be implemented with
+rvalue references.</p>
+
+<h2>Rvalues and lvalues - bitter rivals, or best of friends?</h2>
+
+<p>In C++, there are rvalues and lvalues. An lvalue is an expression whose
+address can be taken, a locator value--essentially, an lvalue provides a
+(semi)permanent piece of memory. You can make assignments to lvalues. For
+example:</p>
+
+<pre class="brush: cpp; toolbar: false">
+int a;
+a = 1; // here, a is an lvalue
+</pre>
+
+You can also have lvalues that aren't variables:
+
+<pre class="brush: cpp; toolbar: false">
+int x;
+int&amp; getRef () 
+{
+        return x;
+}
+
+getRef() = 4;
+</pre>
+
+<p>Here, getRef returns a reference to a global variable, so it's returning a value that is stored in a permanent location. (You could literally write &amp; getRef() if you wanted to, and it would give you the address of x.)</p>
+
+<p>Rvalues are--well, rvalues are not lvalues. An expression is an rvalue if it results in a temporary object. For example:</p>
+
+<pre class="brush: cpp; toolbar: false">
+int x;
+int getVal ()
+{
+    return x;
+}
+getVal();
+</pre>
+
+<p>Here, getVal() is an rvalue--the value being returned is not a reference to x, it's just a temporary value. This gets a little bit more interesting if we use real objects instead of numbers:</p>
+
+<pre class="brush: cpp; toolbar: false">
+string getName ()
+{
+    return "Alex";
+}
+getName();
+</pre>
+
+<p>Here, getName returns a string that is constructed inside the function. You can assign the result of getName to a variable:</p>
+
+<pre class="brush: cpp; toolbar: false">
+string name = getName();
+</pre>
+
+<p>But you're assigning from a temporary object, not from some value that has a fixed location. getName() is an rvalue.</p>
+
+<h2>Detecting temporary objects with rvalue references</h2>
+
+<p>The important thing is that rvalues refer to temporary objects--just like the value returned from doubleValues. Wouldn't it be great if we could know, without a shadow of a doubt, that a value returned from an expression was a temporary, and somehow write code that is overloaded to behave differently for temporary objects? Why, yes, yes indeed it would be. And this is what rvalue references are for. An rvalue reference is a reference that will bind only to a temporary object. What do I mean?</p>
+
+<p>Prior to C++11, if you had a temporary object, you could use a "regular" or "lvalue reference" to bind it, but only if it was <a href="../tutorial/const_correctness.html">const</a>:</p>
+
+<pre class="brush: cpp; toolbar: false">
+const string&amp; name = getName(); // ok
+string&amp; name = getName(); // NOT ok
+</pre>
+
+<p>The intuition here is that you cannot use a "mutable" reference because, if
+you did, you'd be able to modify some object that is about to disappear, and
+that would be dangerous. Notice, by the way, that holding on to a const
+reference to a temporary object ensures that the temporary object isn't
+immediately destructed. This is a nice guarantee of C++, but it is still a
+temporary object, so you don't want to modify it.</p>
+
+<p>In C++11, however, there's a new kind of reference, an "rvalue reference",
+that will let you bind a mutable reference to an rvalue, but not an lvalue.  In
+other words, rvalue references are perfect for detecting if a value is
+temporary object or not.  Rvalue references use the &amp;&amp; syntax instead
+of just &amp;, and can be const and non-const, just like lvalue references,
+although you'll rarely see a const rvalue reference (as we'll see, mutable
+references are kind of the point):</p> 
+
+<pre class="brush: cpp; toolbar: false">
+const string&amp;&amp; name = getName(); // ok
+string&amp;&amp; name = getName(); // also ok - praise be!
+</pre>
+
+<p>So far this is all well and good, but how does it help? The most important
+thing about lvalue references vs rvalue references is what happens when you
+write functions that take lvalue or rvalue references as arguments. Let's say
+we have two functions:</p>
+
+<pre class="brush: cpp; toolbar: false">
+printReference (const String&amp; str)
+{
+        cout &lt;&lt; str;
+}
+
+printReference (String&amp;&amp; str)
+{
+        cout &lt;&lt; str;
+}
+</pre>
+
+<p>Now the behavior gets interesting--the printReference function taking a
+const lvalue reference will accept any argument that it's given, whether it be an
+lvalue or an rvalue, and regardless of whether the lvalue or rvalue is mutable
+or not. However, in the presence of the second overload, printReference taking
+an rvalue reference, it will be given all values <em>except</em> mutable
+rvalue-references. In other words, if you write:</p>
+
+<pre class="brush: cpp; toolbar: false">
+string me( "alex" );
+printReference(  me ); // calls the first printReference function, taking an lvalue reference
+
+printReference( getName() ); // calls the second printReference function, taking a mutable rvalue reference
+</pre>
+
+<p>Now we have a way to determine if a reference variable refers to a temporary
+object or to a permanent object. The rvalue reference version of the method is
+like the secret back door entrance to the club that you can only get into if
+you're a temporary object (boring club, I guess). Now that we have our method of
+determining if an object was a temporary or a permanent thing, how can we use it?</p>
+
+<h2>Move constructor and move assignment operator</h2>
+
+<p>The most common pattern you'll see when working with rvalue references is to
+create a move constructor and move assignment operator (which follows the same
+principles). A move constructor, like a copy constructor, takes an instance of
+an object as its argument and creates a new instance based on the original
+object. However, the move constructor can avoid memory reallocation because we
+know it has been provided a temporary object, so rather than copy the fields of
+the object, we will move them.</p>
+
+<p>What does it mean to move a field of the object? If the field is a primitive
+type, like int, we just copy it. It gets more interesting if the field is a
+<a href="../tutorial/lesson6.html">pointer</a>: here,
+rather than allocate and initialize new memory, we can simply steal the pointer
+and null out the pointer in the temporary object! We know the temporary object
+will no longer be needed, so we can take its pointer out from under it. </p>
+
+<p>Imagine that we have a simple ArrayWrapper class, like this:</p>
+
+<pre class="brush: cpp; toolbar: false">
+class ArrayWrapper
+{
+    public:
+        ArrayWrapper (int n)
+            : _p_vals( new int[ n ] )
+            , _size( n )
+        {}
+        // copy constructor
+        ArrayWrapper (const ArrayWrapper&amp; other)
+            : _p_vals( new int[ other._size  ] )
+            , _size( other._size )
+        {
+            for ( int i = 0; i &lt; _size; ++i )
+            {
+                _p_vals[ i ] = other._p_vals[ i ];
+            }
+        }
+        ~ArrayWrapper ()
+        {
+            delete [] _p_vals;
+        }
+    private:
+    int *_p_vals;
+    int _size;
+};
+</pre>
+
+<p>Notice that the copy constructor has to both allocate memory and copy every
+value from the array, one at a time! That's a lot of work for a copy. Let's add
+a move constructor and gain some massive efficiency.</p>
+
+<pre class="brush: cpp; toolbar: false">
+class ArrayWrapper
+{
+public:
+    // default constructor produces a moderately sized array
+    ArrayWrapper ()
+        : _p_vals( new int[ 64 ] )
+        , _size( 64 )
+    {}
+
+    ArrayWrapper (int n)
+        : _p_vals( new int[ n ] )
+        , _size( n )
+    {}
+
+    // move constructor
+    ArrayWrapper (ArrayWrapper&amp;&amp; other)
+        : _p_vals( other._p_vals  )
+        , _size( other._size )
+    {
+        other._p_vals = NULL;
+    }
+
+    // copy constructor
+    ArrayWrapper (const ArrayWrapper&amp; other)
+        : _p_vals( new int[ other._size  ] )
+        , _size( other._size )
+    {
+        for ( int i = 0; i &lt; _size; ++i )
+        {
+            _p_vals[ i ] = other._p_vals[ i ];
+        }
+    }
+    ~ArrayWrapper ()
+    {
+        delete [] _p_vals;
+    }
+
+private:
+    int *_p_vals;
+    int _size;
+};
+</pre>
+
+<p>Wow, the move constructor is actually simpler than the copy constructor!
+That's quite a feat.  The main things to notice are:</p>
+<ol>
+<li>The parameter is a non-const rvalue reference
+</li>
+<li>other._p_vals is set to NULL
+</li>
+</ol>
+<p>The second observation explains the first--we couldn't set other._p_vals to
+NULL if we'd taken a const rvalue reference. But why do we need to set
+other._p_vals = NULL? The reason is the destructor--when the temporary object
+goes out of scope, just like all other C++ objects, its destructor will run.
+When its destructor runs, it will free _p_vals. The same _p_vals that we just
+copied! If we don't set other._p_vals to NULL, the move would not really be a
+move--it would just be a copy that introduces a crash later on once we start
+using freed memory. This is the whole point of a move constructor: to avoid a
+copy by changing the original, temporary object!</p> 
+
+<p>Again, the overload rules work such that the move constructor is called only
+for a temporary object--and only a temporary object that can be modified. One
+thing this means is that if you have a function that returns a const object, it
+will cause the copy constructor to run instead of the move constructor--so
+don't write code like this:</p>
+
+<pre class="brush: cpp; toolbar: false">
+const ArrayWrapper getArrayWrapper (); // makes the move constructor useless, the temporary is const!
+</pre>
+
+<p>There's still one more situation we haven't discussed how to handle in a
+move constructor--when we have a field that is an object. For example, imagine
+that instead of having a size field, we had a metadata field that looked like
+this:</p>
+
+<pre class="brush: cpp; toolbar: false">
+class MetaData
+{
+public:
+    MetaData (int size, const std::string&amp; name)
+        : _name( name )
+        , _size( size )
+    {}
+
+    // copy constructor
+    MetaData (const MetaData&amp; other)
+        : _name( other._name )
+        , _size( other._size )
+    {}
+
+    // move constructor
+    MetaData (MetaData&amp;&amp; other)
+        : _name( other._name )
+        , _size( other._size )
+    {}
+
+    std::string getName () const { return _name; }
+    int getSize () const { return _size; }
+    private:
+    std::string _name;
+    int _size;
+};
+</pre>
+
+<p>Now our array can have a name and a size, so we might have to change the definition of ArrayWrapper like so:
+
+</p>
+<pre class="brush: cpp; toolbar: false">
+class ArrayWrapper
+{
+public:
+    // default constructor produces a moderately sized array
+    ArrayWrapper ()
+        : _p_vals( new int[ 64 ] )
+        , _metadata( 64, "ArrayWrapper" )
+    {}
+
+    ArrayWrapper (int n)
+        : _p_vals( new int[ n ] )
+        , _metadata( n, "ArrayWrapper" )
+    {}
+
+    // move constructor
+    ArrayWrapper (ArrayWrapper&amp;&amp; other)
+        : _p_vals( other._p_vals  )
+        , _metadata( other._metadata )
+    {
+        other._p_vals = NULL;
+    }
+
+    // copy constructor
+    ArrayWrapper (const ArrayWrapper&amp; other)
+        : _p_vals( new int[ other._metadata.getSize() ] )
+        , _metadata( other._metadata )
+    {
+        for ( int i = 0; i &lt; _metadata.getSize(); ++i )
+        {
+            _p_vals[ i ] = other._p_vals[ i ];
+        }
+    }
+    ~ArrayWrapper ()
+    {
+        delete [] _p_vals;
+    }
+private:
+    int *_p_vals;
+    MetaData _metadata;
+};
+</pre>
+
+<p>Does this work? It seems very natural, doesn't it, to just call the MetaData
+move constructor from within the move constructor for ArrayWrapper? The problem
+is that this just doesn't work. The reason is simple: the value of other in the
+move constructor--it's an rvalue reference. But an rvalue reference is not, in
+fact, an rvalue. It's an lvalue, and so the copy constructor is called, not the
+move constructor. This is weird. I know--it's confusing. Here's the way to
+think about it. A rvalue is an expression that creates an object that is about
+to evaporate into thin air. It's on its last legs in life--or about to fulfill
+its life purpose. Suddenly we pass the temporary to a move constructor, and it takes on
+new life in the new scope. In the context where the rvalue expression was evaluated, the
+temporary object really is over and done with. But in our constructor, the
+object has a name; it will be alive for the entire duration of our function.
+In other words, we might use the variable other more than once in the function,
+and the temporary object has a defined location that truly persists for the
+entire function.  It's an lvalue in the true sense of the term locator value,
+we can locate the object at a particular address that is stable for the entire
+duration of the function call.  We might, in fact, want to use it later in the
+function. If a move constructor were called whenever we held an object in an rvalue
+reference, we might use a moved object, by accident!</p>
+
+<pre class="brush: cpp; toolbar: false">
+    // move constructor
+    ArrayWrapper (ArrayWrapper&amp;&amp; other)
+        : _p_vals( other._p_vals  )
+        , _metadata( other._metadata )
+    {
+        // if _metadata( other._metadata ) calls the move constructor, using 
+        // other._metadata here would be extremely dangerous!
+        other._p_vals = NULL;
+    }
+</pre>
+<p>Put a final way: both lvalue and rvalue references are lvalue expressions. The
+difference is that an lvalue reference must be const to hold a reference to an
+rvalue, whereas an rvalue reference can always hold a reference to an rvalue.
+It's like the difference between a pointer, and what is pointed to. The thing
+pointed-to came from an rvalue, but when we use rvalue reference itself, it
+results in an lvalue.</p>
+
+<h3>std::move</h3>
+<p>So what's the trick to handling this case?  We need to use std::move, from
+&lt;utility&gt;--std::move is a way of saying, "ok, honest to God I know I have
+an lvalue, but I want it to be an rvalue."  std::move does not, in and of itself,
+move anything; it just turns an lvalue into an rvalue, so that you can invoke
+the move constructor. Our code should look like this:</p>
+
+<pre class="brush: cpp; toolbar: false">
+#include &lt;utilityh&gt; // for std::move
+
+    // move constructor
+    ArrayWrapper (ArrayWrapper&amp;&amp; other)
+        : _p_vals( other._p_vals  )
+        , _metadata( std::move( other._metadata ) )
+    {
+        other._p_vals = NULL;
+    }
+</pre>
+
+<p>And of course we should really go back to MetaData and fix its own move constructor so that it uses std::move on the string it holds:</p>
+<pre class="brush: cpp; toolbar: false">
+    MetaData (MetaData&amp;&amp; other)
+        : _name( std::move( other._name ) ) // oh, blissful efficiency
+        : _size( other._size )
+    {}
+</pre>
+<h3>Move assignment operator</h3>
+<p>Just as we have a move constructor, we should also have a 
+move assignment operator. You can easily write one using
+the same techniques as for creating a move constructor.</p>
+<h3>Move constructors and implicitly generated constructors</h3>
+<p>As you know, in C++ when you declare any constructor, the compiler will no
+longer generate the  default constructor for you. The same is true here: adding
+a move constructor to a class will require you to declare and define your own
+default constructor. On the other hand, declaring a move constructor does not
+prevent the compiler from providing an implicitly generated copy
+constructor, and declaring a move assignment operator does not inhibit the
+creation of a standard assignment operator.</p>
+<h3>How does std::move work</h3>
+<p>You might be wondering, how does one write a function like std::move? How do
+you get this magical property of transforming an rvalue reference into an
+lvalue reference? The answer, as you might guess, is <a href="../tutorial/lesson11.html">typecasting</a>. The
+actual declaration for std::move is somewhat more involved, but at its heart,
+it's just a <a href="../reference/typecasting/staticcast.html">static_cast</a>
+to an rvalue reference. This means, actually, that you don't really
+<em>need</em> to use move--but you should, since it's much more clear what you
+mean. The fact that a cast is required is, by the way, a very good thing! It
+means that you cannot accidentally convert an lvalue into an rvalue, which
+would be dangerous since it might allow an accidental move to take place. You
+must explicitly use std::move (or a cast) to convert an lvalue into an
+rvalue reference, and an rvalue reference will never bind to an lvalue on its
+own.</p>
+
+<h2>Returning an explicit rvalue-reference from a function</h2>
+
+<p>Are there ever times where you should write a function that returns an rvalue reference? What does it mean to return an rvalue reference anyway? Aren't functions that return objects by value already rvalues?</p>
+
+<p>Let's answer the second question first: returning an explicit rvalue reference is different than returning an object by value. Take the following simple example:</p>
+
+<pre class="brush: cpp; toolbar: false">
+int x;
+
+int getInt ()
+{
+    return x;
+}
+
+int &amp;&amp; getRvalueInt ()
+{
+    // notice that it's fine to move a primitive type--remember, std::move is just a cast
+    return std::move( x );
+}
+</pre>
+
+<p>Clearly in the first case, despite the fact that getInt() is an rvalue, there is a copy of the variable x being made. We can even see this by writing a little helper function:</p>
+
+<pre class="brush: cpp; toolbar: false">
+void printAddress (const int&amp; v) // const ref to allow binding to rvalues
+{
+    cout &lt;&lt; reinterpret_cast&lt;const void*&gt;( &amp; v ) &lt;&lt; endl;
+}
+
+printAddress( getInt() ); 
+printAddress( x );
+</pre>
+
+<p>When you run this program, you'll see that there are two separate values printed.</p>
+
+<p>On the other hand, </p>
+
+<pre class="brush: cpp; toolbar: false">
+printAddress( getRvalueInt() ); 
+printAddress( x );
+</pre>
+
+<p>prints the same value because we are explicitly returning an rvalue here. </p>
+
+<p>So returning an rvalue reference is a different thing than not returning an rvalue reference, but this difference manifests itself most noticeably if you have a pre-existing object you are returning instead of a temporary object created in the function (where the compiler is likely to eliminate the copy for you).</p>
+
+<p>Now on to the question of whether you want to do this. The answer is:
+probably not. In most cases, it just makes it more likely that you'll end up
+with a dangling reference (a case where the reference exists, but the temporary
+object that it refers to has been destroyed). The issue is quite similar to the
+danger of returning an lvalue reference--the referred-to object may no longer
+exist. Rvalue references cannot magically keep an object alive for you.
+Returning an rvalue reference would primarily make sense in very rare cases
+where you have a member function and need to return the result of calling
+std::move on a field of the class from that function--and how often are you
+going to do that?</p>
+
+<h2>Move semantics and the standard library</h2>
+<p>Going back to our original example--we were using a vector, and we don't
+have control over the vector class and whether or not it has a move constructor
+or move assignment operator. Fortunately, the standards committee is wise, and
+move semantics has been added to the standard library. This means that you can
+now efficiently return vectors, maps, strings and whatever other standard
+library objects you want, taking full advantage of move semantics.</p>
+<h3>Moveable objects in STL containers</h3>
+
+<p>In fact, the standard library goes one step further. If you enable move
+semantics in your own objects by creating move assignment operators and
+move constructors, when you store those objects in a container, the <a href="../tutorial/stl/stlintro.html">STL</a> will
+automatically use std::move, automatically taking advantage of move-enabled
+classes to eliminate inefficient copies.</p> 
+
+<h2>Move semantics and rvalue reference compiler support</h2>
+<p>Rvalue references are supported by GCC, the Intel compiler and MSVC.</p>
+
+<a href="c%2b%2b11-compile-time-processing-with-constexpr.html">Previous: Generalized Constant Expressions in C++11</a> Learn how C++11 makes compile-time processing easier than ever<br><a href="c%2b%2b11-nullptr-strongly-typed-enum-class.html">Next: Nullptr and Strongly Typed Enums (Enum classes) in C++11</a> Learn how C++11 improves type safety
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/game_programming/same_game_part1.html>
+                    <img src=../tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:32:57 GMT -->
+</html>
+
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shBrushCpp.js"></script>
+<script type="text/javascript">
+         SyntaxHighlighter.all();
+</script>
+
+
+

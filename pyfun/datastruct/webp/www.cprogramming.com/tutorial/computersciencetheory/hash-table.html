@@ -1,0 +1,631 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/computersciencetheory/hash-table.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:32:56 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+<META NAME="keywords" CONTENT="hash table, hash table data structure, hash table c++, hashing algorithm, hash algorithm performance">
+<META NAME="Description" CONTENT="Learn the algorithms behind the hash table data structure">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Hash Tables - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+<div style="border-radius:25px;border-style:dashed;border-width:1px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<b>Tutorial Map</b>
+<br><br>
+
+
+
+<li> <a href=stack.html>Stacks</a></li>
+
+
+
+<li> <a href=queue.html>Queues</a></li>
+
+
+
+<li> <a href=heap.html>Heaps</a></li>
+
+
+
+<li>Hash Tables<span style="font-size:10px"> &larr; you are here</span></li>
+
+
+
+<li> <a href=graphtheory.html>Graphs</a></li>
+
+
+
+<li> <a href=twothree.html>Two-three trees</a></li>
+
+
+</div>
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Hash Tables</h1>
+
+
+
+By Eric Suh
+
+<p>Hash tables are an efficient implementation of a keyed array data structure,
+a structure sometimes known as an associative array or map. If you're working
+in C++, you can take advantage of the <a href="../stl/stlmap.html">STL map container</a>
+for keyed arrays implemented using <a href="../lesson18.html">binary trees</a>, but
+this article will give you some of the theory behind how a hash table
+works.</p> 
+
+<h2>Keyed Arrays vs. Indexed Arrays</h2>
+
+<p>One of the biggest drawbacks to a language like C is that there are no
+keyed arrays. In a normal C array (also called an indexed array), the only way
+to access an element would be through its index number. To find element 50 of
+an array named "employees" you have to access it like this:</p>
+
+<pre class="brush: cpp; toolbar: false">
+employees[50];
+</pre>
+
+<p>In a keyed array, however, you would be able to associate each element with a "key," which can be anything from a name to a product model number. So, if you have a keyed array of employee records, you could access the record of employee "John Brown" like this:</p>
+
+<pre class="brush: cpp; toolbar: false">
+employees["Brown, John"];
+</pre>
+
+<p>One basic form of a keyed array is called the hash table. In a hash table, a
+key is used to find an element instead of an index number. Since the hash table
+has to be coded using an indexed array, there has to be some way of
+transforming a key to an index number. That way is called the hashing function.</p>
+
+<h2>Hashing Functions</h2>
+
+<p>A hashing function can be just about anything. How the hashing function is
+actually coded depends on the situation, but generally the hashing function
+should return a value based on a key and the size of the array the hashing
+table is built on. Also, one important thing that is sometimes overlooked is
+that a hashing function has to return the same value every time it is given the
+same key.</p>
+
+<p>Let's say you wanted to organize a list of about 200 addresses by people's
+last names. A hash table would be ideal for this sort of thing, so that you can
+access the records with the people's last names as the keys.</p>
+
+<p>First, we have to determine the size of the array we're using. Let's use a 260 element array so that there can be an average of about 10 element spaces per letter of the alphabet.&gt;
+
+</p>
+<p>Now, we have to make a hashing function. First, let's create a relationship between letters and numbers:</p>
+
+<pre class="example">
+A --&gt; 0
+B --&gt; 1
+C --&gt; 2
+D --&gt; 3
+...
+and so on until Z --&gt; 25.</pre>
+
+<p>The easiest way to organize the hash table would be based on the first letter of the last name.</p>
+
+<p>Since we have 260 elements, we can multiply the first letter of the last name by 10. So, when a key like "Smith" is given, the key would be transformed to the index 180 (S is the 19 letter of the alphabet, so S --&gt; 18, and 18 * 10 = 180).</p>
+
+<p>Since we use a simple function to generate an index number quickly, and we use the fact that the index number can be used to access an element directly, a hash table's access time is quite small. A <a href="../lesson15.html">linked list</a> of keys and elements wouldn't be nearly as fast, since you would have to search through every single key-element pair.</p>
+
+<h2>Collisions and Collision Handling</h2>
+
+<p>Problems, of course, arise when we have last names with the same first letter. So "Webster" and "Whitney" would correspond to the same index number, 22. A situation like this when two keys get sent to the same location in the array is called a collision. If you're trying to insert an element, you might find that the space is already filled by a different one.</p>
+
+<p>Of course, you might try to just make a huge array and thus make it almost impossible for collisions to happen, but then that defeats the purpose of using a hash table. One of the advantages of the hash table is that it is both fast and small.</p>
+
+<h2>Collision handling with open addressing</h2>
+
+<p>The simplest collision handling algorithm is known as the open address method or the closed hashing method. When you are adding an element, say "Whitney," and you find that another element is already there ("Webster," for instance) then you would just proceed to the next element space (the one after "Webster"). If that is filled, you go on to the next one, and so on, until you find an empty space to insert the new element (all those extra elements came in handy after all!)</p>
+
+<pre class="example">
+...
+220 "White"   | &lt;-- ### COLLISION ### : Gotta move on to the next.
+221 "Webster" | &lt;-- ### COLLISION ### : Next one.
+222           | Ahhh, perfect. Insert Here.
+223           |
+...
+</pre>
+
+Since we modified the insertion algorithm, we also have to change the function that finds the element. You have to have some way of verifying that you've found the element you want, and not some other element. The simplest way is to just compare keys. (Does this record have the last name "Whitney"? Does this one?) If the element you find is not one of them, just move on to the next element until you reach the one you want or you find an empty space (which means the element is not in the table).
+
+<p>Sounds simple, right? Well, it gets more complicated. What if you have so many collisions that you run off the end of the array?</p>
+
+<p>If you're trying to insert "Zorba" and all the elements are filled because of the collision handling, then what? Look at the example:</p>
+
+<pre class="example">
+...
+258 "Whitney"   | &lt;-- Nope, not Empty
+259 "Zeno"      | Nope, not Empty
+----------------  &lt;-- Ummm, what now?
+</pre>
+
+<p>The easiest thing to do is to just wrap around to the beginning again. If
+there are still no empty spaces, then we have to resize the array, since there
+isn't enough space in the hash table for all of the elements. If we resize the
+array, of course, we'll have to come up with a tweak to our hash function (or
+        at least how we handle it) so that it covers the right range of values
+again, but at least we'll have room.  (Note that resizing the array means that
+        occasionally inserting a value into the list will cause an O(n) copy
+        operation to take place, but that on average this should happen only
+        once for every n items inserted, so insertion should be on average
+        constant time, O(1).  (If you aren't sure what terms like "O(n") and
+        "constant time" mean, take a look at <a href="algorithmicefficiency1.html">the
+        Cprogramming.com article series on algorithmic efficiency</a>.)  As you can see, resizing isn't all that bad--still, if you know the amount of space you will need to start with, you can save your program some work.</p>
+
+<h2>Handling collisions with separate chaining</h2>
+
+<p>A second collision handling strategy is to store a <a href="../lesson15.html">linked list</a> at each element in the hash data structure. This way, when a collision occurs, you can just add the element into the linked list that is stored at the hash index. If you have only a single element with a particular hash value, then you have a single element list--no performance penalty. If you have a lot of elements hashing to the same value, you'll see a slowdown of course, but no more than you otherwise would see with hash collisions.</p>
+
+<p>One nice thing about separate chaining is that having a bunch of values that hash "near" each other is less important. With open addressing, if you have a cluster of values that hash to nearly the same value, you'll run out of open space in that part of the hash. With separate chaining, each element that has a different hash value will not impact the other elements.</p>
+
+<h2>Resizing dynamically based on a load factor</h2>
+<p>Generally speaking, you wouldn't want your hash table to grow completely full because this will make lookups take much longer.  If a value isn't in the array, with open addressing, you have to keep looking until you hit an empty location or you get back to the starting point--in other words, with a completely full table, lookups could be O(n), which is horrible. A real hash table implementation will keep track of its load factor, the ratio of elements to array size. If you have a 10 element array, with 7 elements, the load factor is 0.7. In fact, 0.7 is generally about the right time to resize the underlying array.</p>
+<h2>Choosing a Good Hash Algorithm</h2>
+
+<p>The more collisions you have, the worse the performance of your hash table
+will be. With enough elements in your hash table, you can get an average
+performance that's quite good--essentially constant time O(1). (The trick is to
+make the array grow over time as you start to fill up the array.)  But if you
+have a lot of elements that hash to the same value, then you will have to start
+doing a lookup through a list of elements that all have the same hash value.
+This can make your hash lookups go from constant time to being, well, linear
+time in the number of elements. Imagine if your hash function hashed all values
+to 0, putting them in the first element of the array. Then it would be just a
+really complicated way of implementing a <a href="../../discussionarticles/sorting_and_searching.html">linear search</a>.</p>
+
+<p>Choosing a good hash algorithm can require some care and experimentation,
+and it will depend on your problem domain. If you're working with names, you probably
+don't want a hash algorithm that just looks at the first letter, because the
+letters of the alphabet are not used evenly--you'll find a lot more names that
+start with S than with Z. You also want to have your hash functions be
+fast--you don't want to lose all the time savings you're getting from the hash
+table because you're computing the hash function really slowly. It's a delicate
+balance. For one good hash function, check out <a href="http://www.azillionmonkeys.com/qed/hash.html">this hash algorithm</a>.</p>
+
+<p>Now you're ready to implement your first hash table! Give it a try. It isn't
+too hard, and the end result is quite useful.</p>
+
+<b>Related articles</b><br><br><a href="../lesson15.html">Linked lists</a><br><br><a href="../stl/stlmap.html">STL map, an associate array</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../game_programming/same_game_part1.html>
+                    <img src=../game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/computersciencetheory/hash-table.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:32:56 GMT -->
+</html>
+
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shBrushCpp.js"></script>
+<script type="text/javascript">
+         SyntaxHighlighter.all();
+</script>
+
+
+

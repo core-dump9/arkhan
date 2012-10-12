@@ -1,0 +1,649 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/debugging/debugging_strategy.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:35:48 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, debugging, debugger tips, debugging tips, debugging strategy, writing bug-free code">
+<META NAME="Description" CONTENT="Valgrind is a powerful memory profiling tool that can help find memory leaks and invalid memory usage.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Debugging Strategies, Tips, and Gotchas - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../tutorial/c-tutorial.html>C Tutorial</a><br>
+            <a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Debugging Strategies, Tips, and Gotchas</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+Debugging can be tedious and painful if you don't set up your programs to help
+you debug them.  In the spirit of "an apple a day keeps the doctor away", this
+article suggests approaches to writing code that's more debuggable, how to
+catch problems before they start, and gives you some time-wasting gotchas to
+watch out for and gives you some gotchas to watch out for.
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+
+<h2>Use the Right Tools</h2>
+
+It should go without saying that you should always be using the best tools
+available; if you're hunting a <a href="segfaults.html">segmentation
+fault</a>, you want use a <a href="../debuggers.html">debugger</a>.  Anything less
+than that is unnecessary pain.  If you're dealing with bizarre memory issues
+(or hard-to-diagnose segfaults), use <a href="valgrind.html">Valgrind</a> on Linux
+or <a href="http://www-306.ibm.com/software/awdtools/purifyplus/">Purify</a> for
+Windows.
+
+<h2>Debug the Problem</h2>
+
+My first instinct when debugging is to ask, "is my code too complicated?"
+Sometimes we'll all come up with a solution to a problem only to realize that
+the solution is really hard to get working.  So hard, in fact, that it might be
+easier to solve the original problem in another way.  When I see someone
+struggling to debug a complex mass of code, my first thought is to ask whether
+there's a cleaner solution.  Often, once you've written bad code, you have a
+much better idea of what the good code should look like.  Remember that just
+because you've written it doesn't mean you should keep it!
+
+<br><br>
+The trick is always to decide if you're trying to solve the original problem or
+to solve a particular choice of solution.  If it's the solution, then it's
+possible that your problems don't stem from the problem at all--maybe you're
+over-thinking the problem or trying a wrong-headed approach.  For instance, I
+recently needed to parse a file and import some of the data into an access
+database to prototype an analysis tool.  My first instinct was to write a Ruby
+script that interfaced directly with Access and inserted all of the data into
+the database using SQL queries.  As I looked at the support for doing this in
+Ruby, I quickly realized that my "solution" to the problem was going to take a
+lot longer than the problem should have taken.  I reversed course, wrote a
+script that just output a comma-separated value file, and had my data fully
+imported in about an hour. 
+
+<h3>An Aside on Bad Code</h3>
+
+People are often reluctant to throw out bad code that they've written and
+re-write it.  One reason is that code that's written feels like completed work,
+and throwing it out feels like going backward.  But when you're debugging,
+rewriting the code can seem more appealing because you're probably saving
+yourself time spent debugging by spending a bit more time coding.  The trick is
+to avoid throwing out the baby with the bath water--remove the bad code, don't
+start the whole program over again (unless it's rotten to the core).  Rewrite only the parts that really need it.
+
+<br><br>
+Your second draft will probably be both cleaner and less buggy than
+the first, and you may avoid issues like having to go back later and rewrite
+the code just so that you can figure out how it was supposed to work.
+
+<br><br>
+On the other hand, when you're absolutely sure that code that looks horrible is
+the right code to use, you'll want to explain your rationale in a <a href="../tutorial/comments.html">comment</a> so someone
+(or you) doesn't come back later and hack it apart.
+
+<h2>Minimize Potential Problems by Avoiding Copy-Paste Syndrome</h2>
+
+Nothing is more frustrating than to realize that you're debugging the same
+problem multiple times.  Whenever you copy and paste large chunks of code, you
+leave yourself open to the unknown demons inhabiting that code.  If you haven't
+debugged it yet, odds are that you're going to have to.  And if you forgot that
+you copied that code somewhere else, you're probably going to be debugging the
+same code more than once.  (There are other reasons to avoid copy-paste
+syndrome; even worse than debugging the same code twice is finding the bug in
+only one piece of copy-pasted code.)
+
+<br><br>
+The best way to avoid copy-paste syndrome is to use functions to encapsulate as
+much of your repeat code as possible.  Some things can't easily be avoided in
+C++; you're going to write a lot of for loops no matter what you're doing, so
+you can't abstract away the whole looping process.  But if you have the same
+loop body in multiple places, that might be a sign that it should be pulled
+into a separate function.  As a bonus, this makes other future changes to your
+code easier and allows you to reuse the function without having to find a chunk
+of code to copy. 
+
+<h3>When to Copy Code</h3>
+
+Although copying code is usually dangerous, there are times when it may be the
+best choice.  For instance, if you need to make small, irregular tweaks to a
+chunk of code, but the bulk of it needs to remain the same, then copying,
+pasting, and careful editing might make sense.  By copying the code, you avoid
+the chance that you introduce new bugs by mistyping the code.  It should go
+without saying that you should have carefully debugged the code you plan to
+copy before you do so!  (But I said it, and I'm not even paid by the word.)
+
+<br><br>
+The second reason to copy code is when you have long variable names and a bad
+text editor.  The best solution is generally to get a better <a href="../texteditors.html">text editor</a> with keyword
+completion.
+
+<h2>Make Big Problems Found Late Small Problems Found Early</h2>
+
+<h3>Testing Early</h3>
+
+One advantage of pulling out code and putting it into functions is that you can
+then separately test those functions.  This means that you can sometimes avoid
+debugging big problems caused by simple bugs in the original functions.  Nothing is more frustrating than writing perfectly correct code given how you
+thought a function (or a class) worked, only to find out that it doesn't work
+that way.  This kind of unit testing requires some discipline and a good sense
+of what can go wrong with your code.
+
+<br><br>
+Another advantage of early testing--especially if you write some or all of your
+tests up-front, before the code--is that you'll pay more attention to the
+specific interface to your class.  If you can't test error handling because
+you're using an assert instead of an exception or error code, that might be an
+indication that you should be using some form of
+error reporting rather than asserts.  (Of course, this won't always be the
+case--there are times when you just want to verify that your asserts work
+correctly.)  Beyond error-reporting, writing tests is the first time you can
+test your code's <a href="../tutorial/class_design.html">interface</a>,
+which is often as valuable as testing that the code works.  If the interface to
+your class is clunky, or your functions have impossible-to-understand, let
+alone remember,
+argument lists, it might be time to rethink what you're doing before you write
+the underlying code.
+
+<h3>Compiler Warnings</h3>
+
+Many potential bugs can be caught by your compiler.  Some such errors include 
+using uninitialized variables, accidentally replacing a check for equality with an
+assignment in a conditional, or, in C++, errors related to mixing types such as
+pointers and ints.  Since this has been covered before, I suggest checking out
+the article <a href="../tutorial/compiler_warnings.html">why you should
+pay attention to compiler warnings</a>.
+
+<h2>Printf Lies</h2>
+
+        Because I/O is usually buffered by the operating system, using printfs
+in your debugging process is risky.  When possible, use a debugger to figure
+out what lines of code are the problem rather than narrowing in on the issue
+with code littered by printfs and cout.  (And beware the stray printf that
+slips in during debugging and, ahem, slips into the final version.)
+
+                <h3>Flush Output</h3>
+
+Nevertheless, there are times when you actually need to keep
+track of some state in a log file--perhaps you simply have too much data that
+you need to collect, and you need the data from program start-up to the moment
+the bug occurs.  To ensure you collect all of the data, be sure to flush it:
+you can use fflush in C, or output an endl in C++.  fflush takes the FILE
+pointer you are writing into; for instance, to flush stderr, you would write
+fflush( stderr);
+
+<h2>Check Your Helper Functions</h2>
+
+This should be obvious, but it's easy to forget in the heat of the moment:
+always verify that your helper functions work, especially when seemingly simple
+code is failing.  When possible, isolate each helper function and test it
+individually, then test each of its helper functions.  There's nothing more
+frustrating than realizing that your original logic was right, but your
+assumption about a helper function was wrong.
+
+<h3>When Cause Doesn't Immediately Lead to Effect</h3>
+
+Even if a helper function doesn't seem to be the immediate source of a problem,
+its side effects may cause latent problems.  For instance, if you have a
+helper function that can return NULL and you pass its output into a library
+function dealing with C-strings, you may see the immediate cause as
+dereferencing a NULL pointer in strcat, but the real cause was the buggy
+function you wrote earlier (or the fact that you didn't check for NULL after
+calling it).  
+
+
+<h3>Remember That Code May Be Used in More Than One Place</h3>
+
+Another problem that can come up when debugging is that you discover the
+problem appears to be the result of a particular function call, set a break
+point inside that function, and then discover that there are hundreds of calls
+to the same function throughout the code.  Or worse, you don't notice this
+until wasting hours of time trying to figure out what's going on or thinking
+that the reason for the problem is that the function is being called
+incorrectly.  (When, in fact, it's being called correctly but with different
+arguments than the point at which the bug occurred.)
+
+<br><br>
+The most obvious solution is to check the call stack after hitting a break
+point or to set the breakpoint right before the call that is actually the
+problem.  Unfortunately, this doesn't always help if the same call works
+thousands of times but fails on the 1001st call.  Potential solutions include
+counting the number of calls to a function and then stepping through that many
+breakpoints set inside the function, or using a <a href="../tutorial/statickeyword.html">static variable as a counter</a>.
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/game_programming/same_game_part1.html>
+                    <img src=../tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/debugging/debugging_strategy.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:35:48 GMT -->
+</html>
+
+
+

@@ -1,0 +1,769 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/debugging/valgrind.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:52 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, valgrind, valgrind memory, memory leaks, finding memory leaks, valgrind finding memory leaksi">
+<META NAME="Description" CONTENT="Valgrind is a powerful memory profiling tool that can help find memory leaks and invalid memory usage.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Using Valgrind to Find Memory Leaks - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../tutorial/c-tutorial.html>C Tutorial</a><br>
+            <a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Using Valgrind to Find Memory Leaks and Invalid Memory Use</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+<a href="http://valgrind.org/">Valgrind</a> is a multipurpose code profiling
+and memory debugging tool for Linux when on the x86 and, as of version 3,
+AMD64, architectures.   It
+allows you to run your program in Valgrind's own environment that monitors
+memory usage such as calls to malloc and free (or new and delete in C++).  If
+you use uninitialized memory, write off the end of an array, or forget to free
+a pointer, Valgrind can detect it.  Since these are particularly common
+problems, this tutorial will focus mainly on using Valgrind to find these
+types of simple memory problems, though Valgrind is a tool that can do a lot
+more.  <br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <br><br>
+For Windows users: if you don't have access to a Linux machine, or if you want
+to develop Windows-specific software, you might be interested in IBM's <a href="http://www-306.ibm.com/software/awdtools/purify/">Purify</a>, which has
+features similar to Valgrind for finding memory leaks and invalid memory
+accesses.  A trial download is available.
+<br><br><h2>Getting Valgrind</h2>
+If you're running Linux and you don't have a copy already, you can get
+Valgrind from the <a href="http://valgrind.org/downloads.html">Valgrind
+download page</a>.
+
+<br><br>
+Installation should be as simple as decompressing and untarring using bzip2
+(XYZ is the version number in the below examples)
+
+<pre class="example">
+bzip2 -d valgrind-XYZ.tar.bz2
+tar -xf valgrind-XYZ.tar
+</pre>
+
+which will create a directory called valgrind-XYZ; change into that directory
+and run
+
+<pre class="example">
+./configure
+make
+make install
+</pre>
+
+Now that you have Valgrind installed, let's look at how to use it.
+
+<h2>Finding Memory Leaks With Valgrind</h2>
+
+Memory leaks are among the most difficult bugs to detect because they don't
+cause any outward problems until you've run out of memory and your call to
+malloc suddenly fails.  In fact, when working with a language like C or C++
+that doesn't have garbage collection, almost half your time might be spent
+handling correctly freeing memory.  And even one mistake can be costly if
+your program runs for long enough and follows that branch of code.
+<br><br>
+When you run your code, you'll need to specify the tool you want to use;
+simply running valgrind will give you the current list.  We'll focus mainly on
+the memcheck tool for this tutorial as running valgrind with the memcheck tool
+will allow us to check correct memory usage.  
+
+With no other arguments, Valgrind presents a summary of calls to free and
+malloc: (Note that 18490 is the process id on my system; it will differ
+between runs.)
+
+<pre class="example">
+% valgrind --tool=memcheck program_name
+...
+=18515== malloc/free: in use at exit: 0 bytes in 0 blocks.
+==18515== malloc/free: 1 allocs, 1 frees, 10 bytes allocated.
+==18515== For a detailed leak analysis,  rerun with: --leak-check=yes
+</pre>
+
+If you have a memory leak, then the number of allocs and the number of frees
+will differ (you can't use one free to release the memory belonging to more
+than one alloc).  We'll come back to the error summary later, but for now,
+notice that some errors might be suppressed -- this is because some errors
+will be from standard library routines rather than your own code.
+
+<br><br>
+If the number of allocs differs from the number of frees, you'll want to rerun
+your program again with the leak-check option.  This will show you all of the
+calls to malloc/new/etc that don't have a matching free.
+
+<br><br>
+For demonstration purposes, I'll use a really simple program that I'll compile
+to the executable called "example1"
+
+<pre class="example">
+#include &lt;stdlib.h&gt;
+int main()
+{
+    char *x = malloc(100); /* or, in C++, "char *x = new char[100] */
+    return 0;
+}
+</pre>
+
+<pre class="example">
+% valgrind --tool=memcheck --leak-check=yes example1
+</pre>
+
+This will result in some information about the program showing up, culminating
+in a list of calls to malloc that did not have subsequent calls to free:
+
+<pre class="example">
+==2116== 100 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==2116==    at 0x1B900DD0: malloc (vg_replace_malloc.c:131)
+==2116==    by 0x804840F: main (in /home/cprogram/example1)
+</pre>
+
+This doesn't tell us quite as much as we'd like, though -- we know that the
+memory leak was caused by a call to malloc in main, but we don't have the line
+number.  The problem is that we didn't compile using the -g option of gcc,
+which adds debugging symbols.  So if we recompile with debugging symbols, we
+get the following, more useful, output:
+
+<pre class="example">
+==2330== 100 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==2330==    at 0x1B900DD0: malloc (vg_replace_malloc.c:131)
+==2330==    by 0x804840F: main (example1.c:5)
+</pre>
+
+Now we know the exact line where the lost memory was allocated.  Although it's
+still a question of tracking down exactly when you want to free that memory,
+at least you know where to start looking.  And since for every call to malloc
+or new, you should have a plan for handling the memory, knowing where the
+memory is lost will help you figure out where to start looking.
+
+<br><br>
+There will be times when the --leak-check=yes option will not result in
+showing you all memory leaks.  To find absolutely every unpaired call to free
+or new, you'll need to use the --show-reachable=yes option.  Its output is
+almost exactly the same, but it will show more unfreed memory.
+
+<h2>Finding Invalid Pointer Use With Valgrind</h2>
+
+Valgrind can also find the use of invalid heap memory using the memcheck tool.
+For instance, if you allocate an array with malloc or new and then try to
+access a location past the end of the array:
+
+<pre class="example">
+char *x = malloc(10);
+x[10] = 'a';
+</pre>
+
+Valgrind will detect it.  For instance, running the following program,
+example2, through Valgrind
+<pre class="example">
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    char *x = malloc(10);
+    x[10] = 'a';
+    return 0;
+}
+</pre>
+
+with
+<pre class="example">
+valgrind --tool=memcheck --leak-check=yes example2
+</pre>
+results in the following warning
+<pre class="example">
+==9814==  Invalid write of size 1
+==9814==    at 0x804841E: main (example2.c:6)
+==9814==  Address 0x1BA3607A is 0 bytes after a block of size 10 alloc'd
+==9814==    at 0x1B900DD0: malloc (vg_replace_malloc.c:131)
+==9814==    by 0x804840F: main (example2.c:5)
+</pre>
+
+What this tell us is that we're using a pointer allocated room for
+10 bytes, outside that range -- consequently, we have an 'Invalid write'.  If
+we were to try to read from that memory, we'd be alerted to an 'Invalid read
+of size X', where X is the amount of memory we try to read.  (For a char,
+it'll be one, and for an int, it would be either 2 or 4, depending on your
+system.)
+
+As usual, Valgrind prints the stack trace of function calls so that we know
+exactly where the error occurs.
+
+<h2>Detecting The Use Of Uninitialized Variables</h2>
+
+Another type of operation that Valgrind will detect is the use of an
+uninitialized value in a conditional statement.  Although you should be in the
+habit of initializing all variables that you create, Valgrind will help find
+those cases where you don't.  For instance, running the following code as
+example3
+
+<pre class="example">
+#include &lt;stdio.h&gt;
+
+int main()
+{
+    int x;
+    if(x == 0)
+    {
+        printf("X is zero"); /* replace with cout and include 
+                                iostream for C++ */
+    }
+    return 0;
+}
+</pre>
+through Valgrind will result in 
+<pre class="example">
+==17943== Conditional jump or move depends on uninitialised value(s)
+==17943==    at 0x804840A: main (example3.c:6)
+</pre>
+
+Valgrind is even smart enough to know that if a variable is assigned the value
+of an uninitialized variable, that that variable is still in an
+"uninitialized" state.  For instance, running the following code:
+
+<pre class="example">
+#include &lt;stdio.h&gt;
+
+int foo(int x)
+{
+    if(x &lt; 10)
+    {
+        printf("x is less than 10\n");
+    }
+}
+
+int main()
+{
+    int y;
+    foo(y);
+}
+</pre>
+
+in Valgrind as example4 results in the following warning:
+
+<pre class="example">
+==4827== Conditional jump or move depends on uninitialised value(s)
+==4827==    at 0x8048366: foo (example4.c:5)
+==4827==    by 0x8048394: main (example4.c:14)
+</pre>
+
+You might think that the problem was in foo, and that the rest of the call
+stack probably isn't that important.  But since main passes in an
+uninitialized value to foo (we never assign a value to y), it turns out that
+that's where we have to start looking and trace back the path of variable
+assignments until we find a variable that wasn't initialized.
+<br><br>
+This will only help you if you actually test that branch of code, and in
+particular, that conditional statement.  Make sure to cover all execution
+paths during testing!
+
+<h2>What else will Valgrind Find</h2>
+Valgrind will detect a few other improper uses of memory: if you call free
+twice on the same pointer value, Valgrind will detect this for you; you'll get
+an error:
+<pre class="example">
+Invalid free()
+</pre>
+along with the corresponding stack trace.
+
+<br><br>
+
+Valgrind also detects improperly chosen methods of freeing memory.  For
+instance, in C++ there are three basic options for freeing dynamic memory:
+free, delete, and delete[].  The free function should only be matched with a
+call to malloc rather than a call to, say, delete -- on some systems, you might be able to get away with not
+doing this, but it's not very portable.  Moreover, the delete keyword should only be paired with the new keyword (for allocation of single objects), and the delete[] keyword should only be
+paired with the new[] keyword (for allocation of arrays).  (Though some compilers will allow you to get away with using the wrong version of delete,
+there's no guarantee that all of them will.  It's just not part of the
+standard.)
+<br><br>
+If you do trigger one of these problems, you'll get this error: 
+<pre class="example">
+  Mismatched free() / delete / delete []
+</pre>
+which really should be fixed even if your code happens to be working.
+<h2>What Won't Valgrind Find?</h2>
+
+Valgrind doesn't perform bounds checking on static arrays (allocated on the
+stack).  So if you declare an array inside your function:
+
+<pre class="example">
+int main()
+{
+    char x[10];
+    x[11] = 'a';
+}
+</pre>
+
+then Valgrind won't alert you!  One possible solution for testing purposes is
+simply to change your static arrays into dynamically allocated memory taken
+from the heap, where you will get bounds-checking, though this could be a mess
+of unfreed memory.
+<h2>A Few More Caveats</h2>
+What's the drawback of using Valgrind?  It's going to consume more memory --
+up to twice as much as your program normally does.  If you're testing an
+absolutely huge memory hog, you might have issues.  It's also going to take
+longer to run your code when you're using Valgrind to test it.  This shouldn't
+be a problem most of the time, and it only affects you during testing.  But if
+you're running an already slow program, this might affect you.
+<br><br>
+Finally, Valgrind isn't going to detect every error you have -- if you don't
+test for buffer overflows by using long input strings, Valgrind won't tell you
+that your code is capable of writing over memory that it shouldn't be
+touching.  Valgrind, like another other tool, needs to be used intelligently
+as a way of illuminating problems.
+<h2>Summary</h2>
+Valgrind is a tool for the x86 and AMD64 architectures and currently runs
+under Linux.  Valgrind allows the programmer to run the executable inside its
+own environment in which it checks for unpaired calls to malloc and other uses
+of
+invalid memory (such as ininitialized memory) or invalid memory operations
+(such as freeing a block of memory twice or calling the wrong deallocator
+function).  Valgrind does not check use of statically allocated arrays.
+<br><br><b>Related articles</b>
+<br><br><a href="../tutorial/dynamic_memory_allocation.html">Dynamic
+Memory Allocation, Part 1: Advanced Memory Management</a><br><br><a href="../tutorial/virtual_memory_and_heaps.html">Dynamic Memory Allocation, Part 2: Dynamic Memory Allocation and Virtual Memory</a><br><br><a href="../tutorial/operator_new.html">Dynamic Memory Allocation, Part 3: Customized Allocators with Operator New and Operator Delete</a><br><br><a href="../tutorial/c%2b%2b_memory_problems.html">Dynamic Memory Allocation, Part 4: Common Memory Management Problems in C++</a><br><br><a href="../tutorial/lesson6.html">Understanding
+Pointers</a>
+<br><br><a href="../tutorial/auto_ptr.html">Using auto_ptr to
+avoid memory leaks</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/game_programming/same_game_part1.html>
+                    <img src=../tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/debugging/valgrind.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:53 GMT -->
+</html>
+
+
+

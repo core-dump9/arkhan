@@ -1,0 +1,691 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut1.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, beginnings guide to C++, C++ beginners guide, C++ programming tutorials, getting started with C++, learning C++, how to learn C++, history of C++, C++ history, programming languages, C++ programming language">
+<META NAME="Description" CONTENT="A beginner's guide to learning C++ - answers questions about C++, basic programming, and how to think about programming.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Denthor's Tutorial - Setting Video Modes - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Denthor's Tutorial on VGA Programming</h1>
+
+
+
+<pre>
+                   ÕÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¸
+                   ³         W E L C O M E         ³
+                   ³  To the VGA Trainer Program   ³ ³
+                   ³              By               ³ ³
+                   ³      DENTHOR of ASPHYXIA      ³ ³ ³
+                   ³      (updated by Snowman)     ³ ³ ³
+                   ÔÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¾ ³ ³
+                     ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³
+                       ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                      --==[ PART 1 : The Basics]==--
+ş Introduction
+Hi there! This is Denthor of ASPHYXIA, AKA Grant Smith. This training
+program is aimed at all those budding young demo coders out there. I am
+assuming that the reader is fairly young, has a bit of basic Std. 6 math
+under his belt, has done a bit of programming before, probably in BASIC,
+and wants to learn how to write a demo all of his/her own.
+This I what I am going to do. I am going to describe how certain routines
+work, and even give you working source code on how you do it. The source
+code will assume that you have a VGA card that can handle the
+320x200x256 mode. I will also assume that you have Turbo Pascal 6.0 or
+above (this is because some of the code will be in Assembly language,
+and Turbo Pascal 6.0 makes this incredibly easy to use).  [In addition,
+C++ source has been included, so you now have a choice].  By the end of 
+the first "run" of sections, you will be able to code some cool demo stuff
+all by yourself. The info you need, I will provide to you, but it will be
+you who decides on the most spectacular way to use it.
+Why not download some of our demos and see what I'm trying to head you
+towards.
+</pre>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <pre>
+[Note: things in brackets have been added by Snowman.  The original text
+has remained mostly unaltered except for the inclusion of C++ material]
+I will be posting one part a week on the Mailbox BBS. I have the first
+"run" of sections worked out, but if you want me to also do sections on
+other areas of coding, leave a message to Grant Smith in private E-Mail,
+or start a conversation here in this conference. I will do a bit of
+moderating of a sort, and point out things that have been done wrong.
+In this, the first part, I will show you how you are supposed to set up
+your Pascal or C++ program, how to get into 320x200x256 graphics mode 
+without a BGI file, and various methods of putpixels and a clearscreen 
+utility.
+NOTE : I drop source code all through my explanations. You needn't try
+       to grab all of it from all over the place, at the end of each part I
+       add a little program that uses all the new routines that we have
+       learned. If you do not fully understand a section, leave me
+       private mail telling me what you don't understand or asking how I
+       got something etc, and I will try to make myself clearer. One
+       last thing : When you spot a mistake I have made in one of my
+       parts, leave me mail and I will correct it post-haste.  However, I
+       do not know C++ currently, so if you have trouble with that source,
+       contact Christopher Mann instead.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ş Disclaimer
+Hi again, sorry that I have to add this, but here goes.  All source code
+obtained from this series of instruction programs is used at your own
+risk.  Denthor and the ASPHYXIA demo team hold no responsibility for any
+loss or damage suffered by anyone through the use of this code.  Look
+guys, the code I'm going to give you has been used by us before in
+Demos, Applications etc, and we have never had any compliants of machine
+damage, but if something does go wrong with your computer, don't blame
+us.  Sorry, but that's the way it is.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ş The MCGA mode and how you get into it in Pascal or C++ without a BGI
+Lets face it. BGI's are next to worthless for demo coding. It is
+difficult to find something that is slower then the BGI units for doing
+graphics. Another thing is, they wern't really meant for 256 color
+screens anyhow. You have to obtain a specific external 256VGA BGI to get
+into it in Pascal, and it just doesn't make the grade.
+So the question remains, how do we get into MCGA 320x200x256 mode in
+Pascal or C++ without a BGI?  The answer is simple : Assembly language.
+Obviously assembly language has loads of functions to handle the VGA
+card, and this is just one of them. If you look in Norton Gides to
+Assembly Language, it says this ...
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INT 10h,  00h (0)        Set Video Mode
+    Sets the video mode.
+       On entry:      AH         00h
+                      AL         Video mode
+       Returns:       None
+       Registers destroyed:      AX, SP, BP, SI, DI
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+This is all well and good, but what does it mean? It means that if you
+plug in the video mode into AL and call interrupt 10h, SHAZAM! you are
+in the mode of your choice. Now, the MCGA video mode is mode 13h, and
+here is how we do it:
+[PASCAL]
+  Procedure SetMCGA;
+  BEGIN
+    asm
+          mov     ax,0013h
+          int     10h
+    end;
+  END;
+[C++]
+  void SetMCGA() {
+    _AX = 0x0013;
+    geninterrupt (0x10);
+  }
+There you have it! One call to that procedure/function, and BANG you are in
+320x200x256 mode. We can't actually do anything in it yet, so to go back
+to text mode, you make the video mode equal to 03h, as seen below :
+[PASCAL]
+  Procedure SetText;
+  BEGIN
+    asm
+          mov     ax,0003h
+          int     10h
+    end;
+  END;
+[C++]
+  void SetText() {
+    _AX = 0x0003;
+    geninterrupt (0x10);
+  }
+BANG! We are back in text mode! Now, cry all your enquiring minds, what
+use is this? We can get into the mode, but how do we actually SHOW
+something on the screen? For that, you must move onto the next section
+....
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ş  Clearing the screen to a specific color
+Now that we are in MCGA mode, how do we clear the screen. The answer is
+simple : you must just remember that the base adress of the screen is
+a000h. From a000h, the next 64000 bytes are what is actually displayed on
+the screen (Note : 320 * 200 = 64000). So to clear the screen, you just use
+the fillchar command like so :
+[PASCAL]
+      FillChar (Mem [$a000:0],64000,Col);
+[C++]
+     
+      memset(vga, Col, 0xffff);  // "vga" is a pointer to address 0xa000
+What the mem command passes the Segment base and the Offset of a part of
+memory : in this case the screen base is the Segment, and we are starting
+at the top of the screen; Offset 0. The 64000 [0xffff] is the size of the
+screen (see above), and Col is a value between 0 and 255, which represents
+the color you want to clear the screen to.
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ş  Putting a pixel on the screen (two different methoods)
+If you look in Norton Guides about putting a pixel onto the screen, you
+will see this  :
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+    Writes a pixel dot of a specified color at a specified screen
+    coordinate.
+    On entry:      AH         0Ch
+                   AL         Pixel color
+                   CX         Horizontal position of pixel
+                   DX         Vertical position of pixel
+                   BH         Display page number (graphics modes with more
+                              than 1 page)
+    Returns:       None
+    Registers destroyed:      AX, SP, BP, SI, DI
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+As seen from our SetMCGA example, you would write this by doing the following:
+[PASCAL]
+  Procedure INTPutpixel (X,Y : Integer; Col : Byte);
+  BEGIN
+    asm
+       mov        ah,0Ch
+       mov        al,[col]
+       mov        cx,[x]
+       mov        dx,[y]
+       mov        bx,[1]
+       int        10h
+    end;
+  END;
+[C++]
+  void INTPutpixel(int x, int y, unsigned char Col) {
+    _AH = 0x0C;
+    _AL = Col;
+    _CX = x;
+    _DX = y;
+    _BX = 0x01;
+    geninterrupt (0x10);
+  }
+The X would be the X-Coordinate, the Y would be the Y-Coordinate, and the Col
+would be the color of the pixel to place.  Note that MCGA has 256 colors,
+numbered 0 to 255. The startoff pallette is pretty grotty, and I will show
+you how to alter it in my next lesson, but for now you will have to hunt for
+colors that fit in for what you want to do.  Luckily, a byte is 0 to 255
+[in C++ syntax, "byte" = "unsigned char"], so that is what we pass to the col
+variable. Have a look at the following.
+    CGA = 4 colours.
+    4x4 = 16
+    EGA = 16 colors.
+    16x16 = 256
+    VGA = 256 colors.
+    Therefore an EGA is a CGA squared, and a VGA is an EGA squared ;-)
+Anyway, back to reality. Even though the above procedure/function is written
+in assembly language, it is slooow. Why? I hear your enquiring minds cry.
+The reason is simple : It uses interrupts (It calls INT 10h). Interrupts are
+sloooow ... which is okay for getting into MCGA mode, but not for trying
+to put down a pixel lickety-split. So, why not try the following ...
+[PASCAL]
+  Procedure MEMPutpixel (X,Y : Integer; Col : Byte);
+  BEGIN
+    Mem [VGA:X+(Y*320)]:=Col;
+  END;
+[C++]
+  void MEMPutpixel (int x, int y, unsigned char Col) {
+    memset(vga+x+(y*320),Col,1);
+  }
+The Mem/memset command, as we have seen above, allows you to point at a 
+certain point in memory ... the starting point is a000h, the base of the 
+VGA's memory, and then we specify how far into this base memory we start.
+Think of the monitor this way. It starts in the top left hand corner at
+0. As you increase the number, you start to move across the screen to your
+right, until you reach 320. At 320, you have gone all the way across the
+screen and come back out the left side, one pixel down. This carries on
+until you reach 63999, at the bottom right hand side of the screen. This
+is how we get the equation X+(Y*320). For every increased Y, we must
+increment the number by 320. Once we are at the beginning of the Y line
+we want, we add our X by how far out we want to be. This gives us the
+exact point in memory that we want to be at, and then we set it equal to
+the pixel value we want.
+The MEM methood of putpixel is much faster, and it is shown in the sample
+program at the end of this lesson. The ASPHYXIA team uses neither putpixel;
+we use a DMA-Straight-To-Screen-Kill-Yer-Momma-With-An-Axe type putpixel
+which is FAST. We will give it out, but only to those of you who show us
+you are serious about coding. If you do do anything, upload it to me,
+I will be very interested to see it. Remember : If you do glean anything
+from these training sessions, give us a mention in your demos and UPLOAD
+YOUR DEMO TO US!
+Well, after this is the sample program; have fun with it, UNDERSTAND it,
+and next week I will start on fun with the pallette.
+See you all later,
+    - Denthor</pre>
+<!-- #EndEditable --> 
+          <!-- removed chitika -->
+ 
+
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut1.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+</html>
+
+
+

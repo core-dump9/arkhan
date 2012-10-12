@@ -1,0 +1,846 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/3d/rotation.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="3d Rotation, gimbal lock, rotation matrix, rotation matrices, rotation axis, angle of rotation">
+<META NAME="Description" CONTENT="Learn how to create 3d rotations around an arbitrary axis while avoiding gimbal lock using rotation matrices.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Rotation About an Arbitrary Axis and Avoiding Gimbal Lock - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Part Three: 3D Rotation About an Arbitrary Axis</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"> By Confuted and Charles Thibault</div>
+
+The previous method of doing the rotations
+is called using
+Euler angles.  It's probably the simplest way of doing rotations,
+but it
+has some problems.  The biggest problem is called gimbal
+lock.  You
+may or may not have already encountered this if you wrote code
+according to the
+last tutorial.  If you encountered it and noticed it, without
+knowing what
+it was, you may have spent hours trying to figure out where you went
+wrong in
+your code, carefully comparing every line of your code to the tutorial,
+trying
+to find the difference.  If that happened, I'm sorry.  There
+is
+nothing wrong with your code; there is something wrong with the
+math.  If
+you'll recall, I told you two very important things, which you probably
+didn't
+connect in the last tutorial.  1) Matrix multiplication is not
+commutative. 
+<span style="font-weight: bold;">A*B</span> != <span style="font-weight: bold;">B*A</span>.  2) We generated<span style="font-style: italic;"> matRotationTotal</span>
+by doing <span style="font-style: italic;">matRotationX * matRotationY
+* matRotationZ</span>.  If there
+was nothing wrong with the math, you should have been able to do <span style="font-style: italic;">matRotationY*matRotationZ*matRotationX</span>,
+or any other order, and gotten exactly the same results.  But you
+wouldn't.  This problem is the root cause of gimbal lock. 
+Trying to
+visualize this might blow your mind, so if you don't understand the
+next
+paragraph, don't worry too much.  Just remember that Gimbal Lock
+happens
+when one axis gets rotated before another axis, and the axes are no
+longer
+mutually perpendicular.  It can be a large problem, or it can go
+unnoticed, depending on the application.<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+<br><br>
+We multiplied our matrices in the order<span style="font-style: italic;">
+matRotationX * matRotationY *
+matRotationZ</span>.  It seemed to work, and for the most part, it
+did. 
+But if you think about it carefully, you'll realize that, as you move
+an object
+in 3d space, all three axes change at once.  They remain mutually
+perpendicular to one another.  In the program, however, we're
+rotating the
+object over the X-axis first.  That rotates the Y and
+Z-axes.  Then
+we rotate over the Y axis, but since we've already rotated over the
+X-axis, the
+rotation on the Y-axis only changes the location of the Z-axis. 
+The
+rotation of the Z-axis does not change the location of either of the
+other two
+axes.  Huge problem if you need to rotate on all three axes,
+because one
+axis can literally end up on top of another axis!  (Just in the
+math.  It can't do that in real life, meaning our representation
+is not
+accurate)<br><br>
+Luckily for you, many math geniuses have dealt with this problem. 
+There
+was a famous man named Euler, whom you'll hear mentioned in
+Calculus.  He
+determined that any series of rotations in three dimensional space can
+be
+represented as a single rotation over an arbitrary axis.  For this
+representation, called angle/axis representation, you'll need to store
+the
+arbitrary axis about which you are rotating, and the amount by which
+you are
+rotating.<br><br>
+Now for the cameo by Charles, who was kind enough to write the
+following
+section for me:
+Arbitrary
+axis rotation by Charles Thibault<br><br>
+I am going to describe the calculations I perform in order to perform
+rotations
+about an arbitrary axis.  These calculations are NOT the matrix
+form of
+the rotations.  Up to this point you know you can combine matrices
+into a
+single transformation.  The single transformation matrix involves
+about 29
+multiplication operations and 9 addition operations, whereas completely
+rotating a vector using my transformations (meaning calling my
+RotateVector
+function TWICE, once over the Y axis then once over the Strafe vector)
+entails
+about ten percent more multiplications and about twice as many addition
+operations (32 multiplications for two RotateVector calls, and 18
+addition
+operations for two RotateVector calls).<br><br>
+How do you actually perform a rotation about an arbitrary axis? 
+Well
+firstly you must understand rotations in two dimensions, because the
+concept
+stays the same on an arbitrary plane.  I'm going to make this as
+short and
+sweet as possible.  Instead of rotating the X and Y components of
+a
+vector, the X is really the component of the vector you are trying to
+rotate
+Perpendicular to the vector that is the normal to the plane. 
+Likewise the
+Y is really the cross product between the vector you are trying to
+rotate about
+and the actual vector being rotated.  <br><br>
+Steps to rotate a vector:<br>
+-Calculate the Perpendicular component, multiply it by the cosine of
+the angle
+you are trying to rotate through<br>
+-Calculate the cross product between the vector you are trying to
+rotate about
+and the vector you are rotating, multiply it by the sine of the angle<br>
+-Add the results together <br>
+-Add the component of the vector you are trying to rotate that is
+parallel to
+the vector you are rotating about<br><br>
+Note it is not totally necessary to calculate the parallel component if
+the
+vector you are rotating and the vector you are rotating about are
+already
+orthogonal.  I do it in all cases anyway to avoid any mishaps and
+make
+sure it is mathematically correct, but it seems to work both
+ways.  Plus,
+by leaving it in the code you can rotate vector A about vector P even
+if A and
+P are not orthogonal.  (orthogonal means mutually perpendicular to
+one
+another)
+<br><br>
+The
+rest of
+this will, once again, be written by me (Confuted).<br><br>
+There's still the problem of performing the actual rotation about your
+arbitrary axis.  Luckily, this can also be done with a
+matrix. 
+Again, I'm not going to derive it, I'm going to spoon feed it to
+you. 
+You can thank me later.
+<table border="1" cellpadding="0" width="100%" style="width: 100%;"><tbody>
+<tr>
+<td width="50%" valign="top" style="padding: 1.2pt; width: 50%;">
+<small>
+      </small>
+      <p class="MsoNormal" align="center" style="text-align: center;"><small>Left
+Handed *</small></p>
+      <small> </small>
+</td>
+      <td valign="top" style="padding: 1.2pt;">
+<small> </small>
+      <p class="MsoNormal" align="center" style="text-align: center;"><small>Right
+Handed *</small></p>
+      <small> </small>
+</td>
+    </tr>
+<tr>
+<td width="50%" valign="top" style="padding: 1.2pt; width: 50%;">
+<small>
+      </small>
+      <div align="center">
+      <table border="1" cellpadding="0" width="100%" style="border: medium none ; width: 100%;"><tbody>
+<tr>
+<td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tX<sup>2</sup> + c</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tXY - sZ</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tXZ + sY</small></p>
+            <small> </small>
+</td>
+            <td valign="top" style="border: medium none ; padding: 1.2pt;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+          </tr>
+<tr>
+<td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tXY+sZ</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tY<sup>2</sup> + c</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tYZ - sX</small></p>
+            <small> </small>
+</td>
+            <td valign="top" style="border: medium none ; padding: 1.2pt;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+          </tr>
+<tr>
+<td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tXZ - sY</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tYZ + sX</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tZ<sup>2</sup> + c</small></p>
+            <small> </small>
+</td>
+            <td valign="top" style="border: medium none ; padding: 1.2pt;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+          </tr>
+<tr>
+<td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+            <td valign="top" style="border: medium none ; padding: 1.2pt;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>1</small></p>
+            <small> </small>
+</td>
+          </tr>
+</tbody></table>
+<small> </small>
+</div>
+      <small> </small>
+      <p class="MsoNormal" align="center" style="text-align: center;"><small><p></p></small></p>
+      <small> </small>
+</td>
+      <td valign="top" style="padding: 1.2pt;">
+<small> </small>
+      <div align="center">
+      <table border="1" cellpadding="0" width="100%" style="border: medium none ; width: 100%;"><tbody>
+<tr>
+<td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tX<sup>2</sup> + c</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tXY + sZ</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tXZ - sY</small></p>
+            <small> </small>
+</td>
+            <td valign="top" style="border: medium none ; padding: 1.2pt;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+          </tr>
+<tr>
+<td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tXY-sZ</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tY<sup>2</sup> + c</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tYZ + sX</small></p>
+            <small> </small>
+</td>
+            <td valign="top" style="border: medium none ; padding: 1.2pt;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+          </tr>
+<tr>
+<td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tXZ + sY</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tYZ - sX</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>tZ<sup>2</sup> + c</small></p>
+            <small> </small>
+</td>
+            <td valign="top" style="border: medium none ; padding: 1.2pt;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+          </tr>
+<tr>
+<td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+            <td width="25%" valign="top" style="border: medium none ; padding: 1.2pt; width: 25%;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>0</small></p>
+            <small> </small>
+</td>
+            <td valign="top" style="border: medium none ; padding: 1.2pt;">
+<small> </small>
+            <p class="MsoNormal" align="center" style="text-align: center;"><small>1</small></p>
+            <small> </small>
+</td>
+          </tr>
+</tbody></table>
+<small> </small>
+</div>
+      <small> </small>
+      <p class="MsoNormal" align="center" style="text-align: center;"><small><p></p></small></p>
+      <small> </small>
+</td>
+    </tr>
+</tbody></table>
+<small></small>
+<p class="MsoNormal" align="right" style="margin-bottom: 12pt; text-align: right;"><small>Where
+c = cos (theta), s = sin (theta), t = 1-cos (theta), and &lt;X,Y,Z&gt;
+is the
+unit vector representing the arbitrary axis</small></p>
+Now, you can replace <span style="font-style: italic;">matRotationTotal</span> with this
+matrix, and completely eliminate <span style="font-style: italic;">matRotationX</span>,<span style="font-style: italic;"> matRotationY</span>, and <span style="font-style: italic;">matRotationZ</span>. 
+Of course, there is extra math involved elsewhere.  But by using
+the
+axis/angle representation for your rotations, it is possible to avoid
+gimbal
+lock.  However, it's also possible to still suffer from it, if you
+do
+something incorrectly.  In the next tutorial, I'll talk about some
+of the
+uses for the things I've been saying, and after that, brace yourself
+for the
+exciting and strange world of quaternions.  If you don't have a
+headache
+from thinking too much yet, you probably will after the quaternions.
+
+<br><a href="rotationMatrices.html">Previous: Rotation Matrices</a>
+<br><a href="uses.html">Next: Uses for Rotations in 3 Dimensions</a>
+<br><a href="../../graphics-programming.html">Back to Graphics tutorials index</a>
+
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../game_programming/same_game_part1.html>
+                    <img src=../game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/3d/rotation.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:05 GMT -->
+</html>
+
+
+

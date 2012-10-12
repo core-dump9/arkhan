@@ -1,0 +1,653 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/c++11/c++11-ranged-for-loop.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:04 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+<META NAME="keywords" CONTENT="c++11 range-based for loop, new for loop in c++0x, c++0x for loop, c++11 for loop, c++11 foreach, foreach loop, c++ foreach, c++ range for loop">
+<META NAME="Description" CONTENT="Learn how to easily loop over containers using the new C++11 range-based for loops--and how to add support for range-based for loops to your own classes!">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Range-Based For Loops in C++11 - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../tutorial/c-tutorial.html>C Tutorial</a><br>
+            <a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>C++11 range-based for loops</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+<p>In the first article <a href="what-is-c%2b%2b0x.html">introducing C++11</a> I mentioned that C++11 will bring some nice usability improvements to the language. What I mean is that it removes unnecessary typing and other barriers to getting code written quickly. One example I've already covered is the new meaning of the <a href="c%2b%2b11-auto-decltype-return-value-after-function.html">auto keyword</a>; now I'd like to talk more about the range-based for loop--both how to use it, and how to make your own classes work with it.</p>
+
+<h2>Basic syntax for range-based for loops</h2>
+
+<p>Nowadays, almost every programming language has a convenient way to write a
+for loop over a range of values. Finally, C++ has the same concept; you can
+provide a container to your for loop, and it will iterate over it. We've
+already seen a few basic examples in <a href="what-is-c%2b%2b0x.html">What is C++11?</a> To
+refresh your memory, the range-based for loop looks like this:
+
+</p>
+<pre class="brush: cpp; toolbar: false"> 
+vector&lt;int&gt; vec;
+vec.push_back( 10 );
+vec.push_back( 20 );
+
+for (int i : vec ) 
+{
+    cout &lt;&lt; i;
+}
+</pre>
+
+<p>This code prints the contents of a <a href="../tutorial/stl/vector.html">vector</a> called
+vec, with the variable i taking on the value of each element of the vector, in
+series, until the end of the vector is reached.</p>
+
+<p>You can use <a href="what-is-c%2b%2b0x.html">auto</a> in the type, to iterate over more complex data structures conveniently--for example, to iterate over a map you can write</p>
+
+<pre class="brush: cpp; toolbar: false"> 
+map&lt;string, string&gt; address_book;
+for ( auto address_entry : address_book )
+{
+            cout  &lt;&lt; address_entry.first &lt;&lt; " &lt; " &lt;&lt; address_entry.second &lt;&lt; "&gt;" &lt;&lt; endl;
+}       
+</pre>
+
+<p>And you don't need to worry about spelling out the iterator type.</p>
+<h3>Modifying the Contents of the Vector</h3>
+
+<p>If you want to modify the values in the container you're looping over, or if
+you want to avoid copying large objects, and the underlying iterator supports
+it, you can make the loop variable a reference. For example, here's a loop that
+increments each element in an integer vector:
+
+</p>
+<pre class="brush: cpp; toolbar: false"> 
+vector&lt;int&gt; vec;
+vec.push_back( 1 );
+vec.push_back( 2 );
+
+for (int&amp; i : vec ) 
+{
+    i++; // increments the value in the vector
+}
+for (int i : vec )
+{
+    // show that the values are updated
+    cout &lt;&lt; i &lt;&lt; endl;
+}
+</pre>
+
+<h2>What does it mean to have a range?</h2>
+
+<p><a href="../tutorial/string.html">Strings</a>, <a href="../tutorial/lesson8.html">arrays</a>, and all <a href="../tutorial/stl/stlintro.html">STL</a> containers can be iterated over with the new range-based for loop already. But what if you want to allow your own data structures to use the new syntax?</p>
+
+<p>In order to make a data structure iterable, it must work similarly to the existing <a href="../tutorial/stl/iterators.html">STL iterators</a>.
+
+</p>
+<ul>
+<li>There must be begin and end methods that operate on that structure, either as members or as stand-alone functions, and that return iterators to the beginning and end of the structure
+</li>
+<li>The iterator itself must support an operator* method, an operator != method, and an operator++ method, either as members or as stand-alone functions (you can read more about <a href="../tutorial/operator_overloading.html">operator overloading</a>)
+</li>
+</ul>
+<p><i>Note that operator++ should be the prefix version, which is done by
+declaring a function called operator++ that takes no arguments.</i></p>
+
+<p>That's it! With these five functions, you can have a data structure that
+works with a range-based for loop. Because the begin and end methods can be
+non-member functions ( begin( container ) instead of container.begin() ), you
+can even adapt existing data structures that don't natively support the
+STL-style iterators. All you must do is create your own iterator that supports
+*, prefix increment (++itr) and != and that has a way of defining a begin
+iterator and an end iterator.</p>
+
+<p>Since range-based for loops are so nice, I suspect that most new containers that don't already support the STL iterator model will want to add adaptors of some sort that allow range-based for loops to be used. Here's a small program that demonstrates creating a simple iterator that works with a range-based for loops. In it, I create an IntVector type that is fixed at a size of 100, and that can be iterated over using a class called Iter. I've made this code <a href="../tutorial/const_correctness.html">const-correct</a>, but if you haven't seen that concept before, the code works just fine with every const removed.</p>
+
+<pre class="brush: cpp; toolbar: false"> 
+#include &lt;iostream&gt;
+
+using namespace std;
+
+// forward-declaration to allow use in Iter
+class IntVector;
+
+class Iter
+{
+    public:
+    Iter (const IntVector* p_vec, int pos)
+        : _pos( pos )
+        , _p_vec( p_vec )
+    { }
+
+    // these three methods form the basis of an iterator for use with
+    // a range-based for loop
+    bool
+    operator!= (const Iter&amp; other) const
+    {
+        return _pos != other._pos;
+    }
+
+    // this method must be defined after the definition of IntVector
+    // since it needs to use it
+    int operator* () const;
+
+    const Iter&amp; operator++ ()
+    {
+        ++_pos;
+        // although not strictly necessary for a range-based for loop
+        // following the normal convention of returning a value from
+        // operator++ is a good idea.
+        return *this;
+    }
+
+    private:
+    int _pos;
+    const IntVector *_p_vec;
+};
+
+class IntVector
+{
+    public:
+    IntVector ()
+    {
+    }
+
+    int get (int col) const
+    {
+        return _data[ col ];
+    }
+    Iter begin () const
+    {
+        return Iter( this, 0 );
+    }
+
+    Iter end () const
+    {
+        return Iter( this, 100 );
+    }
+
+    void set (int index, int val)
+    {
+        _data[ index ] = val;
+    }
+
+    private:
+   int _data[ 100 ];
+};
+
+int
+Iter::operator* () const
+{
+     return _p_vec-&gt;get( _pos );
+}
+
+// sample usage of the range-based for loop on IntVector
+int main()
+{
+    IntVector v;
+    for ( int i = 0; i &lt; 100; i++ )
+    {
+        v.set( i , i );
+    }
+    for ( int i : v ) { cout &lt;&lt; i &lt;&lt; endl; }
+}
+</pre>
+
+<p>One thing to notice about this code is that it does not allow modification
+of elements in the IntVector by using a reference in the for loop. You should
+be able to add this easily by changing the return value of get to be a
+reference, but this would make the code much longer by requiring the addition
+of non-const methods, and I wanted to focus on the basic structure.</p>
+
+<h3>Do range-based for loops increase performance?</h3>
+
+<p>In my limited testing with GCC 4.6, I did not see a performance improvement
+in range-based for loops over normal STL iteration, but it seems like it should be possible for 
+range-based for loops to see the same performance improvements as the STL's
+for_each function, which has the same model of iterating over a container in
+iterator order.</p>
+
+<h2>Compiler availability</h2>
+
+<p>Unfortunately, range-based for loops are not all that well supported. MSVC doesn't support them at all, and GCC only added support in version 4.6. In order to test out range-based for loops, I had to install GCC 4.6 from source; I found <a href="http://cygwin.wikia.com/wiki/How_to_install_a_newer_version_of_GCC">this article useful for doing so under Cygwin</a>. You can also find pre-built MinGW binaries with GCC 4.7 on <a href="http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Automated%20Builds/">this page</a>.</p>
+<br><br><a href="c%2b%2b11-compile-time-processing-with-constexpr.html">Next: Generalized Constant Expressions in C++11</a> Learn how C++11 makes compile-time processing easier than ever<br><a href="c%2b%2b11-lambda-closures.html">Previous: Lambda Functions in C++11 - the definitive guide</a> One of the most exciting features of C++11 is ability to create lambda functions, learn what they are and how to use them
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/game_programming/same_game_part1.html>
+                    <img src=../tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/c++11/c++11-ranged-for-loop.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:04 GMT -->
+</html>
+
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shBrushCpp.js"></script>
+<script type="text/javascript">
+         SyntaxHighlighter.all();
+</script>
+
+
+

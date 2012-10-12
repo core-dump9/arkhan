@@ -1,0 +1,739 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/visual_studio_tips.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:35:39 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="visual studio debugger, debugging tips, C++ debugging, debugger features">
+<META NAME="Description" CONTENT="Discover powerful debugging techniques available in Visual Studio">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>5 Awesome (and time saving) Features of the Visual Studio Debugger - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>5 Awesome Visual Studio Debugger Features</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+So you know all the basic debugger features: <a href="visual_studio_breakpoints.html">breakpoints</a>, stepping through the
+code, <a href="visual_studio_debugging_setup.html">viewing
+the values of variables</a>.  But there's a lot more your debugger
+can do to make it quicker to step through code, easier to test alternate
+solutions, and even avoid rerunning the program.
+<br><br>
+
+Here, you'll learn about some of <a href="../visual.html">Visual Studio</a>'s more advanced debugger
+features, such as <b>stepping out of a function</b>, taking advantage of the <b>autos
+window</b>, using <b>run to the cursor</b> to set temporary breakpoints, <b>modifying
+a variable's value</b> to test potential fixes, and using <b>Set Next
+Statement</b> to turn back the clock and re-execute code.
+
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <br><br><h2>Sample (Buggy) Code</h2>
+Each of the following examples use this code, which contains several bugs:
+
+<pre class="example">
+#include &lt;vector&gt;
+#include &lt;iostream&gt;
+
+
+class Data
+{
+public:
+	Data ()
+	{
+		_values.push_back( 1 );
+		_values.push_back( 2 );
+	}
+	int getSum()
+	{
+		int total;
+		for ( std::vector&lt;int&gt;::iterator itr = _values.begin(), end = _values.end(); itr != end; ++itr )
+		{
+			total += *itr;
+		}
+		return total;
+	}
+	int getCount() { return _values.size(); }
+private:
+	std::vector&lt;int&gt; _values;
+};
+
+double compute_average( int sum, int count )
+{
+	return sum / count;
+}
+
+int main()
+{
+	Data d;
+
+	std::cout &lt;&lt; compute_average( d.getSum(), d.getCount() ) &lt;&lt; std::endl;
+}
+</pre>
+
+<h2>1. Step Out of the Current Function</h2>
+
+So you've written a function call, like so:
+
+<pre class="example">
+int main()
+{
+	Data d;
+
+	std::cout &lt;&lt; compute_average( d.getSum(), d.getCount() ) &lt;&lt; std::endl;
+}
+</pre>
+
+And the compute_average function is not returning the correct value.  If you
+were to use a debugger, and you wanted to step into compute_average, you could,
+of course, put a breakpoint inside compute_average, but what if it were called
+from several places?  Visual Studio has a very convenient feature of its
+debugger, that will allow you to step into compute_average very quickly.
+
+<br><br>
+Set a breakpoint on that line:
+
+<br><br><center>
+<img src="Images/debug_step_out_1.png">
+</center>
+
+
+<br><br>
+Once the debugger hits it, then step into the function.  getSum and getCount
+will both be called before compute_average.  Normally, you'd keep hitting next
+to get out of getSum and getCount, but with Visual Studio, you can quickly hit
+Shift-F11 to step out of the current function and return to the next call.
+
+<br><br><center>
+<img src="Images/debug_step_out_2.png">
+</center>
+
+<br><br>
+Once you step out of the current function, you're taken back to the original
+breakpoint.  But now you can step in again, to go to the next function.
+Repeat until you've drilled down into the function you want.
+
+<h3>When to Use This Trick</h3>
+
+Obviously, there are times when it makes more sense to just set a breakpoint in
+your target function.  But when doing so would require ignoring hundreds of calls to that function to find the one you want, 
+it might not be worth it.  Using
+step out provides a quick way of getting into a function without having to find
+the function and set a temporary break point (or use run to cursor).
+
+<h2>2. Use the Auto Window to See Result of Functions</h2>
+
+One of the most frustrating parts of debugging is when you have a function call
+whose result isn't stored anywhere, and you really want to know what it
+returned.
+
+<br><br>
+Sometimes, programmers write code like this, just to work around the issue:
+
+<pre class="example">
+int computed_avg;
+
+computed_avg = compute_average( d.getSum(), d.getCount() );
+
+std::cout &lt;&lt; computed_avg &lt;&lt; std::endl;
+</pre>
+
+(Obviously, in this case, the program prints out the value, so all is not lost.
+This is rarely true in the general case.)
+
+<br><br>
+Fortunately, the autos window has good courtesy to display the result of a
+function evaluation: 
+
+<br><br><center>
+<img src="Images/debug_autos.png">
+</center>
+
+<h3>When to Use this Trick</h3>
+
+Whenever you want to see a return value!  Note that you the autos window will eventually erase the return value as you execute code, so be sure to check your return value immediately.
+<h4>Did you know...</h4>
+Most return values are also stored in the EAX register--you can look in EAX to find the return value, if you need it.
+
+<h2>3. Run to Cursor</h2>
+
+Run to cursor is a great way of avoiding the
+step-step-step-step-step-oh-no-I-stepped-over-it problem, where you know where
+you want to be, getting to it requires stepping multiple times, and you get
+impatient.
+
+<br><br>
+In effect, run-to-cursor is just a shortcut for setting a breakpoint that is
+immediately cleared once it's hit; nevertheless, it's a very convenient
+feature.  It is most useful when you have a piece of code that is called
+frequently from different places, and you only care about one code path.  Then
+you can place a breakpoint at the start of that path and use run-to-cursor to
+get to the point you really care about. 
+
+<br><br>
+Going back to our sample program, we can use run-to-cursor rather than the
+step-out trick, to get into compute_average.  (Of course, we could just put a
+breakpoint in compute_average; for the purpose of making this example sensible,
+please imagine 15-20 calls to compute_average that all work correctly, taking
+place before the broken call.)
+
+<br><br><center>
+<img src="Images/run_to_cursor.png">
+</center>
+<h3>When to Use this Trick</h3>
+
+Any time you want a throwaway breakpoint or want to avoid single-stepping through a lot of code.  Be careful, though, that you run to a part of the code that will actually be executed.  Watch out for early returns from a function within a loop, for instance.
+
+<h2>4. Modify Any Variable</h2>
+
+Now that we're in the compute_average function, and we know that the value
+being returned is <i>waayyy</i> too big, we can check the arguments to the
+function.  It turns out that sum is very large.  We'll deal with that in a bit.
+First, let's test and make sure that the function works if we do get the right
+value. 
+
+<br><br>
+Obviously, one way of doing this would be to pass in a new value.  But Visual
+Studio conveniently makes it easy to change any value in memory.  In fact,
+let's do that with the value of sum, and make sure that it returns the correct
+value.
+
+<br><br>
+All you need to do is click on in the Value column of the auto or watch window
+and change the value.  (You can also do this when the variable's value pops up
+while hovering over a variable in the source code.)
+
+<br><br><center>
+<img src="Images/pre_modify_variable.png">
+</center>
+
+<br><br>
+and voila:
+
+<br><br><center>
+<img src="Images/modify_variable.png">
+</center>
+
+<br><br>
+Continuing execution of the program demonstrates that, in fact, we still get
+the wrong answer--this time, it returns the value 1.  This suggests that
+truncation is taking place due to integer division.  
+<br><br>
+
+Before recompiling, we can add in a cast to solve this problem:
+
+<pre class="example">
+return (double) sum / count;
+</pre>
+
+<h3>When to Use this Trick</h3>
+
+This trick is powerful, and is particularly helpful when you have found one bug, but want to prove that the rest of your code will work.  This is particularly handy when your debugging session requires a great deal of setup--for instance, you have to perform a lot of UI to get the right inputs or your code takes a long time to build.  (An alternative would be to consider writing a <a href="test-driven-development.html">unit test</a> that demonstrates the bug and doesn't require so much setup.)
+<br><br>
+
+On the other hand, you can't rely on this trick when you are inside a loop or a function that is called frequently--it's just too much of a pain to have to manually set variables all the time.
+
+<h2>5. Set Next Statement</h2>
+
+Set Next Statement is a real power tool.  If you're debugging, and you've
+accidentally (or not so accidentally) stepped past the point where something
+interesting happens, you can sometimes "unwind" execution.  What this really
+means is that, maintaining the current state of the world, you can tell Visual
+Studio to go back and start executing from a previous instruction.
+
+<br><br>
+You can also use set next statement to jump over code that you believe is
+buggy, or to jump past a conditional test on an if statement to execute a path
+of code that you want to debug without having to make the condition true.
+
+<br><br>
+Setting the next statement can be dangerous and lead to instability if the
+stack or registers aren't in a valid state for the line being executed.  And
+because it won't restore the state of the world, if your code depends on that
+state, changing the next statement might not be useful.  On the other hand, if
+you want to make a call that you're pretty confident won't behave differently,
+it can be a great way of avoiding recreating a specific failure just because
+you accidentally stepped too far.
+
+<br><br>
+For instance, take the following debugging state, where you're about to return
+the value total from getSum:
+
+<br><br><center>
+<img src="Images/pre_set_next_statement.png">
+</center>
+
+<br><br>
+If you had accidentally run too far, it might be very convenient to be able to
+simply say, ok, let's start that again:
+
+<br><br><center>
+<img src="Images/set_next_statement_menu.png">
+</center>
+
+<br><br>
+and then you can go back through executing the loop, perhaps setting the value
+of total to 0, since you notice that it wasn't initialized, and then checking
+to see if the program gives the correct sum (in which case, you can be pretty
+confident that the lack of initialization was the problem).
+
+<br><br><center>
+<img src="Images/set_next_statement.png">
+</center>
+
+<h3>When to Use this Trick</h3>
+
+Many of the same considerations that apply to resetting variable values also apply here.  However, you should also be aware that the further ahead or back in a function you set the next statement, the more likely the debugger will not be able to compensate and your program will crash.  I usually use this trick to skip over very small chunks of code, or to go back only to a single previous function call.
+
+<br><br><a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><image src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0"></image></a>
+<a href="http://feeds2.feedburner.com/Cprogrammingcom">Subscribe to
+Cprogramming.com</a>
+<br><br><b>Related articles</b><br><br><a href="../debugging/visual-studio-msvc-debugging-NoStepInto.html">Skip Stepping Into Functions
+with Visual Studio's NoStepInto Option</a>.
+<br><br><a href="debugging_concepts.html">Debugging with Visual Studio Part 1: Debugging Concepts</a><br><br><a href="visual_studio_debugging_setup.html">Debugging
+with Visual Studio Part 2: Setting up the Debugger</a><br><br><a href="visual_studio_breakpoints.html">Debugging
+with Visual Studio Part 3: Using Breakpoints Effectively</a><br><br><a href="visual_studio_debugging_code_setup.html">Debugging
+with Visual Studio Part 4: Setting up Code for the Debugger</a><br><br><a href="visual_studio_trace_log_messages.html">Debugging
+with Visual Studio Part 5: Using Trace and Log Messages</a><br><br><a href="visual_studio_remote_debugging.html">Debugging with Visual Studio Part 6: Remote Debugging</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/visual_studio_tips.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:35:48 GMT -->
+</html>
+
+
+

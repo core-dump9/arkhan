@@ -1,0 +1,694 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/compiler_linker_errors.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:39 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, computer programming, programming computers, how to program computers">
+<META NAME="Description" CONTENT="A website designed to help learning C or C++.  Understandable C and C++ programming tutorials, compiler reviews, source code, tips and tricks.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Dealing with Compiler and Linker Errors - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Dealing with Compiler Errors - Surviving the Compilation Process</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+It's your first C (or C++) program--it's not that long, and you're about to
+compile it.  You hit compile (or enter the build command) and wait.  Your
+compiler spits out fifty lines of text.  You pick out words like "warning and
+"error".  <em>Does that mean it worked?</em> you wonder.  You look for the
+resulting executable.  Nothing.  <em>Damn</em>, you think, <em>I guess I have
+to figure out what this all means...</em>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<h2>The Types of Compilation Errors</h2>
+
+First, let's distinguish between the types of errors: most compilers will give
+three types of compile-time alerts: compiler warnings, compiler errors, and
+linker errors.  
+
+<br><br>
+Although you don't want to ignore them, compiler warnings aren't something
+severe enough to actually keep your program from compiling.  Usually, compiler
+warnings are an indication that something might go wrong at runtime.  How can
+the compiler know this at all?  You might be making a typical mistake that the
+compiler knows about.  A common example is using the assignment operator ('=')
+instead of the equality operator ('==') inside an if statement.  Your compiler
+may also warn you about using variables that haven't been initialized and other
+similar mistakes.  Generally, you can set the warning level of your compiler--I
+like to keep it at its highest level so that my compiler warnings don't turn in
+to bugs in the running program ('runtime bugs').
+
+<br><br>
+Nevertheless, compiler warnings aren't going to stop you from getting your
+program working (unless you tell your compiler to treat warnings as errors), so
+they're probably a bit less frustrating than errors.  Errors are conditions
+that prevent the compiler from completing the compilation of your files.
+Compiler errors are restricted to single source code files and are the result
+of 'syntax errors'.  What this really means is that you've done something that
+the compiler cannot understand.  For instance, the statement "for(;)" isn't
+correct syntax because a for loop always needs to have three parts.  Although
+the compiler would have expected a semicolon, it would also have expected a
+conditional expression, so the error message you get might be something like
+"line 53, unexpected parenthesis ')'".  Note, also, that compiler errors will
+always include a line number at which the error was detected.  
+
+<br><br>
+Even if you make it through the compilation process successfully, you may run
+into linker errors.  Linker errors, unlike compiler errors, have nothing to do
+with incorrect syntax.  Instead, linker errors are usually problems with
+finding the definitions for functions, structs, classes, or global variables
+that were <a href="../declare_vs_define.html">declared, but never actually defined</a>, in a source code file.
+Generally, these errors will be of the form "could not find definition for X".
+
+<br><br> 
+Usually, the compilation process will begin with a series of compiler
+errors and warnings and, once you've fixed all of them, you'll then be faced
+with any linker errors.  In turn, I'll first cover dealing with compiler errors
+and then with linker errors.
+
+
+<h2>Compiler Errors - Where do you start?</h2>
+
+If you're faced with a list of fifty or sixty error and warning messages, it
+can be daunting to even try to figure out where to start.  The best place,
+though, is at the beginning--as in, the beginning of the list.  In fact, you
+should almost never start trying to fix errors from the end of the file to the
+beginning for one simple reason: you don't know if they're actually errors!
+
+<br><br> 
+A single error near the top of your program can cause a cascade of other
+compiler errors because those lines might rely on something early in the
+program that the compiler couldn't understand.  For instance, if you declare a
+variable with improper syntax, the compiler will complain about that syntax
+error <em>and</em> that it cannot find a declaration for the variable.  Leaving
+off a semicolon in the wrong place can result in an astonishing number of
+errors.  Things like this can happen because C and C++ syntax allows for things
+like declaring of a type immediately after the type definition:
+
+<pre class="example">
+struct 
+{
+        int x;
+        int y;
+} myStruct;
+</pre>
+
+This would create a variable, myStruct, with room to store a struct containing
+two integers.  Unfortunately, this means that if you leave off a semicolon, the
+compiler will interpret it as though the next thing in the program is intended
+to be a struct (or return a struct).  Something like this
+
+<pre class="example">
+struct MyStructType
+{
+        int x;
+        int y;
+}
+
+int foo()
+{}
+</pre>
+
+can result in an surprising number of errors (possibly including a complaint
+about an extraneous "int" being ignored).  All this for a single character!
+best to start at the top.
+
+<h2>Dissecting an Error Message</h2>
+
+Most messages from the compiler will consist of at least four things: the type
+of message--warning or error--source code file in which the error appeared, and
+the line of the error, and a brief description of what was wrong.  Output from
+g++ for the above program might look something like this (your results with
+other compilers may vary):
+
+<pre class="example">
+foo.cc:7: error: semicolon missing after struct declaration
+</pre>
+
+foo.cc is the name of the file.  7 is the line number in question, and it is
+clear that this is an error.  The brief message here is quite helpful because
+it says exactly what was wrong.  Notice, however, that the message makes sense
+only in the context of the program.  It doesn't say which struct was missing a
+semicolon.  
+<br><br> 
+
+More cryptic was another error message from the same compilation attempt:
+"extraneous 'int' ignored".  It's up to the programmer to figure out exactly
+why it was extraneous.  Notice again that this was an error caused by a problem
+earlier in the program, not on line 8, but earlier, when the struct lacked a
+semicolon terminator.  Fortunately, it's pretty clear that the function
+definition for foo was OK; this tells us that the error must have been caused
+somewhere else in the program.  In fact, it had to be earlier in the
+program--you won't get an error message that indicates a syntax error prior to
+the line on which the error actually occurred.
+<br><br> 
+
+This brings up another guiding principle of hunting down compiler errors: when
+in doubt, <b>look earlier in the program</b>.  Since syntax errors can have
+mysterious repercussions later, it's possible that the compiler was giving a
+line number that doesn't actually have a syntax error!  Worse, many times, the
+compiler won't be as friendly in telling you exactly what happened earlier in
+the program.  Even the first compiler error you get might be due to something
+several lines before the indicated warning.
+
+<h2>Handling Cryptic or Bizarre Messages</h2>
+
+There are several types of compiler errors that are especially frustrating.
+The first is the case of an undeclared variable that you swear you declared.
+Often times, you can actually point out exactly where the variable was
+declared!  The problem is often that the variable is simply misspelled.
+Unfortunately, this can be very hard to see since the mind typically reads what
+it expects rather than what is actually there.  Worse, there are other reasons
+why this could be a problem too--scoping issues for instance!
+
+<br><br>
+To sort through the possible problems, one trick I like to use is to go to the
+line of the supposedly undeclared variable and have my text editor perform a
+search for the word under the cursor (alternatively, you could copy the
+variable name and perform a search); this guarantees that if I spelled it
+incorrectly, it will not find a match for my search.  This also keeps me from
+having to type the word, which could result in my correctly spelling the
+variable name. 
+
+<br><br> 
+A second cryptic message is the "unexpected end of file".  What's going on
+here?  Why would the end of the file be "unexpected"?  Well, the key here is to
+think like the compiler; if the end of the file is unexpected, then it must be
+that it's waiting for something.  What could it be waiting for?  The answer is
+usually "closure".  For instance, closing curly braces or closing quotes.  A
+good <a href="../texteditors.html">text editor</a> that
+performs syntax highlighting and automatic indentation should help fix some of
+these issues by making it easier to spot problems when writing code.
+
+<br><br> 
+Ultimately, when a message is cryptic, the way to approach the problem is to
+think about how the compiler is trying to interpret the file.  This can be hard
+when you're just starting out, but if you pay attention to the messages and try
+to pick out what they could mean, you'll quickly get used to the general
+patterns.
+
+<br><br>
+Finally, if nothing else works, you can always just rewrite a few
+lines of code to clear out any hidden syntax errors that might be hard for the
+eye to catch.  This can be dangerous if you don't end up rewriting the right
+section of code, but it can be helpful. 
+
+<h2>Linker Errors</h2>
+
+Once you've finally cleaned up all those frustrating syntax errors, taken a
+nap, had a meal or two, and mentally prepared yourself for the program to build
+correctly, you may still need to deal with linker errors.  These can often be
+more frustrating because they aren't necessarily the result of something
+written in your program.  I'll briefly cover some of the typical types of
+linker errors you can expect and some of the ways to fix them.
+
+<br><br>
+You may have issues with how you set up your compiler.  For
+instance, even if you include the correct header files for all of your
+functions, you still need to provide your linker with the correct path to the
+library that has the actual implementation.  Otherwise, you will get "undefined
+function" error messages.  Be careful that your compiler doesn't actually
+support these functions at all (this could happen if you include your own
+declaration of a function to get around a compile-time error).  If your
+compiler should support the function, then fixing this problem usually requires
+compiler-specific settings.  You'll generally want to look for how to tell the
+compiler where to look for libraries and make sure that the libraries were actually installed correctly. 
+
+<br><br>
+Linker errors can also come about in functions that you have declared
+and defined if you fail to include all of the necessary object files in the
+linking process.  For example, if you write your class definition in
+myClass.cc, and your main function is in myMain.cc, your compiler will create
+two object files, myClass.o and myMain.o, and the linker will need both of them
+to finish the creation of the new program.  If you leave out myClass.o, then it
+will not have the class definition even if you correctly included myClass.h!
+
+<br><br>
+A sometimes subtle error is when the linker complains about there being more
+than one definition for a class, function, or variable.  This issue can come up
+in one of several ways: first, there might actually be two definitions of an
+object--for instance, two global variables both declared as external variables
+to be accessible outside of the source code file.  This is a legitimate concern
+for both functions and variables, and it definitely can happen.  On the
+other hand, sometimes the problem is with the directives to the linker; on more
+than one occasion, I've seen people include multiple copies of the same object file in the linking process.  And bingo, you've got multiple definitions.  A typical giveaway for this problem is that a whole host of functions have multiple definitions.
+
+<br><br>
+ The last bizarre type of linker error is a complain about an
+"undefined reference to main".  This particular linker error differs from the
+other in that it may have nothing to do with including object files or having
+the correct paths to your libraries.  Instead, it means that the linker tried
+to create an executable and couldn't figure out where the main() function was
+located.  This can happen if you forget to include the main function at all, or if you attempt to compile code that was never meant to be a stand-alone executable (for instance, if you tried to compile a library).
+
+<!-- removed chitika -->
+ 
+<hr>
+<b>Related articles</b><br><br><a href="../declare_vs_define.html">What's the difference between declaring and defining something in C and C++?</a> Learn about the distinction between declaring a variable, class or function--and defining it--and why it matters when you have trouble compiling or linking your code
+<br><br><a href="compiler_warnings.html">Learn more about dealing with compiler warnings</a> Compiler warnings can indicate future bugs!
+<br><br><a href="../compilingandlinking.html">Compiling and Linking</a> A brief description of the compiling and linking process
+<br><br><a href="statickeyword.html">The Static Keyword</a> Covers the static keyword and how it can change the accessibility of global variables
+<br><br><a href="namespaces.html">Using Namespaces</a> Learn how namespaces can hide function and variable declarations
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/compiler_linker_errors.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:39 GMT -->
+</html>
+
+
+

@@ -1,0 +1,713 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut9.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, beginnings guide to C++, C++ beginners guide, C++ programming tutorials, getting started with C++, learning C++, how to learn C++, history of C++, C++ history, programming languages, C++ programming language">
+<META NAME="Description" CONTENT="A beginner's guide to learning C++ - answers questions about C++, basic programming, and how to think about programming.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tutorials: C++ Made Easy - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Tutorials: C++ Made Easy</h1>
+
+
+
+          <p> <!-- #BeginEditable "content" --></p>
+<pre>
+                  ีอออออออออออออออออออออออออออออออธ
+                   ณ         W E L C O M E         ณ
+                   ณ  To the VGA Trainer Program   ณ ณ
+                   ณ              By               ณ ณ
+                   ณ      DENTHOR of ASPHYXIA      ณ ณ ณ
+                   ณ      (updated by Snowman)     ณ ณ ณ
+                   ิอออออออออออออออออออออออออออออออพ ณ ณ
+                     ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤู ณ
+                       ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤู
+
+                           --==[ PART 9 ]==--</pre>
+<p align="justify">
+[Note: things in brackets have been added by Snowman.  The original text
+has remained mostly unaltered except for the inclusion of C++ material]<br><br>
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br><br>
+þ Introduction<br><br>
+Hi there! ASPHYXIA is BACK with our first MegaDemo, Psycho Neurosis! A
+paltry 1.3MB download is all it takes to see the group from Durbs first
+major production! We are quite proud of it, and think you should see it
+;)<br><br>
+Secondly, I released a small little trainer (a trainerette ;-)) on
+RsaPROG and Connexctix BBS mail, also on the ASPHYXIA BBS as COPPERS.ZIP
+It is a small Pascal program demonstrating how to display copper bars in
+text mode. Also includes a check for horizontal retrace (A lot of people
+wanted it, that is why I wrote the program) (ASPHYXIA ... first with the
+trainer goodies ;-)  aargh, sorry, had to be done ))<br><br>
+Thirdly, sorry about the problems with Tut 8! If you had all the
+checking on, the tutorial would probably die on the first points. The
+reason is this : in the first loop, we have DrawPoints then
+RotatePoints. The variables used in DrawPoints are set in RotatePoints,
+so if you put RotatePoints before DrawPoints, the program should work
+fine. Alternatively, turn off error checking 8-)<br><br></p>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <br><br>
+Fourthly, I have had a surprisingly large number of people saying that
+"I get this, like, strange '286 instructions not enabled' message!
+What's wrong with your code, dude?"  To all of you, get into Pascal, hit
+Alt-O (for options), hit enter and a 2 (for Enable 286 instructions). Hard
+hey? Doesn't anyone EVER set up their version of Pascal?<br><br>
+Now, on to todays tutorial! 3D solids. That is what the people wanted,
+that is what the people get! This tutorial is mainly on how to draw the
+polygon on screen. For details on how the 3D stuff works, check out tut
+8.<br><br>
+If you would like to contact me, or the team, there are many ways you
+can do it : <br><br>1) Write a message to Grant Smith/Denthor/Asphyxia in private mail
+                  on the ASPHYXIA BBS.
+            <br>2) Write to Denthor, EzE or Goth on Connectix.
+            <br>3) Write to :  Grant Smith / P.O.Box 270 Kloof / 3640 / Natal
+            <br>4) Call me (Grant Smith) at (031) 73 2129 (leave a message if you
+                  call during varsity)
+            <br>5) Write to mcphail@beastie.cs.und.ac.za on InterNet, and
+                  mention the word Denthor near the top of the letter.<br><br>
+NB : If you are a representative of a company or BBS, and want ASPHYXIA
+       to do you a demo, leave mail to me; we can discuss it.<br><br>
+NNB : If you have done/attempted a demo, SEND IT TO ME! We are feeling
+        quite lonely and want to meet/help out/exchange code with other demo
+        groups. What do you have to lose? Leave a message here and we can work
+        out how to transfer it. We really want to hear from you!<br><br>
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br><br>
+þ How to draw a polygon<br><br>
+Sounds easy enough, right? WRONG! There are many, many different ways to
+go about this, and today I'll only be showing you one. Please don't take
+what is written here as anything approaching the best method, it is just
+here to get you on your way...<br><br>
+The procedure I will be using here is based on something most of us
+learned in standard eight ... I think. I seem to recall doing something
+like this in Mrs. Reids maths class all those years ago ;)
+Take two points, x1,y1 and x2,y2. Draw them :<br><br><pre class="example">
+                  + (x1,y1)
+                   \
+                     \  &lt;-- Point a somewhere along the line
+                       \
+                         + (x2,y2)</pre>
+Right, so what we have to do is this : if we know the y-coord of a, what
+is it's x-coord? To prove the method we will give the points random
+values.<pre class="example">
+                 + (2,10)
+                  \
+                    \  &lt;-- a.y = 12
+                      \
+                        +  (15,30)</pre>
+Right. Simple enough problem. This is how we do it :<pre class="example">
+   (a.y-y1) = (12 - 10)  {to get a.y as though y1 was zero}
+   *(x2-x1) = *(15 - 2)  {the total x-length of the line}
+   /(y2-y1) = /(30 - 10) {the total y-length of the line}
+        +x1 = +2         { to get the equation back to real coords}
+So our equation is :  (a.y-y1)*(x2-x1)/(y2-y1)+x4    or
+                      (12-10)*(15-2)/(30-10)+2
+      which gives you :
+                      2*13/20+2 = 26/20+2
+                                = 3.3</pre>
+That means that along the line with y=12, x is equal to 3.3. Since we
+are not concerned with the decimal place, we replace the  /  with a div,
+which in Pascal gives us an integer result, and is faster too. All well
+and good, I hear you cry, but what does this have to do with life and
+how it relates to polygons in general. The answer is simple. For each of
+the four sides of the polygon we do the above test for each y line. We
+store the smallest and the largest x values into separate variables for
+each line, and draw a horizontal line between them. Ta-Dah! We have a
+cool polygon!<br><br>
+For example : Two lines going down :<pre class="example">
+    
+                +             +
+               / &lt;-x1     x2-&gt;|   &lt;--For this y line
+             /                |
+           +                  +</pre>
+Find x1 and x2 for that y, then draw a line between them. Repeat for all
+y values.<br><br>
+Of course, it's not as simple as that. We have to make sure we only
+check those y lines that contain the polygon (a simple min y, max y test
+for all the points). We also have to check that the line we are
+calculating actually extends as far as where our current y is (check
+that the point is between both y's). We have to compare each x to see
+weather it is smaller then the minimum x value so far, or bigger then
+the maximum (the original x min is set as a high number, and the x max
+is set as a small number). We must also check that we only draw to the
+place that we can see ( 0-319 on the x ; 0-199 on the y (the size of the
+MCGA screen))<br><br>
+To see how this looks in practice, have a look at the sample code
+provided. (Mrs. Reid would probably kill me for the above explanation,
+so when you learn it in school, split it up into thousands of smaller
+equations to get the same answer ;))<br><br>
+Okay, that's it! What's that? How do you draw a vertical line? Thats
+simple ...<br><br>
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br><br>
+þ Drawing a vertical line<br><br>
+Right, this is a lot easier than drawing a normal line (Tut 5 .. I
+think), because you stay on the same y value. So, what you do is you set
+ES to the screen you want to write to, and get DI to the start of the
+y-line (see earlier trainers for a description of how SEGMENT:OFFSET
+works.<pre class="example">
+IN   : x1 , x2, y, color, where
+           asm
+             mov    ax,where
+             mov    es,ax
+             mov    di,y
+             mov    ax,y
+             shl    di,8   { di:=di*256 }
+             shl    ax,6   { ax:=ax*64 }
+             add    di,ax  { di := (y*256)+(y*64) := y*320 Faster then a
+                             straight multiplication }</pre>
+Right, now you add the first x value to get your startoff.<pre class="example">
+             add    di,x1</pre>
+Move the color to store into ah and al<pre class="example">
+             mov    al,color
+             mov    ah,al       { ah:=al:=color }</pre>
+then get CX equal to how many pixels across you want to go<pre class="example">
+             mov    cx,x2
+             sub    cx,x1   { cx:=x2-x1 }</pre>
+Okay, as we all know, moving a word is a lot faster then moving a byte,
+so we halve CX<pre class="example">
+             shr    cx,1    { cx:=cx/2 }</pre>
+but what happens if CX was an odd number. After a shift, the value of
+the last number is placed in the carry flag, so what we do is jump over
+a single byte move if the carry flag is zero, or execute it if it is
+one.<pre class="example">
+            jnc     @Start  { If there is no carry, jump to label Start }
+            stosb           { ES:[DI]:=al ; increment DI }
+        @Start :            { Label Start }
+            rep     stosw   { ES:[DI]:=ax ; DI:=DI+2; repeat CX times }</pre>
+Right, the finished product looks like this :<pre class="example">
+[Pascal]
+  Procedure Hline (x1,x2,y:word;col:byte;where:word); assembler;
+    { This draws a horizontal line from x1 to x2 on line y in color col }
+  asm
+    mov   ax,where
+    mov   es,ax
+    mov   ax,y
+    mov   di,ax
+    shl   ax,8
+    shl   di,6
+    add   di,ax
+    add   di,x1
+    mov   al,col
+    mov   ah,al
+    mov   cx,x2
+    sub   cx,x1
+    shr   cx,1
+    jnc   @start
+    stosb
+  @Start :
+    rep   stosw
+  end;
+[C++]
+  void Hline (word X1, word X2, word Y, byte Col, word Where) {
+    asm {
+      mov     ax, [Where]  // move segment of Where to AX
+      mov     es, ax       // set ES to segment of Where
+      mov     ax, [Y]      // set AX to Y
+      mov     di, ax       // set DI to Y
+      shl     ax, 8        // shift AX left 8 places (multiply Y by 256)
+      shl     di, 6        // shift DI left 6 places (multiply Y by 64)
+      add     di, ax       // add AX to DI (Y*64 + Y*256 = Y*320)
+      add     di, [X1]     // add the X1 offset to DI
+      mov     al, [Col]    // move Col to AL
+      mov     ah, al       // move Col to AH (we want 2 copies for word moving)
+      mov     cx, [X2]     // move X2 to CX
+      sub     cx, [X1]     // move the change in X to CX
+      shr     cx, 1        // divide change in X by 2 (for word moving)
+      jnc     Start        // if we have an even number of moves, go to Start
+      stosb                // otherwise, move one byte more
+    }
+    Start: asm {
+      rep     stosw        // do it!
+    }
+  }</pre>
+Done!<br><br>
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=<br><br>
+þ  In closing<br><br>
+This 3D system is still not perfect. It needs to be faster, and now I
+have also dumped the problem of face-sorting on you! Nyahahahaha!<br><br>
+           [ My sister and I were driving along the other day when she
+               asked me, what would I like for my computer.
+             I thought long and hard about it, and came up with the
+               following hypothesis. When a girl gets a Barbie doll, she
+               then wants the extra ballgown for the doll, then the
+               hairbrush, and the car, and the house, and the friends
+               etc.
+             When a guy gets a computer, he wants the extra memory, the
+               bigger hard drive, the maths co-pro, the better
+               motherboard, the latest software, and the bigger monitor
+               etc.
+             I told my sister all of this, and finished up with : "So as
+               you can see, computers are Barbie dolls for MEN!"
+             She called me a chauvinist. And hit me. Hard.
+                                                                   ]<br><br>
+                                                       - Grant Smith<br>
+                                                           19:24<br>
+                                                             26/2/94<br><br>
+See you next time!<br>
+  - Denthor<br><br>
+These fine BBS's carry the ASPHYXIA DEMO TRAINER SERIES : (alphabetical)<pre>
+ษออออออออออออออออออออออออออหออออออออออออออออหอออออหอออหออออหออออป
+บBBS Name                  บTelephone No.   บOpen บMsgบFileบPastบ
+ฬออออออออออออออออออออออออออฮออออออออออออออออฮอออออฮอออฮออออฮออออน
+บASPHYXIA BBS #1           บ(031) 765-5312  บALL  บ * บ *  บ *  บ
+บASPHYXIA BBS #2           บ(031) 765-6293  บALL  บ * บ *  บ *  บ
+บConnectix BBS             บ(031) 266-9992  บALL  บ   บ *  บ *  บ
+ศออออออออออออออออออออออออออสออออออออออออออออสอออออสอออสออออสออออผ
+Open = Open at all times or only A/H
+Msg  = Available in message base
+File = Available in file base
+Past = Previous Parts available
+Does no other BBS's ANYWHERE carry the trainer? Am I writing this for
+three people who get it from one of these BBS's each week? Should I go
+on? (Hehehehe ... I was pleased to note that Tut 8 was THE most
+downloaded file from ASPHYXIA BBS last month ... )   
+</pre>    <!-- #EndEditable --> 
+          <!-- removed chitika -->
+ 
+
+
+     
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright ฉ 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/tut9.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:51:05 GMT -->
+</html>
+
+
+

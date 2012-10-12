@@ -7,8 +7,8 @@ def sexornot():
 def nohit():
 	print "forget her and move to a better girl, it's all just about sex."
 	start();
-	begin();
-	chanceornot();
+	#begin();
+	#chanceornot();
 
 
 def chanceornot(mname, gname, time):
@@ -64,4 +64,4 @@ def begin():
 	gname = str(raw_input());
 	chanceornot(mname, gname, 30);
 
-begin();
+start();

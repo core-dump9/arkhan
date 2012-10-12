@@ -1,0 +1,569 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/visual_studio_breakpoints.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:35:22 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="visual studio, breakpoints, debugging, debuggers, visual studio debugger, visual studio breakpoint">
+<META NAME="Description" CONTENT="Part 3 of a tutorial on debugging with Visual Studio: How to use breakpoints effectively">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Debugging C++ with Visual Studio, Part 3: Using Breakpoints Effectively - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Debugging C++ Using Visual Studio 2005/2008, Part 3: Using Breakpoints Effectively</h1>
+
+
+
+by Patrick Mancier
+<p>
+If you go to the Breakpoints window you will see that there is are columns displayed called 'Condition' and 'Hit Counts'.  These can be very powerful mechanisms for debugging tricky code.  There are a series of mechanisms here that can be used to debug the code.  To see these choices, select the breakpoint box and right click to see the menu.
+</p>
+
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <br><br><h2>Location</h2>
+<p>
+This is an obvious one and usually is set by clicking on the far left line of the code that the programmer wants to break on.  
+</p>
+
+<h2>Condition</h2>
+<p>
+This checks to see if a specific expression is true or has changed.  It does not check specific values other than as a Boolean.
+</p>
+<img src="Images/IDE_Breakpoints_Condition.JPG"><h2>Hit Count</h2>
+<img src="Images/IDE_Breakpoints_HitCount.JPG"><p>
+The hit count is used to test a breakpoint for various conditions:
+</p>
+<ul>
+<li>
+<b>Break Always:</b>Same as a normal breakpoint</li>
+<li>
+<b>Break when hit count is equal to:</b> This will check to see when a breakpoint has been hit n number of times</li>
+<li>
+<b>Break when hit count is a multiple of:</b> Same as a normal hit count except multiples by a factor set by the user</li>
+<li>
+<b>Break when greater than or equal to:</b> Checks a specific number of times but not only checks an equal value but if it gets hit more than that.</li>
+</ul>
+<h2>Filter</h2>
+<img src="Images/IDE_Breakpoints_Filter.JPG"><p>
+This is used to check a variable or a series of variables for a specific condition or a series of conditions.  It can be used to check variables for string or numerical values.  A combination filter of AND and OR and NOT can be used to create a custom trigger condition.  This is probably the most configurable breakpoint condition of any of the breakpoint modes.
+</p>
+
+<h2>Applications of the breakpoint techniques </h2>
+
+<p>
+What the heck are all these used for?  Here is a small list of examples:
+</p>
+<ul>
+<li>Loop counting</li>
+<li>Recursion debugging</li>
+<li>Counting number of times a variable changes</li>
+</ul>
+<p>
+Let's say for example you're in a loop and it iterates thousands of times.  You're trying to track down a tricky problem converting data, for example a string containing a strange character that is being loaded from a file. An exception is thrown and the value does not get set.  You have no idea where in the file this is occurring.  You do know however what the previous output looks from the last loop iteration. You can set a filter to look at the string variable you are loading with the last known value.  You don't have to hit the breakpoint hundreds of times and look at the input from the file each time before you see your error. You can simply set up the filter and let it run until it breaks.  After it breaks you can then step slowly through your code to see at what point the exception gets thrown.
+</p>
+
+<h2>Debugging with the IDE</h2>
+<p>
+This the toolbar we customized earlier.
+</p>
+<img src="Images/IDE_DebugTutorial_Toolbar.JPG"><p>
+The uses of some of these buttons are obvious, some of them not so obvious.
+</p>
+
+<img src="Images/IDE_DebugTutorial_BtnContinue.JPG"><b>F5: Start Debugging/Continue</b> - This launches an executuable or to continue after the debugger has stopped execution<br><br><img src="Images/IDE_DebugTutorial_BtnBreakAll.JPG"><b>Ctrl+Alt+Break: Break All</b> - This button in effect pauses or suspends the execution midstream.  The debugger will stop at wherever the program counter line is pointing to, show the part in the code that it stopped at and you have access to everything as if it hit a regular breakpoint.  One example of its use is for situations where there may be a runaway recursion, loops or some thread that has been improperly coded and is starving the process for execution cycles.  It can show you were the execution of the program is tied up.<br><br><img src="Images/IDE_DebugTutorial_BtnStopDebugging.JPG"><b>Shift+F5: Stop Debugging</b> - This button stops the process wherever it is and detaches from the process and exits the debugger.  This button is not guaranteed to produce stable results however, depending on what the application is doing could lead to various issues, such as having a thread shutdown properly or an I/O callback to be executed.  These type of operations may cause Visual Studio to hang if an attempt is made to stop debugging.<br><br><img src="Images/IDE_DebugTutorial_BtnRestart.JPG"><b>Ctrl+Shift+F5: Restart</b> - This button stops the current execution, detaches from the process, exits the debugger and then attempts to restart.  Using this button can have similar issues as using the 'Stop Debugging' feature.<br><br><img src="Images/IDE_DebugTutorial_BtnStepInto.JPG"><b>F11: Step Into</b> - This button is designed to allow the programmer to enter a function or a class allocation without having to set a breakpoint in the code.  This is very useful for situations where you have a top level function that calls several other functions and you want to track the program flow going into that particular desired function. What will happen is when you enter a function, the debugger either jumps to another part of the code on the page if it exists in the same module, or loads the pertinent module for you and takes you to the beginning of the entered function.  During this time you can continue to step line by line and watch where the program cursor goes to see what is happening in the code.  You can of course set up watch variables along the way to monitor the function you stepped into.<br><br><img src="Images/IDE_DebugTutorial_BtnStepOver.JPG"><b>F10: Step Over</b> - Step over is an excellent button to use.  The reason
+is there are times where you may not necessarily want to step into every
+single function or every single initialization.  You may want to execute the
+entire line and 'hop' over it.  For example, if you're in a loop and you want to skip several lines, clicking on this button repeatedly will allow you to do it.<br><br><img src="Images/IDE_DebugTutorial_BtnStepOut.JPG"><b>Shift+F11: Step Out</b> - Step out is another very useful button.  This is
+a great button to use for situations where you are trying to step into a
+function that contains various parameters that require instantiation or it
+steps into another function before actually entering the function you would
+like to see.  It avoids having to step completely through the unwanted
+function.  It's akin to knocking on a door looking inside and seeing that things are pretty crazy, you really don't want to go in so you step back out.  An example of this could be where you are passing a CString as a parameter into a function and as you step in you don't really care to watch all the allocation code execute, so hitting this button and then hitting step in again will skip the allocation of the CString and continue entering the function you want to step into.<br><br><p>
+So far we have discussed several parts of the IDE, how to set them up and how to get to them.  We have not done a lot to describe how to actually use these tools.  Below is a snapshot of the code we would like to debug.  We want to step through this code, examine class members, return codes and step into the various other functions that exists in the code.  How do we accomplish this?  Well we fire up our code.
+</p>
+<br><img src="Images/IDE_DebugTutorial_Code.JPG"><br><p>
+Before we begin, we can set up some watch variables.  To do this, first go to the Debug-&gt;Windows-&gt;Watch menu select any Watch window 1 - 5.  The watch window will appear to float in the IDE, you may want to dock it somewhere, preferably somewhere below the code window.  When it is displayed below, you can take any variable you see in the code and select it and drag it into the watch window.  Alternatively you can just type it in manually as a new entry into the watch window.  Either way, you are now tracking this variable.  You are not limited to just variables, it could be an interface or an object.  During debugging you can also keep the Locals or the Autos pane up.  This will detail all the current local variables that are in your functions.  If you are in a code that is part of a C++ class, it will also provide a 'this' pointer that you can break out and examine the variables during execution.
+</p>
+
+<p>
+As you are stepping through and executing the code, if you watch what happens in any of these debugging windows you have set up, you will see that as variables change, they will be colored from black to red.  This is true of when you have a memory window displayed as well.  Any bytes that are changed in the memory window will be turned from black to red.
+</p>
+
+<p>
+We begin the execution of our code using the 'Start Debugging' button and when it starts, it at some point hits the breakpoint we set in the code.  Once the breakpoint is hit, there is a yellow arrow called the instruction pointer that is overlaying the breakpoint.  This instruction pointer always points to next instruction line that the debugger is going to execute.
+</p>
+<img src="Images/IDE_DebugTutorial_AfterStartDebug.JPG"><br><p>
+Now that we are here, let's say we do not care to 'step into' the first call to m_pConnection-&gt;Open(). We don't care what happens in there at all. Clicking on the 'Step Over' functions results in calling this function.  Since we failed to define some of our parameters properly (on purpose in this case) an exception is thrown (more on that soon).  The exception is 'caught' and results in the following snapshot:</p>
+<img src="Images/IDE_DebugTutorial_AfterStepOver.JPG"><br><p>
+You can see that the yellow instruction arrow has passed where the breakpoint is and is now pointing to the line that has the call to ReportException() on it.  Now we didn't care about the other function, but we do care to see what happens in this function. We go ahead and click on the 'Step Into' function.
+</p>
+<img src="Images/IDE_DebugTutorial_AfterStepInto.JPG"><br><p>
+Now we are in the actual ReportException() function.  We see that the instruction pointer is right at the beginning of the function.  Continuing to click on 'Step Into' and get to the line were it calls the Description() function on our exception class.
+</p>
+<img src="Images/IDE_DebugTutorial_AfterStepOut.JPG"><br><p>
+Well, this is nice we were able to do this, but we don't really care to be in
+this function.  We ended up here because we used the 'Step Into' command in
+the ReportException() function.  We really should have used the 'Step Over
+command.  Well, instead of repeatedly clicking (or hitting F5) on step over,
+    let's just quickly leave the function by clicking on 'Step Out'.  This will then take us back to the ReportException() function.
+</p>
+
+<p>
+There is still a lot to talk about when it comes to debugging with Visual Studio.  We have just gone over some of the basics of debugging in the IDE but from the example you can tell there is more to it than just knowing the IDE. There are various other aspects to debugging that are necessary to know.  For example try/catch exception handling and setting up program debug breaks.  
+</p>
+Prev: <a href="visual_studio_debugging_setup.html">Part 2: Setting up the Debugger</a><br>
+Next: <a href="visual_studio_debugging_code_setup.html">Part 4: Setting up Code for the Debugger</a>
+<br><br><b>Related articles</b><br><br><a href="debugging_concepts.html">Debugging with Visual Studio Part 1: Debugging Concepts</a><br><br><a href="visual_studio_debugging_setup.html">Debugging
+with Visual Studio Part 2: Setting up the Debugger</a><br><br><a href="visual_studio_debugging_code_setup.html">Debugging
+with Visual Studio Part 4: Setting up Code for the Debugger</a><br><br><a href="visual_studio_trace_log_messages.html">Debugging
+with Visual Studio Part 5: Using Trace and Log Messages</a><br><br><a href="visual_studio_remote_debugging.html">Debugging with Visual Studio Part 6: Remote Debugging</a><br><br><a href="../debuggers.html">Main debugging
+page</a><br><br><a href="../gdbtutorial.html">GDB tutorial</a>
+<br><br><a href="../debugging/debugging_strategy.html">bug prevention, debugging strategies, tips, and gotchas</a>
+<br><br><a href="../debugging/segfaults.html">hunting
+segmentation faults and pointer errors</a>.
+<br><br><a href="../debugging/valgrind.html">Valgrind</a>
+
+<br><br><a href="../debugging/visual-studio-msvc-debugging-NoStepInto.html">Skip Stepping Into Functions
+with Visual Studio's NoStepInto Option</a>.
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/visual_studio_breakpoints.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:35:34 GMT -->
+</html>
+
+
+

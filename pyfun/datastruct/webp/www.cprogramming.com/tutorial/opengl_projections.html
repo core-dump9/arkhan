@@ -1,0 +1,1068 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/opengl_projections.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:05 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="OpenGL projections, projections in opengl, orthographic projections, OpenGL projections in C++, orthographic projections in C++, orthographic projections in opengl, glortho">
+<META NAME="Description" CONTENT="Learn about creating projections in OpenGL using C++, including coverage of orthographic and perspective projections.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Orthographic and Perspectdive Projections in OpenGL - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Orthographic and Perspective Projections in OpenGL</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"> By RoD</div>
+
+Note: All code beginning with the next lesson has been created and compiled using Microsoft Visual Studio .NET Enterprise Architect, not Visual Studio 6.0</b><br><br>
+Welcome to the seventh lesson in my OpenGL series! In this lesson we will learn about Projections and even put them to some simple use to see them in action. Some of you may have realized that we've used projection transformations in code before, and you're right, we have. The difference is now we will discuss how they work, and then demonstrate these concepts.
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+  <br><br>
+OpenGL consists of two general classes of projection transformations:
+orthographic (parallel) and perspective. So let's get into detail on both of
+these!  <h2>Orthographic Projections</h2>
+
+Orthographic, or parallel, projections consist of those that involve no perspective correction. There is no adjustment for distance from the camera made in these projections, meaning objects on the screen will appear the same size no matter how close or far away they are.
+<br><br>
+Traditionally this type of projection was included in OpenGL for uses in CAD, or Computer Aided Design. Some uses of orthographic projections are making 2D games, or for creating isometric games. To setup this type of projection we use the OpenGL provided glOrtho() function.
+<pre class="example">
+glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble near, GLdouble far);
+</pre>
+left and right specify the x-coordinate clipping planes, bottom and top specify the y-coordinate clipping planes, and near and far specify the distance to the z-coordinate clipping planes. Together these coordinates provide a box shaped viewing volume.
+<br><br>
+Since orthographic projections are commonly used in 2D scenes the Utility Library provides an additional routine to set them up for scenes that won't be using the z-coordinate.
+<pre class="example">
+gluOrtho2D(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top);
+</pre>
+<h2>Perspective Projections</h2>
+
+Although orthographic projections can be interesting, perspective projections create more realistic looking scenes, so that's what you will most likely be using most often. In perspective projections, as an object gets farther from the viewer it will appear smaller on the screen- an effect often referred to as foreshortening. The viewing volume for a perspective projection is a frustum, which looks like a pyramid with the top cut off, with the narrow end toward the user.
+<br><br>
+There is a few different ways you can setup the view frustum, and thus the perspective projection. The first we will look at is as follows:
+<pre class="example">
+void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble near, GLdouble far);
+</pre>
+Using glFrustum enables you to specify an asymmetrical frustum, which can be very useful in some instances, but isn't what you typically want to do. For a different solution we again turn to the Utility Library:
+<pre class="example">
+void gluPerspective(GLdouble fov, GLdouble aspect, GLdouble near, GLdouble far);
+</pre>
+fov specifies, in degrees, the angle in the y direction that is visible to the user; aspect is the aspect ratio of the scene, which is width divided by the height. This will determine the field of view in the x direction.
+<br><br>
+Ok, so let's look at some code. This code is taken right from OpenGL Game Programming. Take the time to study and manipulate the code, then you will be ready for lesson 8!
+<pre class="example">
+// OpenGLProjectionExample.cpp : Defines the entry point for the application.
+//
+
+#define WIN32_LEAN_AND_MEAN
+
+#pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "glu32.lib")
+#pragma comment(lib, "glaux.lib")
+#pragma comment(linker, "/subsystem:windows")
+
+#include "stdafx.h"
+#include &lt;windows.h&gt;                                    // standard Windows app include
+#include &lt;winuser.h&gt;          // Windows constants
+#include &lt;gl/gl.h&gt;                                              // standard OpenGL include
+#include &lt;gl/glu.h&gt;                                             // OpenGL utilties
+#include &lt;glut.h&gt;                                       // OpenGL utilties
+
+#define WND_CLASS_NAME  "OpenGL Window Class"
+
+
+/*************************** Constants and Macros ***************************/
+const int   SCREEN_WIDTH    = 500;
+const int   SCREEN_HEIGHT   = 500;
+const int   SCREEN_BPP      = 32;
+const bool  USE_FULLSCREEN  = false;
+const char  *APP_TITLE      = "Projections";
+
+
+/********************************* Globals **********************************/
+HDC       g_hdc;                                                                  // global device context
+HGLRC     g_hrc;                  // global rendering context
+BOOL      g_isFullscreen = TRUE;  // toggles fullscreen and windowed display
+BOOL      g_isActive = TRUE;      // false if window is minimized
+HWND      g_hwnd = NULL;          // handle of our window
+HINSTANCE g_hInstance;            // application instance
+
+
+/******************************** Prototypes ********************************/
+LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);
+
+BOOL    SetupWindow(const char *title, int width, int height, int bits, bool isFullscreen);
+BOOL    KillWindow();
+
+GLvoid  ResizeScene(GLsizei width, GLsizei height);
+BOOL    InitializeScene();
+BOOL    DisplayScene();
+BOOL    Cleanup();
+
+void    UpdateProjection(GLboolean toggle = GL_FALSE);
+
+
+/*****************************************************************************
+ WinMain()
+
+ Windows entry point
+*****************************************************************************/
+int WINAPI WinMain(HINSTANCE g_hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+{
+  MSG   msg;       // message
+  BOOL  isDone;    // flag indicating when the app is done
+
+  // if the window is set up correctly, we can proceed with the message loop
+  if (SetupWindow(APP_TITLE, SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP, USE_FULLSCREEN))
+    isDone = FALSE;
+  // otherwise, we need to never enter the loop and proceed to exit
+  else
+    isDone = TRUE;
+
+  // main message loop
+  while (!isDone)
+  {
+    if(PeekMessage(&amp;msg, NULL, NULL, NULL, PM_REMOVE))
+    {
+      if (msg.message == WM_QUIT)   // do we receive a WM_QUIT message?
+      {
+        isDone = TRUE;              // if so, time to quit the application
+      }
+      else
+      {
+        TranslateMessage(&amp;msg);     // translate and dispatch to event queue
+        DispatchMessage(&amp;msg);
+      }
+    }
+
+    // don't update the scene if the app is minimized
+    if (g_isActive)
+    {
+      // update the scene every time through the loop
+      DisplayScene();
+      // switch the front and back buffers to display the updated scene
+      SwapBuffers(g_hdc);
+    }
+  }
+
+  Cleanup();
+  KillWindow();
+
+  return msg.wParam;
+} // end WinMain()
+
+
+/*****************************************************************************
+ WndProc()
+
+ Windows message handler
+*****************************************************************************/
+LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+  switch(message)
+  {
+  case WM_ACTIVATE:  // watch for the window being minimized and restored
+    {
+      if (!HIWORD(wParam))
+      {
+        // program was restored or maximized
+        g_isActive = TRUE;
+      }
+      else
+      {
+        // program was minimized
+        g_isActive=FALSE;
+      }
+
+      return 0;
+    }
+
+  case WM_SYSCOMMAND:  // look for screensavers and powersave mode
+    {
+      switch (wParam)
+      {
+      case SC_SCREENSAVE:     // screensaver trying to start
+      case SC_MONITORPOWER:   // monitor going to powersave mode
+        // returning 0 prevents either from happening
+        return 0;
+      default:
+        break;
+      }
+    } break;
+
+  case WM_CLOSE:    // window is being closed
+    {
+      // send WM_QUIT to message queue
+      PostQuitMessage(0);
+
+      return 0;
+    }
+
+  case WM_SIZE:
+    {
+      // update perspective with new width and height
+      ResizeScene(LOWORD(lParam), HIWORD(lParam));
+      return 0;
+    }
+
+  case WM_CHAR:
+    {
+      switch (toupper(wParam))
+      {
+      case VK_SPACE:
+        {
+          UpdateProjection(GL_TRUE);
+          return 0;
+        }
+      case VK_ESCAPE:
+        {
+          // send WM_QUIT to message queue
+          PostQuitMessage(0);
+          return 0;
+        }
+      default:
+        break;
+      };
+    } break;
+
+  default:
+    break;
+  }
+
+  return (DefWindowProc(hwnd, message, wParam, lParam));
+} // end WndProc()
+
+
+/*****************************************************************************
+ SetupWindow()
+
+ Create the window and everything else we need, including the device and
+ rendering context. If a fullscreen window has been requested but can't be
+ created, the user will be prompted to attempt windowed mode. Finally,
+ InitializeScene is called for application-specific setup.
+
+ Returns TRUE if everything goes well, or FALSE if an unrecoverable error
+ occurs. Note that if this is called twice within a program, KillWindow needs
+ to be called before subsequent calls to SetupWindow.
+*****************************************************************************/
+BOOL SetupWindow(const char *title, int width, int height, int bits, bool isFullscreen)
+{
+  // set the global flag
+  g_isFullscreen = isFullscreen;
+
+  // get our instance handle
+  g_hInstance = GetModuleHandle(NULL);
+
+  WNDCLASSEX  wc;    // window class
+
+  // fill out the window class structure
+  wc.cbSize         = sizeof(WNDCLASSEX);
+  wc.style          = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
+  wc.lpfnWndProc    = WndProc;
+  wc.cbClsExtra     = 0;
+  wc.cbWndExtra     = 0;
+  wc.hInstance      = g_hInstance;
+  wc.hIcon          = LoadIcon(NULL, IDI_APPLICATION);  // default icon
+  wc.hIconSm        = LoadIcon(NULL, IDI_WINLOGO);      // windows logo small icon
+  wc.hCursor        = LoadCursor(NULL, IDC_ARROW);      // default arrow
+  wc.hbrBackground  = NULL;     // no background needed
+  wc.lpszMenuName   = NULL;     // no menu
+  wc.lpszClassName  = WND_CLASS_NAME;
+
+  // register the windows class
+  if (!RegisterClassEx(&amp;wc))
+  {
+    MessageBox(NULL,"Unable to register the window class", "Error", MB_OK | MB_ICONEXCLAMATION);
+
+    // exit and return FALSE
+    return FALSE;
+  }
+
+  // if we're in fullscreen mode, set the display up for it
+  if (g_isFullscreen)
+  {
+    // set up the device mode structure
+    DEVMODE screenSettings;
+    memset(&amp;screenSettings,0,sizeof(screenSettings));
+
+    screenSettings.dmSize       = sizeof(screenSettings);
+    screenSettings.dmPelsWidth  = width;    // screen width
+    screenSettings.dmPelsHeight = height;   // screen height
+    screenSettings.dmBitsPerPel = bits;     // bits per pixel
+    screenSettings.dmFields     = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT;
+
+    // attempt to switch to the resolution and bit depth we've selected
+    if (ChangeDisplaySettings(&amp;screenSettings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL)
+    {
+      // if we can't get fullscreen, let them choose to quit or try windowed mode
+      if (MessageBox(NULL, "Cannot run in the fullscreen mode at the selected resolution\n"
+                           "on your video card. Try windowed mode instead?",
+                           "OpenGL Game Programming",
+                           MB_YESNO | MB_ICONEXCLAMATION) == IDYES)
+      {
+        g_isFullscreen = FALSE;
+      }
+      else
+      {
+        return FALSE;
+      }
+    }
+  }
+
+  DWORD dwExStyle;
+  DWORD dwStyle;
+
+  // set the window style appropriately, depending on whether we're in fullscreen mode
+  if (g_isFullscreen)
+  {
+    dwExStyle = WS_EX_APPWINDOW;
+    dwStyle = WS_POPUP;           // simple window with no borders or title bar
+    ShowCursor(FALSE);            // hide the cursor for now
+  }
+  else
+  {
+    dwExStyle = WS_EX_APPWINDOW | WS_EX_WINDOWEDGE;
+    dwStyle = WS_OVERLAPPEDWINDOW;
+  }
+
+  // set up the window we're rendering to so that the top left corner is at (0,0)
+  // and the bottom right corner is (height,width)
+  RECT  windowRect;
+  windowRect.left = 0;
+  windowRect.right = (LONG) width;
+  windowRect.top = 0;
+  windowRect.bottom = (LONG) height;
+
+  // change the size of the rect to account for borders, etc. set by the style
+  AdjustWindowRectEx(&amp;windowRect, dwStyle, FALSE, dwExStyle);
+
+  // class registered, so now create our window
+  g_hwnd = CreateWindowEx(dwExStyle,          // extended style
+                          WND_CLASS_NAME,     // class name
+                          title,              // app name
+                          dwStyle |           // window style
+                          WS_CLIPCHILDREN |   // required for
+                          WS_CLIPSIBLINGS,    // using OpenGL
+                          0, 0,               // x,y coordinate
+                          windowRect.right - windowRect.left, // width
+                          windowRect.bottom - windowRect.top, // height
+                          NULL,               // handle to parent
+                          NULL,               // handle to menu
+                          g_hInstance,        // application instance
+                          NULL);              // no extra params
+
+  // see if our window handle is valid
+  if (!g_hwnd)
+  {
+    MessageBox(NULL, "Unable to create window", "Error", MB_OK | MB_ICONEXCLAMATION);
+    return FALSE;
+  }
+
+  // get a device context
+  if (!(g_hdc = GetDC(g_hwnd)))
+  {
+    MessageBox(NULL,"Unable to create device context", "Error", MB_OK | MB_ICONEXCLAMATION);
+    return FALSE;
+  }
+
+  // set the pixel format we want
+  PIXELFORMATDESCRIPTOR pfd = {
+    sizeof(PIXELFORMATDESCRIPTOR),  // size of structure
+    1,                              // default version
+    PFD_DRAW_TO_WINDOW |            // window drawing support
+    PFD_SUPPORT_OPENGL |            // OpenGL support
+    PFD_DOUBLEBUFFER,               // double buffering support
+    PFD_TYPE_RGBA,                  // RGBA color mode
+    bits,                           // 32 bit color mode
+    0, 0, 0, 0, 0, 0,               // ignore color bits, non-palettized mode
+    0,                              // no alpha buffer
+    0,                              // ignore shift bit
+    0,                              // no accumulation buffer
+    0, 0, 0, 0,                     // ignore accumulation bits
+    16,                             // 16 bit z-buffer size
+    8,                              // no stencil buffer
+    0,                              // no auxiliary buffer
+    PFD_MAIN_PLANE,                 // main drawing plane
+    0,                              // reserved
+    0, 0, 0 };                      // layer masks ignored
+
+  GLuint  pixelFormat;
+
+  // choose best matching pixel format
+  if (!(pixelFormat = ChoosePixelFormat(g_hdc, &amp;pfd)))
+  {
+    MessageBox(NULL, "Can't find an appropriate pixel format", "Error", MB_OK | MB_ICONEXCLAMATION);
+    return FALSE;
+  }
+
+  // set pixel format to device context
+  if(!SetPixelFormat(g_hdc, pixelFormat,&amp;pfd))
+  {
+    MessageBox(NULL, "Unable to set pixel format", "Error", MB_OK | MB_ICONEXCLAMATION);
+    return FALSE;
+  }
+
+  // create the OpenGL rendering context
+  if (!(g_hrc = wglCreateContext(g_hdc)))
+  {
+    MessageBox(NULL, "Unable to create OpenGL rendering context", "Error",MB_OK | MB_ICONEXCLAMATION);
+    return FALSE;
+  }
+
+  // now make the rendering context the active one
+  if(!wglMakeCurrent(g_hdc, g_hrc))
+  {
+    MessageBox(NULL,"Unable to activate OpenGL rendering context", "ERROR", MB_OK | MB_ICONEXCLAMATION);
+    return FALSE;
+  }
+
+  // show the window in the forground, and set the keyboard focus to it
+  ShowWindow(g_hwnd, SW_SHOW);
+  SetForegroundWindow(g_hwnd);
+  SetFocus(g_hwnd);
+
+  // set up the perspective for the current screen size
+  ResizeScene(width, height);
+
+  // do one-time initialization
+  if (!InitializeScene())
+  {
+    MessageBox(NULL, "Initialization failed", "Error", MB_OK | MB_ICONEXCLAMATION);
+    return FALSE;
+  }
+
+  return TRUE;
+} // end SetupWindow()
+
+
+/*****************************************************************************
+ KillWindow()
+
+ Deletes the DC, RC, and Window, and restores the original display.
+*****************************************************************************/
+BOOL KillWindow()
+{
+  // restore the original display if we're in fullscreen mode
+  if (g_isFullscreen)
+  {
+    ChangeDisplaySettings(NULL, 0);
+    ShowCursor(TRUE);
+  }
+
+  // if we have an RC, release it
+  if (g_hrc)
+  {
+    // release the RC
+    if (!wglMakeCurrent(NULL,NULL))
+    {
+      MessageBox(NULL, "Unable to release rendering context", "Error", MB_OK | MB_ICONINFORMATION);
+    }
+
+    // delete the RC
+    if (!wglDeleteContext(g_hrc))
+    {
+      MessageBox(NULL, "Unable to delete rendering context", "Error", MB_OK | MB_ICONINFORMATION);
+    }
+
+    g_hrc = NULL;
+  }
+
+  // release the DC if we have one
+  if (g_hdc &amp;&amp; !ReleaseDC(g_hwnd, g_hdc))
+  {
+    MessageBox(NULL, "Unable to release device context", "Error", MB_OK | MB_ICONINFORMATION);
+    g_hdc = NULL;
+  }
+
+  // destroy the window if we have a valid handle
+  if (g_hwnd &amp;&amp; !DestroyWindow(g_hwnd))
+  {
+    MessageBox(NULL, "Unable to destroy window", "Error", MB_OK | MB_ICONINFORMATION);
+    g_hwnd = NULL;
+  }
+
+  // unregister our class so we can create a new one if we need to
+  if (!UnregisterClass(WND_CLASS_NAME, g_hInstance))
+  {
+    MessageBox(NULL, "Unable to unregister window class", "Error", MB_OK | MB_ICONINFORMATION);
+    g_hInstance = NULL;
+  }
+
+  return TRUE;
+} // end KillWindow()
+
+
+/*****************************************************************************
+ ResizeScene()
+
+ Called once when the application starts and again every time the window is
+ resized by the user.
+*****************************************************************************/
+GLvoid ResizeScene(GLsizei width, GLsizei height)
+{
+  // avoid divide by zero
+  if (height==0)
+  {
+    height=1;
+  }
+
+  // reset the viewport to the new dimensions
+  glViewport(0, 0, width, height);
+
+  // set up the projection, without toggling the projection mode
+  UpdateProjection();
+} // end ResizeScene()
+
+
+/*****************************************************************************
+ InitializeScene()
+
+ Performs one-time application-specific setup. Returns FALSE on any failure.
+*****************************************************************************/
+BOOL InitializeScene()
+{
+  glEnable(GL_LIGHTING);
+  glEnable(GL_LIGHT0);
+  glShadeModel(GL_SMOOTH);
+  glEnable(GL_DEPTH_TEST);
+
+  return TRUE;
+} // end InitializeScene()
+
+
+/*****************************************************************************
+ DisplayScene()
+
+ The work of the application is done here. This is called every frame, and
+ handles the actual rendering of the scene.
+*****************************************************************************/
+BOOL DisplayScene()
+{
+  GLfloat yellow[4] = { 1.0f, 1.0f, 0.2f, 1.0f };
+  GLfloat blue[4] = { 0.2f, 0.2f, 1.0f, 1.0f };
+  GLfloat green[4] = { 0.2f, 1.0f, 0.2f, 1.0f };
+
+  glLoadIdentity();
+  gluLookAt(-0.5, 1.0, 7.0,
+            0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0);
+
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+  glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, yellow);
+  glPushMatrix();
+  glTranslatef(0.3, 0.0, 1.0);
+  glutSolidCube(0.5);
+  glPopMatrix();
+
+  glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, blue);
+  glPushMatrix();
+  glutSolidCube(0.5);
+  glPopMatrix();
+
+  glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, green);
+  glPushMatrix();
+  glTranslatef(-0.3, 0.0, -1.0);
+  glutSolidCube(0.5);
+  glPopMatrix();
+
+  return TRUE;
+} // end DisplayScene()
+
+
+/*****************************************************************************
+ Cleanup()
+
+ Called at the end of successful program execution.
+*****************************************************************************/
+BOOL Cleanup()
+{
+  return TRUE;
+} // end Cleanup()
+
+
+/****************************************************************************
+ UpdateProjection()
+
+ Sets the current projection mode. If toggle is set to GL_TRUE, then the
+ projection will be toggled between perspective and orthograpic. Otherwise,
+ the previous selection will be used again.
+*****************************************************************************/
+void UpdateProjection(GLboolean toggle)
+{
+  static GLboolean s_usePerspective = GL_TRUE;
+
+  // toggle the control variable if appropriate
+  if (toggle)
+    s_usePerspective = !s_usePerspective;
+
+  // select the projection matrix and clear it out
+  glMatrixMode(GL_PROJECTION);
+  glLoadIdentity();
+
+  // choose the appropriate projection based on the currently toggled mode
+  if (s_usePerspective)
+  {
+    // set the perspective with the appropriate aspect ratio
+    glFrustum(-1.0, 1.0, -1.0, 1.0, 5, 100);
+  }
+  else
+  {
+    // set up an orthographic projection with the same near clip plane
+    glOrtho(-1.0, 1.0, -1.0, 1.0, 5, 100);
+  }
+
+  // select modelview matrix and clear it out
+  glMatrixMode(GL_MODELVIEW);
+} // end UpdateProjection
+</pre>
+So now you have learned about Projections, and use them in code. In lesson 9 we will move on to Matrices.
+<br><br>
+
+Happy Coding!
+
+<br><a href="opengl_first_opengl_program.html">Previous: Your First OpenGL application</a>
+
+<br><a href="../graphics-programming.html">Back to OpenGL tutorial index</a>
+
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/opengl_projections.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:34:05 GMT -->
+</html>
+
+
+

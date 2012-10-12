@@ -1,0 +1,826 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/c++-iostreams.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:00 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://static.cprogramming.com/syntax-highlight/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+
+<META NAME="keywords" CONTENT="c++ iostreams, iostreams, io stream, io stream library, character streams c++, c++ streams, c++ iostreams">
+<META NAME="Description" CONTENT="Learn what IO streams are and how to use them for easy input and output in C++.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>A Gentle Introduction to IO Streams in C++ - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>A Gentle Introduction to C++ IO Streams</h1>
+
+
+
+By Manasij Mukherjee
+
+
+<p>One of the great strengths of C++ is its I/O system, IO Streams. As Bjarne Stroustrup says in his book "The C++ Programming Language", "Designing and implementing a general input/output facility for a programming language is notoriously difficult". He did an excellent job, and the C++ IOstreams library is part of the reason for C++'s success. IO streams provide an incredibly flexible yet simple way to design the input/output routines of any application.</p>
+
+IOstreams can be used for a wide variety of data manipulations thanks to the following features:
+<ul>
+<li>    A 'stream' is internally nothing but a series of characters. The characters may be either normal characters (char) or wide characters (wchar_t). Streams provide you with a universal character-based interface to any type of storage medium (for example, a file), without requiring you to know the details of how to write to the storage medium. Any object that can be written to one type of stream, can be written to all types of streams. In other words, as long as an object has a stream representation, any storage medium can accept objects with that stream representation. 
+</li>
+<li>    Streams work with built-in data types, and you can make user-defined types work with streams by <a href="operator_overloading.html">overloading</a> the insertion operator (&lt;&lt;) to put objects into streams, and the extraction operator (&gt;&gt;) to read objects from streams.
+</li>
+<li>    The stream library.s unified approach makes it very friendly to use. Using a consistent interface for outputting to the screen and sending files over a network makes life easier. The programs below will show you what is possible. 
+</li>
+</ul>
+<p>The IO stream class hierarchy is quite complicated, so rather than introduce you to the full hierarchy at this point, I'll start with explaining the concepts of the design and show you examples of streams in action. Once you are familiar with elements of the design and how to apply those concepts to design a robust I/O system for your software, an understanding of what belongs where in the hierarchy will come naturally.</p>
+
+<h2>What do input and output really mean?</h2>
+
+<p>To get a good idea about what input and output are, think of information as a stream of characters. This makes sense because whatever we enter through a keyboard can only be characters. Suppose the user enters the number 7479....WAIT...! How do you know the user entered a number? The problem is that you don't really know. All you have is a set of 4 characters: '7', '4', '7' and '9'. It is completely up to you, the programmer, whether you want the input to be a number, to be a string, or to be fodder for /dev/random; whether the characters can be valid for the desired type totally depends upon how whether that type can interpret the characters in the input stream as a description for an object of that type.</p>
+
+<p>You have to get the input characters into a recognizable data type for them to be of any use other than as a character array.</p>
+
+<p>IO streams not only defines the relation between a stream of characters and
+the standard data types but also allows you to define a relationship between a
+stream of characters and your own classes.  It also allows you nearly limitless
+freedom to manipulate those streams both using object oriented interfaces and
+working directly on character buffers when necessary. (Of course some of the
+        lower level manipulations may be undefined; for example, you can't
+        probe forward into an input stream to see the future!)</p>
+
+<h2>How do streams work?</h2>
+<p>Streams are serial interfaces to storage, buffers files, or any other
+storage medium.  The difference between storage media is intentionally hidden by the interface; you
+may not even know what kind of storage you're working with but the interface is
+exactly the same.</p>
+
+<p>The "serial" nature of streams is a very important element of their interface.
+You cannot directly make random access random reads or writes in a stream
+(unlike, say, using an array index to access any value you want) although you
+can seek to a position in a stream and perform a read at that point.</p>
+
+<p>Using a serial representation gives a consistent interface for all devices.
+Many devices have the capability of both producing and consuming data at the
+same time; if data is being continually produced, the simplest way to think
+about reading that data is by doing a fetch of the next characters in a stream.
+If that data hasn't been produced yet (the user hasn't typed anything, or the
+network is still busy processing a packet), you wait for more data to become
+available, and the read will return that data. Even if you try to seek past the
+end (or beginning) of a stream, the stream pointer (i.e. get or put pointer)
+will remain at the boundary, making the situation safe. (Compare this with
+accessing data off the end of an array, where the behavior is undefined.)</p>
+
+<p>The underlying low-level interface that corresponds to the actual medium
+very closely is a character buffer (the stream buffer, technically called the
+streambuf), which can be thought of as the backbone of the stream. Being a
+buffer, it does not hold the entire content of the stream, if the stream is
+large enough, so you can't use it for random access.</p>
+
+<p>The most important of the basic stream operations are: </p>
+<ol>
+<li> First, the stream is initialized with the appropriate type (like a std::string for a stringstream and the filename for an fstream)  of values and suitable modes (like ios::in for input and ios::out for output and many more depending on the type of the stream).
+</li>
+<li> After that, you can specify where the I/O should occur, through the get and put pointers. Depending on how you open the stream, the location may already be set appropriately (for example, if you open a file with ios::app, your get pointer set at the end of the stream, allowing appends).
+
+<p>The member functions associated with setting the get and put pointers are:</p>
+<ul>
+<li>    seekg()and seekp() for .dragging. the get and put pointer, respectively, to the position specified.
+Both seek methods take an argument (of type streampos) providing a position in the file relative to the beginning of the file (using ios::beg), the end of the file (using ios::end), or the current position (using ios::cur). You may also provide just a specific location, such as io::beg, for the beginning of the file.
+</li>
+<li>    tellg() and  tellp() provide the current location of the get and put pointers, respectively
+</li>
+</ul>
+<p>The following one-liners should clear up most questions:</p>
+
+<pre class="brush: cpp; toolbar: false">
+seekg(0); seekg(0,ios::beg);         //sets the get pointer to the beginning.
+seekg(5,ios::beg);      //sets the get pointer to 5 chars forward of the beginning.
+tellp(); tellg()              //returns the current value of the put/get pointer
+seekp(-10,ios::end);   //sets the put pointer to 10 chars before the end
+seekp(1,ios::cur);      //proceeds to next char
+</pre>
+
+<p>N.B: Be careful when seeking the put pointer into the middle of in the
+stream. If you put anything in the stream, it will directly into the stream at
+the put location, overwriting the previous contents. In other words, if you
+need to insert data in the middle of a stream, you have to manually move the
+data that would be overwritten. As a side note, if you're finding yourself
+doing that too often, then you may want to use a string representation of your
+data, which can simplify this kind of random access operation. </p>
+
+</li>
+<li>Once you're at the right location in the stream, input and output is done through the &lt;&lt; and &gt;&gt; operators. If you want to input an object to the stream, use the &lt;&lt; operator; for output, use &gt;&gt;. The class for your object must, of course, have provided overloads for these methods. Here's a short example:
+
+<pre class="brush: cpp; toolbar: false">
+//Inserts var into string (like objects are displayed by 
+// putting them to cout)
+output_stream&lt;&lt;var;    
+//Gets the value from the stream's characters positioned 
+// after the get pointer and puts it into var.
+input_stream&gt;&gt;var;      
+</pre>
+<p>If var is an object (either a built in class or a user defined type), the
+exact process of the input or output is dependent on the overloaded &gt;&gt; or
+&lt;&lt; operator respectively.</p>
+</li>
+</ol>
+<h2>Error handling with IO streams</h2>
+<p>Handling errors gracefully is important for building a robust system. The
+'errors' or 'signals' (e.g., reaching the end of the file) in this case
+generally occur when a stream  encounters something it didn't expect.</p>
+
+<p>Whether a stream is currently valid can be checked by simply by using the stream as a Boolean:</p>
+
+<pre class="brush: cpp; toolbar: false">
+ifstream file( "test.txt" );
+if ( ! file )
+{
+        cout &lt;&lt; "An error occurred opening the file" &lt;&lt; endl;
+}
+</pre>
+
+<p>More detailed status of the stream can be obtained using the good(), bad(), fail() and eof() functions. The clear() function will reset the stream and clear the error, which is necessary to perform any further IO on the stream.</p>
+<ul>
+<li>good() returns true when everything is okay.
+</li>
+<li>bad() returns true when a fatal error has occurred.
+</li>
+<li>fail() returns true after an unsuccessful stream operation like an unexpected type of input being encountered.
+</li>
+<li>eof() returns true when the end of file is reached.
+</li>
+</ul>
+<p>You can detect that a particular read or write operation failed by testing the result of the read. For example, to check that a valid integer is read from the user, you can do this: </p>
+<pre class="brush: cpp; toolbar: false">
+int x;
+if ( cin &gt;&gt; x ) 
+{
+        cout &lt;&lt; "Please enter a valid number" &lt;&lt; endl;
+}
+</pre>
+
+<p>This works because the read operation returns a <a href="references.html">reference</a> to the stream.</p>
+
+
+<h2>An example of creating a stream-enabled object</h2>
+<p>Here is a simple example of an utility designed for writing out logfile entries from  command line  arguments that takes advantage of some important stream facilities. If you don't understand something, refer to the tutorial on that particular topic. </p>
+
+<pre class="brush: cpp; toolbar: false">
+#include &lt;iostream&gt;
+#include &lt;ctime&gt;
+#include &lt;sstream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+// timestamp returns the current time as a string 
+std::string timestamp();    
+
+class LogStatement;
+ostream&amp; operator&lt;&lt;(ostream&amp; ost, const LogStatement&amp; ls);
+
+class LogStatement
+{
+public:
+        LogStatement(std::string s): data(s), time_string( timestamp() )
+        { };
+
+        //This method handles all the outputs.    
+        friend ostream&amp; operator&lt;&lt;(ostream&amp;, const LogStatement&amp;);   
+private:
+        std::string data;
+        std::string time_string;
+   
+};
+
+ostream&amp; operator&lt;&lt;(ostream&amp; ost, const LogStatement&amp; ls)
+{
+        ost&lt;&lt;"~|"&lt;&lt;ls.time_string&lt;&lt;'|'&lt;&lt;ls.data&lt;&lt;"|~";
+        return ost;
+}
+
+std::string timestamp() 
+{
+        //Notice the use of a stringstream, yet another useful stream medium!
+        ostringstream stream;    
+        time_t rawtime;
+        tm * timeinfo;
+
+        time(&amp;rawtime);
+        timeinfo = localtime( &amp;rawtime );
+
+        stream &lt;&lt; (timeinfo-&gt;tm_year)+1900&lt;&lt;" "&lt;&lt;timeinfo-&gt;tm_mon
+        &lt;&lt;" "&lt;&lt;timeinfo-&gt;tm_mday&lt;&lt;" "&lt;&lt;timeinfo-&gt;tm_hour
+        &lt;&lt;" "&lt;&lt;timeinfo-&gt;tm_min&lt;&lt;" "&lt;&lt;timeinfo-&gt;tm_sec;
+        // The str() function of output stringstreams return a std::string.
+        return stream.str();   
+}
+
+int main(int argc, char** argv)
+{
+        if(argc&lt;2)
+        {
+              // A return of -1 denotes an error condition.
+              return -1;  
+        }
+        ostringstream log_data;
+        // This takes all the char arrays in the argv 
+        // (except the filename) and produces a stream.
+        for(int i=1;i&lt;argc;i++)    
+        {
+               log_data&lt;&lt;argv[i]&lt;&lt;' '; 
+        }
+ 
+        LogStatement log_entry(log_data.str());
+
+        clog&lt;&lt;log_entry&lt;&lt;endl;
+
+        ofstream logfile("logfile",ios::app);
+
+        // check for errors opening the file
+        if ( ! logfile )      
+        {
+                return -1;
+        }       
+
+        logfile&lt;&lt;log_entry&lt;&lt;endl;
+        logfile.close();
+
+        return 0;
+}
+</pre>
+
+<p>This example should be pretty straightforward. The only two 'new' things here are:</p>
+
+<ol>
+<li>The type ostream, which is the base class for any stream that accepts writes, such as ofstream and ostringstream. The standard stream objects: std::cout, std::cerr, std::clog and their 'wide' versions (e.g. std::wcout), are objects of this ostream class. 
+
+</li>
+<li>The use of stringstreams to simplify string handling. See the section on stringstreams below for more details on how stringstreams work.
+</li>
+</ol>
+<h3>A few other things to note</h3>
+<p>The &lt;&lt; operator takes in an ostream object, modifies it and
+returns it, even though it would have been enough  to take the ostream object
+and modify it, with no return value. The value of returning the object is that
+you can chain operations, as in the following statement:
+
+</p>
+<pre class="brush: cpp; toolbar: false">cout&lt;&lt;"Hey, I'm "&lt;&lt; n &lt;&lt;" years old.";</pre>
+
+<p>As the operator accepts an ostream, you can do anything with the data
+written to the stream simply by choosing a different subclass of ostream. The
+example shows writing to a file and to the system log console/file. You could
+also compress it and archive it, send it over a network, parse it later with
+another program to determine the number of log entries in a specified time
+interval, etc. Basically, you can use the class for any sort of output
+operation for which a subclass of ostream exists.</p>
+
+<h2>Parts of the IO stream library</h2>
+
+Now that you've seen the basic problems solved by IO streams and how they work, let's look at the different elements of the IO streams library, with a few examples of each in action.
+
+<h3>Standard Stream Objects for Console I/O: (cout, cin, cerr, clog, etc.)</h3>
+
+<p>These are declared in the &lt;iostream&gt; header and provide a consistent interface for console I/O.  They allow you a lot of control about the exact way you want to read a value from the stream into the given variable (or write the variable to the stream).</p>
+
+<h3>File I/O</h3>
+<p>File I/O is done by manually declaring objects of the ifstream, ofstream or
+fstream classes (from the &lt;fstream&gt; header) and then associating a file
+with the stream by using the stream's open method with the file's name as an
+argument. File I/O is particularly important because files are often  used to
+represent a large variety of media, such as the console, devices, disk files,
+virtual memory, list of running processes and even the black hole '/dev/null'.
+This is especially true on *nix systems where it is commonly said that
+"Everything is a file".</p>
+
+<p>Here is a very very simple example of writing to a file:</p>
+<pre class="brush: cpp; toolbar: false">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+int main()
+{
+        ofstream ofs("a.txt",ios::app);
+        if(ofs.good())
+        {
+                ofs&lt;&lt;"Hello a.txt, I'm appending this on you.";
+        }
+        return 0;
+}
+</pre>
+
+<h3>String Streams</h3>
+<p>Strings are streams and streams are strings. Both are character arrays, but
+each has a totally different interface (random access strings vs serial
+stringstreams). By providing both std::string and stringstreams, the C++
+standard library ensures that you have the flexibility to choose either
+interface for your design.</p>
+
+
+<p>By including the &lt;sstream&gt; header, you can make objects of the
+istringstream, ostringstream and stringstream types. These objects make certain
+kinds of string manipulations much easier.</p>
+
+<p>You can, for example, open a string in a stringstream, extract a floating point number from it to do some operations, and put it back in the stream.</p>
+<pre class="brush: cpp; toolbar: false">
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+
+using namespace std;
+
+int main()
+{
+        stringstream my_stream(ios::in|ios::out);
+        std::string dat("Hey, I have a double : 74.79 .");
+
+        my_stream.str(dat);
+        my_stream.seekg(-7,ios::end);
+
+        double val;
+        my_stream&gt;&gt;val;
+
+        val= val*val;
+
+        my_stream.seekp(-7,ios::end);
+        my_stream&lt;&lt;val;
+
+        std::string new_val = my_stream.str();
+        cout&lt;&lt;new_val;
+
+        return 0;
+}
+</pre>
+
+<p>The output is</p>
+<pre class="example">Hey, I have a double : 5593.54</pre>
+
+
+<h3>The lower level, where streams meet buffers</h3>
+<p>This is the most interesting and confusing part of this library, letting you
+manipulate streams at their lowest levels, bytes and bits. This is accomplished
+by the abstract class streambuf from which stringbuf and filebuf are derived.
+Every stream object has one of those as their backbones. Their function rdbuf()
+lets you access a pointer to the underlying stream buffer.</p>
+
+
+<p>Here is a very simple example of copying a file efficiently with those buffers (thankfully, no ultra-complicated manipulation is involved here!).</p>
+<pre class="brush: cpp; toolbar: false">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+int main()
+{
+        ifstream ifs("a.txt");
+        //ios::trunc means that the output file will be overwritten if exists 
+        ofstream ofs("a.txt.copy", ios::trunc);  
+        if (ifs &amp;&amp;  ofs )
+        {
+                ofs&lt;&lt;ifs.rdbuf();
+        }
+
+        return 0;
+}
+</pre>
+
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/c++-iostreams.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:33:00 GMT -->
+</html>
+
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shBrushCpp.js"></script>
+<script type="text/javascript">
+         SyntaxHighlighter.all();
+</script>
+
+
+

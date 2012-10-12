@@ -1,0 +1,480 @@
+
+<html>
+ 
+<!-- Mirrored from www.cprogramming.com/snippets/source-code/hash-table-in-cplusplus by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:37:50 GMT -->
+<head>
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+ <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+ <!--[if IE]>
+     <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+ <![endif]-->
+ 
+ <link href="http://static.cprogramming.com/syntax-highlight/styles/shCore.css" rel="stylesheet" type="text/css" />
+ <link href="http://static.cprogramming.com/syntax-highlight/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+ 
+ 
+ 
+ <META NAME="Description" CONTENT="A simple example of hashtable source code">
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <title>A simple example of hashtable source code - Cprogramming.com</title>
+ 
+ <!-- ADDED DFP -->
+ <script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+ </script>
+ <script type='text/javascript'>
+ GS_googleAddAdSenseService("ca-pub-2560316224908115");
+ GS_googleEnableAllServices();
+ </script>
+ <script type='text/javascript'>
+ GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+ GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+ 
+ </script>
+ <script type='text/javascript'>
+ GA_googleFetchAds();
+ </script>
+ <!-- END ADDED DFP -->
+ 
+ 
+ <script type="text/javascript">
+ 
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-7820175-1']);
+   _gaq.push(['_setDomainName', '.cprogramming.com']);
+   _gaq.push(['_setAllowLinker', true]);
+   _gaq.push(['_trackPageview']);
+ 
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ 
+ </script>
+ 
+ 
+ </head>
+ 
+ <?php flush(); ?>
+ 
+ <body>
+ <div>
+ 
+ <a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+ 
+ <table class="line noprint"><tr><td></td></tr></table>
+ <div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+ <!-- SiteSearch Google -->
+ <form action="http://www.google.com/cse" id="cse-search-box">
+   <div>
+     <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+     <input type="hidden" name="ie" value="ISO-8859-1" />
+     <input type="text" name="q" size="31" />
+     <input type="submit" name="sa" value="Search" />
+   </div>
+ </form>
+ <script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+ <!-- SiteSearch Google -->
+ </div>
+ <div>
+   <table class="main">
+     <tr>
+ 
+   	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+   		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+   	   <center>
+     	<div class="leaderboard">
+ 
+ <!-- ADDED DFP -->
+ <!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+ <script type='text/javascript'>
+ GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+ </script>
+ <!-- END ADDED DFP -->
+ 
+ </div>
+ 		</center>
+ 		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+   	</td>
+         
+   </tr>
+ 
+   <tr>
+ 
+      <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+      <div class="menu" valign="top" style="font-size:14px;width:200px">
+      <p class="navcategory" align="left">
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+              <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+              <a href="../../begin.html">Get Started with C or C++</a><br>
+              <a href="../../compilers.html">Getting a Compiler</a><br>
+              <a href="../../books.html">Book Recommendations</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href=../../tutorial/c-tutorial.html>C Tutorial</a><br>
+             <a href=../../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+             <a href=../../java-programming.html>Java Tutorial</a><br>
+             <a href=../../game-programming.html>Game Programming</a><br>
+             <a href=../../graphics-programming.html>Graphics Programming</a><br>
+             <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+             <a href=../../debuggers.html>Debugging</a><br>
+             <a href="../../tutorial.html">All Tutorials</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../challenge.html">Practice Problems</a><br>
+             <a href="../../quiz/index.html">Quizzes</a><br>
+      </p>
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+             <a href=../index.html>Source Code Snippets</a><br>
+             <a href="../../tips/index.html">C and C++ Tips</a><br>
+             <a href=../../jobs/index.html>Finding a Job</a>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../function.html">Function Reference</a><br>
+             <a href="../../reference/index.html">Syntax Reference</a><br>
+             <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+             <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+              <a href="../../board.html">Message Board</a><br>
+              <a href="../../expert.html">Ask an Expert</a><br>
+              <a href="../../email.html">Email</a><br>
+              <a href="../../about.html">About Us</a>
+      </p>
+      </div>
+ 
+ <center>
+       <br><br>
+      <script type="text/javascript"><!--
+      google_ad_client = "pub-2560316224908115";
+      google_ad_width = 120;
+      google_ad_height = 90;
+      google_ad_format = "120x90_0ads_al";
+      google_ad_channel ="0800879710";
+      google_color_border = "EBEBEB";
+      google_color_bg = "EBEBEB";
+      google_color_link = "C30000";
+      google_color_url = "C30000";
+      google_color_text = "000000";
+      //--></script>
+      <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+ </center>
+ 
+ 
+ 
+     </td>
+ 	<td class="content" valign="top">
+ 
+     			<div class="content2">
+ 
+ <h1>A simple example of hashtable source code</h1>
+ 
+ 
+ 
+This snippet submitted by Ali Murad on 2012-03-29.  It has been viewed 3241 times.
+<br>Rating of 9.0 with 10 votes<br><br>
+<pre class="brush: cpp; toolbar: false">//A simple example of hashtable#include &lt;iostream&gt;#include &lt;cstdlib&gt;#include &lt;cstring&gt;#include &lt;iomanip&gt;#define SIZE_KEY       16#define SIZE_VALUE1    64#define SIZE_VALUE2    16#define DEFAULT_TABLESIZE    101using namespace std;struct NODE{   Node(const char* Key1 = "\0", const char* fName = "\0",         const char *tele ="\0", const double sal = 0.0 )   {      strcpy(Key, Key1);      strcpy(FullName, fName);      strcpy(Tele_No, tele);      Salary = sal;      Tax = 0.005 * Salary;      next = NULL;   }   char Key[SIZE_KEY];   char FullName[SIZE_VALUE1];   char Tele_No[SIZE_VALUE2];   double Salary;   double Tax;   Node *next;};class Hashtable{   private:      int table_size;      NODE** table;      int size;      long hashString(char* Key);      NODE* find(char* Key);      NODE* current_entry;      int current_index;   public:      Hashtable(int T = DEFAULT_TABLESIZE);//constructor      virtual ~Hashtable();//destructor      bool put(NODE *);      bool get(NODE *);      bool contains(char* Key);      bool remove(char* Key);      void removeAll();      int getSize();      void initIterator();      bool hasNext();      void getNextKey(char* Key);      friend void disp(NODE *);};Hashtable::Hashtable(int T){   size = 0;   table_size = T;   table = new NODE*[table_size];   for(int i=0; i&lt;table_size; i++)   {      table[i] = NULL;   }}Hashtable::~Hashtable(){   removeAll();   delete[] table;}void disp(NODE *N1){ cout &lt;&lt; "\nKey:      " &lt;&lt; N1-&gt;Key &lt;&lt; "\nFullName: "      &lt;&lt; N1-&gt;FullName &lt;&lt;"\nTele.:    " &lt;&lt; N1-&gt;Tele_No &lt;&lt; "\nSalary:   "      &lt;&lt; setprecision(12) &lt;&lt; N1-&gt;Salary&lt;&lt; "\nTax:      " &lt;&lt; N1-&gt;Tax &lt;&lt; endl;}bool Hashtable::put(NODE *N){//start put   if(find(N-&gt;Key) != NULL)   {      return false;   }   NODE* entry = new NODE(N-&gt;Key, N-&gt;FullName,N-&gt;Tele_No, N-&gt;Salary);   int bucket = hashString(N-&gt;Key);   entry-&gt;next = table[bucket];   table[bucket] = entry;   size++;   return true;}//end putbool Hashtable::get(NODE* N){//start get   NODE* temp = find(N-&gt;Key);   if(temp == NULL)   {      N-&gt;FullName[0] = '\0';      return false;   }   else   {      strcpy(N-&gt;FullName, temp-&gt;FullName);      strcpy(N-&gt;Tele_No, temp-&gt;Tele_No);      N-&gt;Salary = temp-&gt;Salary;      N-&gt;Tax = temp-&gt;Tax;      return true;   }}//end getbool Hashtable::contains(char* Key){//start contains   if(find(Key) == NULL)   {      return false;   }   else   {      return true;   }}//end containsbool Hashtable::remove(char* Key){//start remove   int bucket = hashString(Key);   NODE* temp = table[bucket];   if(temp == NULL)   {      return false;   }   else if(strcmp(Key, temp-&gt;Key) == 0)   {      table[bucket] = temp-&gt;next;      delete temp;      size--;      return true;   }   else   {      NODE* temp_next = temp-&gt;next;      while(temp_next != NULL)      {         if(strcmp(Key, temp_next-&gt;Key) == 0)         {            temp-&gt;next = temp_next-&gt;next;            delete temp_next;            size--;            return true;         }         temp = temp-&gt;next;         temp_next = temp_next-&gt;next;      }   }   return false;}//end removevoid Hashtable::removeAll(){//start removeAll   for(int i=0; i&lt;table_size; i++)   {      NODE* temp = table[i];      while(temp != NULL)      {         NODE* next = temp-&gt;next;         disp(temp);         delete temp;         temp = next;      }   }   size = 0;}//end removeAllint Hashtable::getSize(){   return size;}NODE* Hashtable::find(char* Key){ //start find   int bucket = hashString(Key);   NODE* temp = table[bucket];   while(temp != NULL)   {      if(strcmp(Key, temp-&gt;Key) == 0)      {         return temp;      }      temp = temp-&gt;next;   }   return NULL;}//end findlong Hashtable::hashString(char* Key){//start hashString   int n = strlen(Key);   long h = 0;   for(int i=0; i&lt;n; i++)   {      //To get almost fair distributions of nodes over the array      h = (h &lt;&lt; 3) ^ Key[i];   }    return abs(h % table_size );}//end hashStringvoid Hashtable::initIterator(){//start initIterator   current_entry = NULL;   current_index = table_size;   for(int i=0; i&lt;table_size; i++)   {      if(table[i] == NULL)      {          continue;      }      else      {         current_entry = table[i];         current_index = i;         break;      }   }}//end initIteratorbool Hashtable::hasNext(){   if(current_entry == NULL)   {      return false;   }   else   {      return true;   }}void Hashtable::getNextKey(char* Key){   if(current_entry == NULL)   {      Key[0] = '\0';      return;   }   strcpy(Key, current_entry-&gt;Key);   if(current_entry-&gt;next != NULL)   {      current_entry = current_entry-&gt;next;   }   else   {     for(int i=current_index+1; i&lt;table_size; i++)     {        if(table[i] == NULL)        {           continue;        }        current_entry = table[i];        current_index = i;        return;     }     current_entry = NULL;     current_index = table_size;   }}void dispAll(Hashtable* hashtable);int main(){   char temp1[SIZE_KEY];   Hashtable* hashtable = new Hashtable();   NODE N1("389","Mariam","8216734",22123.267);   if(!hashtable-&gt;contains(N1.Key))   {      cout &lt;&lt; "\nAdding node:  ";      disp(&N1);      hashtable-&gt;put(&N1);   }   strcpy(N1.Key, "314");   strcpy(N1.FullName, "Zeki");   strcpy(N1.Tele_No, "8765623");   N1.Salary = 98124.567;   if(!hashtable-&gt;contains(N1.Key))   {      cout &lt;&lt; "\nAdding node:  ";      disp(&N1);      hashtable-&gt;put(&N1);   }   strcpy(N1.Key, "320");   strcpy(N1.FullName, "Murad");   strcpy(N1.Tele_No, "7231144");   N1.Salary = 19834.575;   if(!hashtable-&gt;contains(N1.Key))   {      cout &lt;&lt; "\nAdding node:  ";      disp(&N1);      hashtable-&gt;put(&N1);   }   strcpy(N1.Key, "768");   strcpy(N1.FullName, "Hassan");   strcpy(N1.Tele_No, "7689876");   N1.Salary = 45124.755;   if(!hashtable-&gt;contains(N1.Key))   {      cout &lt;&lt; "\nAdding node:  ";      disp(&N1);      hashtable-&gt;put(&N1);   }   strcpy(N1.Key, "756");   strcpy(N1.FullName, "Ali");   strcpy(N1.Tele_No, "9874545");   N1.Salary = 43554.125;   if(!hashtable-&gt;contains(N1.Key))   {      cout &lt;&lt; "\nAdding node:  ";      disp(&N1);      hashtable-&gt;put(&N1);   }   dispAll(hashtable);    strcpy(temp1,"314");   hashtable-&gt;remove(temp1);   cout &lt;&lt; "\n\nAfter removing 314:" &lt;&lt; endl;   dispAll(hashtable);   cout &lt;&lt; "\n\nDestroying hashtable:" &lt;&lt; endl;   delete hashtable;   return 0;}void dispAll(Hashtable *hashtable){        NODE N1;   cout &lt;&lt; "\n\nCurrent nodes in hashtable:" &lt;&lt; endl;   hashtable-&gt;initIterator();   while(hashtable-&gt;hasNext())   {      hashtable-&gt;getNextKey(N1.Key);      hashtable-&gt;get(&N1);      disp(&N1);   }}/*Program's output******************Adding node:Key:      389FullName: MariamTele.:    8216734Salary:   22123.267Tax:      110.616335Adding node:Key:      314FullName: ZekiTele.:    8765623Salary:   98124.567Tax:      110.616335Adding node:Key:      320FullName: MuradTele.:    7231144Salary:   19834.575Tax:      110.616335Adding node:Key:      768FullName: HassanTele.:    7689876Salary:   45124.755Tax:      110.616335Adding node:Key:      756FullName: AliTele.:    9874545Salary:   43554.125Tax:      110.616335Current nodes in hashtable:Key:      768FullName: HassanTele.:    7689876Salary:   45124.755Tax:      225.623775Key:      314FullName: ZekiTele.:    8765623Salary:   98124.567Tax:      490.622835Key:      756FullName: AliTele.:    9874545Salary:   43554.125Tax:      217.770625Key:      389FullName: MariamTele.:    8216734Salary:   22123.267Tax:      110.616335Key:      320FullName: MuradTele.:    7231144Salary:   19834.575Tax:      99.172875After removing 314:Current nodes in hashtable:Key:      768FullName: HassanTele.:    7689876Salary:   45124.755Tax:      225.623775Key:      756FullName: AliTele.:    9874545Salary:   43554.125Tax:      217.770625Key:      389FullName: MariamTele.:    8216734Salary:   22123.267Tax:      110.616335Key:      320FullName: MuradTele.:    7231144Salary:   19834.575Tax:      99.172875Destroying hashtable:Key:      768FullName: HassanTele.:    7689876Salary:   45124.755Tax:      225.623775Key:      756FullName: AliTele.:    9874545Salary:   43554.125Tax:      217.770625Key:      389FullName: MariamTele.:    8216734Salary:   22123.267Tax:      110.616335Key:      320FullName: MuradTele.:    7231144Salary:   19834.575Tax:      99.172875Process returned 0 (0x0)   execution time : 0.162 sPress any key to continue.*/</pre>
+<br><br>
+<form method=post name=rate><input type=hidden name=tip value='hash-table-in-cplusplus'>
+<select name=rating onChange='javascript:rate.submit()'>
+<option value=10>10</option>
+<option value=9>9</option>
+<option value=8>8</option>
+<option value=7>7</option>
+<option value=6>6</option>
+<option value=5>5</option>
+<option value=4>4</option><option value=3>3</option><option value=2>2</option><option
+value=1>1</option></select><input type=submit value='Rate it'>
+</form>
+
+<br><br>
+<b><a href=../index.html>More C and C++ source code snippets</a></b><br>
+<br>
+<a href=../add.html>Add a snippet!</a>
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../../tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=../../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../../tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../../tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../../tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../../tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../../tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../../tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../../tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../tutorial/game_programming/same_game_part1.html>
+                    <img src=../../tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/snippets/source-code/hash-table-in-cplusplus by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:37:50 GMT -->
+</html>
+
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shBrushCpp.js"></script>
+<script type="text/javascript">
+         SyntaxHighlighter.all();
+</script>
+
+
+

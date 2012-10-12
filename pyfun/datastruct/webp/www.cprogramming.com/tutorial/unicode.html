@@ -1,0 +1,1077 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/unicode.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:02 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Unicode, C++ unicode, c++ wide characters, utf8 c++, multibyte encoding c++, c unicode, c wide characters, utf8 c">
+<META NAME="Description" CONTENT="Learn how to use unicode and utf8 to handle character sets in C++">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Unicode in C and C++ - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Unicode in C and C++: What You Can Do About It Today</h1>
+
+
+
+<h3>by Jeff Bezanson</h3>
+
+If you write an email in Russian and send it to somebody <i>in Russia</i>, it
+is depressingly unlikely that he or she will be able to read it. If you write
+software, the burden of this sad state of affairs rests on your shoulders.
+
+<p>
+Given modern hardware resources, it is unacceptable that we can't yet
+routinely communicate text in different scripts or containing technical
+symbols. Fortunately, we are getting there.
+          <br><br></p>
+<center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+After reading a lot on the subject and incorporating Unicode compatibility
+into some of my software, I decided to prepare this quick and highly
+pragmatic guide to digital text in the 21st century (for C programmers,
+of course). I don't mind adding my voice to the numerous articles that
+already exist on this subject, since the world needs as many programmers
+as possible to pick up these skills as soon as possible.
+
+<h2>I. Encoding text</h2>
+
+Given the variety of human languages on this planet, text is a complex
+subject. Many are scared away from dealing with world scripts, because they
+think of the numerous related software problems in the area instead of focusing
+on what they can actually do with their code to help.
+
+<p>
+The first thing to know is that <i>you do not have to worry about most
+problems with digital text</i>. The most difficult work is handled below the
+application layer, in OSes, UI libraries, and the C library. To give you
+an idea of what goes on though, here is a summary of software problems
+surrounding text:
+
+</p>
+<ul>
+<li>
+<b>Encoding</b><br>
+Mapping characters to numbers. <i>Many</i> such mappings exist; once you
+know the encoding of a piece of text, you know what character is meant
+by a particular number. Unicode is one such mapping, and a popular one since
+it incorporates more characters than any other at this time.
+
+</li>
+<li>
+<b>Display</b><br>
+Once you know what character is meant, you have to find a font that has
+the character and render it. This task is much complicated by the need to
+display both left-to-right and right-to-left text, the existence of
+combining characters that modify previous characters and have zero width,
+the fact that some languages require wider character cells than others, and
+context-sensitive letterforms.
+
+</li>
+<li>
+<b>Input</b><br>
+An <b>input method</b> is a way to map keystrokes (most likely several
+keystrokes on a typical keyboard) to characters. Input is also complicated
+by bidirectional text.
+
+</li>
+<li>
+<b>Internationalization (i18n)</b><br>
+This refers to the practice of translating a program into multiple languages,
+effectively by translating all of the program's strings.
+
+</li>
+<li>
+<b>Lexicography</b><br>
+Code that processes text as more than just binary data might have to become
+a lot smarter. The problems of searching, sorting, and modifying letter case
+(upper/lower) vary per-language. If your application doesn't need to perform
+such tasks, consider yourself lucky. If you do need these operations, you
+can probably find a UI toolkit or i18n library that already implements them.
+</li>
+</ul>
+
+If you are savvy with just the first issue (encoding), then
+OS-vendor-supplied input methods and display routines should magically work
+with your program. Whether you want to or are able to translate your
+software is another matter, and compared to proper handling of character
+encodings it is almost optional (corrupting data is worse than
+having an unintelligible UI).
+
+<p>
+The encoding I'll talk about is called Unicode. Unicode officially encodes
+1,114,112 characters, from 0x000000 to 0x10FFFF. (The idea that Unicode is
+a 16-bit encoding is completely wrong.) For maximum compatibility, individual
+Unicode values are usually passed around as 32-bit integers (4 bytes per
+character), even though this is more than necessary. For convenience, the
+first 128 Unicode characters are the same as those in the familiar ASCII
+encoding.
+
+</p>
+<p>
+The consensus is that storing four bytes per character is wasteful, so a
+variety of representations have sprung up for Unicode characters. The most
+interesting one for C programmers is called UTF-8. UTF-8 is a "multi-byte"
+encoding scheme, meaning that it requires a variable number of bytes to
+represent a single Unicode value. Given a so-called "UTF-8 sequence", you can
+convert it to a Unicode value that refers to a character.
+
+</p>
+<p>
+UTF-8 has the property that all existing 7-bit ASCII strings are still valid.
+UTF-8 only affects the meaning of bytes greater than 127, which it uses to
+represent higher Unicode characters. A character might require 1, 2, 3, or 4
+bytes of storage depending on its value;
+more bytes are needed as values get larger. To store the full range of possible
+32-bit characters, UTF-8 would require a whopping 6 bytes. But again, Unicode
+only defines characters up to 0x10FFFF, so this should never happen in
+practice.
+
+</p>
+<p>
+UTF-8 is a specific scheme for mapping a sequence of 1-4 bytes to a number
+from 0x000000 to 0x10FFFF:
+
+</p>
+<pre>
+00000000 -- 0000007F: 	0xxxxxxx
+00000080 -- 000007FF: 	110xxxxx 10xxxxxx
+00000800 -- 0000FFFF: 	1110xxxx 10xxxxxx 10xxxxxx
+00010000 -- 001FFFFF: 	11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+</pre>
+
+The x's are bits to be extracted from the sequence and glued together to
+form the final number.
+
+<p>
+It is fair to say that UTF-8 is taking over the world. It is already used for
+filenames in Linux and is supported by all mainstream web browsers. This
+is not surprising considering its many nice properties:
+
+</p>
+<ol>
+<li>It can represent all 1,114,112 Unicode characters.
+</li>
+<li>Most C code that deals with strings on a byte-by-byte basis still works,
+since UTF-8 is fully compatible with 7-bit ASCII.
+</li>
+<li>Characters usually require fewer than four bytes.
+</li>
+<li>String sort order is preserved. In other words, sorting UTF-8 strings
+per-byte yields the same order as sorting them per-character by logical
+Unicode value.
+</li>
+<li>A missing or corrupt byte in transmission can only affect a single
+character&#8212;you can always find the start of the sequence for the next
+character just by scanning a couple bytes.
+</li>
+<li>There are no byte-order/endianness issues, since UTF-8 data is a
+byte stream.
+</li>
+</ol>
+
+The only price to pay for all this is that there is no longer a
+one-to-one correspondence between bytes and characters in a string. Finding
+the nth character of a string requires iterating over the string from the
+beginning.
+
+<p>
+See
+<a href="http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8">What is UTF-8?</a>
+for more information about UTF-8.
+
+</p>
+<p>
+<b>Side note:</b>
+Some consider UTF-8 to be discriminatory, since it allows English text to be
+stored efficiently at one byte per character while other world scripts require
+two bytes or more. This is a troublesome point, but it should not get in the
+way of Unicode adoption. First of all, UTF-8 was not really designed to
+preferentially encode English text. It was designed to preserve compatibility
+with the large body of existing code that scans for special characters such
+as line breaks, spaces, NUL terminators, and so on. Furthermore, the
+encoding used internally by a program has little impact on the user as long
+as it is able to represent their data without loss.
+UTF-8 is a great boon, especially for C programming. Think of it
+this way: if it allows you to internationalize an application that would have
+been difficult to convert otherwise, it is much less discriminatory than the
+alternative.
+
+</p>
+<h2>II. The C library</h2>
+
+All recent implementations of the standard C library have lots of functions
+for manipulating international strings. Before reading up on them, it helps
+to know some vocabulary:
+
+<p>
+<b>"Multibyte character"</b> or <b>"multibyte string"</b> refers to text in
+one of the many (possibly language-specific) encodings that exist throughout
+the world. A multibyte character does not necessarily require more than one
+byte to store; the term is merely intended to be broad enough to encompass
+encodings where this is the case. UTF-8 is in fact only <i>one</i> such
+encoding; the actual encoding of user input is determined by the user's current
+<b>locale setting</b> (selected as an option in a system dialog or stored as an
+environment variable in UNIX). Strings you get from the user will be in
+this encoding, and strings you pass to printf() are supposed to be as well.
+Strings within your program can of course be in any encoding you want, but
+you might have to convert them for proper display.
+
+</p>
+<p>
+<b>"Wide character"</b> or <b>"wide character string"</b> refers to text where
+each character is the same size (usually a 32-bit integer)
+and simply represents a Unicode character
+value ("code point"). This format is a known common currency that allows you
+to get at character values if you want to. The wprintf() family is able to
+work with wide character format strings, and the "%ls" format specifier for
+normal printf() will print wide character strings (converting them to the
+correct locale-specific multibyte encoding on the way out).
+
+</p>
+<p>
+The C library also provides functions like towupper() that can convert a
+wide character from any language to uppercase (if applicable). strftime()
+can format a date and time string appropriately for the current locale, and
+strcoll() can do international sorting. These and other functions that
+depend on locale must be initialized at the beginning of your program using
+
+</p>
+<pre>
+#include &lt;locale.h&gt;
+
+int main()
+{
+    char *locale;
+
+    locale = setlocale(LC_ALL, "");
+    ...
+}
+</pre>
+
+You don't have to do anything with the locale string returned by setlocale(),
+but you can use it to query your user's locale settings (more on this later).
+
+<p>
+The C library pretty much assumes you will be using multibyte strings
+throughout your program (since that's what you get as input). Since multibyte
+strings are opaque, a lot of functions beginning with "mb" are provided to
+deal with them. Personally, I don't like not knowing what encoding my strings
+use. One concrete problem with the multibyte thing is file I/O&#8212; a
+given file could be in any encoding, independent of locale. When you write a
+file or send data over a network, keeping the multibyte encoding might
+be a bad idea. (Even if all software uses only the proper
+locale-independent C library functions, and all platforms support all
+encodings internally, there is still no single standard for communicating the
+encoding of a piece of text; email messages and HTML tags do it in various
+ways.) You also might be able
+to do more efficient processing, or avoid rewriting code, if you knew the
+encoding your strings used.
+
+</p>
+<p>
+<b>Your encoding options</b>
+</p>
+<p>
+You are free to choose a string encoding for internal use in your program.
+The choice pretty much boils down to either UTF-8, wide (4-byte) characters,
+or multibyte.
+Each has its advantages and disadvantages:
+
+</p>
+<ul>
+UTF-8
+<ul>
+<li>Pro: compatible with all existing strings and most existing code
+</li>
+<li>Pro: takes less space
+</li>
+<li>Pro: widely used as an interchange format (e.g. in XML)
+</li>
+<li>Con: more complex processing, O(n) string indexing
+</li>
+</ul>
+Wide characters
+<ul>
+<li>Pro: easy to process
+</li>
+<li>Con: wastes space
+</li>
+<li>Pro/Con: although you can use the syntax
+<pre>L"Hello, world."</pre>
+to easily include wide-character strings in C programs, the size of wide
+characters is not consistent across platforms (some incorrectly use 2-byte
+wide characters)
+</li>
+<li>Con: should not be used for output, since spurious zero bytes and other
+low-ASCII characters with common meanings (such as '/' and '\n') will likely
+be sprinkled throughout the data.
+</li>
+</ul>
+Multibyte
+<ul>
+<li>Pro: no conversions ever needed on input and output
+</li>
+<li>Pro: built-in C library support
+</li>
+<li>Pro: provides the widest possible internationalization, since in rare
+cases conversion between local encodings and Unicode does not work well
+</li>
+<li>Con: strings are opaque
+</li>
+<li>Con: perpetuates incompatibilities. For example, there are three major
+encodings for Russian. If one Russian sends data to another through your
+program, the recipient will not be able to read the message if his or her
+computer is configured for a different Russian encoding. But if your program
+always converts to UTF-8, the text is effectively normalized so that it will
+be widely legible (especially in the future) no matter what encoding it
+started in.
+</li>
+</ul>
+</ul>
+<p>
+In this article I will advocate and give explicit instruction on using
+UTF-8 as an internal string encoding. Many Linux users already set their
+environment to a UTF-8 locale, in which case you won't even have to do
+any conversions. Otherwise you will have to convert multibyte to
+wide to UTF-8 on input, and back to multibyte on output. Nevertheless,
+UTF-8 has its advantages.
+
+
+</p>
+<h2>III. What to do right now</h2>
+
+Below I'll outline concrete steps any C programmer could take to
+bring his or her code up to date with respect to text encoding. I'll also be
+presenting a simple C library that provides the routines you need to
+manipulate UTF-8.
+
+<p>
+Here's your to-do list:
+
+</p>
+<ol>
+<li>
+<b>"char" no longer means character</b><br>
+I hereby recommend referring to character codes in C programs using a
+32-bit unsigned integer type. Many platforms provide a "wchar_t" (wide
+character) type, but unfortunately it is to be avoided since some compilers
+allot it only 16 bits&#8212;not enough to represent Unicode. Wherever you
+need to pass around an individual character, change "char" to "unsigned int"
+or similar. The only remaining use for the "char" type is to mean "byte".
+
+<p>
+</p>
+</li>
+<li>
+<b>Get UTF-8-clean</b><br>
+To take advantage of UTF-8, you'll have to treat bytes higher than 127 as
+perfectly ordinary characters. For example, say you have a routine that
+recognizes valid identifier names for a programming language. Your existing
+standard might be that identifiers begin with a letter:
+
+<pre>
+int valid_identifier_start(char ch)
+{
+    return ((ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') || (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z'));
+}
+</pre>
+
+If you use UTF-8, you can extend this to allow letters from other languages
+as follows:
+
+<pre>
+int valid_identifier_start(char ch)
+{
+    return ((ch &gt;= 'A' &amp;&amp; ch &lt;= 'Z') || (ch &gt;= 'a' &amp;&amp; ch &lt;= 'z') ||
+            ((unsigned char)ch &gt;= 0xC0));
+}
+</pre>
+A UTF-8 sequence can only start with values 0xC0 or greater, so that's what
+I used for checking the start of an identifier. Within an identifier, you
+would also want to allow characters &gt;= 0x80, which is the range of
+UTF-8 continuation bytes.
+
+<p>
+Most C string library routines still work with UTF-8, since they only scan
+for terminating NUL characters. A notable exception is strchr(), which
+in this context is more aptly named "strbyte()". Since you will be passing
+character codes around as 32-bit integers, you need to replace this with
+a routine such as my u8_strchr() that can scan UTF-8 for a given character.
+The traditional strchr() returns a pointer to the location of the found
+character, and u8_strchr() follows suit. However, you might want to know
+the index of the found character, and since u8_strchr() has to scan through
+the string anyway, it keeps a count and returns a character index as well.
+</p>
+<p>
+With the old strchr(), you could use pointer arithmetic to determine the
+character index. Now, any use of pointer arithmetic on strings is likely
+to be broken since characters are no longer bytes. You'll have to find and
+fix any code that assumes "(char*)b - (char*)a" is the number of characters
+between a and b (though it is still of course the number of <i>bytes</i>
+between a and b).
+
+</p>
+<p>
+</p>
+</li>
+<li>
+<b>Interface with your environment</b><br>
+Using UTF-8 as an internal encoding is now widespread among
+C programmers. However, the environment your program runs in will not
+necessarily be nice enough to feed you UTF-8, or expect UTF-8 output.
+<p>
+The functions mbstowcs() and wcstombs() convert from and to locale-specific
+encodings, respectively. "mbs" means multibyte string (i.e. the locale-specific
+string), and "wcs" means wide character string (universal 4-byte characters).
+Clearly, if you use wide characters internally, you are in luck here. If you
+use UTF-8, there is a chance that the user's locale will be set to UTF-8 and
+you won't have to do any conversion at all. To take advantage of that
+situation, you will have to specifically detect it (I'll provide a function
+for it). Otherwise, you will have to convert from multibyte to wide to UTF-8.
+</p>
+<p>
+Version 1.6 (1.5.x while in development) of the
+<a href="http://www.fox-toolkit.org/">FOX toolkit</a> uses UTF-8 internally,
+giving your program a nice all-UTF-8-all-the-time environment. GTK2 and Qt
+also support UTF-8.
+
+</p>
+<p>
+</p>
+</li>
+<li>
+<b>Modify APIs to discourage O(n^2) string processing</b><br>
+The idea of non-constant-time string indexing may worry you. But when
+you think about it, you rarely need to specifically access the nth character
+of a string. Algorithms almost never need to make requests like "Quick! Get
+me the 6th character of this piece of text!" Typically, if you're accessing
+characters you're iterating over the whole string or most of it. UTF-8 is
+simple enough to process that iterating over characters takes essentially
+the same time as iterating over bytes.
+<p>
+In your own code, you can use my u8_inc() and u8_dec() to move through
+strings. If you develop libraries or languages, be sure to expose some kind
+of inc() and dec() API so nobody has to move through a string by repeatedly
+requesting the nth character.
+</p>
+</li>
+</ol>
+<h2>IV. Some UTF-8 routines</h2>
+
+Various libraries are available for internationalization
+and converting between
+different text encodings. However, I couldn't find a straightforward set
+of C routines providing the minimal support needed for using UTF-8 as
+an internal encoding (although this functionality is often embedded in large
+UI toolkits and such). I decided to create a small library that could be used
+to bring UTF-8 to arbitrary C programs.
+
+<p>
+This library is quite incomplete; you might want to look at
+<a href="http://directory.fsf.org/localization/">related FSF offerings</a> and
+<a href="http://www.haible.de/bruno/packages-libutf8.html">libutf8</a>.
+libutf8 provides the multibyte and wide character C library routines mentioned
+above, in case your C library doesn't have them.
+
+</p>
+<p>
+Since performance is sometimes a concern with UTF-8, I made my routines as
+fast and lightweight as possible. They perform minimal error checking&#8212;
+in particular, they do not bother to determine whether a sequence is valid
+UTF-8, which can actually be a security problem. I justify this decision by
+reiterating that the intention of the library is to manipulate an internal
+encoding; you can enforce that all strings you store in memory be
+valid UTF-8, enabling the library to make that assumption. Routines for
+validating and converting from/to UTF-8 are
+<a href="http://www.unicode.org/resources/libraries.html">
+available free from Unicode, Inc.</a>
+
+</p>
+<p>
+Note that my routines do not need to support the many encodings of the
+world&#8212;the C library can handle that. If the current locale is not
+UTF-8, you call mbstowcs() on user input to convert any encoding
+(whatever it is) to a wide character string, then use my u8_toutf8() to
+convert it to the UTF-8 your program is comfortable with. Here's an
+example input routine wrapping readline():
+
+</p>
+<pre>
+char *get_utf8_input()
+{
+    char *line, *u8s;
+    unsigned int *wcs;
+    int len;
+
+    line = readline("");
+    if (locale_is_utf8) {
+        return line;
+    }
+    else {
+        len = mbstowcs(NULL, line, 0)+1;
+        wcs = malloc(len * sizeof(int));
+        mbstowcs(wcs, line, len);
+        u8s = malloc(len * sizeof(int));
+        u8_toutf8(u8s, len*sizeof(int), wcs, len);
+        free(line);
+        free(wcs);
+        return u8s;
+    }
+</pre>
+
+The first call to mbstowcs() uses the special parameter value NULL to find
+the number of characters in the opaque multibyte string.
+
+<p>
+Anyway, on with the routines. They are divided into four groups:
+
+</p>
+<p>
+<b>Group 1: conversions</b>
+</p>
+<pre>
+/* is c the start of a utf8 sequence? */
+#define isutf(c) (((c)&amp;0xC0)!=0x80)
+
+/* convert UTF-8 to UCS-4 (4-byte wide characters)
+   srcsz = source size in bytes, or -1 if 0-terminated
+   sz = dest size in # of wide characters
+   returns # characters converted */
+int u8_toucs(unsigned int *dest, int sz, char *src, int srcsz);
+
+/* convert UCS-4 to UTF-8
+   srcsz = number of source characters, or -1 if 0-terminated
+   sz = size of dest buffer in bytes
+   returns # characters converted */
+int u8_toutf8(char *dest, int sz, unsigned int *src, int srcsz);
+
+/* single character to UTF-8 */
+int u8_wc_toutf8(char *dest, wchar_t ch);
+</pre>
+Note that the library uses "unsigned int" as its wide character type.<br>
+You can
+convert a known number of bytes, or a NUL-terminated string. The length of
+a UTF-8 string is often communicated as a byte count, since that's what
+really matters. Recall that you can usually treat a UTF-8 string like a
+normal C-string with N characters (where N is the number of bytes in the
+UTF-8 sequence), with the possibility that some characters are &gt;127.
+<p>
+<b>Group 2: moving through UTF-8 strings</b>
+</p>
+<pre>
+/* character number to byte offset */
+int u8_offset(char *str, int charnum);
+
+/* byte offset to character number */
+int u8_charnum(char *s, int offset);
+
+/* return next character, updating a byte-index variable */
+unsigned int u8_nextchar(char *s, int *i);
+
+/* move to next character */
+void u8_inc(char *s, int *i);
+
+/* move to previous character */
+void u8_dec(char *s, int *i);
+</pre>
+
+<p>
+<b>Group 3: Unicode escape sequences</b><br>
+In the absence of Unicode input methods, Unicode characters are often
+notated using special escape sequences beginning with \u or \U. \u expects
+up to four hexadecimal digits, and \U expects up to eight. With these
+routines your program can accept input and give output using such
+sequences if necessary.
+</p>
+<pre>
+/* assuming src points to the character after a backslash, read an
+   escape sequence, storing the result in dest and returning the number of
+   input characters processed */
+int u8_read_escape_sequence(char *src, unsigned int *dest);
+
+/* given a wide character, convert it to an ASCII escape sequence stored in
+   buf, where buf is "sz" bytes. returns the number of characters output. */
+int u8_escape_wchar(char *buf, int sz, unsigned int ch);
+
+/* convert a string "src" containing escape sequences to UTF-8 */
+int u8_unescape(char *buf, int sz, char *src);
+
+/* convert UTF-8 "src" to ASCII with escape sequences.
+   if escape_quotes is nonzero, quote characters will be preceded by
+   backslashes as well. */
+int u8_escape(char *buf, int sz, char *src, int escape_quotes);
+
+/* utility predicates used by the above */
+int octal_digit(char c);
+int hex_digit(char c);
+</pre>
+
+<p>
+<b>Group 4: replacements for standard functions</b>
+</p>
+<pre>
+/* return a pointer to the first occurrence of ch in s, or NULL if not
+   found. character index of found character returned in *charn. */
+char *u8_strchr(char *s, unsigned int ch, int *charn);
+
+/* same as the above, but searches a buffer of a given size instead of
+   a NUL-terminated string. */
+char *u8_memchr(char *s, unsigned int ch, size_t sz, int *charn);
+
+/* count the number of characters in a UTF-8 string */
+int u8_strlen(char *s);
+
+/* given the string returned by setlocale(), determine whether the current
+   locale speaks UTF-8 */
+int u8_is_locale_utf8(char *locale);
+
+/* these functions can print from UTF-8 strings. they make no assumptions
+   about locale; you can circumvent them if is_locale_utf8 */
+int u8_vprintf(char *fmt, va_list ap);
+int u8_printf(char *fmt, ...);
+</pre>
+
+<a href="utf8.c">utf8.c</a><br><a href="utf8.h">utf8.h</a>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/unicode.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:03 GMT -->
+</html>
+
+
+

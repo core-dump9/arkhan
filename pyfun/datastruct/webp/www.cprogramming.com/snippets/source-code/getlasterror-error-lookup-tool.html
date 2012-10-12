@@ -1,0 +1,480 @@
+
+<html>
+ 
+<!-- Mirrored from www.cprogramming.com/snippets/source-code/getlasterror-error-lookup-tool by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:41:49 GMT -->
+<head>
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+ <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+ <!--[if IE]>
+     <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+ <![endif]-->
+ 
+ <link href="http://static.cprogramming.com/syntax-highlight/styles/shCore.css" rel="stylesheet" type="text/css" />
+ <link href="http://static.cprogramming.com/syntax-highlight/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
+ 
+ 
+ 
+ <META NAME="Description" CONTENT="GetLastError error lookup tool source code">
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <title>GetLastError error lookup tool source code - Cprogramming.com</title>
+ 
+ <!-- ADDED DFP -->
+ <script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+ </script>
+ <script type='text/javascript'>
+ GS_googleAddAdSenseService("ca-pub-2560316224908115");
+ GS_googleEnableAllServices();
+ </script>
+ <script type='text/javascript'>
+ GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+ GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+ 
+ </script>
+ <script type='text/javascript'>
+ GA_googleFetchAds();
+ </script>
+ <!-- END ADDED DFP -->
+ 
+ 
+ <script type="text/javascript">
+ 
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-7820175-1']);
+   _gaq.push(['_setDomainName', '.cprogramming.com']);
+   _gaq.push(['_setAllowLinker', true]);
+   _gaq.push(['_trackPageview']);
+ 
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ 
+ </script>
+ 
+ 
+ </head>
+ 
+ <?php flush(); ?>
+ 
+ <body>
+ <div>
+ 
+ <a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+ 
+ <table class="line noprint"><tr><td></td></tr></table>
+ <div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+ <!-- SiteSearch Google -->
+ <form action="http://www.google.com/cse" id="cse-search-box">
+   <div>
+     <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+     <input type="hidden" name="ie" value="ISO-8859-1" />
+     <input type="text" name="q" size="31" />
+     <input type="submit" name="sa" value="Search" />
+   </div>
+ </form>
+ <script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+ <!-- SiteSearch Google -->
+ </div>
+ <div>
+   <table class="main">
+     <tr>
+ 
+   	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+   		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+   	   <center>
+     	<div class="leaderboard">
+ 
+ <!-- ADDED DFP -->
+ <!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+ <script type='text/javascript'>
+ GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+ </script>
+ <!-- END ADDED DFP -->
+ 
+ </div>
+ 		</center>
+ 		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+   	</td>
+         
+   </tr>
+ 
+   <tr>
+ 
+      <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+      <div class="menu" valign="top" style="font-size:14px;width:200px">
+      <p class="navcategory" align="left">
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+              <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+              <a href="../../begin.html">Get Started with C or C++</a><br>
+              <a href="../../compilers.html">Getting a Compiler</a><br>
+              <a href="../../books.html">Book Recommendations</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href=../../tutorial/c-tutorial.html>C Tutorial</a><br>
+             <a href=../../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+             <a href=../../java-programming.html>Java Tutorial</a><br>
+             <a href=../../game-programming.html>Game Programming</a><br>
+             <a href=../../graphics-programming.html>Graphics Programming</a><br>
+             <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+             <a href=../../debuggers.html>Debugging</a><br>
+             <a href="../../tutorial.html">All Tutorials</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../challenge.html">Practice Problems</a><br>
+             <a href="../../quiz/index.html">Quizzes</a><br>
+      </p>
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+             <a href=../index.html>Source Code Snippets</a><br>
+             <a href="../../tips/index.html">C and C++ Tips</a><br>
+             <a href=../../jobs/index.html>Finding a Job</a>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../function.html">Function Reference</a><br>
+             <a href="../../reference/index.html">Syntax Reference</a><br>
+             <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+             <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+      </p>
+ 
+      <p class="navcategory" align="left">
+           <br>
+           <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+      </p>
+ 
+      <p class="navlist" align="left" style="font-size:14px;">
+              <a href="../../board.html">Message Board</a><br>
+              <a href="../../expert.html">Ask an Expert</a><br>
+              <a href="../../email.html">Email</a><br>
+              <a href="../../about.html">About Us</a>
+      </p>
+      </div>
+ 
+ <center>
+       <br><br>
+      <script type="text/javascript"><!--
+      google_ad_client = "pub-2560316224908115";
+      google_ad_width = 120;
+      google_ad_height = 90;
+      google_ad_format = "120x90_0ads_al";
+      google_ad_channel ="0800879710";
+      google_color_border = "EBEBEB";
+      google_color_bg = "EBEBEB";
+      google_color_link = "C30000";
+      google_color_url = "C30000";
+      google_color_text = "000000";
+      //--></script>
+      <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+ </center>
+ 
+ 
+ 
+     </td>
+ 	<td class="content" valign="top">
+ 
+     			<div class="content2">
+ 
+ <h1>GetLastError error lookup tool source code</h1>
+ 
+ 
+ 
+This snippet submitted by Ken Fitlike on 2005-01-20.  It has been viewed 37107 times.
+<br>Rating of 5.7 with 179 votes<br><br>
+<pre class="brush: cpp; toolbar: false"> <pre>/*===========================================================================*//*  Error code Lookup Tool  Copyright (c) Ken Fitlike 2004  Free to good home  Displays the text message associated with the numerical error codes returned  by the GetLastError api function.    Notes: GWL_USERDATA used instead of GWLP_USERDATA with GetWindowLongPtr and         SetWindowLongPtr because latter not defined for MinGW w32api 3.1;          the values are the same in any case.  Disclaimer: Any problems you have with this code are just that: your               problems.*//*===========================================================================*/#include &lt;windows.h&gt;#include &lt;tchar.h&gt;/*lcc-win32 may not define LR_SHARED*/#if !defined LR_SHARED#define LR_SHARED 0x00008000#endif/*control identifiers*/enum {  #if defined IDC_STATIC  #undef IDC_STATIC  #endif  IDC_STATIC=-1,  IDC_ERRNUM=100,  IDC_BTNGO,  IDC_ERRMSG,  IDM_HELP=40000,  IDM_ABOUT};/*===========================================================================*/LRESULT CALLBACK WndProc(HWND hwnd,UINT uMsg,WPARAM wParam,LPARAM lParam);HACCEL BuildAccelTable(void);void CentreWnd(HWND hwnd);BOOL CALLBACK SetChildFonts(HWND hChild,LPARAM lParam);void ShowErrMsg(HWND hEdit,int errnum);void AddSysMenu(HWND hwnd);void ShowAboutBox(HWND hParent);void ShowHelpBox(HWND hParent);/*===========================================================================*/int WINAPI WinMain(HINSTANCE hInst,HINSTANCE hPrev,LPSTR pStr,int nCmd){HWND       hwnd;MSG        msg;TCHAR      classname[]=_T("kenf's_wnd");WNDCLASSEX wcx={0};wcx.cbSize       =sizeof(wcx); wcx.lpfnWndProc  =WndProc;wcx.hInstance    =hInst; wcx.hIcon        =(HICON)LoadImage(0,IDI_INFORMATION,IMAGE_ICON,0,0,LR_SHARED); wcx.hCursor      =(HCURSOR)LoadImage(0,IDC_ARROW,IMAGE_CURSOR,0,0,LR_SHARED);wcx.hbrBackground=(HBRUSH)(COLOR_BTNFACE+1); wcx.lpszClassName=classname; if (RegisterClassEx(&wcx))  {  hwnd=CreateWindowEx(0,classname,_T("Error Message Tool"),                      WS_OVERLAPPEDWINDOW&~WS_MAXIMIZEBOX&~WS_THICKFRAME,                      0,                      0,                      278,                      178,                      0,0,hInst,0);  if (hwnd)    {    CentreWnd(hwnd);    ShowWindow(hwnd,nCmd);    UpdateWindow(hwnd);        while (GetMessage(&msg,0,0,0)&gt;0)      {      /*retrieve and use accel table handle from main wnd user data*/      if (!TranslateAccelerator(hwnd,(HACCEL)GetWindowLongPtr(hwnd,GWL_USERDATA),                                &msg))        {        if (!IsDialogMessage(hwnd,&msg))          {          TranslateMessage(&msg);          DispatchMessage(&msg);          }        }      }    return (int)msg.wParam;    }  else    {    MessageBox(0,_T("Wnd creation failure"),_T("Error"),MB_OK|MB_ICONERROR);    return 0;    }  }MessageBox(0,_T("Wnd registration failure"),_T("Error"),MB_OK|MB_ICONERROR);return 0;}/*===========================================================================*/LRESULT CALLBACK WndProc(HWND hwnd,UINT uMsg,WPARAM wParam,LPARAM lParam){static HWND hEditNum,hBtnGo,hEditMsg;switch (uMsg)  {  case WM_CREATE:    {    /*create an accelerator table and store it as the main wnd user data*/    SetWindowLongPtr(hwnd,GWL_USERDATA,(LONG_PTR)BuildAccelTable());    AddSysMenu(hwnd);    hEditNum=CreateWindowEx(WS_EX_CLIENTEDGE,_T("edit"),_T("0"),                            WS_CHILD|WS_VISIBLE|ES_NUMBER|WS_TABSTOP,                            56,8,138,28,                            hwnd,(HMENU)IDC_ERRNUM,GetModuleHandle(0),0);    SendMessage(hEditNum,EM_SETLIMITTEXT,5,0);    CreateWindowEx(0,_T("static"),_T("Value:"),                   WS_CHILD|WS_VISIBLE|SS_CENTERIMAGE,                   8,8,48,28,                   hwnd,(HMENU)IDC_STATIC,GetModuleHandle(0),0);    hBtnGo=CreateWindowEx(0,_T("button"),_T("Show"),                          WS_VISIBLE|WS_CHILD|WS_TABSTOP,                          208,8,56,28,                          hwnd,(HMENU)IDC_BTNGO,GetModuleHandle(0),0);    CreateWindowEx(0,_T("static"),_T("Message:"),                   WS_CHILD|WS_VISIBLE|SS_CENTERIMAGE,                   8,42,48,28,                   hwnd,(HMENU)IDC_STATIC,GetModuleHandle(0),0);    hEditMsg=CreateWindowEx(WS_EX_CLIENTEDGE,_T("edit"),0,                            WS_CHILD|WS_VISIBLE|ES_MULTILINE|ES_READONLY|                            WS_TABSTOP,                            8,70,256,68,                            hwnd,(HMENU)IDC_ERRNUM,GetModuleHandle(0),0);    EnumChildWindows(hwnd,SetChildFonts,0);    SetFocus(hEditNum);    SendMessage(hEditNum,EM_SETSEL,0,-1);    return 0;    }  case WM_COMMAND:    {    WORD wID,wNotify;        wID=LOWORD(wParam);    wNotify=HIWORD(wParam);        if (wNotify==BN_CLICKED)      {      switch (wID)        {        case IDCANCEL:          DestroyWindow(hwnd);          return 0;        case IDOK: /*'enter' key pressed when edit has focus*/        case IDC_BTNGO:          {          ShowErrMsg(hEditMsg,GetDlgItemInt(hwnd,IDC_ERRNUM,0,0));          return 0;          }        }      }    return 0;    }  case WM_DESTROY:    DestroyAcceleratorTable((HACCEL)GetWindowLongPtr(hwnd,GWL_USERDATA));    PostQuitMessage(0);    return 0;  case WM_SYSCOMMAND:    {    UINT uCmd=(UINT)wParam;    switch (uCmd)      {      case IDM_ABOUT:        ShowAboutBox(hwnd);        return 0;      case IDM_HELP:        ShowHelpBox(hwnd);        return 0;      }    return DefWindowProc(hwnd,uMsg,wParam,lParam);    }  default:    return DefWindowProc(hwnd,uMsg,wParam,lParam);  }}/*===========================================================================*/void AddSysMenu(HWND hwnd){/*retrieves copy of system (window) menu and adds a couple of options to it*/HMENU hMenu;hMenu=GetSystemMenu(hwnd,0);AppendMenu(hMenu,MF_SEPARATOR,0,0);AppendMenu(hMenu,MF_STRING,IDM_HELP,_T("Help..."));AppendMenu(hMenu,MF_STRING,IDM_ABOUT,_T("About..."));}/*===========================================================================*/HACCEL BuildAccelTable(void){/*building accelerator table dynamically for simplicity of presentation   only - use of resources should be preferred*/ACCEL ac;ac.fVirt=FVIRTKEY;ac.key=VK_F1;ac.cmd=IDM_HELP;return CreateAcceleratorTable(&ac,1);}/*===========================================================================*/void CentreWnd(HWND hwnd){/*centre wnd on desktop*/RECT rc,rcDesk;SystemParametersInfo(SPI_GETWORKAREA,0,&rcDesk,0);GetWindowRect(hwnd,&rc);MoveWindow(hwnd,(rcDesk.right-rc.right+rc.left)/2,           (rcDesk.bottom-rc.bottom+rc.top)/2,           rc.right-rc.left,           rc.bottom-rc.top,0);}/*===========================================================================*/BOOL CALLBACK SetChildFonts(HWND hChild,LPARAM lParam){/*EnumChildProc*/SendMessage(hChild,WM_SETFONT,(WPARAM)GetStockObject(DEFAULT_GUI_FONT),            MAKELPARAM(1,0));return TRUE;}/*===========================================================================*/void ShowAboutBox(HWND hParent){/*using MessageBoxIndirect to give option of having user defined icon - this  option is not taken in this example */HWND         hFocus;int          len;MSGBOXPARAMS mbp;TCHAR        *txt;TCHAR        ab[]=_T("About ");len=lstrlen(ab)+GetWindowTextLength(hParent)+1;if ((txt=malloc(len*sizeof(TCHAR)))!=0)  {  lstrcpy(txt,ab);  GetWindowText(hParent,&txt[lstrlen(ab)],len);  }  hFocus=GetFocus();mbp.cbSize=sizeof(mbp); mbp.hwndOwner=hParent; /*if using own icon then set mbp.hInstance=GetModuleHandle(0);*/mbp.hInstance=0;mbp.lpszText=_T("Copyright (c) 2004\n\nKen Fitlike"); if (txt)  {  mbp.lpszCaption=txt;   }else  {  mbp.lpszCaption=ab;   }mbp.dwStyle=MB_USERICON; mbp.lpszIcon=IDI_INFORMATION; mbp.dwContextHelpId=0; mbp.lpfnMsgBoxCallback=0; mbp.dwLanguageId=MAKELANGID(LANG_ENGLISH,SUBLANG_ENGLISH_UK);MessageBoxIndirect(&mbp);if (txt) {free(txt);}SetFocus(hFocus);}/*===========================================================================*/void ShowErrMsg(HWND hEdit,int errnum){HWND hFocus;void *pMsg;hFocus=GetFocus(); if (FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER|FORMAT_MESSAGE_FROM_SYSTEM,                  0,                  errnum,                  MAKELANGID(LANG_NEUTRAL,SUBLANG_DEFAULT),                  (LPTSTR)&pMsg,                  0,                  NULL)==0)  {  /*nothing doing*/  MessageBox(0, _T("There is no message associated\n with that error code."),             _T("Error"), MB_OK|MB_ICONEXCLAMATION );  }else  {  /*show it*/  SetWindowText(hEdit,pMsg);  LocalFree(pMsg); /*free memory*/  }SetFocus(hFocus);}/*===========================================================================*/void ShowHelpBox(HWND hParent){HWND hFocus;hFocus=GetFocus();MessageBox(hParent,           _T("F1\tHelp\nESC\tQuit\n\n")           _T("Enter numerical error code in 'value' field\n")           _T("and click the 'show' button to display any\n")           _T("error message that corresponds to that value.\n"),           _T("Help"),           MB_OK);SetFocus(hFocus);           }/*===========================================================================*/</pre> </pre>
+<br><br>
+<form method=post name=rate><input type=hidden name=tip value='getlasterror-error-lookup-tool'>
+<select name=rating onChange='javascript:rate.submit()'>
+<option value=10>10</option>
+<option value=9>9</option>
+<option value=8>8</option>
+<option value=7>7</option>
+<option value=6>6</option>
+<option value=5>5</option>
+<option value=4>4</option><option value=3>3</option><option value=2>2</option><option
+value=1>1</option></select><input type=submit value='Rate it'>
+</form>
+
+<br><br>
+<b><a href=../index.html>More C and C++ source code snippets</a></b><br>
+<br>
+<a href=../add.html>Add a snippet!</a>
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../../tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=../../tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../../tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=../../tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../../tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../../tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../../tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../../tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../../tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../tutorial/game_programming/same_game_part1.html>
+                    <img src=../../tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/snippets/source-code/getlasterror-error-lookup-tool by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:41:49 GMT -->
+</html>
+
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shCore.js"></script>
+<script type="text/javascript" src="http://static.cprogramming.com/syntax-highlight/scripts/shBrushCpp.js"></script>
+<script type="text/javascript">
+         SyntaxHighlighter.all();
+</script>
+
+
+

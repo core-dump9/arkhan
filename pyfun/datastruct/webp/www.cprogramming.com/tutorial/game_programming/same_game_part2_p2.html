@@ -1,0 +1,659 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part2_p2.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:40:11 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="C++ programming, game programming, MFC game programming, MFC programming, C++ MFC">
+<META NAME="Description" CONTENT="A step-by-step guide for creating a game from scratch.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Same Game - Implementing the Delete Blocks Algorithm - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../../begin.html">Get Started with C or C++</a><br>
+             <a href="../../compilers.html">Getting a Compiler</a><br>
+             <a href="../../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=../c-tutorial.html>C Tutorial</a><br>
+            <a href=../c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../../java-programming.html>Java Tutorial</a><br>
+            <a href=../../game-programming.html>Game Programming</a><br>
+            <a href=../../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../../debuggers.html>Debugging</a><br>
+            <a href="../../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../challenge.html">Practice Problems</a><br>
+            <a href="../../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../../tips/index.html">C and C++ Tips</a><br>
+            <a href=../../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../../function.html">Function Reference</a><br>
+            <a href="../../reference/index.html">Syntax Reference</a><br>
+            <a href="../../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../../board.html">Message Board</a><br>
+             <a href="../../expert.html">Ask an Expert</a><br>
+             <a href="../../email.html">Email</a><br>
+             <a href="../../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1> <img src="same_game_small.png" width="42" height="42">"The Same Game" - A Simple Game from Start to Finish</h1>
+
+
+
+By: Ben Marchant
+
+<h2>The Algorithm</h2>
+
+<p>The algorithm for deleting blocks is rather simple, start with the row and column and make sure there is an adjacent block with the same color.  If so, change the color value to the background color.  Then go in each direction and delete the adjacent block if it is the same.  This process is repeated with each block recursively.  Here is the DeleteBlocks function in its entirety.</p>
+
+          <center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+<pre class="example">
+int CSameGameBoard::DeleteBlocks(int row, int col)
+{
+  //  Make sure that the row and column are valid
+  if(row &lt; 0 || row &gt;= m_nRows || col %lt; 0 || col &gt;= m_nColumns)
+    return -1;
+  //  Can't delete background blocks
+  int nColor = m_arrBoard[row][col];
+  if(nColor == 0)
+    return -1;
+  //	First check if there are any of the adjacent sides
+  //  with the same color
+  int nCount = -1;
+  if((row - 1 &gt;= 0 &amp;&amp; m_arrBoard[row - 1][col] == nColor) ||
+     (row + 1 &lt; m_nRows &amp;&amp; m_arrBoard[row + 1][col] == nColor) ||
+     (col - 1 &gt;= 0 &amp;&amp; m_arrBoard[row][col - 1] == nColor) ||
+     (col + 1 &lt; m_nColumns &amp;&amp; m_arrBoard[row][col + 1] == nColor))
+  {
+    //  Then call the recursive function to eliminate all 
+    //  other touching blocks with same color
+    m_arrBoard[row][col] = 0;
+    nCount = 1;
+    //  Recursive call for up
+    nCount +=
+      DeleteNeighborBlocks(row - 1, col, nColor, DIRECTION_DOWN);
+    //  Recursive call for down
+    nCount +=
+      DeleteNeighborBlocks(row + 1,col, nColor, DIRECTION_UP);
+    //  Recursive call for left
+    nCount +=
+      DeleteNeighborBlocks(row, col - 1, nColor, DIRECTION_RIGHT);
+    //  Recursive call for right
+    nCount +=
+      DeleteNeighborBlocks(row, col + 1, nColor, DIRECTION_LEFT);
+    //  Finally compact the board
+    CompactBoard();
+    //  Remove the count from the number remaining
+    m_nRemaining -= nCount;
+  }
+  //  Return the total number of pieces deleted
+  return nCount;
+}
+</pre>
+
+<p>The first sections are to ensure that the row and column are valid and that the block selected isn't already a background block.  Next comes a check if there is at least one adjacent block with the same color above, below, left or right of the block.  If there is then the selected block is set to the background color (0) and the count is set to one.  This is followed by four calls to DeleteNeighborBlocks().  The first call passes the row above (row - 1) in the same column with the color and then DIRECTION_DOWN.  We pass this in because it tells the recursive function to skip the down direction because that is where the execution came from.  This just cuts off a few extra steps and speeds the process up.  This could be left out and the algorithm would still work correctly, but a little less efficiently.  Once all four directions are checked the board is compacted and the number of blocks that were removed is subtracted from the total number of blocks remaining.</p>
+
+<p>The DeleteNeighborBlocks function is very similar to the DeleteBlocks function.  Again the first few lines make sure that the row and column are valid and that the specified block is the same color as the original block.  After that we make three recursive calls to delete neighbors.  We use the direction argument to decide which direction we came from and then skip this direction.  This is just a little optimization that eliminates a frivolous recursive call.</p>
+
+<pre class="example">
+int CSameGameBoard::DeleteNeighborBlocks(int row, int col, int color,
+                                         Direction direction)
+{
+  //  Check if it is on the board
+  if(row &lt; 0 || row &gt;= m_nRows || col %lt; 0 || col &gt;= m_nColumns)
+    return 0;
+  //  Check if it has the same color
+  if(m_arrBoard[row][col] != color)
+    return 0;
+  int nCount = 1;
+  m_arrBoard[row][col] = 0;
+  //  If we weren't told to not go back up, check up
+  if(direction != DIRECTION_UP)
+    nCount +=
+      DeleteNeighborBlocks(row - 1, col, color, DIRECTION_DOWN);
+  //  If we weren't told to not go back down, check down
+  if(direction != DIRECTION_DOWN)
+    nCount +=
+      DeleteNeighborBlocks(row + 1, col, color, DIRECTION_UP);
+  //  If we weren't told to not go back left, check left
+  if(direction != DIRECTION_LEFT)
+    nCount +=
+      DeleteNeighborBlocks(row, col - 1, color, DIRECTION_RIGHT);
+  //  If we weren't told to not go back right, check right
+  if(direction != DIRECTION_RIGHT)
+    nCount +=
+      DeleteNeighborBlocks(row, col + 1, color, DIRECTION_LEFT);
+  //  Return the total number of pieces deleted
+  return nCount;
+}
+</pre>
+
+<p>At this point the adjacent, same colored blocks have been eliminated and changed to the background color so all that is left is to compact the board by moving all of the blocks down and the columns to the left.</p>
+
+<pre class="example">
+void CSameGameBoard::CompactBoard(void)
+{
+  //  First move everything down
+  for(int col = 0; col &lt; m_nColumns; col++)
+  {
+    int nNextEmptyRow = m_nRows - 1;
+    int nNextOccupiedRow = nNextEmptyRow;
+    while(nNextOccupiedRow &gt;= 0 &amp;&amp; nNextEmptyRow &gt;= 0)
+    {
+      //  First find the next empty row
+      while(nNextEmptyRow &gt;= 0 &amp;&amp;
+            m_arrBoard[nNextEmptyRow][col] != 0)
+        nNextEmptyRow--;
+      if(nNextEmptyRow &gt;= 0)
+      {
+        //  Then find the next occupied row from the next empty row
+        nNextOccupiedRow = nNextEmptyRow - 1;
+        while(nNextOccupiedRow &gt;= 0 &amp;&amp;
+              m_arrBoard[nNextOccupiedRow][col] == 0)
+          nNextOccupiedRow--;
+        if(nNextOccupiedRow &gt;= 0)
+        {
+          //  Now move the block from occupied to empty
+          m_arrBoard[nNextEmptyRow][col] =
+            m_arrBoard[nNextOccupiedRow][col];
+          m_arrBoard[nNextOccupiedRow][col] = 0;
+        }
+      }
+    }
+  }
+  //  Then move everything from right to left
+  int nNextEmptyCol = 0;
+  int nNextOccupiedCol = nNextEmptyCol;
+  while(nNextEmptyCol &lt; m_nColumns &amp;&amp; nNextOccupiedCol %lt; m_nColumns)
+  {
+    //  First find the next empty column
+    while(nNextEmptyCol &lt; m_nColumns &amp;&amp;
+          m_arrBoard[m_nRows - 1][nNextEmptyCol] != 0)
+      nNextEmptyCol++;
+    if(nNextEmptyCol &lt; m_nColumns)
+    {
+      //  Then find the next column with something in it
+      nNextOccupiedCol = nNextEmptyCol + 1;
+      while(nNextOccupiedCol &lt; m_nColumns &amp;&amp;
+            m_arrBoard[m_nRows - 1][nNextOccupiedCol] == 0)
+        nNextOccupiedCol++;
+      if(nNextOccupiedCol &lt; m_nColumns)
+      {
+        //  Move entire column to the left
+        for(int row = 0; row &lt; m_nRows; row++)
+        {
+          m_arrBoard[row][nNextEmptyCol] =
+            m_arrBoard[row][nNextOccupiedCol];
+          m_arrBoard[row][nNextOccupiedCol] = 0;
+        }
+      }
+    }
+  }
+}
+</pre>
+
+<p>First we go column by column moving things down.  Starting at the bottom row (m_nRows - 1) we loop looking for the next empty row.  Once that is found, there is another loop that searches for the next occupied row.  Once these two are located then the next empty row is filled with the next occupied row.  This process is repeated until there are no more blocks to move down.</p>
+
+<p>The second part of the function is almost identical to the first part except for the outer for loop.  The reason we can eliminate the outer loop is that we only have to look at the bottom row in each column, if it is empty then the whole column is empty and we can move something into its place.</p>
+
+<h2>Finishing Condition</h2>
+
+<p>There is only one step left to accomplish our task of creating a "playable" game.  That is to implement the IsGameOver function.  The function checks for a valid move which is to say it checks each block to see if there is an adjacent block with the same color.  When the first one is found, the function short-circuits and returns false immediately.  There is no need to continue checking.  The only way to tell in the game is actually over is to actually do a full search and ensure that there aren't any moves left.</p>
+
+<pre class="example">
+bool CSameGameBoard::IsGameOver(void) const
+{
+  //  Go column by column, left to right
+  for(int col = 0; col &lt; m_nColumns; col++)
+  {
+    //  Row by row, bottom to top
+    for(int row = m_nRows - 1; row &gt;= 0; row--)
+    {
+      int nColor = m_arrBoard[row][col];
+      //  Once we hit background, this column is done
+      if(nColor == 0)
+        break;
+      else
+      {
+        //  Check above and right
+        if(row - 1 &gt;= 0 &amp;&amp;
+           m_arrBoard[row - 1][col] == nColor)
+          return false;
+        else if(col + 1 &lt; m_nColumns &amp;&amp;
+                m_arrBoard[row][col + 1] == nColor)
+          return false;
+      }
+    }
+  }
+  //  No two found adjacent
+  return true;
+}
+</pre>
+
+<p>The two for loops allow us to search column by column and row by row for valid moves.  Because we search left to right we don't have to check to the left for adjacent blocks of the same color.  Searching from bottom to top eliminates the need to check below for valid moves.  This order of searching also allows us to optimize the IsGameOver function a little further.  Once the color of the block is the background color we can skip the rest of the column because anything above it will be empty also (thanks to the CompactBoard function).</p>
+
+<p>You should now be able to play the full game to completion and it should look something like this:</p>
+
+<img src="end_game.png"><h2>Conclusion</h2>
+
+<p>In this article we've gone from a game that didn't do anything other than draw the game board to a playable version of the SameGame.  We discussed event driven programming as well as how to implement that using MFC.  We created an event handler for the left mouse click and responded with the main game algorithm.  In the next article we'll be adding more features to our game through the menus.</p>
+
+<a href="samegame-part2.zip">Source Code from Part 2</a>
+<br><br><b><a href="same_game_part3.html">Continue to Part 3: Adding new Difficulty
+Levels</a></b>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=../c-tutorial.html>C Tutorial</a>
+<li><a href=../c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=../common.html>8 Common programming Mistakes</a> 
+<li><a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=../shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="../computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="../c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../../advertising.html">Advertising</a> | <a href="../../privacy.html">Privacy policy</a> |
+<a href="../../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=../c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=../c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=same_game_part1.html>
+                    <img src=same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/game_programming/same_game_part2_p2.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:40:12 GMT -->
+</html>
+
+
+

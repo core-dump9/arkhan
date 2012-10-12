@@ -1,0 +1,691 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/auto_ptr.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, computer programming, programming computers, how to program computers">
+<META NAME="Description" CONTENT="Learn how to take advantage of auto_ptr for managing memory in C++.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tutorials - Avoiding Memory Leaks with auto_ptr - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="../index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="../begin.html">Get Started with C or C++</a><br>
+             <a href="../compilers.html">Getting a Compiler</a><br>
+             <a href="../books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=c-tutorial.html>C Tutorial</a><br>
+            <a href=c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=../java-programming.html>Java Tutorial</a><br>
+            <a href=../game-programming.html>Game Programming</a><br>
+            <a href=../graphics-programming.html>Graphics Programming</a><br>
+            <a href=../algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=../debuggers.html>Debugging</a><br>
+            <a href="../tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../challenge.html">Practice Problems</a><br>
+            <a href="../quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../cgi-bin/source/source.html">Source Code</a><br>
+            <a href=../snippets/index.html>Source Code Snippets</a><br>
+            <a href="../tips/index.html">C and C++ Tips</a><br>
+            <a href=../jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="../function.html">Function Reference</a><br>
+            <a href="../reference/index.html">Syntax Reference</a><br>
+            <a href="../cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="../board.html">Message Board</a><br>
+             <a href="../expert.html">Ask an Expert</a><br>
+             <a href="../email.html">Email</a><br>
+             <a href="../about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Using auto_ptr to Handle Memory</h1>
+
+<div style="margin-right: 1em; float:left; padding: .4em; border-right: 1px solid #bbb"><img src=http://static.cprogramming.com/main_images/alex-50-50.jpg height="50" width="50" border=0 style="padding: 0.25em;"><br><a href=https://plus.google.com/113987539774523532573?rel=author> By Alex Allain</a></div>
+
+The auto_ptr template class is designed to help manage memory in a
+semi-automatic way and prevent memory leaks when unexpected events such as
+exceptions would otherwise have caused the normal cleanup code to be skipped.
+<br><br><center>
+<div class='noprint'>
+<!-- RunOfSite_LargeRectangle_ATF_336x280 -->
+<script type='text/javascript'>
+GA_googleFillSlot('RunOfSite_LargeRectangle_ATF_336x280');
+</script>
+</div>
+
+
+</center>
+
+<br><br>
+For instance, it is common to write code such as
+
+<pre class="example">
+void myFunction()
+{
+    myClass = new myClass();
+    // body of function
+    delete myClass;
+}
+</pre>
+
+and this may work.  But what if somewhere in the function body an <a href="exceptions.html">exception</a> gets
+thrown?  Suddenly, the delete code never gets called!  What's more, you may
+never have intended to throw an exception into the function but one of the
+functions you call may do so, or you may later need to modify your code to do
+so.  In both cases, this is a memory leak waiting to happen.
+
+<br><br>
+On the other hand, by letting the auto_ptr class manage your memory for you,
+as soon as an exception gets thrown and the auto_ptr you declared has gone out
+of scope, the memory allocated will automatically be freed.  First, let's look
+at how to use auto_ptr, and then I'll explain the exact mechanics of how this
+works.
+
+<br><br>
+To take advantage of auto_ptr, you will need to include &lt;memory&gt;.  This
+will give you access to the std <a href="namespaces.html">namespace</a>, in
+which resides the templated class auto_ptr&lt;<i>type</i>&gt;.  For
+<i>type</i>, you should put the type you want your <a href="lesson6.html">pointer</a> to point to.  For
+instance, if you would ordinarily have declared an int*, you should use int
+for the type.  When you actually declare an instance of the templated class,
+the constructor should take a pointer to the specified type.  The object will
+then take care of managing the memory associated with that pointer.  For
+instance, to create an auto_ptr object that manages the memory of a pointer to
+an integer, you could use this declaration:
+
+<pre class="example">
+std::auto_ptr&lt;int&gt; int_memory_manager(new int);
+// Alternately, you could include "using namespace std;" or 
+// "using namespace std::auto_ptr" at the top of your code to avoid having to
+// prefix all declarations with std::auto_ptr
+</pre>
+
+To actually use the pointer stored in the auto_ptr container, you can just
+treat the auto_ptr object you create as though it were the pointer.  For
+instance, you can dereference it:
+
+<pre class="example">
+*int_memory_manager = 5;
+</pre>
+
+and if you wanted to access a member function (or variable) of a struct or
+class, you can simply use the same arrow operator as normal.  I'll use a
+fictitious class called "myClass" to illustrate this.
+
+ 
+
+<pre class="example">
+std::auto_ptr&lt;myClass&gt; myClassManager(new myClass);
+myClassManager-&gt;variable = 50;
+</pre>
+
+which sets a field called variable to 50 in the instance of myClass whose
+pointer is stored in myClassManager.
+
+<br><br>
+The great benefit of all of this is that you simply don't need to worry about
+calling delete at all!  As soon as int_memory_manager goes out of scope, its
+destructor will be invoked.  Its destructor, in turn, will call delete on the
+pointer.  This brings up a subtle point: you must use auto_ptr with memory
+allocated with new, not malloc, and, moreover, not new[].  Each of these
+memory allocators must be properly paired: malloc with free, new with delete,
+and new[] with delete[] (new[] is used to allocate arrays).  If they aren't
+matched correctly, your program may crash.
+
+<br><br>
+The consequence of auto_ptr's always calling delete on the pointer it stores
+means that you can't store arrays in an auto_ptr.  For instance, the following
+is a mistake:
+
+<pre class="example">
+std::auto_ptr&lt;int&gt; int_memory_manager(new int[10]);
+</pre>
+
+What happens when int_memory_manager goes out of scope?  The program invokes
+delete on an array, and this is illegal.  Some compilers may let you get away
+with it, but it's not portable.  Just don't do it!  If you really need to
+store a collection of items with constant random access times, just use a
+<a href="stl/vector.html">vector</a> from the
+<a href="stl/stlintro.html">Standard Template Library (STL)</a>.
+
+<br><br>
+If you just need to retrieve the address of the pointer held in an auto_ptr
+object, you can use the get method.  The following code demonstrates a
+function that returns a pointer to an integer as stored in an auto_ptr object:
+
+<pre class="example">
+int* example()
+{
+std::auto_ptr&lt;int&gt; int_memory_manager(new int);
+return int_memory_manager.release(); // we'll see release in more depth below 
+</pre>
+
+Of course, you'd probably be better off simply returning an auto_ptr object in
+the first place.
+
+<br><br><b>Some Caveats</b>
+
+<br><br>
+While you can assign one auto_ptr object to another, when you do so, the
+actual assignment results in the transferral of the pointer from one object to
+the other.  
+
+<br><br>
+For instance,
+
+<pre class="example">
+std::auto_ptr&lt;int&gt; int_memory_manager(new int);
+std::auto_ptr&lt;int&gt; int_memory_manager2;
+cout&lt;&lt;"Contents of first is "&lt;&lt;int_memory_manager.get()&lt;&lt;endl;
+int_memory_manager2 = int_memory_manager;
+cout&lt;&lt;"Contents of first is "&lt;&lt;int_memory_manager.get()&lt;&lt;endl;
+cout&lt;&lt;"Contents of second is "&lt;&lt;int_memory_manager2.get()&lt;&lt;endl;
+</pre>
+
+This sample program demonstrates that the overloaded copy operator for
+auto_ptr actually removes the pointer from the object being copied!  It's set
+to NULL.  This means that only one auto_ptr object can hold a pointer at any
+time.  The act of assigning one auto_ptr to another changes the auto_ptr being
+assigned.  Moreover, this situation holds true even when implicitly copying
+auto_ptr objects -- for instance, if you make a function call and pass an
+auto_ptr object, when the function returns, the contents of auto_ptr will be
+changed to NULL, as demonstrated by the following code:
+
+<pre class="example">
+using namespace std;
+void aFunction(std::auto_ptr&lt;int&gt; x)
+{
+}
+
+int main()
+{
+    std::auto_ptr&lt;int&gt; int_manager(new int);
+    aFunction(int_manager);
+    cout&lt;&lt;"Content of int_manager is "int_manager.get()&lt;&lt;endl;
+    // Expected output: 0
+}
+</pre>
+
+In truth, this behavior is quite beneficial because it means that two auto_ptr
+objects will not both try to delete the same pointer.  Deleting the same
+pointer twice is not a valid operation, and can lead to program crashes,
+whereas deleting NULL is a valid operation (though it doesn't change anything).
+
+<br><br>
+A subtle consequence of this behavior is that auto_ptrs don't work well in all
+scenarios.  For instance, using auto_ptr objects with the <a href="stl/stlintro.html">standard
+    template library</a> can lead to problems as some functions in the STL may
+make copies of the objects in containers such as the <a href="stl/vector.html">vector container
+    class</a>.  One example is the sort function, which makes copies of some
+of the objects in the container being sorted.  As a consequence, this copy can
+blithely delete the data in the container!  
+
+<br><br>
+If for some reason you did want to store an auto_ptr object in an STL
+container, you should probably either write your own memory manager container
+that counts the number of references to a pointer or handle freeing the memory
+somewhere else.  If you wanted to take the second approach, you'll need to be
+able to tell an auto_ptr object that you're finished using it to manage your
+pointer.  You can do this with the release function.  For instance, the
+following code requests that an auto_ptr object allow us to handle the memory
+for the object again and resets the pointer stored by the auto_ptr object to
+NULL so that it doesn't get deleted twice.
+
+<pre class="example">
+std::auto_ptr&lt;int&gt; int_memory_manager(new int);
+// Calling release sets the pointer managed by int_memory_manager to point 
+// to NULL
+int *need_to_delete_ptr = int_memory_manager.release();
+delete need_to_delete_ptr;
+</pre>
+
+Finally, if you happen to want to reuse an auto_ptr object, you can simply
+call the reset function to free the old memory and set the new memory:
+<pre class="example">
+std::auto_ptr&lt;int&gt; int_memory_manager(new int);
+int_memory_manager.reset(new int);
+</pre>
+
+Using auto_ptr won't solve all of your problems.  First, you could still write
+code that manually handles pointers  that are also managed by auto_ptr
+objects.  Doing this could result in double deletes.  Whenever you request
+manual control of a pointer from an auto_ptr, you open yourself up to the
+requirement to call delete on that pointer -- consequently, the possibility of
+a memory leak exists.
+<br><br><b>Summary</b>
+<br><br>
+The auto_ptr class is a templated class that takes a type and stores a <a href="lesson6.html">pointer</a>
+of that type, which can be set by the constructor or by using the reset
+function to pass in a new address to store.  Pointers can be returned to
+manual control by the release function; otherwise, the pointer will be freed
+when the auto_ptr leaves scope. 
+<br><br><b>The Good</b>
+<ul>
+<li>auto_ptr objects store pointers and handle deleting the pointer when
+    the auto_ptr object goes out of scope
+    </li>
+<li>Using auto_ptr helps avoid memory leaks associated with exceptions and
+    minimizes the amount of cleanup code required
+</li>
+</ul>
+<b>The Gotchas</b>
+<ul>
+<li>Copying an auto_ptr changes the object being copied by setting the
+    contents to NULL
+    </li>
+<li>auto_ptr objects are not guaranteed to work correctly with the
+    standard template library containers
+</li>
+</ul>
+<br><b>
+Related articles<br><br><a href="lesson6.html">Pointers and memory
+allocation in C++</a>
+<br><br><a href="templates.html">Templated classes
+in C++</a>
+
+</b>
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=../c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=../c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=../begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=c-tutorial.html>C Tutorial</a>
+<li><a href=c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=../how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=../beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=../code_blocks/index.html>How to set up a compiler</a>
+<li><a href=common.html>8 Common programming Mistakes</a> 
+<li><a href=../c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="../c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="../c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="../java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="../advertising.html">Advertising</a> | <a href="../privacy.html">Privacy policy</a> |
+<a href="../use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=../beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=game_programming/same_game_part1.html>
+                    <img src=game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=../c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=../image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/tutorial/auto_ptr.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:36:01 GMT -->
+</html>
+
+
+

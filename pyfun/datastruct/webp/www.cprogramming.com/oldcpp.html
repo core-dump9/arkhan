@@ -1,0 +1,649 @@
+<html>
+
+<!-- Mirrored from www.cprogramming.com/oldcpp.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:40:10 GMT -->
+<head>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds2.feedburner.com/Cprogrammingcom/">
+<link rel="stylesheet" href="http://static.cprogramming.com/main_images/style.css?np9" type="text/css">
+<!--[if IE]>
+    <link rel="stylesheet" href="http://static.cprogramming.com/main_images/style-ie.css?np4" type="text/css">
+<![endif]-->
+
+
+<META NAME="keywords" CONTENT="Programming, C++, C++ tutorials, C++ programming, C programming, tutorials, C++ compilers, c compilers, source code, basic C++ tutorials, Programming in C++, tutorial, DJGPP, source code, Programming, C, tutorial, DJGPP, C++ source code, basic C++ tutorial, programming quiz, computer science, computer science quiz, C++ quiz, computer programming, programming computers, how to program computers">
+<META NAME="Description" CONTENT="List of compatibility issues with older C++ compilers and workarounds.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Compatability with Older C++ Compilers - Cprogramming.com</title>
+
+<!-- ADDED DFP -->
+<script type='text/javascript' src='http://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type='text/javascript'>
+GS_googleAddAdSenseService("ca-pub-2560316224908115");
+GS_googleEnableAllServices();
+</script>
+<script type='text/javascript'>
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_LargeRectangle_ATF_336x280");
+GA_googleAddSlot("ca-pub-2560316224908115", "RunOfSite_ATF_leaderboard_728x90");
+
+</script>
+<script type='text/javascript'>
+GA_googleFetchAds();
+</script>
+<!-- END ADDED DFP -->
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7820175-1']);
+  _gaq.push(['_setDomainName', '.cprogramming.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</head>
+
+<body>
+<div>
+
+<a href="index.html"><img class="logo noprint" src="http://static.cprogramming.com/main_images/title.png" width="324" height="83" border="0"></a> 
+
+<table class="line noprint"><tr><td></td></tr></table>
+<div class="noprint" align="right" style="padding-top:25px;padding-right:25px;">
+<!-- SiteSearch Google -->
+<form action="http://www.google.com/cse" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2560316224908115:wqvdce-aw4a" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<!-- SiteSearch Google -->
+</div>
+<div>
+  <table class="main">
+    <tr>
+
+  	<td class="noprint" colspan="5" bgcolor="#EBEBEB">
+  		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="6" width="0">
+  	   <center>
+    	<div class="leaderboard">
+
+<!-- ADDED DFP -->
+<!-- ca-pub-2560316224908115/Homepage_ATF_leaderboard_728x90 -->
+<script type='text/javascript'>
+GA_googleFillSlot("RunOfSite_ATF_leaderboard_728x90");
+</script>
+<!-- END ADDED DFP -->
+
+</div>
+		</center>
+		<img src="http://static.cprogramming.com/main_images/spacer-vert.png" height="4" width="1">
+  	</td>
+        
+  </tr>
+
+  <tr>
+
+     <td class="noprint" width="130" valign="top" bgcolor="#EBEBEB"> 
+     <div class="menu" valign="top" style="font-size:14px;width:200px">
+     <p class="navcategory" align="left">
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14">    Starting out
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="c%2b%2bbook/index5969.html?inl=sb">Get the Ebook</a><br>
+             <a href="begin.html">Get Started with C or C++</a><br>
+             <a href="compilers.html">Getting a Compiler</a><br>
+             <a href="books.html">Book Recommendations</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Tutorials
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href=tutorial/c-tutorial.html>C Tutorial</a><br>
+            <a href=tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a><br>
+            <a href=java-programming.html>Java Tutorial</a><br>
+            <a href=game-programming.html>Game Programming</a><br>
+            <a href=graphics-programming.html>Graphics Programming</a><br>
+            <a href=algorithms-and-data-structures.html>Algorithms &amp; Data Structures</a><br>
+            <a href=debuggers.html>Debugging</a><br>
+            <a href="tutorial.html">All Tutorials</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Practice
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="challenge.html">Practice Problems</a><br>
+            <a href="quiz/index.html">Quizzes</a><br>
+     </p>
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Resources
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="cgi-bin/source/source.html">Source Code</a><br>
+            <a href=snippets/index.html>Source Code Snippets</a><br>
+            <a href="tips/index.html">C and C++ Tips</a><br>
+            <a href=jobs/index.html>Finding a Job</a>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> References
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+            <a href="function.html">Function Reference</a><br>
+            <a href="reference/index.html">Syntax Reference</a><br>
+            <a href="cgi-bin/cdir/Cdirectory.html">Programming Links</a><br>
+            <a href="http://faq.cprogramming.com/cgi-bin/smartfaq.cgi">Programming FAQ</a><br>
+     </p>
+
+     <p class="navcategory" align="left">
+          <br>
+          <img class="bullet" src="http://static.cprogramming.com/main_images/bullet.gif" width="11" height="14"> Getting Help
+     </p>
+
+     <p class="navlist" align="left" style="font-size:14px;">
+             <a href="board.html">Message Board</a><br>
+             <a href="expert.html">Ask an Expert</a><br>
+             <a href="email.html">Email</a><br>
+             <a href="about.html">About Us</a>
+     </p>
+     </div>
+
+<center>
+      <br><br>
+     <script type="text/javascript"><!--
+     google_ad_client = "pub-2560316224908115";
+     google_ad_width = 120;
+     google_ad_height = 90;
+     google_ad_format = "120x90_0ads_al";
+     google_ad_channel ="0800879710";
+     google_color_border = "EBEBEB";
+     google_color_bg = "EBEBEB";
+     google_color_link = "C30000";
+     google_color_url = "C30000";
+     google_color_text = "000000";
+     //--></script>
+     <script type="text/javascript"
+       src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+       </script>
+</center>
+
+
+
+    </td>
+	<td class="content" valign="top">
+
+    			<div class="content2">
+
+<h1>Compatability with Older C++ Compilers</h1>
+
+
+
+<h3>C++ compatability issues with older compilers</h3>
+
+<h4>For beginners</h4>
+
+If you are having trouble with code from this site's <a href="tutorial.html">C++ tutorials</a>, this section
+is for you.
+
+<h5>Header files</h5>
+
+Older compilers may not support newer header files such as 
+
+<pre class="example">
+#include &lt;iostream&gt;
+</pre>
+
+This will cause your code to fail to compile, possibly with an error message
+about not being able to find the file "iostream".  You can fix this problem by
+using the old header file iostream.h:
+
+<pre class="example">
+#include &lt;iostream.h&gt;
+</pre>
+
+If you see a header file that begins with a c, such as cstdlib:
+
+<pre class="example">
+#include &lt;cstdlib&gt;
+</pre>
+
+you should change it by dropping the front c and adding .h:
+
+<pre class="example">
+#include &lt;stdlib.h&gt;
+</pre>
+
+<h5>Support for "using namespace std;"</h5>
+A second issue is that older compilers may not support "namespaces".  This is
+likely to be the case if your compiler suffers from the header file issues
+listed above.  From the perspective of this site's tutorials, all this means
+is that you should remove the line
+
+<pre class="example">
+using namespace std;
+</pre>
+
+from all examples.
+<br><br>
+These fixes should enable you to follow the tutorials using an older
+compiler. 
+
+<h4>Advanced compatability issues</h4>
+
+There are a host of sometimes frustrating compatability issues with older
+compilers because the C++ standard has added many features over time.
+
+<h5>The bool type</h5>
+
+Old compilers don't support the bool type or the corresponding keywords true
+and false that go along with it.  The best way to simulate it is probably to
+use an enum, preferably with the same name (bool) and the same types, true and
+false:
+
+<pre class="example">
+enum bool { false, true }
+</pre>
+
+Of course, when you run into an up-to-date compiler, you'll need to remove
+this line of code or it will cause conflicts with the built-in types.
+
+<h5>Explicit constructors</h5>
+
+Older compilers may not recognize the keyword <em>explicit</em>--in fact, many
+C++ programmres may not either.  The explicit keyword is used to indicate that
+a one-argument constructor should not be implicitly invoked.  What does this
+mean: well, let's say that you have a class, String, that has a constructor
+that takes a string literal (e.g., "str literal") and converts it into an
+object of type String:
+
+<pre class="example">
+String::String( char *str)
+{
+    // construct a String from the value of str
+}
+
+// now use the constructor
+String x( "a string" );    // creates a string containing "51"
+</pre>
+
+Now, if you have a function that expects a String, but you pass in a string
+literal:
+
+<pre class="example">
+void print_string( String x )
+{
+    // do something to display the string
+}
+
+// now try to invoke print_string with a string literal
+print_string( "this is not a String object" );
+</pre>
+
+Then the compiler will actually use the one-arg constructor to convert the
+string literal into a String object!  This can be very convenient; it makes
+the actual C++ standard string class easier to use.  But it can also be
+confusing.  
+<br><br>
+Let's say, for instance, that you decided to include a constructor for your
+String that takes a number and creates an empty String of that length.  Then,
+if you cal print_string with an integer: print_string( 5 ) you will get the
+surprising result that it prints five blank spaces.
+<br><br>
+How do you avoid this?  You just make the constructor "explicit", meaning that
+it needs to be explicitly invoked:
+
+<pre class="example">
+class String
+{
+    public:
+    explicit String (int x) {/* construct a string */}
+    String (char *x);
+}
+</pre>
+
+Unfortunately, older compilers may not support the use of "explicit", which
+could be a headache.  If you're stuck working with an out-of-date compiler and
+can't get one that has better support for the C++ standard, your best solution
+may be to take advantage of the fact that only a single implicit conversion
+will take place for a given value.  You can exploit this by using an
+intermediate class that implicitly creates an object of each type, and then
+have your main class implicitly create objects from that class:
+
+<pre class="example">
+class proxy
+{
+    public:
+    proxy(int x) : x(x) {} ;
+    getValue() { return x; }
+
+    private:
+    int x;
+
+};
+
+class String
+{
+    // this will be equivalent of explicit
+    String(proxy x) { /* create a string using x.getValue(); */ }
+}
+</pre>
+
+Why does this work?  Well, there are two cases--first, when you try to
+explicitly create a String:
+
+<pre class="example">
+String my_five_blanks( 5 );
+</pre>
+
+then the proxy class will be implicitly created from 5, and then the correct
+String constructor will be invoked.
+<br><br>
+But if you try to call print_value:
+<pre class="example">
+print_value( 5 );
+</pre>
+then it would require two conversions: one to a proxy, and then one to a
+String.  The compiler won't do this (because otherwise you could get enormously
+confusing strings of conversions of arbitrary length).  Unfortunately, it
+requires an extra proxy class to work correctly.
+
+<h5>Typecasting</h5>
+
+Older compilers may not support the new typecasting syntax:
+
+<pre class="example">
+int x = 65;
+static_cast&lt;char&gt;( x );
+</pre>
+
+You can often get around this by using the old-style cast:
+
+<pre class="example">
+int x = 65;
+(char)x;
+</pre>
+
+Unfortunately, replicating the effect of dynamic_cast can be difficult.  With
+a dynamic_cast, it is possible to safely cast down an inheritance hierarchy
+from a pointer (or reference) with the static type of a superclass to its
+dynamic type of a given child class.  If the cast cannot succeed because the
+pointer doesn't point to the correct child class type, then dynamic_cast will
+either return NULL (if casting a pointer) or throw a bad_cast exception (if
+casting a reference).  On older compilers, you can simulate the syntax using a
+macro (for readability):
+
+<pre class="example">
+#define DYNAMIC_CAST(type, obj) (type)obj
+</pre>
+
+but you won't get the added safety benefits!
+
+
+<div id="footer" class="noprint">
+
+<div id="social" style="margin-top:5px;height:23px;">
+<table>
+<tr>
+<td> 
+<div id="fb-root"></div>
+<div id="fb-recommend" class="fb-like" data-send="false" data-width="120" data-height="21" data-layout="button_count" data-action="recommend"></div>
+</td>
+<td>
+<a class="twitter-share-button" data-count="horizontal" data-via="alexallain"></a>
+</td>
+<td>
+<div class="g-plusone" data-size="medium"></div>
+</td>
+</tr>
+</table>
+</div>
+
+<div style="font-size:14px;padding:10px;margin-top:5px;margin-bottom:5px;">
+<div style="width:400px;margin-top:5px">
+<div style="float:left"><a href=c%2b%2bbook/index65a0.html?inl=ft-nhp><img src=c%2b%2bbook/small_3d.jpg border=0></a></div>Want to become a C++ programmer? The Cprogramming.com ebook, Jumping into C++, will walk you through it, step-by-step. <a href=c%2b%2bbook/index65a0.html?inl=ft-nhp>Get Jumping into C++ today!</a>
+</div>
+<div style="clear: both"></div>
+
+<b>Popular pages</b>
+<ul>
+ <li><a href=begin.html>Exactly how to get started with C++ (or C) today</a> 
+<li><a href=tutorial/c-tutorial.html>C Tutorial</a>
+<li><a href=tutorial/c%2b%2b-tutorial.html>C++ Tutorial</a>
+<li><a href=how_to_learn_to_program.html>5 ways you can learn to program faster</a> 
+<li><a href=beginner_programming_mistakes.html>The 5 Most Common Problems New Programmers Face</a>
+<li><a href=code_blocks/index.html>How to set up a compiler</a>
+<li><a href=tutorial/common.html>8 Common programming Mistakes</a> 
+<li><a href=c%2b%2b11/what-is-c%2b%2b0x.html>What is C++11?</a>
+<li><a href=tutorial/game_programming/same_game_part1.html>How to make a game in 48 hours</a>
+</ul>
+
+<b>Recent additions</b> <a href="http://feeds2.feedburner.com/Cprogrammingcom" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="subscribe to a feed" style="border:0" width="16" height="16"></img></a>
+<ul>
+<li><a href=tutorial/shared-libraries-linux-gcc.html>How to create a shared library on Linux with GCC</a> - December 30, 2011</li>
+<li> <a href="c%2b%2b11/c%2b%2b11-nullptr-strongly-typed-enum-class.html">Enum classes and nullptr in C++11</a> - November 27, 2011</li>
+<li><a href="tutorial/computersciencetheory/hash-table.html">Learn about The Hash Table</a> - November 20, 2011</li>
+<li><a href="c%2b%2b11/rvalue-references-and-move-semantics-in-c%2b%2b11.html">Rvalue References and Move Semantics in C++11</a> - November 13, 2011</li>
+<li><a href="java/c-and-c%2b%2b-for-java-programmers.html">C and C++ for Java Programmers</a> - November 5, 2011</li>
+<li><a href="tutorial/c%2b%2b-iostreams.html">A Gentle Introduction to C++ IO Streams</a> - October 10, 2011</li>
+</ul>
+
+</div>
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-bottom" style="background-color:#FFFFFF;color:#000000;width:50%; margin:auto">
+  <div class="cse-branding-form">
+    <form action="http://www.google.com/cse" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-2560316224908115:0581759109" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size="55" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+<center>
+<div style="margin-top:20px; margin-bottom: 20px">
+<script type="text/javascript">
+<!--
+google_ad_client = "pub-2560316224908115";
+/* link_ads_bottom */
+google_ad_slot = "2258412831";
+google_ad_width = 728;
+google_ad_height = 15;
+//-->
+</script> 
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"> </script> 
+</div>
+ 
+<script type="text/javascript" src="http://forms.aweber.com/form/12/618210012.js"></script>
+
+<div class="footer-links" style="padding:10px">
+<a href="advertising.html">Advertising</a> | <a href="privacy.html">Privacy policy</a> |
+<a href="use.html">Copyright © 1997-2011 Cprogramming.com. All rights reserved.</a> | <a href=mailto:webmaster@cprogramming.com>webmaster@cprogramming.com</a>
+</div>
+</div>
+</div>
+</td>
+    	
+
+
+<td class="content noprint" valign="top" rowspan="1" bgcolor="#EBEBEB">
+<div class="content2"><br><div class="verticalad">
+
+
+
+
+
+
+
+<script type="text/javascript"><!--
+        e9 = new Object();
+    e9.size = "160x600,120x600";
+//--></script>
+<script type="text/javascript" src="http://tags.expo9.exponential.com/tags/Cprogrammingcom/ROS/tags.js"></script>
+
+
+
+</div><br>
+
+<style type="text/css">
+.sidebar-box { width: 150px; margin-bottom:5px; }
+</style>
+    <div id="side-images">
+        <div style="padding:5px;margin-top:5px">
+            <div style="margin-bottom: 5px">
+                <b>Popular pages</b>
+            </div>
+            <div>
+                
+                <!--http://www.flickr.com/photos/baslow/5620208/sizes/o/in/photostream/ -->
+                <div class = "sidebar-box">
+                    <a href=tutorial/c-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/5620208_bff9c514e6_s.jpg border=0 height=75 width=75 alt="C tutorial">
+                    <br>
+                    C Tutorial
+                    </a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/29233640@N07/2855530649/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=begin.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2855530649_905f7862fd_s.jpg border=0 height=75 width=75 alt="Get started">
+                    <br>
+                    Exactly how to get started with C++ (or C) today</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/mikecogh/6505012533/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=how_to_learn_to_program.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/6505012533_55c83fdfa0_s.jpg border=0 height=75 width=75 alt="Learn to program">
+                    <br>
+                    5 ways you can learn to program faster</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                    <a href=tutorial/c%2b%2b-tutorial.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++-img.png border=0 height=75 width=75 alt="C++ tutorial">
+                    <br>
+                    C++ Tutorial</a>
+                </div>
+                
+
+                
+                <!--http://www.flickr.com/photos/giopuo/3441263816/sizes/sq/in/photostream/-->
+                <div class = "sidebar-box">
+                    <a href=beginner_programming_mistakes.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/3441263816_95f132a884_s.jpg border=0 height=75 width=75 alt="Problems new programmers face">
+                    <br>
+                    The 5 Most Common Problems New Programmers Face</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=tutorial/game_programming/same_game_part1.html>
+                    <img src=tutorial/game_programming/same_game_small.png border=0 height=42 width=42 alt="Learn to make a game">
+                    <br>
+                   How to make a game in 48 hours</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=tutorial/common.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/2291127824_087a497bea_s.jpg border=0 height=75 width=75 alt="Common problems">
+                    <br>
+                   8 Common Programming Mistakes</a>
+                </div>
+                
+
+                
+                <div class = "sidebar-box">
+                   <a href=c%2b%2b11/what-is-c%2b%2b0x.html>
+                    <img src=http://static.cprogramming.com/main_images/footer/c++11.png border=0 height=75 width=75 alt="C++11">
+                    <br>
+                   What is C++11?</a>
+                </div>
+                
+            </div>
+        </div>
+        <div style="display:block">
+            <a href=image_credits.html>Image credits</a>
+        </div>
+    </div>
+</div>
+</td>  	
+
+</tr>
+</table>
+</div>
+
+
+<script>
+(function(w, d, s) {
+  var cur_url = window.location;
+  var loc = cur_url;
+  if ( /htm(l?)/.test( cur_url.pathname ) ) {
+    loc = cur_url.protocol + "//" + cur_url.host + cur_url.pathname.replace( /\+/g, "%2b" );
+  }
+  d.getElementById( "fb-recommend" ).setAttribute( "data-href", loc );
+  function go(){
+    var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.src = url; js.id = id;
+          fjs.parentNode.insertBefore(js, fjs);
+        };
+    load('http://connect.facebook.net/en_US/all.js#xfbml=1&channelUrl=http%3A%2F%2Fwww.cprogramming.com%2Ffb%2Fchannel.html', 'fbjssdk');
+    load('https://apis.google.com/js/plusone.js', 'gplus1js');
+    load('http://platform.twitter.com/widgets.js', 'tweetjs');
+  }
+  if (w.addEventListener) { w.addEventListener("load", go, false); }
+  else if (w.attachEvent) { w.attachEvent("onload",go); }
+}(window, document, 'script'));
+</script>
+
+
+</body>
+
+<!-- Mirrored from www.cprogramming.com/oldcpp.html by HTTrack Website Copier/3.x [XR&CO'2010], Mon, 10 Sep 2012 23:40:10 GMT -->
+</html>
+
+
+
