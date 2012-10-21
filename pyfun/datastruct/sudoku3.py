@@ -27,4 +27,4 @@ if __name__ == '__main__':
     r(sys.argv[1])
   else:
     print 'Usage: python sudoku.py puzzle'
-    print '  where puzzle is an 81 character string representing the puzzle read left-to-right, top-to-bottom, and 0 is a blank'
+    print 'where puzzle is an 81 character string representing the puzzle read left-to-right, top-to-bottom, and 0 is a blank'
